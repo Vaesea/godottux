@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu1u7fnnpedw4"]
 
-[ext_resource type="Script" uid="uid://bsvcd5cj3tkpk" path="res://scenes_and_scripts/worldmap/worldmap_spawn_point.gd" id="1_v3qh7"]
+[ext_resource type="Script" uid="uid://bsvcd5cj3tkpk" path="res://scenes_and_scripts/objects/worldmap/worldmap_spawn_point.gd" id="1_v3qh7"]
 [ext_resource type="Texture2D" uid="uid://c5y4tms7fm6d0" path="res://assets/images/worldmap/smalltux.png" id="1_vs67q"]
 [ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="3_tji5d"]
 

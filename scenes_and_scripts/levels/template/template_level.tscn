@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="7_fno30"]
 [ext_resource type="TileSet" uid="uid://d4gcl7sdnk2cs" path="res://assets/images/tiles/tileset.tres" id="8_rscv8"]
 [ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="9_48ttc"]
-[ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/goal.tscn" id="10_rcanu"]
+[ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="10_rcanu"]
 
 [sub_resource type="Gradient" id="Gradient_qrl2c"]
 colors = PackedColorArray(0.39639798, 0.58798313, 0.99999386, 1, 1, 1, 1, 1)
@@ -20,7 +20,7 @@ width = 1280
 height = 800
 fill_to = Vector2(0, 1)
 
-[node name="TestLevel" type="Node2D" unique_id=1170359899]
+[node name="Template" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_csn2j")
 
 [node name="Misc" type="Node2D" parent="." unique_id=1525953836]
@@ -144,6 +144,7 @@ autoplay = true
 [node name="Background" type="TileMapLayer" parent="." unique_id=358160246]
 z_index = -100
 tile_set = ExtResource("8_rscv8")
+collision_enabled = false
 
 [node name="Interactive" type="TileMapLayer" parent="." unique_id=401587607]
 tile_set = ExtResource("8_rscv8")
@@ -151,6 +152,7 @@ tile_set = ExtResource("8_rscv8")
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=865606245]
 z_index = 100
 tile_set = ExtResource("8_rscv8")
+collision_enabled = false
 
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("9_48ttc")]
 position = Vector2(32, 384)

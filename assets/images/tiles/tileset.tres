@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://byrb1ady4rf0c" path="res://assets/images/tiles/snow/normal.png" id="1_s6rmv"]
 [ext_resource type="Texture2D" uid="uid://y3obprnukc2a" path="res://assets/images/tiles/snow/backgroundtiles.png" id="2_4el7w"]
 [ext_resource type="Texture2D" uid="uid://ewst7cl61gp2" path="res://assets/images/tiles/snow/unisolidtiles.png" id="3_71umq"]
+[ext_resource type="PackedScene" uid="uid://bbo01c372in2k" path="res://scenes_and_scripts/objects/level/coin.tscn" id="3_v00sx"]
 [ext_resource type="Texture2D" uid="uid://c725tivt7ay2r" path="res://assets/images/tiles/misc/goal.png" id="4_71umq"]
 [ext_resource type="Texture2D" uid="uid://bom8c4btekjs4" path="res://assets/images/tiles/snow/exit.png" id="5_tum3q"]
 [ext_resource type="Texture2D" uid="uid://n2ftkihf3yml" path="res://assets/images/tiles/forest/normal.png" id="6_awel5"]
@@ -233,6 +234,10 @@ texture_region_size = Vector2i(32, 32)
 8:6/0 = 0
 9:6/0 = 0
 10:6/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_838nd"]
+resource_name = "Objects"
+scenes/1/scene = ExtResource("3_v00sx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_awel5"]
 resource_name = "Snow Unisolid"
@@ -949,6 +954,7 @@ sources/5 = SubResource("TileSetAtlasSource_d64bg")
 sources/6 = SubResource("TileSetAtlasSource_mk7me")
 sources/7 = SubResource("TileSetAtlasSource_o2e1p")
 sources/8 = SubResource("TileSetAtlasSource_hgctc")
+sources/100 = SubResource("TileSetScenesCollectionSource_838nd")
 pattern_0 = SubResource("TileMapPattern_s6rmv")
 pattern_1 = SubResource("TileMapPattern_j0ebw")
 pattern_2 = SubResource("TileMapPattern_4el7w")

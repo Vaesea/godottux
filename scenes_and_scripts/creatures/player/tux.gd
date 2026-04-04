@@ -53,7 +53,10 @@ func _physics_process(delta: float) -> void:
 	
 	animate()
 	
-	if Input.is_action_just_released("player_action") and not held_object == null:
+	if Input.is_action_just_released("player_action") and not held_object == null and not held_object.held_by == null:
+		throw_enemy()
+	
+	if in_cutscene and not held_object == null and not held_object.held_by == null:
 		throw_enemy()
 	
 	move_and_slide()
@@ -128,6 +131,7 @@ func damage():
 	else:
 		print("Tux is in a cutscene and cannot be hurt!")
 		print("Tux would usually be able to kill enemies here.")
+
 func reload_player():
 	if current_state == TuxManager.powerup_states.Fire:
 		Global.tux_state = current_state

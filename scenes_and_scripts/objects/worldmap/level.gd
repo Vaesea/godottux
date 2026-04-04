@@ -52,6 +52,6 @@ func _on_tux_detector_body_exited(body) -> void:
 
 func _on_tween_finished(anim_name: StringName):
 	if anim_name == "transition":
-		await get_tree().create_timer(0.02).timeout
+		await get_tree().create_timer(0.02).timeout # so the transition animation can finish
 		get_tree().paused = false
 		get_tree().change_scene_to_packed(level_scene)

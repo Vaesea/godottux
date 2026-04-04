@@ -29,6 +29,9 @@ var death_timer = 1
 # For Iceblocks and probably bombs when I add those?
 var kill_other_enemies = false
 
+# For Iceblocks
+var kill_self_on_touching_enemy = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("Enemy")

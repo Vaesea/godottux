@@ -17,8 +17,12 @@ func _on_tux_detector_area_entered(area) -> void:
 			death(false)
 			print(":3")
 			area.get_parent().stomp_bounce()
+	 
 	if area.is_in_group("StupidThing") and area.get_parent().kill_other_enemies:
 		death(true)
+	elif area.is_in_group("StupidThing") and area.get_parent().kill_self_on_touching_enemy:
+		death(true)
+		area.get_parent().death(true)
 
 func _on_tux_detector_body_entered(body) -> void:
 	if body.is_in_group("Player") and not dead:

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbwdumx3i8nno"]
 
 [ext_resource type="SpriteFrames" uid="uid://bt3rdmsbah53m" path="res://spriteframes/teleporter.tres" id="1_fys81"]
-[ext_resource type="Script" uid="uid://dkuevm8lbc6" path="res://scenes_and_scripts/worldmap/teleporter.gd" id="2_sj1m6"]
+[ext_resource type="Script" uid="uid://dkuevm8lbc6" path="res://scenes_and_scripts/objects/worldmap/teleporter.gd" id="2_sj1m6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj1m6"]
 size = Vector2(32, 32)

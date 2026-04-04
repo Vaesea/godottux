@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2ubl5y6jnhg7"]
 
 [ext_resource type="SpriteFrames" uid="uid://b8kqtky3ahbw5" path="res://spriteframes/worldmap_tux.tres" id="1_3qwph"]
-[ext_resource type="Script" uid="uid://cu4mo2w4pih2d" path="res://scenes_and_scripts/worldmap/worldmap_tux.gd" id="1_f6yy3"]
+[ext_resource type="Script" uid="uid://cu4mo2w4pih2d" path="res://scenes_and_scripts/objects/worldmap/worldmap_tux.gd" id="1_f6yy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6yy3"]
 size = Vector2(12, 6)

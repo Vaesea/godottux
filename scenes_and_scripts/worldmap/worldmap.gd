@@ -20,8 +20,6 @@ class_name Worldmap
 ## Height of the level in tiles.
 @export var worldmap_height:int = 100
 
-const worldmap_tux = preload("res://scenes_and_scripts/worldmap/worldmap_tux.tscn")
-
 var levels = []
 var rocks = []
 

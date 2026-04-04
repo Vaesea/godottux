@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://ds2gawmc1qgqg" path="res://assets/music/forestmap.ogg" id="3_qn25y"]
 [ext_resource type="PackedScene" uid="uid://uyqfh1xf0mio" path="res://scenes_and_scripts/hud/worldmap_hud.tscn" id="4_uxjy3"]
 [ext_resource type="TileSet" uid="uid://c8e70il54cmxc" path="res://assets/images/worldmap/tiles/worldmap.tres" id="5_wtrpr"]
-[ext_resource type="PackedScene" uid="uid://2ubl5y6jnhg7" path="res://scenes_and_scripts/worldmap/worldmap_tux.tscn" id="9_1h3dw"]
-[ext_resource type="PackedScene" uid="uid://cu1u7fnnpedw4" path="res://scenes_and_scripts/worldmap/worldmap_spawn_point.tscn" id="10_4j84i"]
+[ext_resource type="PackedScene" uid="uid://2ubl5y6jnhg7" path="res://scenes_and_scripts/objects/worldmap/worldmap_tux.tscn" id="9_1h3dw"]
+[ext_resource type="PackedScene" uid="uid://cu1u7fnnpedw4" path="res://scenes_and_scripts/objects/worldmap/worldmap_spawn_point.tscn" id="10_4j84i"]
 
 [node name="Worldmap" type="Node2D" unique_id=509094959]
 script = ExtResource("1_34wav")

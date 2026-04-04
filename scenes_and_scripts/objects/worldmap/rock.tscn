@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct6hka51cnpm7"]
 
-[ext_resource type="Script" uid="uid://bj18rnpl1fo0i" path="res://scenes_and_scripts/worldmap/rock.gd" id="1_al4c1"]
+[ext_resource type="Script" uid="uid://bj18rnpl1fo0i" path="res://scenes_and_scripts/objects/worldmap/rock.gd" id="1_al4c1"]
 [ext_resource type="Texture2D" uid="uid://dxwf70ojpt4cw" path="res://assets/images/worldmap/rock.png" id="1_kyre1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al4c1"]

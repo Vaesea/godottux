@@ -6,6 +6,10 @@ extends BadGuy
 # there was an attempt to make held iceblocks kill other enemies. it hasn't worked.
 
 # TODO: move to enemy.gd (which should really be named badguy.gd)
+# TODO: Make the VisibleOnScreenEnabler2D always act like it's on screen when current_state is MovingFlat
+
+# TODO: Fix bug where if this enemy is being held by Tux, and Tux falls fast on another enemy, 
+# this enemy and the other enemy dies just like is Tux walked into the other enemy while holding this enemy.
 
 enum IceblockStates {Normal, Flat, MovingFlat, Held}
 
@@ -32,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			global_position.x = held_by.global_position.x + 24
 		
-		global_position.y = held_by.global_position.y - 4
+		global_position.y = held_by.global_position.y - 16
 		
 		direction = held_by.facing_direction
 		
@@ -47,7 +51,7 @@ func _physics_process(delta: float) -> void:
 			$Collision.set_deferred("disabled", false)
 		super(delta)
 	
-	# no waking up for you, iceblock! (this code works... sort of. it doesn't let the iceblock play the flat animation.
+	# no waking up for you, iceblock! (this code works... sort of. it doesn't let the iceblock play the flat animation)
 	#if current_state == IceblockStates.Flat:
 		#await get_tree().create_timer(5).timeout
 		#if current_state == IceblockStates.Flat:
@@ -56,12 +60,17 @@ func _physics_process(delta: float) -> void:
 	if current_state == IceblockStates.Flat or current_state == IceblockStates.MovingFlat:
 		$Image.play("flat")
 	
-	if current_state == IceblockStates.MovingFlat and current_state == IceblockStates.Held:
+	if current_state == IceblockStates.MovingFlat: # accidentally put "and" instead of "or"
+		kill_self_on_touching_enemy = false
 		kill_other_enemies = true
 		if current_state == IceblockStates.MovingFlat:
 			if is_on_wall():
 				$BumpSound.play()
+	elif current_state == IceblockStates.Held:
+		kill_self_on_touching_enemy = true
+		kill_other_enemies = false
 	else:
+		kill_self_on_touching_enemy = false
 		kill_other_enemies = false
 
 func pick_up(tux: CharacterBody2D):
@@ -88,7 +97,7 @@ func _on_tux_detector_area_entered(area) -> void:
 				direction = area.get_parent().facing_direction
 				wait_to_collide = 0.25
 				$KickSound.play()
-			print(":3")
+			print("Damaged enemy")
 			area.get_parent().stomp_bounce()
 	
 	if area.is_in_group("StupidThing") and area.get_parent().kill_other_enemies:
@@ -124,3 +133,24 @@ func move():
 			velocity.x = direction * movingflat_speed
 	else:
 		velocity.x = 0
+
+func death(fall:bool):
+	dead = true
+	$TuxDetector.set_deferred("monitoring", false)
+	$TuxDetector.set_deferred("monitorable", false)
+	
+	if fall:
+		held_by = null
+		current_state = IceblockStates.Flat
+		velocity.x = 0
+		$Collision.set_deferred("disabled", true)
+		$Image.flip_v = true
+		$FallSound.play()
+	else:
+		$".".set_collision_layer_value(4, true)
+		$".".set_collision_layer_value(3, false)
+		$".".set_collision_mask_value(3, false)
+		$SquishSound.play()
+		$Image.play("squished")
+		await get_tree().create_timer(death_timer).timeout
+		queue_free()
