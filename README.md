@@ -10,6 +10,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 ## What hasn't been added yet but is planned
 - Coin
 - Bonus Block
+- Brick Block
 - Egg
 - Fire Flower
 - Ice Flower
