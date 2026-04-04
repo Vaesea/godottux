@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dcu40fjnldn72"]
+
+[ext_resource type="Texture2D" uid="uid://b3a3lu624bi7b" path="res://assets/images/creatures/snowball/sport-left-0.png" id="1_hgt24"]
+[ext_resource type="Texture2D" uid="uid://dqtxp11k4k8yu" path="res://assets/images/creatures/snowball/sport-left-1.png" id="2_6rxpc"]
+[ext_resource type="Texture2D" uid="uid://rrb5coy3q76f" path="res://assets/images/creatures/snowball/sport-left-2.png" id="3_x5t7w"]
+[ext_resource type="Texture2D" uid="uid://bnr5hvasaaclj" path="res://assets/images/creatures/snowball/squished-left.png" id="4_0cpu7"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0cpu7")
+}],
+"loop": false,
+"name": &"squished",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hgt24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6rxpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x5t7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6rxpc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

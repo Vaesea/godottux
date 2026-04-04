@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bhfu2l15i6ijm"]
+
+[ext_resource type="Script" uid="uid://bvu2n4wlrxs23" path="res://scenes_and_scripts/creatures/badguy/smartball.gd" id="1_tjak1"]
+[ext_resource type="SpriteFrames" uid="uid://ctf1ox2rgy8nx" path="res://spriteframes/smartball.tres" id="2_tjak1"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_srcr1"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_5mito"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
+size = Vector2(29, 29)
+
+[node name="Smartball" type="CharacterBody2D" unique_id=1942256203]
+z_index = 40
+collision_layer = 4
+floor_constant_speed = true
+floor_max_angle = 1.3962634
+floor_snap_length = 12.0
+script = ExtResource("1_tjak1")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=264556818]
+sprite_frames = ExtResource("2_tjak1")
+animation = &"walk"
+centered = false
+offset = Vector2(0, -6)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
+position = Vector2(19.5, 17.5)
+shape = SubResource("RectangleShape2D_aggo7")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
+position = Vector2(19.5, 17.5)
+shape = SubResource("RectangleShape2D_aggo7")
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=1625415948]
+position = Vector2(5, 0)
+target_position = Vector2(0, 64)
+
+[node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=812757881]
+stream = ExtResource("3_srcr1")
+
+[node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=486213562]
+stream = ExtResource("4_5mito")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=617942099]
+rect = Rect2(-64, -64, 160, 160)

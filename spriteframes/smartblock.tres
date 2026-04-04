@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dyo8o03w5huws"]
+
+[ext_resource type="Texture2D" uid="uid://bi25smn7ycvd4" path="res://assets/images/creatures/smartblock/left-0.png" id="1_rgv7p"]
+[ext_resource type="Texture2D" uid="uid://cdu1gr0u5m0ij" path="res://assets/images/creatures/smartblock/left-1.png" id="2_jhvbq"]
+[ext_resource type="Texture2D" uid="uid://dulv23fjc2ft7" path="res://assets/images/creatures/smartblock/left-2.png" id="3_d5y6e"]
+[ext_resource type="Texture2D" uid="uid://b176af4v7u6bc" path="res://assets/images/creatures/smartblock/flat-left.png" id="4_8frhi"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8frhi")
+}],
+"loop": false,
+"name": &"flat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rgv7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jhvbq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d5y6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jhvbq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

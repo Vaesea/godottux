@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cbwdumx3i8nno"]
+
+[ext_resource type="SpriteFrames" uid="uid://bt3rdmsbah53m" path="res://spriteframes/teleporter.tres" id="1_fys81"]
+[ext_resource type="Script" uid="uid://dkuevm8lbc6" path="res://scenes_and_scripts/worldmap/teleporter.gd" id="2_sj1m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj1m6"]
+size = Vector2(32, 32)
+
+[node name="Teleporter" type="AnimatedSprite2D" unique_id=547580973]
+sprite_frames = ExtResource("1_fys81")
+frame_progress = 0.84324664
+centered = false
+script = ExtResource("2_sj1m6")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=688581620]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=353429244]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_sj1m6")
+
+[connection signal="body_entered" from="TuxDetector" to="." method="_on_tux_detector_body_entered"]
+[connection signal="body_exited" from="TuxDetector" to="." method="_on_tux_detector_body_exited"]

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c7jg4p1ouyw4q"]
+
+[ext_resource type="SpriteFrames" uid="uid://x4i7a6rm3ju8" path="res://spriteframes/level.tres" id="1_rtlol"]
+[ext_resource type="Script" uid="uid://crs6bfhaowxx3" path="res://scenes_and_scripts/worldmap/level.gd" id="2_5gt5q"]
+[ext_resource type="PackedScene" uid="uid://cloyqgn70go2a" path="res://scenes_and_scripts/transition/level_intro.tscn" id="3_t34wx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gt5q"]
+radius = 7.000001
+height = 18.000002
+
+[node name="Level" type="AnimatedSprite2D" unique_id=1864217810]
+z_index = 1
+sprite_frames = ExtResource("1_rtlol")
+animation = &"red"
+centered = false
+script = ExtResource("2_5gt5q")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=411568222]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=993309004]
+position = Vector2(15.604929, 15.60493)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5gt5q")
+
+[node name="LevelIntro" parent="." unique_id=1805789395 instance=ExtResource("3_t34wx")]
+
+[connection signal="body_entered" from="TuxDetector" to="." method="_on_tux_detector_body_entered"]
+[connection signal="body_exited" from="TuxDetector" to="." method="_on_tux_detector_body_exited"]

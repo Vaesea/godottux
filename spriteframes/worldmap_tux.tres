@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b8kqtky3ahbw5"]
+
+[ext_resource type="Texture2D" uid="uid://bjy617ba6ejtp" path="res://assets/images/worldmap/smalltux_fire.png" id="1_gunba"]
+[ext_resource type="Texture2D" uid="uid://c5y4tms7fm6d0" path="res://assets/images/worldmap/smalltux.png" id="2_j1w2m"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gunba")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j1w2m")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cloyqgn70go2a"]
+
+[ext_resource type="Shader" uid="uid://dkae7pbaqhgta" path="res://scenes_and_scripts/transition/level_intro.gdshader" id="1_68jaj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jqwi"]
+shader = ExtResource("1_68jaj")
+shader_parameter/circle_size = 0.710000033725
+
+[sub_resource type="Animation" id="Animation_68jaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.710000033725]
+}
+
+[sub_resource type="Animation" id="Animation_4jqwi"]
+resource_name = "transition"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.710000033725, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sshsc"]
+_data = {
+&"RESET": SubResource("Animation_68jaj"),
+&"transition": SubResource("Animation_4jqwi")
+}
+
+[node name="LevelIntro" type="CanvasLayer" unique_id=1805789395]
+process_mode = 3
+layer = 1000
+
+[node name="Circle" type="ColorRect" parent="." unique_id=1315658345]
+editor_description = "Remind me never to delete the shader again."
+material = SubResource("ShaderMaterial_4jqwi")
+offset_right = 800.0
+offset_bottom = 608.0
+color = Color(0, 0, 0, 1)
+
+[node name="TweenAnimation" type="AnimationPlayer" parent="." unique_id=311287532]
+libraries/ = SubResource("AnimationLibrary_sshsc")
+
+[connection signal="animation_finished" from="TweenAnimation" to="." method="_on_tween_animation_finished"]

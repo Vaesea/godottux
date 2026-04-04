@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://do43a5x7onb0a"]
+
+[node name="DeathFade" type="CanvasLayer" unique_id=2065465041]
+layer = 1000
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1828966624]
+modulate = Color(1, 1, 1, 0)
+offset_right = 800.0
+offset_bottom = 608.0
+color = Color(0, 0, 0, 1)

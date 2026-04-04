@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://2ubl5y6jnhg7"]
+
+[ext_resource type="SpriteFrames" uid="uid://b8kqtky3ahbw5" path="res://spriteframes/worldmap_tux.tres" id="1_3qwph"]
+[ext_resource type="Script" uid="uid://cu4mo2w4pih2d" path="res://scenes_and_scripts/worldmap/worldmap_tux.gd" id="1_f6yy3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6yy3"]
+size = Vector2(12, 6)
+
+[node name="WorldmapTux" type="CharacterBody2D" unique_id=239524071]
+z_index = 50
+collision_layer = 2
+script = ExtResource("1_f6yy3")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=2097653096]
+sprite_frames = ExtResource("1_3qwph")
+animation = &"normal"
+centered = false
+offset = Vector2(-2, -3)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1522701789]
+position = Vector2(17, 29)
+shape = SubResource("RectangleShape2D_f6yy3")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=205799771]
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 800

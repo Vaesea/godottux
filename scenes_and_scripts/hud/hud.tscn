@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bqpupse32lss5"]
+
+[ext_resource type="Script" uid="uid://bdr2sb6gfgvvr" path="res://scenes_and_scripts/hud/hud.gd" id="1_20f8t"]
+[ext_resource type="Texture2D" uid="uid://tdh8vwj2wdjb" path="res://assets/images/objects/coin/coin-0.png" id="1_bd84u"]
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="2_cw53p"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1308660143]
+script = ExtResource("1_20f8t")
+
+[node name="Coin" type="Sprite2D" parent="." unique_id=918766898]
+position = Vector2(706, 11)
+scale = Vector2(0.59375095, 0.59375095)
+texture = ExtResource("1_bd84u")
+centered = false
+
+[node name="X" type="RichTextLabel" parent="." unique_id=1264900530]
+offset_left = 730.0
+offset_top = 16.0
+offset_right = 742.0
+offset_bottom = 33.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_cw53p")
+theme_override_font_sizes/normal_font_size = 10
+text = "x"
+
+[node name="Number" type="RichTextLabel" parent="." unique_id=731525149]
+offset_left = 742.0
+offset_top = 11.0
+offset_right = 800.0
+offset_bottom = 36.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_cw53p")
+theme_override_font_sizes/normal_font_size = 20
+text = "999"
+scroll_active = false

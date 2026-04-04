@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c7sjkwbdpjy4w"]
+
+[ext_resource type="Script" uid="uid://cgmtjq27c1dy4" path="res://scenes_and_scripts/menu/menu.gd" id="1_ltxr7"]
+[ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="2_dd0i1"]
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="2_xokca"]
+[ext_resource type="AudioStream" uid="uid://bji73mm44kyeu" path="res://assets/music/theme.ogg" id="5_80asc"]
+
+[node name="Menu" type="Node2D" unique_id=749843694]
+script = ExtResource("1_ltxr7")
+
+[node name="Background" type="Parallax2D" parent="." unique_id=1261693690]
+z_index = -300
+repeat_size = Vector2(800, 800)
+autoscroll = Vector2(-50, -50)
+repeat_times = 2
+
+[node name="Background" type="Sprite2D" parent="Background" unique_id=1595103768]
+position = Vector2(0, -128)
+scale = Vector2(2, 2)
+texture = ExtResource("2_dd0i1")
+centered = false
+
+[node name="PlayButton" type="Button" parent="." unique_id=740652778]
+offset_left = 192.0
+offset_top = 224.0
+offset_right = 631.0
+offset_bottom = 320.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_xokca")
+theme_override_font_sizes/font_size = 48
+text = "Play Game"
+
+[node name="DeleteButton" type="Button" parent="." unique_id=1397822321]
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 631.0
+offset_bottom = 160.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_xokca")
+theme_override_font_sizes/font_size = 32
+text = "Delete Save
+(Closes Game)"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=814526631]
+stream = ExtResource("5_80asc")
+autoplay = true
+
+[node name="Label2" type="RichTextLabel" parent="." unique_id=1432545282]
+offset_top = 544.0
+offset_right = 800.0
+offset_bottom = 608.0
+theme_override_fonts/normal_font = ExtResource("2_xokca")
+bbcode_enabled = true
+text = "[wave]This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License Version 3 as published by the Free Software Foundation.[/wave]"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
