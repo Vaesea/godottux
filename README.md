@@ -58,7 +58,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - Tumbleweed
 - Worldmap Tux walking animations
-- Forest exit
+- Forest Exit Tiles
+- Tux death animation stuff
 
 ## What this doesn't recreate / use
 - Levels
