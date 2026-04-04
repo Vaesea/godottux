@@ -13,6 +13,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Egg
 - Fire Flower
 - Ice Flower
+- Star
 - Worldmap Tux sprite changer
 - Trampolines (Stationary and Portable)
 - Rock
