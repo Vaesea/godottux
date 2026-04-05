@@ -55,6 +55,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Mr Cherry
 - Toad
 - Tumbleweed
+- Totem
 - Worldmap Tux walking animations
 - Forest Exit Tiles
 - Tux death animation stuff
