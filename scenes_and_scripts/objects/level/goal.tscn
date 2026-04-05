@@ -13,5 +13,3 @@ script = ExtResource("1_qt7fs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=724414611]
 position = Vector2(16, 304)
 shape = SubResource("RectangleShape2D_g2epb")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

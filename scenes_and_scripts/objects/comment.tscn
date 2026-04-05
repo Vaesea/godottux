@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://buee3j73grcoj"]
+
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="1_pporw"]
+[ext_resource type="Script" uid="uid://n835cxreepfd" path="res://scenes_and_scripts/objects/comment.gd" id="1_qg2xv"]
+
+[node name="Comment" type="Label" unique_id=334767462]
+z_index = 4096
+offset_right = 184.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("1_pporw")
+text = "This is a comment!"
+script = ExtResource("1_qg2xv")

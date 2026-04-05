@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjy617ba6ejtp"
-path="res://.godot/imported/smalltux_fire.png-e3174ab38bdf9324fbf9e202dfac2544.ctex"
+uid="uid://c45c8ufs8n2px"
+path="res://.godot/imported/blue-potion.png-f5e9c47bb40e64db8cbd621e8364bc71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/worldmap/smalltux_fire.png"
-dest_files=["res://.godot/imported/smalltux_fire.png-e3174ab38bdf9324fbf9e202dfac2544.ctex"]
+source_file="res://assets/images/objects/powerups/potions/blue-potion.png"
+dest_files=["res://.godot/imported/blue-potion.png-f5e9c47bb40e64db8cbd621e8364bc71.ctex"]
 
 [params]
 

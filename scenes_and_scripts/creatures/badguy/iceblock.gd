@@ -3,8 +3,6 @@ extends BadGuy
 # this was made by both vaesea and anatolystev
 # anatolystev's little funny epic note: i know a lot more about haxeflixel so if this code looks bad, that's why.
 
-# there was an attempt to make held iceblocks kill other enemies. it hasn't worked.
-
 # TODO: move to enemy.gd (which should really be named badguy.gd)
 # TODO: Make the VisibleOnScreenEnabler2D always act like it's on screen when current_state is MovingFlat
 
@@ -31,14 +29,14 @@ func _physics_process(delta: float) -> void:
 		wait_to_collide -= delta
 	
 	if current_state == IceblockStates.Held:
-		if held_by.facing_direction == -1:
+		if TuxManager.facing_direction == -1:
 			global_position.x = held_by.global_position.x - 8
 		else:
 			global_position.x = held_by.global_position.x + 24
 		
 		global_position.y = held_by.global_position.y - 16
 		
-		direction = held_by.facing_direction
+		direction = TuxManager.facing_direction
 		
 		$Image.play("flat")
 		
@@ -64,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		kill_self_on_touching_enemy = false
 		kill_other_enemies = true
 		if current_state == IceblockStates.MovingFlat:
-			if is_on_wall():
+			if is_on_wall() and not was_on_wall:
 				$BumpSound.play()
 	elif current_state == IceblockStates.Held:
 		kill_self_on_touching_enemy = true
@@ -94,7 +92,7 @@ func _on_tux_detector_area_entered(area) -> void:
 				$SquishSound.play()
 			elif current_state == IceblockStates.Flat:
 				current_state = IceblockStates.MovingFlat
-				direction = area.get_parent().facing_direction
+				direction = TuxManager.facing_direction
 				wait_to_collide = 0.25
 				$KickSound.play()
 			print("Damaged enemy")
@@ -112,12 +110,12 @@ func _on_tux_detector_body_entered(body) -> void:
 				body.hold_enemy(self)
 			else: # TODO: code is copy and pasted from next else: thing. this needs to be fixed at some point, but it's ok to keep for now.
 				$KickSound.play()
-				direction = body.facing_direction
+				direction = TuxManager.facing_direction
 				current_state = IceblockStates.MovingFlat
 				wait_to_collide = 0.25
 		else:
 			$KickSound.play()
-			direction = body.facing_direction
+			direction = TuxManager.facing_direction
 			current_state = IceblockStates.MovingFlat
 			wait_to_collide = 0.25
 

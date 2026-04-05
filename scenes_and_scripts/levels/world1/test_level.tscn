@@ -10,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bhfu2l15i6ijm" path="res://scenes_and_scripts/creatures/badguy/smartball.tscn" id="10_vfjre"]
 [ext_resource type="PackedScene" uid="uid://cstyfqelcwsdf" path="res://scenes_and_scripts/creatures/badguy/iceblock.tscn" id="11_f0ptp"]
 [ext_resource type="PackedScene" uid="uid://cab0l31thlxhl" path="res://scenes_and_scripts/objects/level/bonus_block.tscn" id="12_ljcav"]
+[ext_resource type="PackedScene" uid="uid://cydy0jy77hcr3" path="res://scenes_and_scripts/objects/level/powerups/fire_flower.tscn" id="13_cmklg"]
 [ext_resource type="PackedScene" uid="uid://xs7v2414cg6a" path="res://scenes_and_scripts/creatures/badguy/smartblock.tscn" id="13_xc2j1"]
+[ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="14_iqt2j"]
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="14_wkn46"]
+[ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="15_w48fa"]
 
 [node name="TestLevel" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_oobyr")
@@ -55,7 +58,7 @@ tile_map_data = PackedByteArray("AABrAAYAAwAAAAAAAABrAAcAAwAAAAEAAABrAAgAAwAAAAE
 tile_set = ExtResource("3_lsmmm")
 
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("7_oeprp")]
-position = Vector2(32, 384)
+position = Vector2(-64, -32)
 
 [node name="Snowball" parent="." unique_id=1942256203 instance=ExtResource("8_6clsl")]
 position = Vector2(896, 416)
@@ -84,6 +87,11 @@ position = Vector2(1216, 320)
 
 [node name="BonusBlock3" parent="." unique_id=819163829 instance=ExtResource("12_ljcav")]
 position = Vector2(1280, 320)
+content = 1
+
+[node name="BonusBlock13" parent="." unique_id=1008674066 instance=ExtResource("12_ljcav")]
+position = Vector2(2048, 320)
+content = 1
 
 [node name="BonusBlock4" parent="." unique_id=2047951914 instance=ExtResource("12_ljcav")]
 position = Vector2(1248, 320)
@@ -112,5 +120,20 @@ position = Vector2(3200, 320)
 [node name="BonusBlock9" parent="." unique_id=188023193 instance=ExtResource("12_ljcav")]
 position = Vector2(2944, 320)
 
-[connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
-[connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]
+[node name="Smartball2" parent="." unique_id=884694472 instance=ExtResource("10_vfjre")]
+position = Vector2(1344, 288)
+
+[node name="FireFlower" parent="." unique_id=1265951058 instance=ExtResource("13_cmklg")]
+position = Vector2(352, 416)
+
+[node name="LevelSpawnPoint" parent="." unique_id=1166009292 instance=ExtResource("14_iqt2j")]
+position = Vector2(32, 384)
+
+[node name="Comment" parent="." unique_id=334767462 instance=ExtResource("15_w48fa")]
+offset_top = 256.0
+offset_right = 187.0
+offset_bottom = 279.0
+text = "I am a comment, hello!
+I should be invisible without debug mode on!
+If you can see me while playing without debug on, 
+it's a bug."

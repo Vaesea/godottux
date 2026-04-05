@@ -10,6 +10,7 @@
 [ext_resource type="TileSet" uid="uid://d4gcl7sdnk2cs" path="res://assets/images/tiles/tileset.tres" id="8_rscv8"]
 [ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="9_48ttc"]
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="10_rcanu"]
+[ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="11_l5n4j"]
 
 [sub_resource type="Gradient" id="Gradient_qrl2c"]
 colors = PackedColorArray(0.39639798, 0.58798313, 0.99999386, 1, 1, 1, 1, 1)
@@ -155,10 +156,11 @@ tile_set = ExtResource("8_rscv8")
 collision_enabled = false
 
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("9_48ttc")]
-position = Vector2(32, 384)
+position = Vector2(-64, -32)
+
+[node name="LevelSpawnPoint" parent="." unique_id=1166009292 instance=ExtResource("11_l5n4j")]
 
 [node name="Goal" parent="." unique_id=890520411 instance=ExtResource("10_rcanu")]
 position = Vector2(2464, -224)
 
 [connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
-[connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

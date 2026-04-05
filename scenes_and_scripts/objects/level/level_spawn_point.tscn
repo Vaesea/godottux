@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cx4kd0pb565ry"]
+
+[ext_resource type="Script" uid="uid://dc40ivffmn2v7" path="res://scenes_and_scripts/objects/level/level_spawn_point.gd" id="1_e2q0v"]
+[ext_resource type="Texture2D" uid="uid://0iw8m6k6yjie" path="res://assets/images/creatures/tux/small/run-9.png" id="2_e2q0v"]
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="3_00qex"]
+
+[node name="LevelSpawnPoint" type="Marker2D" unique_id=1166009292]
+editor_description = "Keep it if it's already in the level scene and the node name includes Main."
+gizmo_extents = 32.0
+script = ExtResource("1_e2q0v")
+
+[node name="EditorImage" type="Sprite2D" parent="." unique_id=1152557656]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_e2q0v")
+centered = false
+region_enabled = true
+region_rect = Rect2(10, 6, 32, 32)
+
+[node name="Label" type="Label" parent="." unique_id=1985736304]
+offset_right = 32.0
+offset_bottom = 38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_00qex")
+theme_override_font_sizes/font_size = 27
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -9,11 +9,13 @@ size = Vector2(12, 6)
 [node name="WorldmapTux" type="CharacterBody2D" unique_id=239524071]
 z_index = 50
 collision_layer = 2
+wall_min_slide_angle = 0.08726646
 script = ExtResource("1_f6yy3")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=2097653096]
 sprite_frames = ExtResource("1_3qwph")
-animation = &"normal"
+animation = &"fire_walk"
+frame_progress = 0.6793179
 centered = false
 offset = Vector2(-2, -3)
 

@@ -3,7 +3,7 @@ extends Node
 # worldmap support by anatolystev
 
 # Allows various debug stuff, like completing levels, changing whether Tux has a powerup or not and showing worldmap spawn points.
-var debug = false
+var debug:bool = false
 
 # Change this to the worldmap that you want the player go to if there's no save file.
 var first_worldmap = "res://scenes_and_scripts/levels/world1/worldmap.tscn"
@@ -35,14 +35,15 @@ var completed_worldmaps = []
 
 var checkpoint_reached = false # It's a surprise tool that will help us later!
 
-var save_version = 1
+var save_version = 2
 var save_file = "user://save"
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("activate_debug") and not debug:
 		debug = true
 		OS.alert("Enjoy the debug mode!", "Debug Mode Activated!")
-		OS.alert("Press 0 in a level to finish the level\nNothing else yet...", "Instructions")
+		OS.alert("Press 0 in a level to finish the level,\npress 1 or 2 in a level to change Tux's powerup state,\nnothing else yet...", "Instructions")
+		save_data()
 
 func save_data():
 	var file = FileAccess.open(save_file, FileAccess.WRITE)
@@ -54,11 +55,9 @@ func save_data():
 	file.store_var(completed_levels)
 	file.store_var(completed_worldmaps)
 	file.store_var(save_version)
+	file.store_var(debug)
 
 func load_data():
-	# big thing of prints
-	# for some reason, it prints 0.0 for tux_wm_x and tux_wm_y, but it seems to work fine anyways?
-	
 	if FileAccess.file_exists(save_file):
 		print("Save file exists! Loading data...")
 		var file = FileAccess.open(save_file, FileAccess.READ)
@@ -70,22 +69,26 @@ func load_data():
 		completed_levels = file.get_var()
 		completed_worldmaps = file.get_var()
 		save_version = file.get_var()
-		print(current_worldmap)
-		print(coins)
-		print(tux_state)
-		print(tux_wm_x)
-		print(tux_wm_y)
-		print(completed_worldmaps)
-		print(save_version)
+		if save_version == 2:
+			debug = file.get_var()
+		print("current_worldmap: ", current_worldmap)
+		print("coins: ", coins)
+		print("tux_state: ", tux_state)
+		print("tux_wm_X: ", tux_wm_x)
+		print("tux_wm_y: ", tux_wm_y)
+		print("completed_worldmaps: ", completed_worldmaps)
+		print("save_version: ", save_version)
+		print("debug: ", str(debug))
 	else:
 		print("Save file doesn't exist, saving data...")
-		print(current_worldmap)
-		print(coins)
-		print(tux_state)
-		print(tux_wm_x)
-		print(tux_wm_y)
-		print(completed_worldmaps)
-		print(save_version)
+		print("current_worldmap: ", current_worldmap)
+		print("coins: ", coins)
+		print("tux_state: ", tux_state)
+		print("tux_wm_X: ", tux_wm_x)
+		print("tux_wm_y: ", tux_wm_y)
+		print("completed_worldmaps: ", completed_worldmaps)
+		print("save_version: ", save_version)
+		print("debug: ", str(debug))
 		save_data()
 
 func delete_data():

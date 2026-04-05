@@ -1,9 +1,20 @@
 extends Node2D
 
+@export_file("*.tscn") var selected_level = "res://scenes_and_scripts/levels/world1/cutscene_test.tscn"
+
 func _ready() -> void:
 	Global.load_data()
 
+func _process(_delta: float) -> void:
+	if Global.debug and not selected_level == null and Input.is_key_pressed(KEY_P):
+		get_tree().change_scene_to_file(selected_level)
+	elif Global.debug and selected_level == null and Input.is_key_pressed(KEY_P):
+		print("Change selected_level.")
+	elif not Global.debug and Input.is_key_pressed(KEY_P):
+		print("You must be in debug mode to change to selected_level.")
+
 func _on_play_button_pressed() -> void:
+	TuxManager.current_state = Global.tux_state
 	if Global.current_worldmap == "":
 		get_tree().change_scene_to_file(Global.first_worldmap)
 	elif Global.current_worldmap == "res://scenes_and_scripts/levels/template/worldmap.tscn":

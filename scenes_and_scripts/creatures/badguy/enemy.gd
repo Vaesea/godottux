@@ -19,8 +19,7 @@ var apply_gravity = true
 # imagine if godot was good. i have no idea how this managed to work but i think my brain might have grown
 var was_on_wall = false
 
-# this is here to prevent enemies from damaging the player when the player stomps on the enemy 
-# because godot said FUCK YOU when i added the death function and refused to let enemies work correctly
+# this is here to prevent enemies from damaging the player when the player stomps on the enemy
 var dead = false
 
 # How long does the corpse stay on screen?
@@ -31,6 +30,15 @@ var kill_other_enemies = false
 
 # For Iceblocks
 var kill_self_on_touching_enemy = false
+
+# Can enemy be burned?
+var flammable = true
+
+# Can enemy be frozen?
+var freezable = true
+
+# Needed for scripting block (specfically, "kill all enemies" variable)
+var enemy = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -86,3 +94,10 @@ func death(fall:bool):
 		$Image.play("squished")
 		await get_tree().create_timer(death_timer).timeout
 		queue_free()
+
+# For scripting block.
+func set_scripted_spawn_direction(dir:bool):
+	if not dir:
+		direction = -1
+	if dir:
+		direction = 1

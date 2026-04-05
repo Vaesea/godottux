@@ -80,6 +80,8 @@ activate_debug={
 2d_physics/layer_4="Enemy2"
 2d_physics/layer_5="Goal"
 2d_physics/layer_6="Coin"
+2d_physics/layer_7="PowerUp"
+2d_physics/layer_8="Bullet"
 
 [physics]
 

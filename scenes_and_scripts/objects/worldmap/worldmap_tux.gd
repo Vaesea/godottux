@@ -11,10 +11,7 @@ var current_state:TuxManager.powerup_states
 
 func _ready() -> void:
 	add_to_group("TuxWorldmap")
-	if current_state == TuxManager.powerup_states.Fire:
-		$Image.play("fire")
-	else:
-		$Image.play("normal")
+	reload_player()
 
 func _physics_process(delta: float) -> void:
 	# If position.x is lower than 0, set position to 0.
@@ -28,5 +25,25 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(direction * speed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+	
+	animate()
 
 	move_and_slide()
+
+func reload_player():
+	if current_state == TuxManager.powerup_states.Fire:
+		$Image.play("fire")
+	else:
+		$Image.play("normal")
+
+func animate():
+	if not get_real_velocity() == Vector2.ZERO:
+		if TuxManager.current_state == TuxManager.powerup_states.Fire:
+			$Image.play("fire_walk")
+		else:
+			$Image.play("normal_walk")
+	else:
+		if TuxManager.current_state == TuxManager.powerup_states.Fire:
+			$Image.play("fire")
+		else:
+			$Image.play("normal")

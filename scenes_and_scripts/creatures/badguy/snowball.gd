@@ -27,6 +27,9 @@ func _on_tux_detector_area_entered(area) -> void:
 func _on_tux_detector_body_entered(body) -> void:
 	if body.is_in_group("Player") and not dead:
 		body.damage()
+	elif body.is_in_group("FireBullet") and not dead:
+		body.queue_free()
+		death(true)
 
 func move():
 	if not dead:

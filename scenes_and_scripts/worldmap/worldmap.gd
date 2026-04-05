@@ -33,6 +33,7 @@ func _ready() -> void:
 	$WorldmapTux/Camera.limit_bottom = Global.height_of_worldmap
 	$WorldmapTux/Camera.limit_right = Global.width_of_worldmap
 	tux.current_state = Global.tux_state
+	tux.reload_player()
 	levels = get_tree().get_nodes_in_group("Level") # less typing
 	rocks = get_tree().get_nodes_in_group("Rock") # less typing
 	if Global.use_spawn_point:
@@ -87,5 +88,6 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		Global.tux_wm_x = tux.position.x
 		Global.tux_wm_y = tux.position.y
+		Global.tux_state = TuxManager.current_state
 		Global.save_data()
 		get_tree().quit()

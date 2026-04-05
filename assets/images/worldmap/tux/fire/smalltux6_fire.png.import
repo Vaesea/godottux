@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5y4tms7fm6d0"
-path="res://.godot/imported/smalltux.png-3ac262e37f28f938f18c0fb2ea3194d7.ctex"
+uid="uid://bfigevybkqys8"
+path="res://.godot/imported/smalltux6_fire.png-42d55838a39535d864d0d3c1f6d9cd23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/worldmap/smalltux.png"
-dest_files=["res://.godot/imported/smalltux.png-3ac262e37f28f938f18c0fb2ea3194d7.ctex"]
+source_file="res://assets/images/worldmap/tux/fire/smalltux6_fire.png"
+dest_files=["res://.godot/imported/smalltux6_fire.png-42d55838a39535d864d0d3c1f6d9cd23.ctex"]
 
 [params]
 

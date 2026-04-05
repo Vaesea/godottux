@@ -38,14 +38,14 @@ func _physics_process(delta: float) -> void:
 			$GroundDetector.position.x = 32.0
 	
 	if current_state == IceblockStates.Held:
-		if held_by.facing_direction == -1:
+		if TuxManager.facing_direction == -1:
 			global_position.x = held_by.global_position.x - 8
 		else:
 			global_position.x = held_by.global_position.x + 24
 		
 		global_position.y = held_by.global_position.y - 16
 		
-		direction = held_by.facing_direction
+		direction = TuxManager.facing_direction
 		
 		$Image.play("flat")
 		$Collision.set_deferred("disabled", true)
@@ -96,7 +96,7 @@ func _on_tux_detector_area_entered(area) -> void:
 				$SquishSound.play()
 			elif current_state == IceblockStates.Flat:
 				current_state = IceblockStates.MovingFlat
-				direction = area.get_parent().facing_direction
+				direction = TuxManager.facing_direction
 				wait_to_collide = 0.25
 				$KickSound.play()
 			print(":3")
@@ -114,14 +114,17 @@ func _on_tux_detector_body_entered(body) -> void:
 				body.hold_enemy(self)
 			else: # TODO: code is copy and pasted from next else: thing. this needs to be fixed at some point, but it's ok to keep for now.
 				$KickSound.play()
-				direction = body.facing_direction
+				direction = TuxManager.facing_direction
 				current_state = IceblockStates.MovingFlat
 				wait_to_collide = 0.25
 		else:
 			$KickSound.play()
-			direction = body.facing_direction
+			direction = TuxManager.facing_direction
 			current_state = IceblockStates.MovingFlat
 			wait_to_collide = 0.25
+	elif body.is_in_group("FireBullet") and not dead:
+		body.queue_free()
+		death(true)
 
 func move():
 	if not dead:

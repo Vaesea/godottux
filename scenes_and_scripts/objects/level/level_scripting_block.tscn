@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://n37mht3er55m"]
+
+[ext_resource type="Script" uid="uid://yuyn2aaex3cj" path="res://scenes_and_scripts/objects/level/level_scripting_block.gd" id="1_hajmh"]
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="2_ylrm5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kxpa"]
+size = Vector2(32, 32)
+
+[node name="ScriptBlock" type="Area2D" unique_id=1346027577]
+z_index = 1000
+collision_mask = 2
+script = ExtResource("1_hajmh")
+
+[node name="S" type="Label" parent="." unique_id=1579756242]
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 33.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_ylrm5")
+theme_override_font_sizes/font_size = 31
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1311185118]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_7kxpa")
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=525541645]

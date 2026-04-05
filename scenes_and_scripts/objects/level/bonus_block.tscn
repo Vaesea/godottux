@@ -4,11 +4,21 @@
 [ext_resource type="SpriteFrames" uid="uid://b8gjtik2qmcqi" path="res://spriteframes/bonus_block.tres" id="1_7rdg8"]
 [ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="3_nadeq"]
 [ext_resource type="AudioStream" uid="uid://cfdu5w147uprq" path="res://assets/sounds/coin.wav" id="3_orv8c"]
+[ext_resource type="AudioStream" uid="uid://c5qvbrmiu335h" path="res://assets/sounds/upgrade.wav" id="5_vbve7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nadeq"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ddeg"]
+size = Vector2(32, 0.4904709)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orv8c"]
+size = Vector2(1, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbve7"]
+size = Vector2(1, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7tr0"]
 size = Vector2(32, 1)
 
 [sub_resource type="Animation" id="Animation_0ddeg"]
@@ -37,6 +47,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [16.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyDetectorTop:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_nadeq"]
 resource_name = "up_and_down"
@@ -51,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, -16.0, 0.0]
+"values": [0.0, -8.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -63,7 +85,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [16.0, 0.0, 16.0]
+"values": [16.0, 8.0, 16.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyDetectorTop:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -8.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orv8c"]
@@ -72,13 +106,8 @@ _data = {
 &"up_and_down": SubResource("Animation_nadeq")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_orv8c"]
-size = Vector2(1, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbve7"]
-size = Vector2(1, 33)
-
 [node name="BonusBlock" type="StaticBody2D" unique_id=1476769138]
+z_index = 2
 script = ExtResource("1_0ddeg")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=1793494598]
@@ -94,18 +123,8 @@ position = Vector2(16, 16)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=2045527202]
-position = Vector2(0, 16.5)
+position = Vector2(0, 16.245235)
 shape = SubResource("RectangleShape2D_0ddeg")
-
-[node name="AnimationTween" type="AnimationPlayer" parent="." unique_id=1302634868]
-libraries/ = SubResource("AnimationLibrary_orv8c")
-
-[node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=1028469176]
-stream = ExtResource("3_orv8c")
-
-[node name="BrickSound" type="AudioStreamPlayer" parent="." unique_id=849443688]
-stream = ExtResource("3_nadeq")
-volume_db = -5.0
 
 [node name="EnemyDetectorLeft" type="Area2D" parent="." unique_id=416163567]
 collision_mask = 4
@@ -120,3 +139,23 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorRight" unique_id=1083277149]
 position = Vector2(32.5, 16.5)
 shape = SubResource("RectangleShape2D_vbve7")
+
+[node name="EnemyDetectorTop" type="Area2D" parent="." unique_id=906198554]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorTop" unique_id=603940699]
+position = Vector2(16, -0.5)
+shape = SubResource("RectangleShape2D_m7tr0")
+
+[node name="AnimationTween" type="AnimationPlayer" parent="." unique_id=1302634868]
+libraries/ = SubResource("AnimationLibrary_orv8c")
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=1028469176]
+stream = ExtResource("3_orv8c")
+
+[node name="BrickSound" type="AudioStreamPlayer" parent="." unique_id=849443688]
+stream = ExtResource("3_nadeq")
+volume_db = -5.0
+
+[node name="PowerupSound" type="AudioStreamPlayer" parent="." unique_id=1402001743]
+stream = ExtResource("5_vbve7")
