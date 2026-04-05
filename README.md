@@ -1,4 +1,4 @@
-This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs, and even some simple objects like Bonus Blocks and Coins haven't been added yet.
+This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs, and even some simple objects like Brick Blocks and power-ups haven't been added.
 
 If the code is a bit messy... oops. I still hope that people can make actual decent SuperTux fangames from this.
 
@@ -8,8 +8,6 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## What hasn't been added yet but is planned
-- Coin
-- Bonus Block
 - Brick Block
 - Egg
 - Fire Flower
