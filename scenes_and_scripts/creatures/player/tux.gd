@@ -196,6 +196,7 @@ func damage():
 		print("If this is after touching the goal, Tux would usually be able to kill enemies.")
 
 func reload_player():
+	print("Reloading player...")
 	if TuxManager.current_state == TuxManager.powerup_states.Fire:
 		Global.tux_state = TuxManager.current_state
 		$SmallImage.visible = false

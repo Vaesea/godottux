@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="9_fd80f"]
 [ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="10_c2tqy"]
 [ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="11_bwfmd"]
+[ext_resource type="PackedScene" uid="uid://cab0l31thlxhl" path="res://scenes_and_scripts/objects/level/bonus_block.tscn" id="13_kdsnm"]
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="14_u7tvw"]
 
 [node name="TestLevelSequel" type="Node2D" unique_id=1170359899]
@@ -143,6 +144,15 @@ offset_top = -96.0
 offset_right = 169.0
 offset_bottom = -73.0
 text = "Beware the penguin who speaks in hands."
+
+[node name="BonusBlock" parent="." unique_id=1476769138 instance=ExtResource("13_kdsnm")]
+position = Vector2(288, 288)
+
+[node name="BonusBlock2" parent="." unique_id=609956226 instance=ExtResource("13_kdsnm")]
+position = Vector2(320, 288)
+
+[node name="BonusBlock3" parent="." unique_id=1786300465 instance=ExtResource("13_kdsnm")]
+position = Vector2(256, 288)
 
 [connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

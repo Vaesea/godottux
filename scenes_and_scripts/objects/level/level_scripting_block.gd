@@ -2,6 +2,8 @@ extends Area2D
 
 # You probably shouldn't set too many things true at the same time.
 
+# Code here is so bad, but who cares?
+
 # TODO: Add delays and stuff
 
 @export_category("Script Settings")
@@ -23,6 +25,8 @@ extends Area2D
 @export var set_tux_direction_right = false
 ## Sets Tux's direction to -1 (left) if ture.
 @export var set_tux_direction_left = false
+## Sets whether Tux is skidding or not.
+@export var tux_skid = false
 ## Sets whether Tux gets hurt when touching the ScriptBlock.
 @export var tux_hurt = false
 ## Sets whether Tux dies when touching the ScriptBlock.
@@ -162,6 +166,10 @@ func _on_tux_entered(body):
 			TuxManager.facing_direction = -1
 		elif set_tux_direction_right:
 			TuxManager.facing_direction = 1
+		if tux_skid:
+			body.skid = true
+		else:
+			body.skid = false
 		if set_tux_jump:
 			body.velocity.y = -tux_jump_height
 		if tux_hurt:
@@ -194,7 +202,10 @@ func _on_tux_entered(body):
 			if thing:
 				if thing.has_method(function_to_execute):
 					if function_argument_type == 0:
-						thing.call(function_to_execute, string_argument)
+						if not string_argument.is_empty():
+							thing.call(function_to_execute, string_argument)
+						else:
+							thing.call(function_to_execute)
 					elif function_argument_type == 1:
 						thing.call(function_to_execute, bool_argument)
 					else:
@@ -206,7 +217,10 @@ func _on_tux_entered(body):
 		if do_function:
 			if not function.is_empty() and not function == "print":
 				if argument_type == 0:
-					get_tree().current_scene.call(function, function_string_argument)
+					if function_string_argument.is_empty():
+						get_tree().current_scene.call(function)
+					else:
+						get_tree().current_scene.call(function, function_string_argument)
 				elif argument_type == 1:
 					get_tree().current_scene.call(function, function_bool_argument)
 				elif argument_type == 2:
@@ -227,7 +241,10 @@ func _on_tux_entered(body):
 				if use_spawn_function:
 					if obj.has_method(spawn_function_to_execute):
 						if spawn_function_argument_type == 0:
-							obj.call(spawn_function_to_execute, spawn_function_string_argument)
+							if spawn_function_string_argument.is_empty():
+								obj.call(spawn_function_to_execute)
+							else:
+								obj.call(spawn_function_to_execute, spawn_function_string_argument)
 						elif spawn_function_argument_type == 1:
 							obj.call(spawn_function_to_execute, spawn_function_bool_argument)
 						else:

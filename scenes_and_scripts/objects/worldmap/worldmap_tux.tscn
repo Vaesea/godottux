@@ -14,8 +14,8 @@ script = ExtResource("1_f6yy3")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=2097653096]
 sprite_frames = ExtResource("1_3qwph")
-animation = &"fire_walk"
-frame_progress = 0.6793179
+animation = &"fire"
+frame_progress = 0.22637145
 centered = false
 offset = Vector2(-2, -3)
 
