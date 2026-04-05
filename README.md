@@ -1,4 +1,4 @@
-This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs, and even some simple objects like Brick Blocks and power-ups haven't been added.
+This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs, and even some simple objects like Brick Blocks haven't been added.
 
 If the code is a bit messy... oops. I still hope that people can make actual decent SuperTux fangames from this.
 
@@ -9,11 +9,9 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 
 ## What hasn't been added yet but is planned
 - Old Sounds (although you can easily add the old sounds back in, "new" (0.5) sounds are used instead for now)
-- Tux with the parts separated (Currently, the Tux images used are the full images.
+- Tux with all parts separated (Currently, the Tux images used are the full images)
 - Holding action key to slow down (This may be able to be disabled very easily because this is one of the worst features from 0.3.2)
 - Brick Block
-- Egg
-- Fire Flower
 - Ice Flower
 - Star
 - Worldmap Tux sprite changer
@@ -27,7 +25,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Bouncing Snowball
 - Flying Snowball
 - Jumpy
-- Full Test Levels
+- Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
 - Snowman
 - Crystallo (not sure if this existed in 0.3.2?)
 - Mr Rocket
@@ -59,7 +57,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - Tumbleweed
 - Totem
-- Worldmap Tux walking animations
 - Forest Exit Tiles
 - Tux death animation stuff
 - Unstable Tiles (Ice, Bridge, Castle)
@@ -76,7 +73,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Completely accurate Tux movement (if someone were to add this in, that'd be cool!)
 - Add-on Support
 - Completely accurate HUD (I tried to make it as accurate as I could)
-- In-game console (Use the Godot Output thing instead)
+- In-game console (Use the Godot Output thing to debug your code instead)
+- The same scripting system (While there is scripting, it's done using variables in a block instead)
 
 There also isn't a level editor, not even as a separate program. I might try to add one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap.
 
@@ -84,7 +82,9 @@ There also isn't a level editor, not even as a separate program. I might try to 
 ### Debug Mode
 You activate this by pressing the \ key.
 
-This lets you complete a level while in the level by pressing the 0 key and change Tux's powerup state to Small, Big and Fire using the 1 (Small), 2 (Big) and 3 (Fire) keys.
+When you activate this, instructions are given to you.
+
+There is currently no way to disable this other than to delete your save file.
 
 ### New Enemies
 Smartball / Mrs Snowball and Smartblock / Mrs Iceblock are some new enemies here.
