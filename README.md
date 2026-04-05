@@ -59,6 +59,9 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Forest Exit Tiles
 - Tux death animation stuff
 - Unstable Tiles (Ice, Bridge, Castle)
+- Tux backflipping
+- Tux ducking
+- Tux buttjumping
 
 ## What this doesn't recreate / use
 - Levels
