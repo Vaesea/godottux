@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="10_c2tqy"]
 [ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="11_bwfmd"]
 [ext_resource type="PackedScene" uid="uid://cab0l31thlxhl" path="res://scenes_and_scripts/objects/level/bonus_block.tscn" id="13_kdsnm"]
+[ext_resource type="PackedScene" uid="uid://n37mht3er55m" path="res://scenes_and_scripts/objects/level/level_scripting_block.tscn" id="13_r1yn2"]
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="14_u7tvw"]
 
 [node name="TestLevelSequel" type="Node2D" unique_id=1170359899]
@@ -153,6 +154,14 @@ position = Vector2(320, 288)
 
 [node name="BonusBlock3" parent="." unique_id=1786300465 instance=ExtResource("13_kdsnm")]
 position = Vector2(256, 288)
+
+[node name="ScriptBlock" parent="." unique_id=1346027577 instance=ExtResource("13_r1yn2")]
+position = Vector2(384, 384)
+spawn_object = true
+object = "uid://kb3ec2yrjofl"
+object_position = Vector2(608, 192)
+use_spawn_function = true
+spawn_function_to_execute = "set_sleeping"
 
 [connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

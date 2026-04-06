@@ -1,23 +1,23 @@
-[gd_scene format=3 uid="uid://cgljlk8a4oogu"]
+[gd_scene format=3 uid="uid://dtig6aklmlcuv"]
 
-[ext_resource type="Script" uid="uid://5gtfsrximsfc" path="res://scenes_and_scripts/creatures/badguy/snowball.gd" id="1_aggo7"]
-[ext_resource type="SpriteFrames" uid="uid://dcu40fjnldn72" path="res://spriteframes/snowball.tres" id="1_tc1uu"]
-[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_y8eu8"]
-[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_s441w"]
+[ext_resource type="Script" uid="uid://bqbwcr3q0q7ru" path="res://scenes_and_scripts/creatures/badguy/badguy.gd" id="1_8gao4"]
+[ext_resource type="SpriteFrames" uid="uid://dcu40fjnldn72" path="res://spriteframes/snowball.tres" id="2_mgntc"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_xvo7w"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_vpx2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
 size = Vector2(29, 29)
 
-[node name="Snowball" type="CharacterBody2D" unique_id=1942256203]
+[node name="Template" type="CharacterBody2D" unique_id=1942256203]
 z_index = 40
 collision_layer = 4
 floor_constant_speed = true
 floor_max_angle = 1.3962634
 floor_snap_length = 12.0
-script = ExtResource("1_aggo7")
+script = ExtResource("1_8gao4")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=264556818]
-sprite_frames = ExtResource("1_tc1uu")
+sprite_frames = ExtResource("2_mgntc")
 animation = &"walk"
 centered = false
 offset = Vector2(0, -4)
@@ -39,10 +39,10 @@ position = Vector2(5, 0)
 target_position = Vector2(0, 64)
 
 [node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=2009687058]
-stream = ExtResource("3_y8eu8")
+stream = ExtResource("3_xvo7w")
 
 [node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1374949003]
-stream = ExtResource("4_s441w")
+stream = ExtResource("4_vpx2a")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
 rect = Rect2(-64, -64, 160, 160)

@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d37o0av1m8c4a"]
+
+[ext_resource type="Texture2D" uid="uid://bcsnawekwigkt" path="res://assets/images/creatures/spiky/left-0.png" id="1_m3udb"]
+[ext_resource type="Texture2D" uid="uid://bopdivl13smni" path="res://assets/images/creatures/spiky/sleeping-left.png" id="1_x6ans"]
+[ext_resource type="Texture2D" uid="uid://b5a81bejt326k" path="res://assets/images/creatures/spiky/waking-left-0.png" id="2_0pj7e"]
+[ext_resource type="Texture2D" uid="uid://bc12ue81x85wn" path="res://assets/images/creatures/spiky/left-1.png" id="2_x6ans"]
+[ext_resource type="Texture2D" uid="uid://b27e2nbg0gydk" path="res://assets/images/creatures/spiky/left-2.png" id="3_3oe27"]
+[ext_resource type="Texture2D" uid="uid://bd0qt0hhvov47" path="res://assets/images/creatures/spiky/waking-left-1.png" id="3_4e7ks"]
+[ext_resource type="Texture2D" uid="uid://cu3vvxtpj41xe" path="res://assets/images/creatures/spiky/waking-left-2.png" id="4_pxdwe"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x6ans")
+}],
+"loop": false,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0pj7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4e7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pxdwe")
+}],
+"loop": false,
+"name": &"waking_up",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m3udb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x6ans")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3oe27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x6ans")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

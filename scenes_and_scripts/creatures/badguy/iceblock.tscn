@@ -38,6 +38,10 @@ collision_mask = 134
 position = Vector2(17.5, 19)
 shape = SubResource("RectangleShape2D_pmmkl")
 
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=2104205489]
+position = Vector2(5, 0)
+target_position = Vector2(0, 64)
+
 [node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=678953269]
 stream = ExtResource("3_pmmkl")
 
