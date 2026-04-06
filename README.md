@@ -23,7 +23,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Dropper
 - Bouncing Snowball
 - Flying Snowball
-- Jumpy
 - Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
 - Crystallo (not sure if this existed in 0.3.2?)
 - Mr Rocket
@@ -31,8 +30,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Stalactite
 - Yeti
 - Nolok (no ghost tree!!!!)
-- Vicious Ivy
-- Walking Leaf
 - Mr Tree
 - Snail
 - Igel
