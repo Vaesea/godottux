@@ -22,7 +22,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Rocket Launcher
 - Dropper
 - Bouncing Snowball
-- Flying Snowball
 - Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
 - Mr Rocket
 - Stalactite
