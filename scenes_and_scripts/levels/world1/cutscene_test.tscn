@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="4_oco7x"]
 [ext_resource type="TileSet" uid="uid://d4gcl7sdnk2cs" path="res://assets/images/tiles/tileset.tres" id="5_jx8q8"]
 [ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="6_5ca1t"]
-[ext_resource type="PackedScene" uid="uid://bhfu2l15i6ijm" path="res://scenes_and_scripts/creatures/badguy/smartball.tscn" id="8_pvlp3"]
+[ext_resource type="PackedScene" uid="uid://bhfu2l15i6ijm" path="res://scenes_and_scripts/creatures/badguy/snow/smartball.tscn" id="8_pvlp3"]
 [ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="9_rxsap"]
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="11_kobxg"]
 [ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="11_vggil"]

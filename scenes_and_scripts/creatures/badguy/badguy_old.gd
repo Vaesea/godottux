@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
-class_name BadGuy
+class_name BadGuyOld
 
 # TODO: Make the VisibleOnScreenEnabler2D always act like it's on screen when current_iceblock_state is MovingFlat
+# TODO: Rewrite entire code. This script is a great example of what not to do in Godot.
 # TODO: Improve Spiky ground detection to be more like SuperTux
-
-# hi. anatolystev here.
-# i might've, you know, made everything be like the haxeflixel version.
-# because there were too much bugs before doing this.
 
 # States for evey enemy.
 enum EnemyStates {Alive, Dead}
@@ -27,12 +24,15 @@ var dieFall = false
 # Movement
 var speed = 80
 
+# Gravity
+var apply_gravity = true
+
 # i have no idea how this managed to work but i think my brain might have grown
 # nevermind my brain is still small and smooth. at least this works.
 var was_on_wall = false
 
 # How long does the corpse stay on screen?
-var death_timer = 2
+var death_timer = 1
 
 # For Iceblocks and probably bombs when I add those?
 var kill_other_enemies = false
@@ -65,10 +65,6 @@ var kill_self_on_touching_enemy = false
 @export var spiky = false
 ## Is the enemy Jumpy-like? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
 @export var jumpy = false
-## Is the enemy an explosion? Probably shouldn't have made this an export but whatever.
-@export var explosion = false
-## Can the enemy be hurt by stomping on it?
-@export var hurt_by_stomp = true
 
 @export_category("Spiky variables")
 ## Is the Spiky sleeping?
@@ -122,36 +118,63 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if wait_to_collide > 0:
-		wait_to_collide -= delta
-	
 	if basic_walking or walking_and_holdable or spiky or jumpy:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-	
-	move()
-	
 	if walking_and_holdable:
-		if current_iceblock_state == IceblockStates.MovingFlat:
-			kill_other_enemies = true
-			kill_self_on_touching_enemy = false
+		if wait_to_collide > 0 and not current_iceblock_state == IceblockStates.Held:
+			wait_to_collide -= delta
 		elif current_iceblock_state == IceblockStates.Held:
-			kill_other_enemies = true
-			kill_self_on_touching_enemy = true
-		if current_iceblock_state == IceblockStates.Flat or current_iceblock_state == IceblockStates.MovingFlat or current_iceblock_state == IceblockStates.Held:
+			wait_to_collide = 0
+		
+		if current_iceblock_state == IceblockStates.Held:
+			print(wait_to_collide)
+			if TuxManager.facing_direction == -1:
+				global_position.x = held_by.global_position.x - 8
+			else:
+				global_position.x = held_by.global_position.x + 24
+			
+			global_position.y = held_by.global_position.y - 16
+			
+			direction = TuxManager.facing_direction
+			
 			$Image.play("flat")
+			
+			if direction == -1:
+				$Image.flip_h = false
+			else:
+				$Image.flip_h = true
+			return
+		#else:
+			#if not dead:
+				#$Collision.set_deferred("disabled", false)
+		
+		# no waking up for you, iceblock! (this code works... sort of. it doesn't let the iceblock play the flat animation)
+		#if current_state == IceblockStates.Flat:
+			#await get_tree().create_timer(5).timeout
+			#if current_state == IceblockStates.Flat:
+				#current_state = IceblockStates.Normal
+		
+		if current_iceblock_state == IceblockStates.Flat or current_iceblock_state == IceblockStates.MovingFlat:
+			$Image.play("flat")
+		
+		if current_iceblock_state == IceblockStates.MovingFlat:
+			kill_self_on_touching_enemy = false
+			kill_other_enemies = true
+			if is_on_wall() and not was_on_wall:
+				$BumpSound.play()
+		elif current_iceblock_state == IceblockStates.Held:
+			kill_self_on_touching_enemy = true
+			kill_other_enemies = true
 		else:
-			$Image.play("walk")
-	elif explosion:
-		kill_other_enemies = true
-		kill_self_on_touching_enemy = true
-	else:
-		kill_other_enemies = false
-		kill_self_on_touching_enemy = false
+			kill_self_on_touching_enemy = false
+			kill_other_enemies = false
+			
+	move()
 	
 	if is_on_wall() and not was_on_wall:
 		flip_direction()
-	
+
 	if direction == -1:
 		$Image.flip_h = false
 	else:
@@ -182,19 +205,7 @@ func _physics_process(delta: float) -> void:
 				if $WakeUpShapecast.get_collider(0).is_in_group("Player"):
 					wake_up()
 	
-	if walking_and_holdable:
-		if current_iceblock_state == IceblockStates.Held and not held_by == null:
-			direction = TuxManager.facing_direction
-			if TuxManager.facing_direction == -1:
-				global_position.x = held_by.global_position.x - 8
-			else:
-				global_position.x = held_by.global_position.x + 24
-				
-			global_position.y = held_by.global_position.y - 16
-		
-		if is_on_wall() and current_iceblock_state == IceblockStates.MovingFlat and not was_on_wall:
-			$BumpSound.play()
-	
+	# absolutely giant brain
 	was_on_wall = is_on_wall()
 	
 	move_and_slide()
@@ -257,57 +268,50 @@ func death(fall:bool):
 # TODO: Code can be improved. A lot. Needed to be improved ever since Iceblock code was added here.
 func _on_tux_detector_area_entered(area) -> void:
 	if area.is_in_group("Stomp") and not spiky and not jumpy:
-		interact(area, null, null, null)
+		if not walking_and_holdable:
+			# TODO: Prevent player from being damaged by enemy below when on slope
+			if area.get_parent().get_real_velocity().y > 0:
+				death(false)
+				print(":3")
+				area.get_parent().stomp_bounce()
+		elif walking_and_holdable:
+			if area.get_parent().get_real_velocity().y > 0 and wait_to_collide <= 0:
+				if current_iceblock_state == IceblockStates.Normal or current_iceblock_state == IceblockStates.MovingFlat:
+					current_iceblock_state = IceblockStates.Flat
+					wait_to_collide = 0.25
+					$SquishSound.play()
+				elif current_iceblock_state == IceblockStates.Flat:
+					current_iceblock_state = IceblockStates.MovingFlat
+					direction = TuxManager.facing_direction
+					wait_to_collide = 0.25
+					$KickSound.play()
+				print("Damaged enemy")
+				area.get_parent().stomp_bounce()
+	elif area.is_in_group("Stomp") and spiky:
+		print("Can't damage Spiky.")
+	elif area.is_in_group("Stomp") and jumpy:
+		print("Can't damage Jumpy.")
 	
-	if area.is_in_group("StupidThing") and not area.get_parent() == self:
-		interact(null, null, null, area.get_parent())
+	if area.is_in_group("StupidThing") and area.get_parent().kill_other_enemies:
+		print("A")
+		death(true)
+	elif area.is_in_group("StupidThing") and area.get_parent().kill_self_on_touching_enemy:
+		print("B")
+		if not area.get_parent() == self:
+			death(true)
+			area.get_parent().death(true)
 
 func _on_tux_detector_body_entered(body) -> void:
-	if body.is_in_group("Player") and current_iceblock_state == IceblockStates.Held:
-		return
-	
-	if body.is_in_group("Player") and not current_state == EnemyStates.Dead and not wait_to_collide > 0:
-		interact(null, body, null, null)
-	elif body.is_in_group("FireBullet") and not current_state == EnemyStates.Dead:
-		interact(null, null, body, null)
-	elif body.is_in_group("Enemy") and not current_state == EnemyStates.Dead and kill_other_enemies and not body.get_parent() == self:
-		interact(null, null, null, body)
-
-func interact(stomp, tux, fireball, iceblock):
-	if not stomp == null and tux == null and fireball == null and iceblock == null:
-		var tux_stomp = stomp.get_parent().get_real_velocity().y > 0
-		
-		if current_state == EnemyStates.Dead:
-			return
-		
-		if tux_stomp and hurt_by_stomp:
-			stomp.get_parent().stomp_bounce()
-			if not walking_and_holdable:
-				death(false)
-			else:
-				if stomp.get_parent().get_real_velocity().y > 0 and wait_to_collide <= 0:
-					if current_iceblock_state == IceblockStates.Normal or current_iceblock_state == IceblockStates.MovingFlat:
-						current_iceblock_state = IceblockStates.Flat
-						wait_to_collide = 0.25
-						$SquishSound.play()
-					elif current_iceblock_state == IceblockStates.Flat:
-						current_iceblock_state = IceblockStates.MovingFlat
-						direction = TuxManager.facing_direction
-						wait_to_collide = 0.25
-						$KickSound.play()
-					print("Damaged enemy")
-		elif tux_stomp and not hurt_by_stomp:
-			print("Cannot hurt enemies that have hurt_by_stomp set to false.")
-	if stomp == null and not tux == null and fireball == null and iceblock == null:
-		if not walking_and_holdable or not hurt_by_stomp:
-			tux.damage()
-		elif walking_and_holdable:
+	if body.is_in_group("Player") and not current_state == EnemyStates.Dead:
+		if not walking_and_holdable or spiky:
+			body.damage()
+		else:
 			if wait_to_collide <= 0:
 				if current_iceblock_state == IceblockStates.MovingFlat or current_iceblock_state == IceblockStates.Normal:
-					tux.damage()
+					body.damage()
 				elif current_iceblock_state == IceblockStates.Flat:
-					if Input.is_action_pressed("player_action") and tux.held_object == null: # tux.held_object == null is needed here so the enemy can still be kicked by tux if tux is holding an object
-						tux.hold_object(self)
+					if Input.is_action_pressed("player_action") and body.held_object == null: # body.held_object == null is needed here so the enemy can still be kicked by tux if tux is holding an object
+						body.hold_enemy(self)
 					else: # TODO: code is copy and pasted from next else: thing. this needs to be fixed at some point, but it's ok to keep for now.
 						$KickSound.play()
 						direction = TuxManager.facing_direction
@@ -318,15 +322,14 @@ func interact(stomp, tux, fireball, iceblock):
 					direction = TuxManager.facing_direction
 					current_iceblock_state = IceblockStates.MovingFlat
 					wait_to_collide = 0.25
-	if stomp == null and tux == null and not fireball == null and iceblock == null:
-		fireball.queue_free()
+	elif body.is_in_group("FireBullet") and not current_state == EnemyStates.Dead:
+		body.queue_free()
 		burn()
-	if stomp == null and tux == null and fireball == null and not iceblock == null:
-		if current_iceblock_state == IceblockStates.Held and kill_other_enemies and kill_self_on_touching_enemy and not iceblock == self: # the "checking name thing" is actually a hack. this file is so cursed.
-			iceblock.death(true)
+	elif body.is_in_group("Enemy") and not current_state == EnemyStates.Dead and kill_other_enemies and not body.get_parent() == self:
+		body.death(true)
+		if kill_self_on_touching_enemy:
+			print("C")
 			death(true)
-		elif current_iceblock_state == IceblockStates.MovingFlat:
-			iceblock.death(true)
 
 func wake_up():
 	if spiky and sleeping:

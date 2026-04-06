@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://boxdolasgh4fe"]
+
+[ext_resource type="Texture2D" uid="uid://bh3n21tlta864" path="res://assets/images/creatures/vicious_ivy/left-0.png" id="1_7gppf"]
+[ext_resource type="Texture2D" uid="uid://bupq5njxac2b4" path="res://assets/images/creatures/vicious_ivy/left-1.png" id="2_p75xd"]
+[ext_resource type="Texture2D" uid="uid://171rxg7u4ksd" path="res://assets/images/creatures/vicious_ivy/left-2.png" id="3_wqsca"]
+[ext_resource type="Texture2D" uid="uid://c20bswnk4c7xf" path="res://assets/images/creatures/vicious_ivy/squished.png" id="4_lf3ae"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lf3ae")
+}],
+"loop": false,
+"name": &"squished",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7gppf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p75xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wqsca")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

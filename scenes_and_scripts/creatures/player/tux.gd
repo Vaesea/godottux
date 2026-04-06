@@ -7,6 +7,8 @@ extends CharacterBody2D
 # TODO: Save Tux's max fire bullet amount or something idk
 
 # AnatolyStev here. Added skidding
+# AnatolyStev here. Made it so rocks don't softlock Tux.
+# TODO: Make it so Tux doesn't go down when hit on the head with a rock. As you can see, I tried.
 
 # Movement
 ## Tux's speed. You should probably change acceleration and deceleration if you change this.
@@ -26,6 +28,7 @@ var auto_walk = false
 var auto_walk_speed = 0
 
 # this needs to be done because enemies
+# TODO: Check if this is needed
 @onready var stomp = $Stomp
 
 # this needs to be done due to scripting
@@ -48,6 +51,9 @@ var skid = false
 var can_shoot_bullets = true
 var max_fireballs_allowed = 2
 
+# Rock detecting variable
+var rock_above = false
+
 func _ready() -> void:
 	add_to_group("Player")
 	stomp.add_to_group("Stomp")
@@ -66,11 +72,21 @@ func _physics_process(delta: float) -> void:
 	if position.y > camera.limit_bottom and not in_cutscene:
 		die()
 	
+	for body in $RockDetector.get_overlapping_bodies():
+		if body.is_in_group("Holdable"):
+			var tux_under = body.global_position.y < global_position.y
+			if tux_under and body.velocity.y > 0:
+				global_position.y -= 2
+				body.bounce()
+	
 	if position.x > camera.limit_right - $SmallCollision.shape.size.x:
 		position.x = camera.limit_right - $SmallCollision.shape.size.x
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if $RayCast2D.is_colliding():
+		global_position.y -= 5
 	
 	if not in_cutscene:
 		move()
@@ -87,10 +103,10 @@ func _physics_process(delta: float) -> void:
 	animate()
 	
 	if Input.is_action_just_released("player_action") and not held_object == null and not held_object.held_by == null:
-		throw_enemy()
+		throw_object()
 	
 	if in_cutscene and not held_object == null and not held_object.held_by == null:
-		throw_enemy()
+		throw_object()
 	
 	move_and_slide()
 
@@ -225,14 +241,14 @@ func stomp_bounce():
 	else:
 		velocity.y = -min_jump_height / 2
 	
-func hold_enemy(enemy):
+func hold_object(object):
 	if held_object == null:
-		held_object = enemy
-		enemy.pick_up(self)
+		held_object = object
+		object.pick_up(self)
 
-func throw_enemy():
+func throw_object():
 	if not held_object == null:
-		held_object.throw(TuxManager.facing_direction)
+		held_object.throw(TuxManager.facing_direction) # should probably remove the argument from throw()
 		held_object = null
 
 func grow(powerup:String):

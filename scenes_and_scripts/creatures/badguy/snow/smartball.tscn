@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhfu2l15i6ijm"]
 
-[ext_resource type="Script" uid="uid://bvu2n4wlrxs23" path="res://scenes_and_scripts/creatures/badguy/smartball.gd" id="1_tjak1"]
+[ext_resource type="Script" uid="uid://bvu2n4wlrxs23" path="res://scenes_and_scripts/creatures/badguy/snow/smartball.gd" id="1_tjak1"]
 [ext_resource type="SpriteFrames" uid="uid://ctf1ox2rgy8nx" path="res://spriteframes/smartball.tres" id="2_tjak1"]
 [ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_srcr1"]
 [ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_5mito"]
@@ -46,3 +46,4 @@ stream = ExtResource("4_5mito")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=617942099]
 rect = Rect2(-64, -64, 160, 160)
+show_rect = false

@@ -13,13 +13,16 @@
 [ext_resource type="AudioStream" uid="uid://fv2s3xedb04l" path="res://assets/sounds/shoot.wav" id="11_2ob4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lo0dj"]
-size = Vector2(26, 32)
+size = Vector2(26, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4xlo"]
 size = Vector2(26, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
 size = Vector2(26, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ob4o"]
+size = Vector2(26, 3)
 
 [node name="Tux" type="CharacterBody2D" unique_id=205617556]
 z_index = 50
@@ -51,7 +54,7 @@ centered = false
 offset = Vector2(-8, -45)
 
 [node name="SmallCollision" type="CollisionShape2D" parent="." unique_id=563658190]
-position = Vector2(24, 16)
+position = Vector2(24, 16.5)
 shape = SubResource("RectangleShape2D_lo0dj")
 
 [node name="BigCollision" type="CollisionShape2D" parent="." unique_id=1985260787]
@@ -96,3 +99,13 @@ volume_db = -8.0
 [node name="BulletSound" type="AudioStreamPlayer" parent="." unique_id=1688330671]
 stream = ExtResource("11_2ob4o")
 volume_db = -5.13
+
+[node name="RockDetector" type="Area2D" parent="." unique_id=2127489158]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockDetector" unique_id=29982064]
+position = Vector2(24, -0.5)
+shape = SubResource("RectangleShape2D_2ob4o")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1704175500]
+position = Vector2(24, 16)
+target_position = Vector2(0, 16)

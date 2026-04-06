@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c8ulqjpijewvo"]
+
+[ext_resource type="Texture2D" uid="uid://dnr0udly0l7my" path="res://assets/images/objects/rock/rock.png" id="1_auia0"]
+[ext_resource type="Script" uid="uid://ccws3crqd7626" path="res://scenes_and_scripts/objects/holdable_object.gd" id="1_y677r"]
+[ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="3_y677r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajfev"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y677r"]
+size = Vector2(2, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmvm"]
+size = Vector2(2, 32)
+
+[node name="Rock" type="CharacterBody2D" unique_id=39666013]
+script = ExtResource("1_y677r")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=2144508659]
+texture = ExtResource("1_auia0")
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=759516219]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_ajfev")
+
+[node name="LeftTuxDetector" type="Area2D" parent="." unique_id=965481776]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftTuxDetector" unique_id=1569274999]
+position = Vector2(-1, 16)
+shape = SubResource("RectangleShape2D_y677r")
+
+[node name="RightTuxDetector" type="Area2D" parent="." unique_id=741273008]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTuxDetector" unique_id=290931737]
+position = Vector2(33, 16)
+shape = SubResource("RectangleShape2D_lbmvm")
+
+[node name="BrickSound" type="AudioStreamPlayer2D" parent="." unique_id=1782965820]
+stream = ExtResource("3_y677r")
+volume_db = -5.0
+max_distance = 1024.0

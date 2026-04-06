@@ -6,16 +6,17 @@
 [ext_resource type="AudioStream" uid="uid://d2nlabig1fwei" path="res://assets/music/chipdisko.ogg" id="6_q4hfx"]
 [ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="7_oeprp"]
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="7_xrvkt"]
-[ext_resource type="PackedScene" uid="uid://cgljlk8a4oogu" path="res://scenes_and_scripts/creatures/badguy/snowball.tscn" id="8_6clsl"]
-[ext_resource type="PackedScene" uid="uid://bhfu2l15i6ijm" path="res://scenes_and_scripts/creatures/badguy/smartball.tscn" id="10_vfjre"]
-[ext_resource type="PackedScene" uid="uid://cstyfqelcwsdf" path="res://scenes_and_scripts/creatures/badguy/iceblock.tscn" id="11_f0ptp"]
+[ext_resource type="PackedScene" uid="uid://cgljlk8a4oogu" path="res://scenes_and_scripts/creatures/badguy/snow/snowball.tscn" id="8_6clsl"]
+[ext_resource type="PackedScene" uid="uid://bhfu2l15i6ijm" path="res://scenes_and_scripts/creatures/badguy/snow/smartball.tscn" id="10_vfjre"]
+[ext_resource type="PackedScene" uid="uid://cstyfqelcwsdf" path="res://scenes_and_scripts/creatures/badguy/snow/iceblock.tscn" id="11_f0ptp"]
 [ext_resource type="PackedScene" uid="uid://cab0l31thlxhl" path="res://scenes_and_scripts/objects/level/bonus_block.tscn" id="12_ljcav"]
 [ext_resource type="PackedScene" uid="uid://cydy0jy77hcr3" path="res://scenes_and_scripts/objects/level/powerups/fire_flower.tscn" id="13_cmklg"]
-[ext_resource type="PackedScene" uid="uid://xs7v2414cg6a" path="res://scenes_and_scripts/creatures/badguy/smartblock.tscn" id="13_xc2j1"]
+[ext_resource type="PackedScene" uid="uid://xs7v2414cg6a" path="res://scenes_and_scripts/creatures/badguy/snow/smartblock.tscn" id="13_xc2j1"]
 [ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="14_iqt2j"]
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="14_wkn46"]
 [ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="15_w48fa"]
-[ext_resource type="PackedScene" uid="uid://kb3ec2yrjofl" path="res://scenes_and_scripts/creatures/badguy/spiky.tscn" id="16_mgudf"]
+[ext_resource type="PackedScene" uid="uid://kb3ec2yrjofl" path="res://scenes_and_scripts/creatures/badguy/snow/spiky.tscn" id="16_mgudf"]
+[ext_resource type="PackedScene" uid="uid://dxou4m4v33uay" path="res://scenes_and_scripts/creatures/badguy/jumpy.tscn" id="17_gxsun"]
 
 [node name="TestLevel" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_oobyr")
@@ -59,7 +60,7 @@ tile_map_data = PackedByteArray("AABrAAYAAwAAAAAAAABrAAcAAwAAAAEAAABrAAgAAwAAAAE
 tile_set = ExtResource("3_lsmmm")
 
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("7_oeprp")]
-position = Vector2(-64, -32)
+position = Vector2(-96, -32)
 
 [node name="Snowball" parent="." unique_id=1942256203 instance=ExtResource("8_6clsl")]
 position = Vector2(896, 416)
@@ -139,9 +140,19 @@ I should be invisible without debug mode on!
 If you can see me while playing without debug on, 
 it's a bug."
 
+[node name="Comment2" parent="." unique_id=1398015674 instance=ExtResource("15_w48fa")]
+offset_left = -128.0
+offset_top = -64.0
+offset_right = -24.0
+offset_bottom = -32.0
+text = "who is bro"
+
 [node name="Spiky" parent="." unique_id=2058033918 instance=ExtResource("16_mgudf")]
 position = Vector2(1344, 416)
 sleeping = true
 
 [node name="Spiky2" parent="." unique_id=101560333 instance=ExtResource("16_mgudf")]
 position = Vector2(2112, 416)
+
+[node name="Jumpy" parent="." unique_id=699389237 instance=ExtResource("17_gxsun")]
+position = Vector2(224, 384)

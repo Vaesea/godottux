@@ -4,4 +4,5 @@ extends BadGuy
 func _ready() -> void:
 	spiky = true
 	smart = true
+	hurt_by_stomp = false
 	super()

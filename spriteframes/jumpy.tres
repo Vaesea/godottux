@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://yx7n3qxepjeg"]
+
+[ext_resource type="Texture2D" uid="uid://b5uu7b0ucloyl" path="res://assets/images/creatures/jumpy/left-down.png" id="1_i7f2k"]
+[ext_resource type="Texture2D" uid="uid://b34smin34db1a" path="res://assets/images/creatures/jumpy/left-middle.png" id="2_oas2v"]
+[ext_resource type="Texture2D" uid="uid://bqu2riks3l7s5" path="res://assets/images/creatures/jumpy/left-up.png" id="3_fqyb0"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i7f2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oas2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fqyb0")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}]

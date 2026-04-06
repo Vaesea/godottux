@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b0jt7bxoul5j2"]
+
+[ext_resource type="Texture2D" uid="uid://us2ic2luv6um" path="res://assets/images/creatures/walking_leaf/squished.png" id="1_28ba7"]
+[ext_resource type="Texture2D" uid="uid://bel0dnvolqg34" path="res://assets/images/creatures/walking_leaf/left-0.png" id="2_p5rgx"]
+[ext_resource type="Texture2D" uid="uid://dus2nnt3gqrin" path="res://assets/images/creatures/walking_leaf/left-1.png" id="3_oajkp"]
+[ext_resource type="Texture2D" uid="uid://bbkt18rcoe8tw" path="res://assets/images/creatures/walking_leaf/left-2.png" id="4_hw6un"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_28ba7")
+}],
+"loop": false,
+"name": &"squished",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p5rgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oajkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hw6un")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
