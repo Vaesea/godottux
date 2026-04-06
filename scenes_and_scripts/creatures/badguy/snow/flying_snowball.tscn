@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bi716mvtji11l"]
+
+[ext_resource type="Script" uid="uid://c2a2r4u8vcfx5" path="res://scenes_and_scripts/creatures/badguy/snow/flying_snowball.gd" id="1_8bo24"]
+[ext_resource type="SpriteFrames" uid="uid://ldydx1gmtkki" path="res://spriteframes/flying_snowball.tres" id="2_8bo24"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_o8sjd"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_nm1bc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
+size = Vector2(29, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bo24"]
+size = Vector2(29, 29)
+
+[node name="FlyingSnowball" type="CharacterBody2D" unique_id=1942256203]
+z_index = 40
+collision_layer = 4
+floor_constant_speed = true
+floor_max_angle = 1.3962634
+floor_snap_length = 12.0
+script = ExtResource("1_8bo24")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=264556818]
+position = Vector2(-4, 0)
+sprite_frames = ExtResource("2_8bo24")
+animation = &"fly"
+centered = false
+offset = Vector2(0, -4)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
+position = Vector2(15.5, 17.5)
+shape = SubResource("RectangleShape2D_aggo7")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
+collision_layer = 4
+collision_mask = 134
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
+position = Vector2(15.5, 17.5)
+shape = SubResource("RectangleShape2D_8bo24")
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]
+position = Vector2(5, 0)
+target_position = Vector2(0, 64)
+
+[node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=2009687058]
+stream = ExtResource("3_o8sjd")
+
+[node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1374949003]
+stream = ExtResource("4_nm1bc")
+
+[node name="FlyingTimer" type="Timer" parent="." unique_id=1483682044]
+autostart = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1749996498]
+position = Vector2(-1, -1)
+rect = Rect2(-353, -353, 757, 757)
+show_rect = false

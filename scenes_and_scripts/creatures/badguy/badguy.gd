@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name BadGuy
 
 # TODO: Make the VisibleOnScreenEnabler2D always act like it's on screen when current_iceblock_state is MovingFlat
-# TODO: Improve Spiky ground detection to be more like SuperTux
+# TODO: Improve Spiky ground detection to be more like SuperTux.
 
 # hi. anatolystev here.
 # i might've, you know, made everything be like the haxeflixel version.
@@ -65,9 +65,11 @@ var kill_self_on_touching_enemy = false
 @export var spiky = false
 ## Is the enemy Jumpy-like? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
 @export var jumpy = false
-## Is the enemy an explosion? Probably shouldn't have made this an export but whatever.
+## Does the enemy fly? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
+@export var flying = false
+## Is the enemy an explosion? Probably shouldn't have made this an export but whatever. If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
 @export var explosion = false
-## Can the enemy be hurt by stomping on it?
+## Can the enemy be hurt by stomping on it? If you're making an enemy, it's best to change this in the enemy's script.
 @export var hurt_by_stomp = true
 
 @export_category("Spiky variables")
@@ -87,6 +89,10 @@ var kill_self_on_touching_enemy = false
 @export var movingflat_speed = 500
 ## for snail enemies or something i really dont know anymore i'm going insane
 @export var hit_wall_jump_height = 256
+
+@export_category("Flying Enemy variables")
+## How fast at flying is the flying enemy?
+@export var fly_speed = 100
 
 @export_category("Ground Detector X Position")
 ## X of Ground Detector when direction is left
@@ -108,15 +114,22 @@ func _ready() -> void:
 	$TuxDetector.body_entered.connect(_on_tux_detector_body_entered)
 	if spiky and sleeping:
 		$Image.connect("animation_finished", _on_wake_up_finished)
+	if flying:
+		$FlyingTimer.connect("timeout", _on_flying_timer_timeout)
 	
-	if spiky and not sleeping and not jumpy:
+	if spiky and not sleeping and not jumpy and not flying:
 		$WakeUpShapecast.enabled = false
 		$WakeUpShapecast.visible = false
 		$Image.play("walk")
-	elif spiky and sleeping and not jumpy:
+	elif spiky and sleeping and not jumpy and not flying:
 		$Image.play("sleep")
-	elif not spiky and not sleeping and not jumpy:
+	elif not spiky and not sleeping and not jumpy and not flying:
 		$Image.play("walk")
+	elif not spiky and not sleeping and not jumpy and flying:
+		$Image.play("fly")
+	
+	if flying:
+		velocity.y = -fly_speed
 	
 	current_state = EnemyStates.Alive
 
@@ -125,7 +138,9 @@ func _physics_process(delta: float) -> void:
 	if wait_to_collide > 0:
 		wait_to_collide -= delta
 	
-	if basic_walking or walking_and_holdable or spiky or jumpy:
+	var dead_flying_snowball = flying and current_state == EnemyStates.Dead
+	
+	if basic_walking or walking_and_holdable or spiky or jumpy or explosion or dead_flying_snowball:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 	
@@ -202,7 +217,6 @@ func _physics_process(delta: float) -> void:
 func flip_direction():
 	direction = -direction
 
-# TODO: Improve code.
 func move():
 	var sleeping_spiky = spiky and sleeping
 	
@@ -240,7 +254,7 @@ func death(fall:bool):
 			current_iceblock_state = IceblockStates.Flat
 			print("iceblock died.")
 		velocity.x = 0
-		if jumpy:
+		if jumpy or flying:
 			velocity.y = 0
 		$Collision.set_deferred("disabled", true)
 		$Image.flip_v = true
@@ -368,3 +382,12 @@ func _on_wake_up_finished():
 		print("Finished waking up!")
 		$Image.play("walk")
 		sleeping = false
+
+func _on_flying_timer_timeout():
+	if not current_state == EnemyStates.Dead:
+		print("Flying timer timeout. Restarting...")
+		if flying: 
+			velocity.y = velocity.y * -1
+			print(velocity.y * -1)
+		else:
+			print(name + " is not flying.")

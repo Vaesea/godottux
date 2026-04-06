@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="15_w48fa"]
 [ext_resource type="PackedScene" uid="uid://kb3ec2yrjofl" path="res://scenes_and_scripts/creatures/badguy/snow/spiky.tscn" id="16_mgudf"]
 [ext_resource type="PackedScene" uid="uid://dxou4m4v33uay" path="res://scenes_and_scripts/creatures/badguy/jumpy.tscn" id="17_gxsun"]
+[ext_resource type="PackedScene" uid="uid://bi716mvtji11l" path="res://scenes_and_scripts/creatures/badguy/snow/flying_snowball.tscn" id="18_h8bbl"]
 
 [node name="TestLevel" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_oobyr")
@@ -156,3 +157,6 @@ position = Vector2(2112, 416)
 
 [node name="Jumpy" parent="." unique_id=699389237 instance=ExtResource("17_gxsun")]
 position = Vector2(224, 384)
+
+[node name="FlyingSnowball" parent="." unique_id=400092883 instance=ExtResource("18_h8bbl")]
+position = Vector2(672, 224)
