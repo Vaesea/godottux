@@ -21,8 +21,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Cannon
 - Rocket Launcher
 - Dropper
-- Spiky
-- Sleeping Spiky
 - Bouncing Snowball
 - Flying Snowball
 - Jumpy
