@@ -24,9 +24,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Bouncing Snowball
 - Flying Snowball
 - Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
-- Crystallo (not sure if this existed in 0.3.2?)
 - Mr Rocket
-- Ice Crusher (not sure if this existed in 0.3.2?)
 - Stalactite
 - Yeti
 - Nolok (no ghost tree!!!!)
@@ -39,7 +37,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Skullyhop
 - Dart Trap
 - Spidermite
-- Livefire
 - Ispy
 - Button
 - Will-O-Wisp
@@ -50,7 +47,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Kugelblitz (but it's actually usable in levels)
 - Mr Cherry
 - Toad
-- Tumbleweed
+- Tumbleweed (Bonus Badguy!
 - Totem
 - Forest Exit Tiles
 - Tux death animation stuff
