@@ -22,11 +22,11 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Rocket Launcher
 - Dropper
 - Spiky
+- Sleeping Spiky
 - Bouncing Snowball
 - Flying Snowball
 - Jumpy
 - Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
-- Snowman
 - Crystallo (not sure if this existed in 0.3.2?)
 - Mr Rocket
 - Ice Crusher (not sure if this existed in 0.3.2?)
@@ -63,6 +63,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Tux backflipping
 - Tux ducking
 - Tux buttjumping
+- Lantern (no magic tiles though)
 
 ## What this doesn't recreate / use
 - Levels
@@ -75,8 +76,11 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Completely accurate HUD (I tried to make it as accurate as I could)
 - In-game console (Use the Godot Output thing to debug your code instead)
 - The same scripting system (While there is scripting, it's done using variables in a block instead)
+- Magic Tiles (sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
+- Snowman (although previously listed, i realized it's not a 0.3.2 enemy. has a small chance of still being added, though)
+- Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 
-There also isn't a level editor, not even as a separate program. I might try to add one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap.
+There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
 ## Extra Features
 ### Debug Mode
