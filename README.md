@@ -15,7 +15,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Star
 - Worldmap Tux sprite changer
 - Trampolines (Stationary and Portable)
-- Actually good version of the Rock object
+- Actually good version of the level version of the Rock object
 - Level results
 - Cannon
 - Rocket Launcher
