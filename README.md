@@ -3,7 +3,7 @@ This is not even nearly finished yet. If you want something that's finished, I'd
 If the code is a bit messy... oops. I still hope that people can make actual decent SuperTux fangames from this.
 
 # GodotTux
-A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperTux fangames! (If you know how to code)
+A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperTux fangames! (If you know how to code, and if you can understand the worst code you've ever seen in your life)
 
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
@@ -21,10 +21,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Cannon
 - Rocket Launcher
 - Dropper
-- Bouncing Snowball
 - Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
 - Mr Rocket
-- Stalactite
 - Yeti
 - Nolok (no ghost tree!!!!)
 - Mr Tree
@@ -41,7 +39,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Will-O-Wisp
 - Mr Bomb
 - Flame
-- Angry Stone
 - Plant
 - Kugelblitz (but it's actually usable in levels)
 - Mr Cherry
@@ -52,8 +49,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Tux death animation stuff
 - Unstable Tiles (Ice, Bridge, Castle)
 - Tux backflipping
-- Tux ducking
-- Tux buttjumping
 - Lantern (no magic tiles though)
 
 ## What this doesn't recreate / use
@@ -70,6 +65,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Magic Tiles (sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 - Snowman (although previously listed, i realized it's not a 0.3.2 enemy. has a small chance of still being added, though)
 - Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
+- Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
