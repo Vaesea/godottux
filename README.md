@@ -1,4 +1,4 @@
-This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs, and even some simple objects like Brick Blocks haven't been added.
+This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs.
 
 If the code is a bit messy... oops. I still hope that people can make actual decent SuperTux fangames from this.
 
@@ -11,7 +11,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Old Sounds (although you can easily add the old sounds back in, "new" (0.5) sounds are used instead for now)
 - Tux with all parts separated (Currently, the Tux images used are the full images)
 - Holding action key to slow down (This may be able to be disabled very easily because this is one of the worst features from 0.3.2)
-- Brick Block
 - Ice Flower
 - Star
 - Worldmap Tux sprite changer
@@ -23,8 +22,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Dropper
 - Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
 - Mr Rocket
-- Yeti
-- Nolok (no ghost tree!!!!)
 - Mr Tree
 - Snail
 - Igel
@@ -43,7 +40,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Kugelblitz (but it's actually usable in levels)
 - Mr Cherry
 - Toad
-- Tumbleweed (Bonus Badguy!
+- Tumbleweed (Bonus Badguy!)
 - Totem
 - Forest Exit Tiles
 - Tux death animation stuff
