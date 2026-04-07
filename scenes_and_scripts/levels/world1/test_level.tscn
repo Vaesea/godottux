@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bi716mvtji11l" path="res://scenes_and_scripts/creatures/badguy/snow/flying_snowball.tscn" id="18_h8bbl"]
 [ext_resource type="PackedScene" uid="uid://l041x3y7g3v0" path="res://scenes_and_scripts/creatures/badguy/snow/bouncing_snowball.tscn" id="19_hly5t"]
 [ext_resource type="PackedScene" uid="uid://bnuvb17wx4rtl" path="res://scenes_and_scripts/objects/level/snow_particles.tscn" id="20_byvpf"]
+[ext_resource type="PackedScene" uid="uid://rjpmrlwma0uv" path="res://scenes_and_scripts/objects/level/info_block.tscn" id="21_fjmqh"]
 
 [node name="TestLevel" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_oobyr")
@@ -98,7 +99,7 @@ position = Vector2(1216, 320)
 position = Vector2(1280, 320)
 
 [node name="BonusBlock13" parent="." unique_id=1008674066 instance=ExtResource("12_ljcav")]
-position = Vector2(2048, 320)
+position = Vector2(2176, 320)
 
 [node name="BonusBlock4" parent="." unique_id=2047951914 instance=ExtResource("12_ljcav")]
 position = Vector2(1248, 320)
@@ -131,7 +132,7 @@ position = Vector2(2944, 320)
 position = Vector2(352, 416)
 
 [node name="LevelSpawnPoint" parent="." unique_id=1166009292 instance=ExtResource("14_iqt2j")]
-position = Vector2(32, 384)
+position = Vector2(1664, 480)
 
 [node name="Comment" parent="." unique_id=334767462 instance=ExtResource("15_w48fa")]
 offset_top = 256.0
@@ -168,3 +169,9 @@ position = Vector2(672, 224)
 
 [node name="BouncingSnowball" parent="." unique_id=1405117509 instance=ExtResource("19_hly5t")]
 position = Vector2(1344, 288)
+
+[node name="InfoBlock" parent="." unique_id=215341304 instance=ExtResource("21_fjmqh")]
+position = Vector2(2048, 320)
+info_block_text = "hello, i hate bouncing snowballs.
+below is what i hate.
+[img]assets/images/creatures/bouncing_snowball/left-4.png[/img]"

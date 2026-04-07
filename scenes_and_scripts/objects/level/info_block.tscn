@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://rjpmrlwma0uv"]
+
+[ext_resource type="Script" uid="uid://b4wo8u1idttjl" path="res://scenes_and_scripts/objects/level/info_block.gd" id="1_auovs"]
+[ext_resource type="Texture2D" uid="uid://dh6ox2nei4874" path="res://assets/images/objects/info_block/infoblock.png" id="2_qhgwf"]
+[ext_resource type="AudioStream" uid="uid://cfdu5w147uprq" path="res://assets/sounds/coin.wav" id="3_nsh3r"]
+[ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="4_51nl7"]
+[ext_resource type="AudioStream" uid="uid://c5qvbrmiu335h" path="res://assets/sounds/upgrade.wav" id="5_mdd4q"]
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="6_qhgwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nadeq"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ddeg"]
+size = Vector2(32, 0.4904709)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orv8c"]
+size = Vector2(1, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbve7"]
+size = Vector2(1, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7tr0"]
+size = Vector2(32, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhgwf"]
+size = Vector2(400, 324)
+
+[sub_resource type="Animation" id="Animation_0ddeg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageBox:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Message:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_qhgwf"]
+resource_name = "display_message"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageBox:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Message:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_nsh3r"]
+resource_name = "up_and_down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -8.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [16.0, 8.0, 16.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyDetectorTop:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -8.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orv8c"]
+_data = {
+&"RESET": SubResource("Animation_0ddeg"),
+&"display_message": SubResource("Animation_qhgwf"),
+&"up_and_down": SubResource("Animation_nsh3r")
+}
+
+[node name="InfoBlock" type="StaticBody2D" unique_id=1476769138]
+z_index = 2
+script = ExtResource("1_auovs")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=543139362]
+texture = ExtResource("2_qhgwf")
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=547453832]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_nadeq")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=760395461]
+position = Vector2(16, 16)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=2045527202]
+position = Vector2(0, 16.245235)
+shape = SubResource("RectangleShape2D_0ddeg")
+
+[node name="EnemyDetectorLeft" type="Area2D" parent="." unique_id=416163567]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorLeft" unique_id=1992263146]
+position = Vector2(-0.5, 16)
+shape = SubResource("RectangleShape2D_orv8c")
+
+[node name="EnemyDetectorRight" type="Area2D" parent="." unique_id=1873564641]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorRight" unique_id=1083277149]
+position = Vector2(32.5, 16)
+shape = SubResource("RectangleShape2D_vbve7")
+
+[node name="EnemyDetectorTop" type="Area2D" parent="." unique_id=906198554]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorTop" unique_id=603940699]
+position = Vector2(16, -0.5)
+shape = SubResource("RectangleShape2D_m7tr0")
+
+[node name="TuxDetector2" type="Area2D" parent="." unique_id=128171748]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector2" unique_id=942889212]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_qhgwf")
+
+[node name="AnimationTween" type="AnimationPlayer" parent="." unique_id=1302634868]
+libraries/ = SubResource("AnimationLibrary_orv8c")
+
+[node name="MessageTween" type="AnimationPlayer" parent="." unique_id=1012640871]
+libraries/ = SubResource("AnimationLibrary_orv8c")
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=1028469176]
+stream = ExtResource("3_nsh3r")
+
+[node name="BrickSound" type="AudioStreamPlayer" parent="." unique_id=849443688]
+stream = ExtResource("4_51nl7")
+volume_db = -5.0
+
+[node name="PowerupSound" type="AudioStreamPlayer" parent="." unique_id=1402001743]
+stream = ExtResource("5_mdd4q")
+
+[node name="MessageBox" type="ColorRect" parent="." unique_id=1046775846]
+z_index = 200
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -196.0
+offset_right = 200.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.79607844, 0.85490197, 0.90588236, 0.5019608)
+
+[node name="Message" type="RichTextLabel" parent="." unique_id=1888369259]
+z_index = 200
+offset_left = -192.0
+offset_top = -188.0
+offset_right = 192.0
+offset_bottom = -4.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("6_qhgwf")
+bbcode_enabled = true
+text = "[font_size=20]Bonus Blocks[/font_size]
+[img]assets/images/objects/bonus_block/full-0.png[/img]
+Bonus Blocks can contain coins, power-ups or special items to help you in your quest.
+
+Hit them from below to get at their contents."
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

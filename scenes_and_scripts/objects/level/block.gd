@@ -11,15 +11,22 @@ class_name Block
 @export var bonus = false
 ## Is the block a Brick Block? Best to set this in a script.
 @export var brick = false
+## Is the block an Info Block? Best to set this in a script.
+@export var info = false
 ## If Tux is small and content is fire flower, egg will be given instead.
 @export_enum("Coin", "Fire Flower") var content = 0
 
 @export_category("Brick Block Setup")
+## Whether the brick is empty or not.
 @export var empty_brick = true
-## How many times can the brick be hit if content is coin?
+## How many times can the brick be hit if content is coin and not empty?
 @export var how_many_hits = 5
 ## Does the brick block have snow on it?
 @export var snow = false
+
+@export_category("Info Block Setup")
+## The text. Supports BBCode.
+@export_multiline var info_block_text:String
 
 var empty = false
 var bump = false
@@ -27,18 +34,26 @@ var bump = false
 var tux_on_left = false
 var tux_on_right = false
 
+var infoblock_detects_tux = false
+var displaying_message = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not brick and not snow:
+	if not brick and not snow and not info:
 		$Image.play("default")
-	elif brick and not snow:
+	elif brick and not snow and not info:
 		$Image.play("default")
-	elif brick and snow:
+	elif brick and snow and not info:
 		$Image.play("snow")
 	$TuxDetector.connect("body_entered", _on_tux_detector_body_entered)
 	$EnemyDetectorLeft.connect("body_entered", _on_enemy_detected_left)
 	$EnemyDetectorRight.connect("body_entered", _on_enemy_detected_right)
 	$AnimationTween.connect("animation_finished", _on_bump_finished)
+	if info:
+		$MessageBox.modulate = Color(1.0, 1.0, 1.0, 0.0)
+		$Message.modulate = Color(1.0, 1.0, 1.0, 0.0)
+		$TuxDetector2.connect("body_entered", _on_tux_detected)
+		$TuxDetector2.connect("body_exited", _on_tux_exited)
 
 func _on_tux_detector_body_entered(body):
 	if body.is_in_group("Player") and not empty and body.velocity.y > 1: # velocity check is an attempt to fix the bug
@@ -58,7 +73,7 @@ func _on_tux_detector_body_entered(body):
 
 func _on_enemy_detected_left(body):
 	if body.is_in_group("Enemy") and not empty:
-		if body.kill_other_enemies:
+		if body.kill_other_enemies and not body.current_iceblock_state == body.IceblockStates.Held:
 			print("Enemy hit left side.")
 			turn_empty("up_and_down")
 			spawn_item("right")
@@ -68,7 +83,7 @@ func _on_enemy_detected_left(body):
 
 func _on_enemy_detected_right(body):
 	if body.is_in_group("Enemy") and not empty:
-		if body.kill_other_enemies:
+		if body.kill_other_enemies and not body.current_iceblock_state == body.IceblockStates.Held:
 			print("Enemy hit right side.")
 			turn_empty("up_and_down") # TODO: Create left_to_normal animation
 			spawn_item("left")
@@ -77,12 +92,13 @@ func _on_enemy_detected_right(body):
 			$BrickSound.play()
 
 func turn_empty(animation_name:String):
-	bump = true
-	$AnimationTween.play(animation_name)
-	empty = true
-	
-	$Image.play("empty")
-	
+	if not info:
+		bump = true
+		$AnimationTween.play(animation_name)
+		empty = true
+		
+		$Image.play("empty")
+		
 	for body in $EnemyDetectorTop.get_overlapping_bodies():
 		if body.is_in_group("Enemy"):
 			body.death(true)
@@ -128,3 +144,15 @@ func spawn_brick_particles():
 	var brick_particles = load("uid://dexnrlq8oby45").instantiate()
 	get_tree().current_scene.call_deferred("add_child", brick_particles)
 	brick_particles.position = self.position
+
+func _on_tux_detected(body):
+	if body.is_in_group("Player"):
+		infoblock_detects_tux = true
+
+func _on_tux_exited(body):
+	if body.is_in_group("Player"):
+		infoblock_detects_tux = false
+		print(infoblock_detects_tux)
+		if displaying_message:
+			displaying_message = false
+			$MessageTween.play_backwards("display_message")

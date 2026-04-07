@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c4wavr8ykqj4p"]
+
+[ext_resource type="Script" uid="uid://bqgt6rr3dww7v" path="res://scenes_and_scripts/creatures/badguy/explosion.gd" id="1_kstcg"]
+[ext_resource type="SpriteFrames" uid="uid://4mj40jdo14bh" path="res://spriteframes/explosion.tres" id="2_kstcg"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_wiv4n"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_qyyoq"]
+[ext_resource type="AudioStream" uid="uid://cnresi2kxmu0" path="res://assets/sounds/explosion.wav" id="5_nndtd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kstcg"]
+radius = 32.5
+height = 73.0
+
+[node name="Explosion" type="CharacterBody2D" unique_id=1942256203]
+z_index = 40
+collision_layer = 4
+floor_constant_speed = true
+floor_max_angle = 1.3962634
+floor_snap_length = 12.0
+script = ExtResource("1_kstcg")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=264556818]
+sprite_frames = ExtResource("2_kstcg")
+centered = false
+offset = Vector2(-33, -46)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
+position = Vector2(19.5, 17.5)
+shape = SubResource("CapsuleShape2D_kstcg")
+disabled = true
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
+collision_layer = 4
+collision_mask = 134
+
+[node name="Collision" type="CollisionShape2D" parent="TuxDetector" unique_id=1996856854]
+position = Vector2(19.5, 17.5)
+shape = SubResource("CapsuleShape2D_kstcg")
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]
+position = Vector2(5, 0)
+target_position = Vector2(0, 64)
+
+[node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=2009687058]
+stream = ExtResource("3_wiv4n")
+
+[node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1374949003]
+stream = ExtResource("4_qyyoq")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=207076328]
+stream = ExtResource("5_nndtd")
+autoplay = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
+position = Vector2(2, 1)
+rect = Rect2(-477, -477, 990, 1026)
+show_rect = false

@@ -3,12 +3,12 @@ extends CharacterBody2D
 # code from adel time
 # im too lazy to add comments right now
 
-# TODO: Stop enemy from being thrown because Tux did grow function
 # TODO: Save Tux's max fire bullet amount or something idk
 
 # AnatolyStev here. Added skidding
 # AnatolyStev here. Made it so rocks don't softlock Tux.
 # TODO: Make it so Tux doesn't go down when hit on the head with a rock. As you can see, I tried.
+# vaesea note: i have no idea what the above todo is about
 
 # Movement
 ## Tux's speed. You should probably change acceleration and deceleration if you change this.
@@ -330,7 +330,7 @@ func shoot():
 		fire_bullet.set_direction(TuxManager.facing_direction, self)
 
 func _on_stompable_object_detected(area):
-	if area.is_in_group("JUSTFUCKINGWORKALREADY") and area.get_parent():
+	if area.is_in_group("BouncingEnemyTuxDetector") and area.get_parent():
 		invincible = true
 		await get_tree().create_timer(0.1).timeout
 		invincible = false

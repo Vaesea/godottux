@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cgirrrn7y2qf0"]
+
+[ext_resource type="Texture2D" uid="uid://bfjirhe0o35q2" path="res://assets/images/creatures/mr_bomb/exploding-left-0.png" id="1_06ft1"]
+[ext_resource type="Texture2D" uid="uid://dqtdmb0qetx7w" path="res://assets/images/creatures/mr_bomb/left-0.png" id="1_wqhu0"]
+[ext_resource type="Texture2D" uid="uid://dysh6hgbsbdn8" path="res://assets/images/creatures/mr_bomb/exploding-left-1.png" id="2_37vqc"]
+[ext_resource type="Texture2D" uid="uid://b38brw8q6d3ab" path="res://assets/images/creatures/mr_bomb/left-1.png" id="2_c8i34"]
+[ext_resource type="Texture2D" uid="uid://bmhqqmrs4vtdn" path="res://assets/images/creatures/mr_bomb/left-2.png" id="3_06ft1"]
+[ext_resource type="Texture2D" uid="uid://b71ng7xlp8pk5" path="res://assets/images/creatures/mr_bomb/left-3.png" id="4_37vqc"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_06ft1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_37vqc")
+}],
+"loop": false,
+"name": &"ticking",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wqhu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c8i34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_06ft1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_37vqc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

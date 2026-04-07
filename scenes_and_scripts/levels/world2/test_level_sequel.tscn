@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ulqjpijewvo" path="res://scenes_and_scripts/objects/level/rock.tscn" id="14_wcnbc"]
 [ext_resource type="PackedScene" uid="uid://c7xxetrv6fxkk" path="res://scenes_and_scripts/creatures/badguy/forest/vicious_ivy.tscn" id="15_wcnbc"]
 [ext_resource type="PackedScene" uid="uid://du1l1m047lstr" path="res://scenes_and_scripts/creatures/badguy/forest/walking_leaf.tscn" id="16_f6hgq"]
+[ext_resource type="PackedScene" uid="uid://bi3s3l4fv1xp1" path="res://scenes_and_scripts/creatures/badguy/mr_bomb.tscn" id="18_oi3rd"]
 
 [node name="TestLevelSequel" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_r1yn2")
@@ -148,7 +149,7 @@ offset_left = -256.0
 offset_top = -96.0
 offset_right = 169.0
 offset_bottom = -73.0
-text = "Beware the penguin who speaks in hands."
+text = "Beware the penguin who speaks in hands..."
 
 [node name="BonusBlock" parent="." unique_id=1016254501 instance=ExtResource("13_kdsnm")]
 position = Vector2(288, 288)
@@ -189,6 +190,9 @@ position = Vector2(736, -64)
 [node name="BrickBlock4" parent="." unique_id=425726858 instance=ExtResource("4_oi3rd")]
 position = Vector2(768, -64)
 snow = true
+
+[node name="MrBomb" parent="." unique_id=1337546425 instance=ExtResource("18_oi3rd")]
+position = Vector2(384, 384)
 
 [connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

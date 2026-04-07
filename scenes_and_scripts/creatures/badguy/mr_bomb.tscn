@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bi3s3l4fv1xp1"]
+
+[ext_resource type="Script" uid="uid://do5jl0mvbitvq" path="res://scenes_and_scripts/creatures/badguy/mr_bomb.gd" id="1_udwue"]
+[ext_resource type="SpriteFrames" uid="uid://cgirrrn7y2qf0" path="res://spriteframes/mr_bomb.tres" id="2_j1fox"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_gyw5m"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_3l847"]
+[ext_resource type="AudioStream" uid="uid://c7dwy583euyiv" path="res://assets/sounds/fizz.wav" id="5_j1fox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gao4"]
+size = Vector2(27, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
+size = Vector2(27, 27)
+
+[node name="MrBomb" type="CharacterBody2D" unique_id=1942256203]
+z_index = 40
+collision_layer = 4
+floor_constant_speed = true
+floor_max_angle = 1.3962634
+floor_snap_length = 12.0
+script = ExtResource("1_udwue")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=264556818]
+position = Vector2(0, -9)
+sprite_frames = ExtResource("2_j1fox")
+animation = &"walk"
+centered = false
+offset = Vector2(0, -4)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
+position = Vector2(18.5, 18.5)
+shape = SubResource("RectangleShape2D_8gao4")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
+collision_layer = 4
+collision_mask = 134
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
+position = Vector2(18.5, 18.5)
+shape = SubResource("RectangleShape2D_aggo7")
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]
+position = Vector2(5, 0)
+target_position = Vector2(0, 64)
+
+[node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=2009687058]
+stream = ExtResource("3_gyw5m")
+
+[node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1374949003]
+stream = ExtResource("4_3l847")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
+rect = Rect2(-64, -64, 160, 160)
+show_rect = false
+
+[node name="FizzSound" type="AudioStreamPlayer" parent="." unique_id=328225894]
+stream = ExtResource("5_j1fox")

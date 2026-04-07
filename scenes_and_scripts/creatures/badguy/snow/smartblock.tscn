@@ -56,6 +56,6 @@ stream = ExtResource("5_p845o")
 stream = ExtResource("6_luxnq")
 max_distance = 800.0
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1039624079]
+[node name="ScreenCheck" type="VisibleOnScreenNotifier2D" parent="." unique_id=292465858]
 rect = Rect2(-64, -64, 160, 160)
 show_rect = false
