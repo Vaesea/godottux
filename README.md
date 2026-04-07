@@ -8,9 +8,7 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## What hasn't been added yet but is planned
-- Old Sounds (although you can easily add the old sounds back in, "new" (0.5) sounds are used instead for now)
-- Tux with all parts separated (Currently, the Tux images used are the full images)
-- Holding action key to slow down (This may be able to be disabled very easily because this is one of the worst features from 0.3.2)
+- Old Sounds ("new" (0.5) sounds are used instead for now)
 - Ice Flower
 - Star
 - Worldmap Tux sprite changer
@@ -34,7 +32,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Ispy
 - Button
 - Will-O-Wisp
-- Mr Bomb
 - Flame
 - Plant
 - Kugelblitz (but it's actually usable in levels)
