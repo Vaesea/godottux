@@ -9,8 +9,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 
 ## What hasn't been added yet but is planned
 - Old Sounds ("new" (0.5) sounds are used instead for now)
-- Ice Flower
 - Star
+- Tux Doll
 - Worldmap Tux sprite changer
 - Trampolines (Stationary and Portable)
 - Actually good version of the level version of the Rock object
