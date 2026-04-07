@@ -17,7 +17,7 @@ func _on_coin_sound_finished():
 	queue_free()
 
 func set_from_block():
-	print("Coin is going up from Bonus Block...") # i put this here for debugging purposes. i guess it could be useful later?
+	print("Coin is going up from Bonus / Brick Block...") # i put this here for debugging purposes. i guess it could be useful later?
 	$TuxDetector.set_deferred("monitoring", false)
 	$AnimationTween.play("set_from_block")
 	Global.coins += 1

@@ -1,26 +1,14 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://b8gjtik2qmcqi"]
 
-[ext_resource type="Texture2D" uid="uid://m7yvj24fawtg" path="res://assets/images/objects/bonus_block/bonus-1up.png" id="1_cxod0"]
 [ext_resource type="Texture2D" uid="uid://bqtb0v6kmytqn" path="res://assets/images/objects/bonus_block/full-0.png" id="2_pxt5r"]
 [ext_resource type="Texture2D" uid="uid://b2jckoo5sohu3" path="res://assets/images/objects/bonus_block/full-1.png" id="3_ucyfq"]
 [ext_resource type="Texture2D" uid="uid://bbl14fukll5co" path="res://assets/images/objects/bonus_block/full-2.png" id="4_u262t"]
 [ext_resource type="Texture2D" uid="uid://dsm7gbd3rrpqu" path="res://assets/images/objects/bonus_block/full-3.png" id="5_wb651"]
 [ext_resource type="Texture2D" uid="uid://da3ldbt7ynhd1" path="res://assets/images/objects/bonus_block/full-4.png" id="6_bwgkp"]
 [ext_resource type="Texture2D" uid="uid://b5alw88va65bl" path="res://assets/images/objects/bonus_block/empty.png" id="7_u5t6f"]
-[ext_resource type="Texture2D" uid="uid://bp3004s8s1tlo" path="res://assets/images/objects/bonus_block/bonus-fire_flower.png" id="8_urnw0"]
-[ext_resource type="Texture2D" uid="uid://bgjs4e8iqxs8w" path="res://assets/images/objects/bonus_block/bonus-ice_flower.png" id="9_yfckj"]
-[ext_resource type="Texture2D" uid="uid://cq4m8qahmxhkj" path="res://assets/images/objects/bonus_block/bonus-herring.png" id="10_sy7km"]
 
 [resource]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_cxod0")
-}],
-"loop": false,
-"name": &"1up",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 8.0,
 "texture": ExtResource("2_pxt5r")
@@ -53,29 +41,5 @@ animations = [{
 }],
 "loop": false,
 "name": &"empty",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_urnw0")
-}],
-"loop": false,
-"name": &"fire_flower",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_yfckj")
-}],
-"loop": false,
-"name": &"ice_flower",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_sy7km")
-}],
-"loop": false,
-"name": &"star",
 "speed": 5.0
 }]

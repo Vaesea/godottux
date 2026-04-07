@@ -1,10 +1,39 @@
-[gd_scene format=3 uid="uid://cab0l31thlxhl"]
+[gd_scene format=3 uid="uid://dedpv5aswgjv3"]
 
-[ext_resource type="Script" uid="uid://mtnb5viax8pp" path="res://scenes_and_scripts/objects/level/bonus_block.gd" id="1_0ddeg"]
-[ext_resource type="SpriteFrames" uid="uid://b8gjtik2qmcqi" path="res://spriteframes/bonus_block.tres" id="1_7rdg8"]
-[ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="3_nadeq"]
-[ext_resource type="AudioStream" uid="uid://cfdu5w147uprq" path="res://assets/sounds/coin.wav" id="3_orv8c"]
-[ext_resource type="AudioStream" uid="uid://c5qvbrmiu335h" path="res://assets/sounds/upgrade.wav" id="5_vbve7"]
+[ext_resource type="Script" uid="uid://cqwi2r0u6vmch" path="res://scenes_and_scripts/objects/level/brick_block.gd" id="1_okw4o"]
+[ext_resource type="Texture2D" uid="uid://bxh2iuee1xv6x" path="res://assets/images/objects/brick_block/brick0.png" id="2_okw4o"]
+[ext_resource type="Texture2D" uid="uid://b5alw88va65bl" path="res://assets/images/objects/bonus_block/empty.png" id="3_j60kg"]
+[ext_resource type="AudioStream" uid="uid://cfdu5w147uprq" path="res://assets/sounds/coin.wav" id="3_okw4o"]
+[ext_resource type="Texture2D" uid="uid://dt2lfxddpmh6f" path="res://assets/images/objects/brick_block/brick1.png" id="4_hwv85"]
+[ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="4_j60kg"]
+[ext_resource type="AudioStream" uid="uid://c5qvbrmiu335h" path="res://assets/sounds/upgrade.wav" id="5_hwv85"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5fmj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_okw4o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j60kg")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hwv85")
+}],
+"loop": true,
+"name": &"snow",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nadeq"]
 size = Vector2(32, 32)
@@ -59,6 +88,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Image:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_nadeq"]
 resource_name = "up_and_down"
@@ -100,18 +141,71 @@ tracks/2/keys = {
 "values": [0.0, -8.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_okw4o"]
+resource_name = "up_to_gone"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -8.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [16.0, 8.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyDetectorTop:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -8.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Image:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orv8c"]
 _data = {
 &"RESET": SubResource("Animation_0ddeg"),
-&"up_and_down": SubResource("Animation_nadeq")
+&"up_and_down": SubResource("Animation_nadeq"),
+&"up_to_gone": SubResource("Animation_okw4o")
 }
 
-[node name="BonusBlock" type="StaticBody2D" unique_id=1476769138]
+[node name="BrickBlock" type="StaticBody2D" unique_id=1476769138]
 z_index = 2
-script = ExtResource("1_0ddeg")
+script = ExtResource("1_okw4o")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=1793494598]
-sprite_frames = ExtResource("1_7rdg8")
+sprite_frames = SubResource("SpriteFrames_v5fmj")
 centered = false
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=547453832]
@@ -151,11 +245,11 @@ shape = SubResource("RectangleShape2D_m7tr0")
 libraries/ = SubResource("AnimationLibrary_orv8c")
 
 [node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=1028469176]
-stream = ExtResource("3_orv8c")
+stream = ExtResource("3_okw4o")
 
 [node name="BrickSound" type="AudioStreamPlayer" parent="." unique_id=849443688]
-stream = ExtResource("3_nadeq")
+stream = ExtResource("4_j60kg")
 volume_db = -5.0
 
 [node name="PowerupSound" type="AudioStreamPlayer" parent="." unique_id=1402001743]
-stream = ExtResource("5_vbve7")
+stream = ExtResource("5_hwv85")

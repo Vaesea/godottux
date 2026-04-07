@@ -96,11 +96,9 @@ position = Vector2(1216, 320)
 
 [node name="BonusBlock3" parent="." unique_id=819163829 instance=ExtResource("12_ljcav")]
 position = Vector2(1280, 320)
-content = 1
 
 [node name="BonusBlock13" parent="." unique_id=1008674066 instance=ExtResource("12_ljcav")]
 position = Vector2(2048, 320)
-content = 1
 
 [node name="BonusBlock4" parent="." unique_id=2047951914 instance=ExtResource("12_ljcav")]
 position = Vector2(1248, 320)

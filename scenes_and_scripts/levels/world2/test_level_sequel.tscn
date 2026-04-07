@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="2_wcnbc"]
 [ext_resource type="Texture2D" uid="uid://cl6c172x05mux" path="res://assets/images/background/BlueRock_Forest/blue-middle.jpg" id="3_f6hgq"]
 [ext_resource type="Texture2D" uid="uid://b3q2udg55gi4h" path="res://assets/images/background/BlueRock_Forest/blue-top.jpg" id="4_28m3u"]
+[ext_resource type="PackedScene" uid="uid://dedpv5aswgjv3" path="res://scenes_and_scripts/objects/level/brick_block.tscn" id="4_oi3rd"]
 [ext_resource type="AudioStream" uid="uid://dpuay4pr63r6g" path="res://assets/music/forest.ogg" id="6_c2tqy"]
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="7_ys2c0"]
 [ext_resource type="TileSet" uid="uid://d4gcl7sdnk2cs" path="res://assets/images/tiles/tileset.tres" id="8_b2dj1"]
@@ -149,7 +150,7 @@ offset_right = 169.0
 offset_bottom = -73.0
 text = "Beware the penguin who speaks in hands."
 
-[node name="BonusBlock" parent="." unique_id=1476769138 instance=ExtResource("13_kdsnm")]
+[node name="BonusBlock" parent="." unique_id=1016254501 instance=ExtResource("13_kdsnm")]
 position = Vector2(288, 288)
 
 [node name="BonusBlock2" parent="." unique_id=609956226 instance=ExtResource("13_kdsnm")]
@@ -165,13 +166,29 @@ position = Vector2(512, 320)
 position = Vector2(448, 384)
 
 [node name="Rock2" parent="." unique_id=1136489743 instance=ExtResource("14_wcnbc")]
-position = Vector2(224, 384)
+position = Vector2(192, 384)
 
 [node name="ViciousIvy" parent="." unique_id=1407968994 instance=ExtResource("15_wcnbc")]
 position = Vector2(864, 352)
 
 [node name="WalkingLeaf" parent="." unique_id=303646885 instance=ExtResource("16_f6hgq")]
 position = Vector2(800, 32)
+
+[node name="BrickBlock" parent="." unique_id=1476769138 instance=ExtResource("4_oi3rd")]
+position = Vector2(160, 288)
+empty_brick = false
+
+[node name="BrickBlock2" parent="." unique_id=725559353 instance=ExtResource("4_oi3rd")]
+position = Vector2(96, 288)
+empty_brick = false
+snow = true
+
+[node name="BrickBlock3" parent="." unique_id=1102849503 instance=ExtResource("4_oi3rd")]
+position = Vector2(736, -64)
+
+[node name="BrickBlock4" parent="." unique_id=425726858 instance=ExtResource("4_oi3rd")]
+position = Vector2(768, -64)
+snow = true
 
 [connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

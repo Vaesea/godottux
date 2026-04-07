@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dexnrlq8oby45"]
+
+[ext_resource type="Script" uid="uid://cuioia3vvvr35" path="res://scenes_and_scripts/particles/brick_particles.gd" id="1_ixhr2"]
+[ext_resource type="Texture2D" uid="uid://bxh2iuee1xv6x" path="res://assets/images/objects/brick_block/brick0.png" id="1_npmsu"]
+
+[node name="BrickParticles" type="Node2D" unique_id=1072382919]
+script = ExtResource("1_ixhr2")
+
+[node name="BrickParticle1" type="Sprite2D" parent="." unique_id=404737439]
+texture = ExtResource("1_npmsu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="BrickParticle2" type="Sprite2D" parent="." unique_id=1467063705]
+position = Vector2(16, 0)
+texture = ExtResource("1_npmsu")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="BrickParticle3" type="Sprite2D" parent="." unique_id=1673714299]
+position = Vector2(0, 16)
+texture = ExtResource("1_npmsu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="BrickParticle4" type="Sprite2D" parent="." unique_id=1038616561]
+position = Vector2(16, 16)
+texture = ExtResource("1_npmsu")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="Timer" type="Timer" parent="." unique_id=1659790091]
+wait_time = 0.25
+one_shot = true
+autostart = true
