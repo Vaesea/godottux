@@ -12,7 +12,7 @@ size = Vector2(29, 29)
 size = Vector2(29, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1pvm"]
-size = Vector2(32, 32)
+size = Vector2(32, 30)
 
 [node name="Spiky" type="CharacterBody2D" unique_id=1942256203]
 z_index = 40

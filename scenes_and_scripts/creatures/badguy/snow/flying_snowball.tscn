@@ -11,6 +11,12 @@ size = Vector2(29, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bo24"]
 size = Vector2(29, 29)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nac5"]
+size = Vector2(1910, 1926)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8sjd"]
+size = Vector2(1911, 1926)
+
 [node name="FlyingSnowball" type="CharacterBody2D" unique_id=1942256203]
 z_index = 40
 collision_layer = 4
@@ -37,6 +43,24 @@ collision_mask = 134
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
 position = Vector2(15.5, 17.5)
 shape = SubResource("RectangleShape2D_8bo24")
+
+[node name="LeftDetector" type="Area2D" parent="." unique_id=1505481737]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDetector" unique_id=1038036178]
+position = Vector2(-954, -83)
+shape = SubResource("RectangleShape2D_4nac5")
+
+[node name="RightDetector" type="Area2D" parent="." unique_id=1255034696]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RightDetector" unique_id=537571633]
+position = Vector2(985.5, -83)
+shape = SubResource("RectangleShape2D_o8sjd")
 
 [node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]
 position = Vector2(5, 0)

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://d1br2spyapopq"]
+
+[ext_resource type="Script" uid="uid://bi3h83i2lmae4" path="res://scenes_and_scripts/creatures/badguy/snow/stalactite.gd" id="1_1hfib"]
+[ext_resource type="SpriteFrames" uid="uid://dppgs3bmsqm6q" path="res://spriteframes/stalactite.tres" id="1_b84r2"]
+[ext_resource type="AudioStream" uid="uid://b6vataw6kt60p" path="res://assets/sounds/icecrash.ogg" id="2_1hfib"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_hk1ne"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_dxf27"]
+[ext_resource type="AudioStream" uid="uid://crch17wdmnw4u" path="res://assets/sounds/cracking.wav" id="4_hk1ne"]
+[ext_resource type="AudioStream" uid="uid://hib8ur757sm5" path="res://assets/sounds/sizzle.ogg" id="5_dxf27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijrtr"]
+size = Vector2(64, 20)
+
+[sub_resource type="Animation" id="Animation_dxf27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ijrtr"]
+resource_name = "shake"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2a55n"]
+_data = {
+&"RESET": SubResource("Animation_dxf27"),
+&"shake": SubResource("Animation_ijrtr")
+}
+
+[node name="Stalactite" type="CharacterBody2D" unique_id=131281928]
+collision_layer = 4
+script = ExtResource("1_1hfib")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=293035850]
+sprite_frames = ExtResource("1_b84r2")
+centered = false
+
+[node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1009947202]
+polygon = PackedVector2Array(26, 0, 15, 44, 4, 0)
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=2107399807]
+collision_layer = 4
+collision_mask = 134
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TuxDetector" unique_id=2036311360]
+polygon = PackedVector2Array(26, 0, 15, 44, 4, 0)
+
+[node name="FloorDetector" type="ShapeCast2D" parent="." unique_id=1130843409]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_ijrtr")
+target_position = Vector2(0, 512)
+max_results = 4
+collision_mask = 3
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="." unique_id=1649034304]
+stream = ExtResource("2_1hfib")
+
+[node name="CrackSound" type="AudioStreamPlayer" parent="." unique_id=1454402185]
+stream = ExtResource("4_hk1ne")
+
+[node name="MeltSound" type="AudioStreamPlayer" parent="." unique_id=986743376]
+stream = ExtResource("5_dxf27")
+
+[node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=1922709598]
+editor_description = "If stalactite is somehow squished, game shouldn't crash with this here."
+stream = ExtResource("3_hk1ne")
+
+[node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1305667680]
+editor_description = "If stalactite is somehow killed with death(true), game shouldn't crash with this here."
+stream = ExtResource("4_dxf27")
+
+[node name="AnimationTween" type="AnimationPlayer" parent="." unique_id=1725897896]
+libraries/ = SubResource("AnimationLibrary_2a55n")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1516602989]
+rect = Rect2(-64, -64, 160, 160)
+show_rect = false

@@ -109,3 +109,7 @@ shape = SubResource("RectangleShape2D_2ob4o")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1704175500]
 position = Vector2(24, 16)
 target_position = Vector2(0, 16)
+
+[node name="CeilingRayCast" type="RayCast2D" parent="." unique_id=1146369871]
+position = Vector2(24, 16)
+target_position = Vector2(0, -16)

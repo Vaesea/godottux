@@ -1,0 +1,43 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dwqdp1s3akcsu"]
+
+[ext_resource type="Texture2D" uid="uid://den6st27v0ly4" path="res://assets/images/creatures/bouncing_snowball/squished-left.png" id="1_e1lan"]
+[ext_resource type="Texture2D" uid="uid://bg4euyv2k00ia" path="res://assets/images/creatures/bouncing_snowball/left-0.png" id="2_eaclh"]
+[ext_resource type="Texture2D" uid="uid://dc6pa8ap4yqdw" path="res://assets/images/creatures/bouncing_snowball/left-1.png" id="3_ojbd2"]
+[ext_resource type="Texture2D" uid="uid://b16g01prbnrre" path="res://assets/images/creatures/bouncing_snowball/left-2.png" id="4_ttlg6"]
+[ext_resource type="Texture2D" uid="uid://deob2x6m0ugwx" path="res://assets/images/creatures/bouncing_snowball/left-3.png" id="5_k75s5"]
+[ext_resource type="Texture2D" uid="uid://d1l14murrh1ia" path="res://assets/images/creatures/bouncing_snowball/left-4.png" id="6_2whmv"]
+[ext_resource type="Texture2D" uid="uid://buj5n3hdt0j1i" path="res://assets/images/creatures/bouncing_snowball/left-5.png" id="7_chk6x"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e1lan")
+}],
+"loop": true,
+"name": &"squished",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eaclh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ojbd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ttlg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k75s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2whmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_chk6x")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

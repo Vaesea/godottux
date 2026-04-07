@@ -16,12 +16,15 @@ class_name Level
 ## Height of the level in tiles.
 @export var level_height:int = 35
 @export var main_spawnpoint = "main"
+## Whether snow particles are here or not. Set to true if you have the snow particles in the Misc node, if you don't have that, game will crash if you set this to true.
+@export var snowing = false
 ## How many seconds should the game wait before putting the player back in the worldmap / level select? [br]
 ## Set this to how long your "finish level" song is, if you changed it.
 var wait_to_end_level = 7.71
 
-# needed for scripting block
+# you know what? these are actually quite nice to have.
 @onready var tux = $Tux
+@onready var tux_camera = $Tux/Camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,12 +37,16 @@ func _ready() -> void:
 	tux.reload_player()
 	print(TuxManager.current_state)
 	$Goal.connect("level_finished", _on_level_finished)
+	if snowing:
+		$Misc/SnowParticles/Snow1.process_material.emission_box_extents.x = get_viewport().size.x / 2
 	print("Useful level debugging info, possibly:")
 	print("Width in pixels: " + str(Global.width_of_level) + ". If this is 0, and you didn't set Level Width to 0, there's most likely a bug you should report.")
 	print("Height in pixels: " + str(Global.height_of_level) + ". If this is 0, and you didn't set Level Height to 0, there's most likely a bug you should report.")
 	print("No more useful level debugging info.")
 
 func _process(_delta: float) -> void:
+	if snowing:
+		$Misc/SnowParticles.global_position = tux_camera.global_position - Vector2(0, 450)
 	if Global.debug and Input.is_key_pressed(KEY_0):
 		if scene_file_path not in Global.completed_levels:
 			Global.completed_levels.append(scene_file_path)

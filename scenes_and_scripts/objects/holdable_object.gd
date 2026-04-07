@@ -23,7 +23,7 @@ var collision_disabled = false
 @export var throw_up_height = 500
 @export var throw_side_speed = 200
 @export var throw_side_vertical_speed = 250
-@export var how_much_speed_to_throw = 1
+@export var how_much_speed_to_throw = 2
 
 func _ready() -> void:
 	add_to_group("Holdable")
@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 		$Collision.set_deferred("disabled", false)
 	
 	if not was_on_floor and is_on_floor() and current_state == States.Normal and not $BrickSound.playing:
+		print(name + ": Playing sound...")
 		$BrickSound.play()
 	
 	if current_state == States.Held:
@@ -74,11 +75,11 @@ func throw(tux_direction:int):
 	throw_side = false
 	place_rock = false
 	throw_up = false
-	if tux_direction == -1 and held_by.velocity.x <= -how_much_speed_to_throw and not Input.is_action_pressed("player_up"):
+	if tux_direction == -1 and held_by.get_real_velocity().x <= -how_much_speed_to_throw and not Input.is_action_pressed("player_up"):
 		throw_side = true
-	elif tux_direction == 1 and held_by.velocity.x >= how_much_speed_to_throw and not Input.is_action_pressed("player_up"):
+	elif tux_direction == 1 and held_by.get_real_velocity().x >= how_much_speed_to_throw and not Input.is_action_pressed("player_up"):
 		throw_side = true
-	elif abs(held_by.velocity.x) < how_much_speed_to_throw and not Input.is_action_pressed("player_up") and not held_by.skid:
+	elif abs(held_by.get_real_velocity().x) < how_much_speed_to_throw and not Input.is_action_pressed("player_up") and not held_by.skid:
 		place_rock = true
 	elif tux_direction == -1 or tux_direction == 1 and held_by.skid:
 		throw_side = true

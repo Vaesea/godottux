@@ -5,6 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_xvo7w"]
 [ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_vpx2a"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gao4"]
+size = Vector2(29, 29)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
 size = Vector2(29, 29)
 
@@ -24,7 +27,7 @@ offset = Vector2(0, -4)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
 position = Vector2(19.5, 17.5)
-shape = SubResource("RectangleShape2D_aggo7")
+shape = SubResource("RectangleShape2D_8gao4")
 
 [node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
 collision_layer = 4

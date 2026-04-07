@@ -1,5 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bkbmfa6snhsl5"]
 
+[ext_resource type="Texture2D" uid="uid://dokrce41vuuhu" path="res://assets/images/creatures/tux/fire/buttjump-0.png" id="1_pqgrp"]
 [ext_resource type="Texture2D" uid="uid://rksw57o15m75" path="res://assets/images/creatures/tux/fire/duck-0.png" id="1_wygjy"]
 [ext_resource type="Texture2D" uid="uid://deg0r71e8rv30" path="res://assets/images/creatures/tux/fire/jump-0.png" id="2_pqgrp"]
 [ext_resource type="Texture2D" uid="uid://dmcqfqbhc1l56" path="res://assets/images/creatures/tux/fire/kick-0.png" id="3_vj8lp"]
@@ -18,9 +19,17 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_wygjy")
+"texture": ExtResource("1_pqgrp")
 }],
 "loop": true,
+"name": &"buttjump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wygjy")
+}],
+"loop": false,
 "name": &"duck",
 "speed": 5.0
 }, {

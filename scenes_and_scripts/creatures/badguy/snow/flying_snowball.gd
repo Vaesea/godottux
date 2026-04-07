@@ -4,6 +4,7 @@ extends BadGuy
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	flying = true
+	freezable = false
 	super()
 
 func _physics_process(delta: float) -> void:

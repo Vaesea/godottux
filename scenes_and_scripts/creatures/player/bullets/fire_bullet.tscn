@@ -32,3 +32,7 @@ collision_mask = 4
 [node name="Collision" type="CollisionShape2D" parent="EnemyDetector" unique_id=644935918]
 position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_i60yi")
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=1485564822]
+position = Vector2(8, 8)
+target_position = Vector2(0, 8)
