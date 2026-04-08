@@ -45,6 +45,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Sectors
 - Doors
 - Changing every variable to static typing instead of dynamic typing (improves performance) (currently working on this!)
+- Making music a global thing (currently working on this!)
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
