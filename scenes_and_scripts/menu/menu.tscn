@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c7sjkwbdpjy4w"]
 
 [ext_resource type="Script" uid="uid://cgmtjq27c1dy4" path="res://scenes_and_scripts/menu/menu.gd" id="1_ltxr7"]
-[ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="2_dd0i1"]
+[ext_resource type="Texture2D" uid="uid://bukr7r3yr7dps" path="res://assets/images/engine/menu/background.png" id="2_ltxr7"]
 [ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="2_xokca"]
+[ext_resource type="Texture2D" uid="uid://tgfbmyupyrg8" path="res://assets/images/engine/menu/gradient.png" id="3_pbvww"]
 [ext_resource type="AudioStream" uid="uid://bji73mm44kyeu" path="res://assets/music/theme.ogg" id="5_80asc"]
+[ext_resource type="Texture2D" uid="uid://dlowotvig1aq" path="res://assets/images/engine/menu/logo.png" id="6_84fjn"]
 
 [node name="Menu" type="Node2D" unique_id=749843694]
 script = ExtResource("1_ltxr7")
@@ -17,14 +19,19 @@ repeat_times = 2
 [node name="Background" type="Sprite2D" parent="Background" unique_id=1595103768]
 position = Vector2(0, -96)
 scale = Vector2(2, 2)
-texture = ExtResource("2_dd0i1")
+texture = ExtResource("2_ltxr7")
 centered = false
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=869579158]
+position = Vector2(410.25, 401.00006)
+scale = Vector2(1.8949997, 1.25)
+texture = ExtResource("3_pbvww")
+
 [node name="PlayButton" type="Button" parent="." unique_id=740652778]
-offset_left = 192.0
-offset_top = 192.0
-offset_right = 631.0
-offset_bottom = 288.0
+offset_left = 234.0
+offset_top = 381.0
+offset_right = 589.0
+offset_bottom = 443.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_xokca")
@@ -32,10 +39,10 @@ theme_override_font_sizes/font_size = 48
 text = "Play Game"
 
 [node name="DeleteButton" type="Button" parent="." unique_id=1397822321]
-offset_left = 192.0
-offset_top = 64.0
-offset_right = 631.0
-offset_bottom = 160.0
+offset_left = 234.0
+offset_top = 291.0
+offset_right = 589.0
+offset_bottom = 365.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_xokca")
@@ -66,6 +73,11 @@ bbcode_enabled = true
 text = "[wave]Godot is licensed under the MIT license, therefore, this is a note saying that as this game engine? thing is made using Godot.[/wave]"
 autowrap_mode = 2
 horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=762995974]
+position = Vector2(412.00003, 146)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_84fjn")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
