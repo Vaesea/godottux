@@ -77,3 +77,4 @@ Smartball / Mrs Snowball and Smartblock / Mrs Iceblock are some new enemies here
 - SuperTux Team (SuperTux 0.3.2 images, music and more)
 - Vaesea (Coding, Test Levels)
 - AnatolyStev (Coding) (i'm kind of sure he has worked on every supertux fangame i've ever made)
+- FilipOK (Art) (New logo, new main menu)
