@@ -14,7 +14,7 @@ class_name Block
 ## Is the block an Info Block? Best to set this in a script.
 @export var info = false
 ## If Tux is small and content is fire flower, egg will be given instead.
-@export_enum("Coin", "Fire Flower") var content = 0
+@export_enum("Coin", "Fire Flower", "TuxDoll") var content = 0
 
 @export_category("Brick Block Setup")
 ## Whether the brick is empty or not.
@@ -56,7 +56,7 @@ func _ready() -> void:
 		$TuxDetector2.connect("body_exited", _on_tux_exited)
 
 func _on_tux_detector_body_entered(body):
-	if body.is_in_group("Player") and not empty and body.velocity.y > 1: # velocity check is an attempt to fix the bug
+	if body.is_in_group("Player") and not empty and body.velocity.y > 0: # velocity check is an attempt to fix the bug
 		print("A")
 		turn_empty("up_and_down")
 		if body.global_position.x < global_position.x:
@@ -114,10 +114,19 @@ func spawn_item(direction:String):
 			egg.position = self.position
 			if direction == "left":
 				egg.spawn_from_block(-1)
-			if direction == "right":
+			elif direction == "right":
 				egg.spawn_from_block(1)
 		else:
 			spawn_fire_flower()
+	elif content == 2:
+		var tux_doll = load("uid://nmdm0hrkrguq").instantiate()
+		get_tree().current_scene.call_deferred("add_child", tux_doll)
+		$PowerupSound.play()
+		tux_doll.position = self.position
+		if direction == "left":
+			tux_doll.spawn_from_block(-1)
+		elif direction == "right":
+			tux_doll.spawn_from_block(1)
 
 func _on_bump_finished(anim_name: StringName):
 	if anim_name == "up_and_down":

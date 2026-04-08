@@ -117,6 +117,7 @@ _data = {
 
 [node name="FireFlower" type="CharacterBody2D" unique_id=1265951058]
 collision_layer = 64
+collision_mask = 257
 script = ExtResource("1_txebs")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=1310019337]

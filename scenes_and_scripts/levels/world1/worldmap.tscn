@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://c8e70il54cmxc" path="res://assets/images/worldmap/tiles/worldmap.tres" id="5_pbaix"]
 [ext_resource type="PackedScene" uid="uid://2ubl5y6jnhg7" path="res://scenes_and_scripts/objects/worldmap/worldmap_tux.tscn" id="6_oif76"]
 [ext_resource type="PackedScene" uid="uid://c7jg4p1ouyw4q" path="res://scenes_and_scripts/objects/worldmap/level.tscn" id="7_4307f"]
-[ext_resource type="PackedScene" uid="uid://8c6330vwpbhe" path="res://scenes_and_scripts/levels/world1/test_level.tscn" id="8_fvybe"]
+[ext_resource type="PackedScene" uid="uid://dae2dm5scbu4m" path="res://scenes_and_scripts/levels/world1/welcome_to_antarctica.tscn" id="9_oif76"]
 [ext_resource type="PackedScene" uid="uid://ct6hka51cnpm7" path="res://scenes_and_scripts/objects/worldmap/rock.tscn" id="9_sbx8j"]
 [ext_resource type="PackedScene" uid="uid://cbwdumx3i8nno" path="res://scenes_and_scripts/objects/worldmap/teleporter.tscn" id="10_51hoe"]
 [ext_resource type="PackedScene" uid="uid://chddo2mchrhjp" path="res://scenes_and_scripts/objects/invisible_block.tscn" id="11_pbaix"]
@@ -46,8 +46,8 @@ spawn_name = "back"
 
 [node name="Level" parent="." unique_id=1864217810 instance=ExtResource("7_4307f")]
 position = Vector2(992, 480)
-level_scene = ExtResource("8_fvybe")
-level_name = "Test Level"
+level_scene = ExtResource("9_oif76")
+level_name = "Welcome To Antarctica"
 
 [node name="Rock" parent="." unique_id=1245451961 instance=ExtResource("9_sbx8j")]
 position = Vector2(1344, 544)

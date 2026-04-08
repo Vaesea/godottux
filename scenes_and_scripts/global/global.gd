@@ -38,6 +38,8 @@ var checkpoint_reached = false # It's a surprise tool that will help us later!
 var save_version = 2
 var save_file = "user://save"
 
+var checkpoint_position = Vector2(0, 0)
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("activate_debug") and not debug:
 		debug = true

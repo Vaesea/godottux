@@ -108,6 +108,7 @@ _data = {
 
 [node name="BonusBlock" type="StaticBody2D" unique_id=1476769138]
 z_index = 2
+collision_layer = 256
 script = ExtResource("1_0ddeg")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=1793494598]
@@ -120,6 +121,7 @@ shape = SubResource("RectangleShape2D_nadeq")
 
 [node name="TuxDetector" type="Area2D" parent="." unique_id=760395461]
 position = Vector2(16, 16)
+collision_layer = 256
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=2045527202]
@@ -127,6 +129,7 @@ position = Vector2(0, 16.245235)
 shape = SubResource("RectangleShape2D_0ddeg")
 
 [node name="EnemyDetectorLeft" type="Area2D" parent="." unique_id=416163567]
+collision_layer = 256
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorLeft" unique_id=1992263146]
@@ -134,6 +137,7 @@ position = Vector2(-0.5, 16)
 shape = SubResource("RectangleShape2D_orv8c")
 
 [node name="EnemyDetectorRight" type="Area2D" parent="." unique_id=1873564641]
+collision_layer = 256
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorRight" unique_id=1083277149]
@@ -141,6 +145,7 @@ position = Vector2(32.5, 16.5)
 shape = SubResource("RectangleShape2D_vbve7")
 
 [node name="EnemyDetectorTop" type="Area2D" parent="." unique_id=906198554]
+collision_layer = 256
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectorTop" unique_id=603940699]

@@ -32,7 +32,7 @@ var cracking = false
 var dieFall = false
 
 # Movement
-var speed = 80
+@export var speed = 80
 
 # i have no idea how this managed to work but i think my brain might have grown
 # nevermind my brain is still small and smooth. at least this works.
@@ -189,6 +189,9 @@ func _physics_process(delta: float) -> void:
 	if wait_to_collide > 0:
 		wait_to_collide -= delta
 	
+	if walking_and_holdable and current_iceblock_state == IceblockStates.Normal and not $ScreenCheck.is_on_screen():
+		set_physics_process(false)
+	
 	# If the enemy is flying and dead, it's considered "dead_flying"
 	var dead_flying = flying and current_state == EnemyStates.Dead
 	
@@ -232,7 +235,7 @@ func _physics_process(delta: float) -> void:
 			$Image.play("walk")
 	elif explosion:
 		kill_other_enemies = true
-		kill_self_on_touching_enemy = true
+		kill_self_on_touching_enemy = false
 	elif stalactite:
 		kill_other_enemies = true
 		kill_self_on_touching_enemy = false
@@ -278,9 +281,9 @@ func _physics_process(delta: float) -> void:
 		$FloorDetector.force_shapecast_update()
 		
 		if $FloorDetector.is_colliding():
-			$FloorDetector.target_position.y = $FloorDetector.get_collision_point(0).y - $FloorDetector.global_position.y
-			if $FloorDetector.get_collider(0):
-				if $FloorDetector.get_collider(0).is_in_group("Player"):
+			for collision in range($FloorDetector.get_collision_count()):
+				$FloorDetector.target_position.y = $FloorDetector.get_collision_point(collision).y - $FloorDetector.global_position.y
+				if $FloorDetector.get_collider(collision) and $FloorDetector.get_collider(collision).is_in_group("Player"):
 					print(name + ": Player detected!")
 					start_fall()
 			
@@ -336,6 +339,7 @@ func move():
 				$Image.play("jump")
 
 func death(fall:bool):
+	print(name + " died.")
 	current_state = EnemyStates.Dead
 	$TuxDetector.set_deferred("monitoring", false)
 	$TuxDetector.set_deferred("monitorable", false)
@@ -346,6 +350,9 @@ func death(fall:bool):
 		if stalactite: # Literally nothing else worked. You can probably see where I've tried other stuff for this.
 			$MeltSound.play()
 			start_fall()
+			return
+		if bomb:
+			spawn_explosion()
 			return
 		held_by = null
 		if walking_and_holdable:
@@ -402,6 +409,7 @@ func interact(stomp, tux, fireball, iceblock):
 		if tux_stomp and hurt_by_stomp:
 			stomp.get_parent().stomp_bounce()
 			if bomb:
+				$SquishSound.play()
 				$Image.play("ticking")
 				$TuxDetector.set_deferred("monitoring", false)
 				current_state = EnemyStates.Dead
@@ -463,7 +471,7 @@ func interact(stomp, tux, fireball, iceblock):
 				death(true)
 			elif current_iceblock_state == IceblockStates.MovingFlat:
 				iceblock.death(true)
-		elif stalactite:
+		elif stalactite or explosion:
 			if kill_other_enemies and not iceblock == self:
 				iceblock.death(true)
 
@@ -578,11 +586,11 @@ func spawn_explosion():
 
 func _on_iceblock_entered_screen():
 	print(name + ": Entered screen")
-	process_mode = Node.PROCESS_MODE_PAUSABLE
+	set_physics_process(true)
 	print(name + str(process_mode))
 
 func _on_iceblock_exited_screen():
 	print(name + ": Exited screen")
 	if not current_iceblock_state == IceblockStates.MovingFlat:
-		process_mode = Node.PROCESS_MODE_DISABLED
+		set_physics_process(false)
 		print(name + str(process_mode))

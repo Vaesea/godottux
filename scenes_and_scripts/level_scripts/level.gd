@@ -57,6 +57,7 @@ func _process(_delta: float) -> void:
 			get_tree().change_scene_to_file(Global.current_worldmap)
 
 func _on_level_finished() -> void:
+	Global.checkpoint_reached = false
 	$Misc/Music.stream = load("res://assets/music/leveldone.ogg")
 	print($Misc/Music.stream) # helpful debug thing for myself, should probably remove this before release.
 	$Misc/Music.play()
@@ -71,9 +72,22 @@ func _on_level_finished() -> void:
 
 # TODO: Replace worldmap spawnpoint finding with this
 func find_spawnpoint():
-	for spawn in get_tree().get_nodes_in_group("LevelSpawnPoint"):
-		if spawn.spawnpoint_name == main_spawnpoint:
-			if TuxManager.current_state == TuxManager.powerup_states.Small:
-				$Tux.global_position = spawn.global_position
-			else:
-				$Tux.global_position = spawn.global_position - Vector2(0, 23)
+	if not Global.checkpoint_reached:
+		for spawn in get_tree().get_nodes_in_group("LevelSpawnPoint"):
+			if spawn.spawnpoint_name == main_spawnpoint:
+				if TuxManager.current_state == TuxManager.powerup_states.Small:
+					$Tux.global_position = spawn.global_position
+				else:
+					$Tux.global_position = spawn.global_position - Vector2(0, 23)
+	else:
+		print("Spawning at checkpoint...")
+		if TuxManager.current_state == TuxManager.powerup_states.Small:
+			$Tux.global_position = Global.checkpoint_position
+		else:
+			$Tux.global_position = Global.checkpoint_position - Vector2(0, 23)
+
+func fade_tilemap(tilemap_to_fade:String):
+	var tilemap = get_node(tilemap_to_fade)
+	var fade_tween = create_tween()
+	fade_tween.tween_property(tilemap, "modulate:a", 0.0, 1.0)
+	fade_tween.tween_callback(tilemap.queue_free)

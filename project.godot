@@ -84,6 +84,7 @@ activate_debug={
 2d_physics/layer_6="Coin"
 2d_physics/layer_7="PowerUp"
 2d_physics/layer_8="Bullet"
+2d_physics/layer_9="Block"
 
 [physics]
 

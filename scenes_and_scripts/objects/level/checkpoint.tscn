@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bgmottjdfiewy"]
+
+[ext_resource type="SpriteFrames" uid="uid://dmyga383kunt7" path="res://spriteframes/resetpoint.tres" id="1_5nu3g"]
+[ext_resource type="Script" uid="uid://3vbx1jnivbu1" path="res://scenes_and_scripts/objects/level/checkpoint.gd" id="2_kq8ln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nu3g"]
+size = Vector2(16, 27)
+
+[node name="Checkpoint" type="AnimatedSprite2D" unique_id=1548006532]
+sprite_frames = ExtResource("1_5nu3g")
+frame_progress = 0.73224276
+centered = false
+script = ExtResource("2_kq8ln")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=562019196]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=807569805]
+position = Vector2(15, 18.5)
+shape = SubResource("RectangleShape2D_5nu3g")

@@ -11,14 +11,15 @@ func _ready() -> void:
 	brick = true
 	super()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not empty_brick and how_many_hits <= 0:
 		$Image.play("empty")
 
 func _on_tux_detector_body_entered(body):
-	if body.is_in_group("Player") and body.velocity.y > 1:
+	if body.is_in_group("Player"):
 		if empty_brick:
 			print("A")
+			$BrickSound.play()
 			if not TuxManager.current_state == TuxManager.powerup_states.Small:
 				$AnimationTween.play("up_to_gone")
 				bump = true
@@ -27,6 +28,7 @@ func _on_tux_detector_body_entered(body):
 				bump = true
 		else:
 			print("B")
+			$BrickSound.play()
 			if how_many_hits > 0:
 				$AnimationTween.play("up_and_down")
 				how_many_hits -= 1

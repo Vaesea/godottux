@@ -13,6 +13,7 @@ height = 73.0
 [node name="Explosion" type="CharacterBody2D" unique_id=1942256203]
 z_index = 40
 collision_layer = 4
+collision_mask = 257
 floor_constant_speed = true
 floor_max_angle = 1.3962634
 floor_snap_length = 12.0
@@ -30,7 +31,7 @@ disabled = true
 
 [node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
 collision_layer = 4
-collision_mask = 134
+collision_mask = 390
 
 [node name="Collision" type="CollisionShape2D" parent="TuxDetector" unique_id=1996856854]
 position = Vector2(19.5, 17.5)

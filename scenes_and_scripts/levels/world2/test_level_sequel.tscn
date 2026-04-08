@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b3hpsrshrx1l0"]
 
-[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/levels/level.gd" id="1_r1yn2"]
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_r1yn2"]
 [ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="2_wcnbc"]
 [ext_resource type="Texture2D" uid="uid://cl6c172x05mux" path="res://assets/images/background/BlueRock_Forest/blue-middle.jpg" id="3_f6hgq"]
 [ext_resource type="Texture2D" uid="uid://b3q2udg55gi4h" path="res://assets/images/background/BlueRock_Forest/blue-top.jpg" id="4_28m3u"]
@@ -172,6 +172,9 @@ position = Vector2(192, 384)
 [node name="ViciousIvy" parent="." unique_id=1407968994 instance=ExtResource("15_wcnbc")]
 position = Vector2(864, 352)
 
+[node name="ViciousIvy2" parent="." unique_id=799304932 instance=ExtResource("15_wcnbc")]
+position = Vector2(288, 384)
+
 [node name="WalkingLeaf" parent="." unique_id=303646885 instance=ExtResource("16_f6hgq")]
 position = Vector2(800, 32)
 
@@ -193,6 +196,9 @@ snow = true
 
 [node name="MrBomb" parent="." unique_id=1337546425 instance=ExtResource("18_oi3rd")]
 position = Vector2(384, 384)
+
+[node name="MrBomb2" parent="." unique_id=140971469 instance=ExtResource("18_oi3rd")]
+position = Vector2(320, 256)
 
 [connection signal="finished" from="Misc/Music" to="." method="_on_music_finished"]
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmasxcsxyex0i"]
 
-[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/levels/level.gd" id="1_csn2j"]
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_csn2j"]
 [ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="2_ii07y"]
 [ext_resource type="Texture2D" uid="uid://cl6c172x05mux" path="res://assets/images/background/BlueRock_Forest/blue-middle.jpg" id="3_fr58k"]
 [ext_resource type="Texture2D" uid="uid://b3q2udg55gi4h" path="res://assets/images/background/BlueRock_Forest/blue-top.jpg" id="4_62okr"]
@@ -158,7 +158,7 @@ collision_enabled = false
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("9_48ttc")]
 position = Vector2(-64, -32)
 
-[node name="LevelSpawnPoint" parent="." unique_id=1166009292 instance=ExtResource("11_l5n4j")]
+[node name="MainLevelSpawnPoint" parent="." unique_id=1166009292 instance=ExtResource("11_l5n4j")]
 
 [node name="Goal" parent="." unique_id=890520411 instance=ExtResource("10_rcanu")]
 position = Vector2(2464, -224)

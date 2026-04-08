@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c2xg0c0shsnpn"]
 
-[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/levels/level.gd" id="1_q47vp"]
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_q47vp"]
 [ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="2_55mh6"]
 [ext_resource type="Texture2D" uid="uid://cl6c172x05mux" path="res://assets/images/background/BlueRock_Forest/blue-middle.jpg" id="3_i21n0"]
 [ext_resource type="Texture2D" uid="uid://b3q2udg55gi4h" path="res://assets/images/background/BlueRock_Forest/blue-top.jpg" id="4_elly2"]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://nmdm0hrkrguq"]
+
+[ext_resource type="Script" uid="uid://uch24moflbgn" path="res://scenes_and_scripts/objects/level/powerups/tux_doll.gd" id="1_1t4jy"]
+[ext_resource type="Texture2D" uid="uid://cjxt36bejdk4a" path="res://assets/images/objects/powerups/1up.png" id="1_mmrm4"]
+[ext_resource type="AudioStream" uid="uid://nv0kfscoi7ig" path="res://assets/sounds/lifeup.wav" id="3_143b6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t4jy"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmrm4"]
+size = Vector2(32, 32)
+
+[node name="TuxDoll" type="CharacterBody2D" unique_id=874423024]
+script = ExtResource("1_1t4jy")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=96682325]
+texture = ExtResource("1_mmrm4")
+centered = false
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=2135689564]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=84580912]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_1t4jy")
+
+[node name="WarningDestroyer" type="CollisionShape2D" parent="." unique_id=498981662]
+visible = false
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_mmrm4")
+disabled = true
+
+[node name="LifeSound" type="AudioStreamPlayer" parent="." unique_id=1336853799]
+stream = ExtResource("3_143b6")

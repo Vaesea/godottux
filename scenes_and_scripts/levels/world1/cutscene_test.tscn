@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cpuospyo040hl"]
 
-[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/levels/level.gd" id="1_xno7q"]
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_xno7q"]
 [ext_resource type="Texture2D" uid="uid://bk7giji3rsklc" path="res://assets/images/background/antarctic/semi_arctic.jpg" id="2_1lh5v"]
 [ext_resource type="AudioStream" uid="uid://bji73mm44kyeu" path="res://assets/music/theme.ogg" id="3_gdlk0"]
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="4_oco7x"]

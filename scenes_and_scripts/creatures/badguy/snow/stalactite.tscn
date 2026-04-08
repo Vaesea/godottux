@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://hib8ur757sm5" path="res://assets/sounds/sizzle.ogg" id="5_dxf27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijrtr"]
-size = Vector2(64, 20)
+size = Vector2(96, 64)
 
 [sub_resource type="Animation" id="Animation_dxf27"]
 length = 0.001
@@ -51,6 +51,7 @@ _data = {
 
 [node name="Stalactite" type="CharacterBody2D" unique_id=131281928]
 collision_layer = 4
+collision_mask = 257
 script = ExtResource("1_1hfib")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=293035850]
@@ -71,7 +72,7 @@ polygon = PackedVector2Array(26, 0, 15, 44, 4, 0)
 position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_ijrtr")
 target_position = Vector2(0, 512)
-max_results = 4
+max_results = 8
 collision_mask = 3
 
 [node name="CrashSound" type="AudioStreamPlayer" parent="." unique_id=1649034304]

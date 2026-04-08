@@ -10,7 +10,7 @@ func _ready() -> void:
 	super()
 
 func _on_tux_detector_body_entered(body):
-	if body.is_in_group("Player") and body.velocity.y > 1 and infoblock_detects_tux:
+	if body.is_in_group("Player") and body.velocity.y > 0 and infoblock_detects_tux:
 		if not displaying_message:
 			print("Display message")
 			bump = true
