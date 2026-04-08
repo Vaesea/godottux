@@ -34,10 +34,9 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Flame
 - Plant
 - Kugelblitz (but it's just a large flame thing)
-- Mr Cherry
+- Mr Cherry (Bonus Badguy!)
 - Toad
 - Tumbleweed (Bonus Badguy!)
-- Totem
 - Forest Exit Tiles
 - Tux death animation stuff
 - Unstable Tiles (Ice, Bridge, Castle)
@@ -59,6 +58,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Snowman (although previously listed, i realized it's not a 0.3.2 enemy. has a small chance of still being added, though)
 - Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
+- Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
