@@ -42,6 +42,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Unstable Tiles (Ice, Bridge, Castle)
 - Tux backflipping
 - Lantern (no magic tiles though)
+- Sectors
+- Doors
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
