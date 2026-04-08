@@ -10,15 +10,14 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 ## What hasn't been added yet but is planned
 - Old Sounds ("new" (0.5) sounds are used instead for now)
 - Star
-- Tux Doll
 - Worldmap Tux sprite changer
 - Trampolines (Stationary and Portable)
-- Actually good version of the level version of the Rock object
+- Actually good version of the level Rock object
 - Level results
 - Cannon
 - Rocket Launcher
 - Dropper
-- Full Test Levels (World 1 = Welcome To Antarctica recreation, World 2 = Welcome To The Forest recreation)
+- Full Test Levels (World 2 = Welcome To The Forest recreation, castle keys test level, lantern test level)
 - Mr Rocket
 - Mr Tree
 - Snail
@@ -34,7 +33,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Will-O-Wisp
 - Flame
 - Plant
-- Kugelblitz (but it's actually usable in levels)
+- Kugelblitz (but it's just a large flame thing)
 - Mr Cherry
 - Toad
 - Tumbleweed (Bonus Badguy!)
@@ -46,7 +45,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Lantern (no magic tiles though)
 
 ## What this doesn't recreate / use
-- Levels
+- Levels (Except Welcome To Antarctica)
 - Accurate Main Menu
 - Accurate Options Menu
 - Multiple Profiles (if someone were to add this in, along with a way to change which profile you're using, that'd be cool!)
@@ -67,7 +66,7 @@ There also isn't a level editor, not even as a separate program. I might try to 
 ### Debug Mode
 You activate this by pressing the \ key.
 
-When you activate this, instructions are given to you.
+When you activate this, instructions are given to you through a message (I'm not sure if it works on Linux or not, but it should)
 
 There is currently no way to disable this other than to delete your save file.
 
