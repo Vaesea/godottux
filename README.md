@@ -41,7 +41,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Tux death animation stuff
 - Unstable Tiles (Ice, Bridge, Castle)
 - Tux backflipping
-- Lantern (no magic tiles though)
 - Sectors
 - Doors
 - Changing every variable to static typing instead of dynamic typing (improves performance) (currently working on this!)
@@ -64,6 +63,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
+- Lantern (while not that complicated to add, the light would look terrible in-game)
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
