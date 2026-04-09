@@ -1,6 +1,7 @@
 extends Node2D
 
 @export_file("*.tscn") var selected_level = "res://scenes_and_scripts/levels/world1/cutscene_test.tscn"
+@export_file("*.tscn") var credits_menu = "res://scenes_and_scripts/menu/credits.tscn"
 @export_file("*.wav", "*.ogg") var song = "res://assets/music/theme.ogg"
 
 func _ready() -> void:
@@ -28,3 +29,6 @@ func _on_play_button_pressed() -> void:
 func _on_delete_button_pressed() -> void:
 	OS.alert("This will close the game and delete your save data.", "Warning")
 	Global.delete_data()
+
+func _on_credits_button_pressed() -> void:
+	get_tree().change_scene_to_file(credits_menu)

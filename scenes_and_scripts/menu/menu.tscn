@@ -27,21 +27,32 @@ scale = Vector2(1.8949997, 1.25)
 texture = ExtResource("3_pbvww")
 
 [node name="PlayButton" type="Button" parent="." unique_id=740652778]
-offset_left = 234.0
-offset_top = 381.0
-offset_right = 589.0
-offset_bottom = 443.0
+offset_left = 224.0
+offset_top = 342.0
+offset_right = 579.0
+offset_bottom = 404.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_xokca")
 theme_override_font_sizes/font_size = 48
 text = "Play Game"
 
+[node name="CreditsButton" type="Button" parent="." unique_id=844636727]
+offset_left = 224.0
+offset_top = 416.0
+offset_right = 579.0
+offset_bottom = 478.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_xokca")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
 [node name="DeleteButton" type="Button" parent="." unique_id=1397822321]
-offset_left = 234.0
-offset_top = 291.0
-offset_right = 589.0
-offset_bottom = 365.0
+offset_left = 224.0
+offset_top = 256.0
+offset_right = 579.0
+offset_bottom = 330.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("2_xokca")
@@ -60,9 +71,9 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="Label3" type="RichTextLabel" parent="." unique_id=864472968]
-offset_top = 480.0
+offset_top = 496.0
 offset_right = 800.0
-offset_bottom = 544.0
+offset_bottom = 536.0
 theme_override_fonts/normal_font = ExtResource("2_xokca")
 bbcode_enabled = true
 text = "[wave]Godot is licensed under the MIT license, therefore, this is a note saying that because this game engine? thing is made using Godot.[/wave]"
@@ -70,9 +81,10 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=762995974]
-position = Vector2(412.00003, 146)
+position = Vector2(416, 128.00002)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("6_84fjn")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
