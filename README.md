@@ -8,11 +8,10 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## What hasn't been added yet but is planned
-- Old Sounds ("new" (0.5) sounds are used instead for now)
 - Star
 - Worldmap Tux sprite changer
 - Trampolines (Stationary and Portable)
-- Actually good version of the level Rock object
+- Fix placing the level rock object
 - Level results
 - Cannon
 - Rocket Launcher
