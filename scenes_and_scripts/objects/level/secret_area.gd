@@ -1,9 +1,9 @@
 extends Area2D
 
 ## Make this empty to not fade a TileMapLayer. This must be the name of an actual TileMapLayer in the level or the game will crash.
-@export var tile_map_layer_name = ""
+@export var tile_map_layer_name:String
 
-var detected_tux = false
+var detected_tux:bool = false
 
 func _ready() -> void:
 	connect("body_entered", _on_tux_entered)

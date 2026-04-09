@@ -3,22 +3,22 @@ extends CharacterBody2D
 # i combined foresttux / milestone mix's fire bullet 
 # and a very old version of peppertux (before peppertux-haxe)'s fire bullet.
 
-var speed = 600
-var jump_height = 300.0 # float because of an error
+var speed:float = 600.0 # float because of a warning
+var jump_height:float = 300.0 # float because of an error (or was it warning? i can't remember)
 
-var how_many_bounces = 3
-var bounces = 0
+var how_many_bounces:int = 3
+var bounces:int = 0
 
-var direction = 1
+var direction:int = 1
 
-var previous_velocity_y = 0
+var previous_velocity_y:float = 0 # float because of a warning
 
-var was_on_floor = false
+var was_on_floor:bool = false
 
 # Do you want the fireball behavior to be more like Mario? Set this to true when spawning the fireball through Tux. (or just set tux's mario_fireballs to true)
-var mario = false
+var mario:bool = false
 # Do you want the fireball behavior to be more like new SuperTux versions? Set this to true when spawning the fireball through Tux. (or just set tux's new_fireballs to true)
-var new_fireball_behavior = false
+var new_fireball_behavior:bool = false
 
 func _ready() -> void:
 	add_to_group("FireBullet")

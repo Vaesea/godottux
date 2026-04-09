@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://blssg8lk6bip6"]
+
+[ext_resource type="SpriteFrames" uid="uid://cu4h8rwbdbmww" path="res://spriteframes/door.tres" id="1_odga2"]
+[ext_resource type="Script" uid="uid://naakfckyued" path="res://scenes_and_scripts/objects/level/door.gd" id="2_68h5f"]
+[ext_resource type="AudioStream" uid="uid://84tw8qlm1s6g" path="res://assets/sounds/door.wav" id="3_brar7"]
+
+[node name="Door" type="AnimatedSprite2D" unique_id=292087599]
+sprite_frames = ExtResource("1_odga2")
+centered = false
+offset = Vector2(0, -4)
+script = ExtResource("2_68h5f")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=479559383]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TuxDetector" unique_id=2135864049]
+position = Vector2(32, 32)
+polygon = PackedVector2Array(-28, 64, -27, -8, -21, -23, -13, -29, -6, -30, 0, -29, 5.942898, -23.90609, 7, -23, 14, -8, 14, 64)
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="." unique_id=785107457]
+stream = ExtResource("3_brar7")

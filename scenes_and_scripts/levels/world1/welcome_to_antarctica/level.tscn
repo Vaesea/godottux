@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dae2dm5scbu4m"]
+
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_a1i3g"]
+[ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="2_87qan"]
+[ext_resource type="PackedScene" uid="uid://cli3f8rtu5302" path="res://scenes_and_scripts/levels/world1/welcome_to_antarctica/sectors/sector_main.tscn" id="3_ktgyt"]
+[ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="4_87qan"]
+
+[node name="WTA" type="Node2D" unique_id=1170359899]
+script = ExtResource("1_a1i3g")
+level_name = "Welcome To Antarctica"
+level_creator = "SuperTux Team (Original), Vaesea (Recreation)"
+level_note = "Recreation of SuperTux 0.3.2's Welcome To Antarctica"
+
+[node name="Misc" type="Node2D" parent="." unique_id=1525953836]
+
+[node name="HUD" parent="Misc" unique_id=1308660143 instance=ExtResource("2_87qan")]
+
+[node name="MainSector" parent="." unique_id=2028258147 instance=ExtResource("3_ktgyt")]
+
+[node name="Tux" parent="." unique_id=205617556 instance=ExtResource("4_87qan")]
+position = Vector2(-69, -51)

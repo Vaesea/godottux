@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cmasxcsxyex0i"]
+
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_ryly4"]
+[ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="2_fdkc0"]
+[ext_resource type="PackedScene" uid="uid://cw34ydo2ppd6k" path="res://scenes_and_scripts/levels/template/template_level/sectors/main.tscn" id="3_pisoa"]
+[ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="8_jesk3"]
+
+[node name="Template" type="Node2D" unique_id=1170359899]
+script = ExtResource("1_ryly4")
+
+[node name="Misc" type="Node2D" parent="." unique_id=1525953836]
+
+[node name="HUD" parent="Misc" unique_id=1308660143 instance=ExtResource("2_fdkc0")]
+
+[node name="Main" parent="." unique_id=1907047823 instance=ExtResource("3_pisoa")]
+
+[node name="Tux" parent="." unique_id=205617556 instance=ExtResource("8_jesk3")]
+position = Vector2(-64, -32)

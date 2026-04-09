@@ -1,5 +1,39 @@
 [gd_scene format=3 uid="uid://danlacqs8lqmp"]
 
-[node name="Credits" type="Node2D" unique_id=769725761]
+[ext_resource type="Script" uid="uid://b8u5agfn7rc7o" path="res://scenes_and_scripts/menu/credits.gd" id="1_iqner"]
+[ext_resource type="Texture2D" uid="uid://csw4tp7krx4rm" path="res://assets/images/background/misc/oiltux.jpg" id="2_8eq8v"]
+[ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="3_wbfdd"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=191282543]
+[node name="Credits" type="Node2D" unique_id=769725761]
+script = ExtResource("1_iqner")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=191282543]
+position = Vector2(-11.000001, 0)
+scale = Vector2(1.0137501, 1.0133333)
+texture = ExtResource("2_8eq8v")
+centered = false
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=1428075451]
+offset_left = 8.0
+offset_top = 608.0
+offset_right = 792.0
+offset_bottom = 1216.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_wbfdd")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[font_size=32]GodotTux Credits[/font_size]
+
+[img]assets/images/engine/menu/logo.png[/img]
+
+SuperTux Team - Assets from SuperTux
+Vaesea - Coding, Test Levels
+AnatolyStev - Coding
+FilipOK - Art  + Main Menu
+
+[font_size=16]Press the enter key to go back to the main menu...[/font_size]"
+horizontal_alignment = 1

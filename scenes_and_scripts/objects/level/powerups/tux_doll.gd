@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@export var floating = false
-@export var jump_height = 400
-@export var speed = 100
-var direction = -1
-var coin_amount_given = 0
+@export var floating:bool = false
+@export var jump_height:int = 400
+@export var speed:int = 100
+var direction:int = -1
+# var coin_amount_given:int = 0 Uncomment when adding "adding coins" like how SuperTux does it.
 
 func _ready() -> void:
 	$TuxDetector.connect("body_entered", _on_tux_detected)
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_tux_detected(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not body.dead:
 		Global.coins += 100
 		$Image.visible = false
 		$LifeSound.play()

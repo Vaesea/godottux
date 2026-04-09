@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c3tahhdm03ny2"]
+
+[ext_resource type="Texture2D" uid="uid://c2yxxs74ymw7l" path="res://assets/images/creatures/dispenser/canon/canon.png" id="1_o7ekt"]
+[ext_resource type="Texture2D" uid="uid://qe3soiesdme2" path="res://assets/images/creatures/dispenser/canon/canon-frozen.png" id="2_klecq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o7ekt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_klecq")
+}],
+"loop": false,
+"name": &"frozen",
+"speed": 5.0
+}]

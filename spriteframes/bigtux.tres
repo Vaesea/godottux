@@ -1,9 +1,13 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bqpi38l5jxqcq"]
 
+[ext_resource type="Texture2D" uid="uid://c32qivvkfc0dy" path="res://assets/images/creatures/tux/big/flip_1.png" id="1_e6vhr"]
 [ext_resource type="Texture2D" uid="uid://ce4h7vl63ps82" path="res://assets/images/creatures/tux/big/duck-0.png" id="1_mlcf6"]
 [ext_resource type="Texture2D" uid="uid://xxng7jrcbcmh" path="res://assets/images/creatures/tux/big/buttjump-0.png" id="1_pcb0g"]
+[ext_resource type="Texture2D" uid="uid://cs6jcos7vwo4" path="res://assets/images/creatures/tux/big/flip_2.png" id="2_1jc1r"]
 [ext_resource type="Texture2D" uid="uid://cilswmvewvf8v" path="res://assets/images/creatures/tux/big/jump-0.png" id="2_pcb0g"]
 [ext_resource type="Texture2D" uid="uid://46di2bh0if2m" path="res://assets/images/creatures/tux/big/kick-0.png" id="3_e6vhr"]
+[ext_resource type="Texture2D" uid="uid://bde6n10vqwjoj" path="res://assets/images/creatures/tux/big/flip_4.png" id="3_vrkj1"]
+[ext_resource type="Texture2D" uid="uid://bgyprcq0h8wsg" path="res://assets/images/creatures/tux/big/flip_3.png" id="4_ni4ld"]
 [ext_resource type="Texture2D" uid="uid://bodsclf1xgyme" path="res://assets/images/creatures/tux/big/skid-0.png" id="4_pl6v0"]
 [ext_resource type="Texture2D" uid="uid://ru80xc6y2coq" path="res://assets/images/creatures/tux/big/stand-0.png" id="5_4bmqm"]
 [ext_resource type="Texture2D" uid="uid://bjjt0ix3hfc3a" path="res://assets/images/creatures/tux/big/idle-0.png" id="6_1jc1r"]
@@ -17,6 +21,23 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e6vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1jc1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vrkj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ni4ld")
+}],
+"loop": true,
+"name": &"backflip",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_pcb0g")

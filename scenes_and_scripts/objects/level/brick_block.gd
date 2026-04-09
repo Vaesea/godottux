@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 		$Image.play("empty")
 
 func _on_tux_detector_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not body.dead:
 		if empty_brick:
 			print("A")
 			$BrickSound.play()

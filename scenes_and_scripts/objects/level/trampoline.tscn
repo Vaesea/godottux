@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ycx18oijbs8w"]
+
+[ext_resource type="Script" uid="uid://c3sl3yt5r10ux" path="res://scenes_and_scripts/objects/level/trampoline.gd" id="1_gi7jw"]
+[ext_resource type="SpriteFrames" uid="uid://xseukh38axgo" path="res://spriteframes/trampoline.tres" id="2_w84o4"]
+[ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="3_50ifk"]
+[ext_resource type="SpriteFrames" uid="uid://dgii6j2pm0t2a" path="res://spriteframes/stationarytrampoline.tres" id="3_qh2hu"]
+[ext_resource type="AudioStream" uid="uid://cddqov3dx4j1t" path="res://assets/sounds/trampoline.wav" id="4_w84o4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajfev"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y677r"]
+size = Vector2(32, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gi7jw"]
+size = Vector2(2, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmvm"]
+size = Vector2(2, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lknj"]
+size = Vector2(32, 1)
+
+[node name="Trampoline" type="CharacterBody2D" unique_id=1122327625]
+collision_mask = 257
+platform_on_leave = 2
+script = ExtResource("1_gi7jw")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=1878752363]
+sprite_frames = ExtResource("2_w84o4")
+animation = &"bounce"
+centered = false
+
+[node name="StationaryImage" type="AnimatedSprite2D" parent="." unique_id=975719917]
+visible = false
+sprite_frames = ExtResource("3_qh2hu")
+animation = &"bounce"
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=759516219]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_ajfev")
+
+[node name="TopTuxDetector" type="Area2D" parent="." unique_id=581555650]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopTuxDetector" unique_id=1569274999]
+position = Vector2(16, -0.5)
+shape = SubResource("RectangleShape2D_y677r")
+
+[node name="LeftTuxDetector" type="Area2D" parent="." unique_id=965481776]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftTuxDetector" unique_id=641100565]
+position = Vector2(-1, 16)
+shape = SubResource("RectangleShape2D_gi7jw")
+
+[node name="RightTuxDetector" type="Area2D" parent="." unique_id=741273008]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTuxDetector" unique_id=290931737]
+position = Vector2(33, 16)
+shape = SubResource("RectangleShape2D_lbmvm")
+
+[node name="EnemyDetector" type="Area2D" parent="." unique_id=371677302]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector" unique_id=1382776101]
+position = Vector2(16, 32.5)
+shape = SubResource("RectangleShape2D_2lknj")
+
+[node name="BrickSound" type="AudioStreamPlayer2D" parent="." unique_id=1782965820]
+stream = ExtResource("3_50ifk")
+volume_db = -5.0
+max_distance = 1024.0
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="." unique_id=76243937]
+stream = ExtResource("4_w84o4")

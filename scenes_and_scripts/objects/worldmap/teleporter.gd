@@ -4,17 +4,17 @@ extends AnimatedSprite2D
 # made by vaesea and anatolystev
 
 ## Whether the telporter is invisible or not.
-@export var invisible = false
+@export var invisible:bool = false
 ## If true, automatically telports Tux when he touches the teleporter.
-@export var automatic = false
+@export var automatic:bool = false
 ## Make sure to set this to the worldmap you want! Different export thing than the worldmap level dot thing because Godot is weird.
 @export_file_path("*.tscn") var worldmap_scene:String
 ## Message that displays when Tux touches the telporter (unless it's automatic)
-@export var message = "Where do you want to go today?"
+@export var message:String = "Where do you want to go today?"
 ## Make sure to set this to the name of the spawn point you want Tux to go to.
-@export var spawn_target = "main"
+@export var spawn_target:String = "main"
 
-var tux_on_teleporter = false
+var tux_on_teleporter:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

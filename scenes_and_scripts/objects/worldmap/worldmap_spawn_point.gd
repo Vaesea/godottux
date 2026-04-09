@@ -1,7 +1,7 @@
 extends Marker2D
 
 ## Set this to the spawn point name you would like Tux to go to.
-@export var spawn_name = "main"
+@export var spawn_name:String = "main"
 
 func _ready() -> void:
 	add_to_group("SpawnPoint")

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var affected_by_gravity = true
+@export var affected_by_gravity:bool = true
 
 func _ready() -> void:
 	$TuxDetector.connect("body_entered", _on_tux_detected)
@@ -16,7 +16,7 @@ func spawn_from_block():
 	$AnimationTween.play("go_up")
 
 func _on_tux_detected(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not body.dead:
 		body.grow("fire_flower")
 		queue_free()
 

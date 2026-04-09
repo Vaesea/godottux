@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" uid="uid://wx71n3jjokn0" path="res://scenes_and_scripts/worldmap/worldmap.gd" id="1_pb0wn"]
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="2_fvybe"]
-[ext_resource type="AudioStream" uid="uid://ddp0lcef8aoy5" path="res://assets/music/salcon.ogg" id="3_sbx8j"]
 [ext_resource type="PackedScene" uid="uid://uyqfh1xf0mio" path="res://scenes_and_scripts/hud/worldmap_hud.tscn" id="4_51hoe"]
 [ext_resource type="TileSet" uid="uid://c8e70il54cmxc" path="res://assets/images/worldmap/tiles/worldmap.tres" id="5_pbaix"]
 [ext_resource type="PackedScene" uid="uid://2ubl5y6jnhg7" path="res://scenes_and_scripts/objects/worldmap/worldmap_tux.tscn" id="6_oif76"]
 [ext_resource type="PackedScene" uid="uid://c7jg4p1ouyw4q" path="res://scenes_and_scripts/objects/worldmap/level.tscn" id="7_4307f"]
-[ext_resource type="PackedScene" uid="uid://dae2dm5scbu4m" path="res://scenes_and_scripts/levels/world1/welcome_to_antarctica.tscn" id="9_oif76"]
+[ext_resource type="PackedScene" uid="uid://dae2dm5scbu4m" path="res://scenes_and_scripts/levels/world1/welcome_to_antarctica/level.tscn" id="9_oif76"]
 [ext_resource type="PackedScene" uid="uid://ct6hka51cnpm7" path="res://scenes_and_scripts/objects/worldmap/rock.tscn" id="9_sbx8j"]
 [ext_resource type="PackedScene" uid="uid://cbwdumx3i8nno" path="res://scenes_and_scripts/objects/worldmap/teleporter.tscn" id="10_51hoe"]
 [ext_resource type="PackedScene" uid="uid://chddo2mchrhjp" path="res://scenes_and_scripts/objects/invisible_block.tscn" id="11_pbaix"]
@@ -17,15 +16,11 @@
 script = ExtResource("1_pb0wn")
 worldmap_name = "Antarctica"
 worldmap_creator = "Vaesea"
+music = "uid://ddp0lcef8aoy5"
 
 [node name="Misc" type="Node2D" parent="." unique_id=558563748]
 
 [node name="HUD" parent="Misc" unique_id=1308660143 instance=ExtResource("2_fvybe")]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Misc" unique_id=1654392101]
-process_mode = 3
-stream = ExtResource("3_sbx8j")
-autoplay = true
 
 [node name="WorldmapHUD" parent="Misc" unique_id=1259902631 instance=ExtResource("4_51hoe")]
 

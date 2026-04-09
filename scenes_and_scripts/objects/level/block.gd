@@ -8,34 +8,34 @@ class_name Block
 
 @export_category("Block Setup")
 ## Is the block a Bonus Block? Best to set this in a script.
-@export var bonus = false
+@export var bonus:bool = false
 ## Is the block a Brick Block? Best to set this in a script.
-@export var brick = false
+@export var brick:bool = false
 ## Is the block an Info Block? Best to set this in a script.
-@export var info = false
+@export var info:bool = false
 ## If Tux is small and content is fire flower, egg will be given instead.
 @export_enum("Coin", "Fire Flower", "TuxDoll") var content = 0
 
 @export_category("Brick Block Setup")
 ## Whether the brick is empty or not.
-@export var empty_brick = true
+@export var empty_brick:bool = true
 ## How many times can the brick be hit if content is coin and not empty?
-@export var how_many_hits = 5
+@export var how_many_hits:int = 5
 ## Does the brick block have snow on it?
-@export var snow = false
+@export var snow:bool = false
 
 @export_category("Info Block Setup")
 ## The text. Supports BBCode.
 @export_multiline var info_block_text:String
 
-var empty = false
-var bump = false
+var empty:bool = false
+var bump:bool = false
 
-var tux_on_left = false
-var tux_on_right = false
+var tux_on_left:bool = false
+var tux_on_right:bool = false
 
-var infoblock_detects_tux = false
-var displaying_message = false
+var infoblock_detects_tux:bool = false
+var displaying_message:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,7 +56,7 @@ func _ready() -> void:
 		$TuxDetector2.connect("body_exited", _on_tux_exited)
 
 func _on_tux_detector_body_entered(body):
-	if body.is_in_group("Player") and not empty and body.velocity.y > 0: # velocity check is an attempt to fix the bug
+	if body.is_in_group("Player") and not empty and body.velocity.y > 0 and not body.dead: # velocity check is an attempt to fix the bug
 		print("A")
 		turn_empty("up_and_down")
 		if body.global_position.x < global_position.x:

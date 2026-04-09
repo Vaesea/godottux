@@ -1,8 +1,11 @@
 extends Node2D
 
 @export_file("*.tscn") var selected_level = "res://scenes_and_scripts/levels/world1/cutscene_test.tscn"
+@export_file("*.wav", "*.ogg") var song = "res://assets/music/theme.ogg"
 
 func _ready() -> void:
+	Music.stream = load(song)
+	Music.play()
 	Global.load_data()
 
 func _process(_delta: float) -> void:

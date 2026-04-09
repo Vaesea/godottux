@@ -10,35 +10,35 @@ var first_worldmap = "res://scenes_and_scripts/levels/world1/worldmap.tscn"
 
 var level_name:String
 var level_creator:String
-var width_of_level = 0
-var height_of_level = 0
+var width_of_level:int = 0
+var height_of_level:int = 0
 
-var coins = 100
-var tux_state = TuxManager.powerup_states.Small
+var coins:int = 100
+var tux_state:TuxManager.powerup_states = TuxManager.powerup_states.Small
 
 var worldmap_name:String
-var width_of_worldmap = 0
-var height_of_worldmap = 0
+var width_of_worldmap:int = 0
+var height_of_worldmap:int = 0
 
-var dot_level_name = ""
+var dot_level_name:String
 
-var tux_wm_x = 0.0
-var tux_wm_y = 0.0
-var global_spawn_name = "main"
-var use_spawn_point = false
+var tux_wm_x:float = 0.0
+var tux_wm_y:float = 0.0
+var global_spawn_name:String = "main"
+var use_spawn_point:bool = false
 
 var current_level:String
 var current_worldmap:String
-var completed_levels = []
+var completed_levels:Array = []
 
-var completed_worldmaps = []
+var completed_worldmaps:Array = []
 
-var checkpoint_reached = false # It's a surprise tool that will help us later!
-
-var save_version = 2
+var save_version:int = 2
 var save_file = "user://save"
 
-var checkpoint_position = Vector2(0, 0)
+var checkpoint_reached:bool = false
+var checkpoint_position:Vector2 = Vector2(0, 0)
+var checkpoint_sector:String
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("activate_debug") and not debug:

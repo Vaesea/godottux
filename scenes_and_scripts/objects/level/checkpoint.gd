@@ -16,3 +16,4 @@ func _on_tux_reach(body):
 		play("ringing")
 		Global.checkpoint_reached = true
 		Global.checkpoint_position = position
+		Global.checkpoint_sector = get_parent().sector_name

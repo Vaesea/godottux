@@ -2,8 +2,8 @@ extends Node2D
 
 # Not entirely accurate.
 
-var move_speed = 4
-var bottom_particle_move_speed = 6
+var move_speed:int = 4
+var bottom_particle_move_speed:int = 6
 
 func _ready() -> void:
 	$Timer.connect("timeout", _on_timer_stop)

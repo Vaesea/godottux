@@ -7,7 +7,7 @@ func _ready() -> void:
 	$CoinSound.connect("finished", _on_coin_sound_finished)
 
 func _on_tux_detector_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not body.dead:
 		$TuxDetector.set_deferred("monitoring", false)
 		$AnimationTween.play("collect")
 		$CoinSound.play()

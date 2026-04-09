@@ -8,20 +8,22 @@ class_name Worldmap
 
 # it's a surprise tool that will help me later
 ## Name of the level.[br]Shows up in the level intro (doesn't exist yet) but not the worldmap.
-@export var worldmap_name = "Unnamed"
+@export var worldmap_name:String = "Unnamed"
 ## Your name goes here.[br][br]Shows up in the level intro.[br]Set this to blank if you don't want to be credited.
-@export var worldmap_creator = "Worldmap Creator"
+@export var worldmap_creator:String = "Worldmap Creator"
 ## The license for your level.[br][br]Doesn't show up anywhere.[br]You can use multiple licenes if you want.[br]I don't recommend changing this unless you know what you're doing.
-@export var license = "CC-BY-SA 4.0"
+@export var license:String = "CC-BY-SA 4.0"
 ## A note for your level.[br][br]Doesn't show up anywhere.[br]Useful for saying that your level is unfinished.
 @export var world_note:String
 ## Width of the level in tiles.
 @export var worldmap_width:int = 100
 ## Height of the level in tiles.
 @export var worldmap_height:int = 100
+## The music that should be played when the worldmap has loaded.
+@export_file("*.ogg", "*.wav") var music = "res://assets/music/forestmap.ogg"
 
-var levels = []
-var rocks = []
+var levels:Array = []
+var rocks:Array = []
 
 @onready var tux = $WorldmapTux # for the level node
 
@@ -32,6 +34,8 @@ func _ready() -> void:
 	Global.height_of_worldmap = worldmap_height * 32
 	$WorldmapTux/Camera.limit_bottom = Global.height_of_worldmap
 	$WorldmapTux/Camera.limit_right = Global.width_of_worldmap
+	Music.stream = load(music)
+	Music.play()
 	tux.current_state = Global.tux_state
 	tux.reload_player()
 	levels = get_tree().get_nodes_in_group("Level") # less typing

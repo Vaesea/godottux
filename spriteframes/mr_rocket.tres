@@ -1,0 +1,40 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bpy2v2m7nheg2"]
+
+[ext_resource type="Texture2D" uid="uid://dl4mo4jngnept" path="res://assets/images/creatures/mr_rocket/collision.png" id="1_j5ywn"]
+[ext_resource type="Texture2D" uid="uid://bhy2c66a7xry5" path="res://assets/images/creatures/mr_rocket/flying-0.png" id="2_45x0o"]
+[ext_resource type="Texture2D" uid="uid://d3h0mym0grnwx" path="res://assets/images/creatures/mr_rocket/flying-1.png" id="3_q6k1m"]
+[ext_resource type="Texture2D" uid="uid://c8ussiu8gqtok" path="res://assets/images/creatures/mr_rocket/flying-2.png" id="4_yxoq2"]
+[ext_resource type="Texture2D" uid="uid://d32q333i7s6cp" path="res://assets/images/creatures/mr_rocket/squished.png" id="5_o22xc"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j5ywn")
+}],
+"loop": false,
+"name": &"collision",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_45x0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q6k1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yxoq2")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o22xc")
+}],
+"loop": false,
+"name": &"squished",
+"speed": 5.0
+}]

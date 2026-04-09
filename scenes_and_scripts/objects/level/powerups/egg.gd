@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-var from_block = false
-var direction = -1
-var speed = 80
-var was_on_wall = false
+var from_block:bool = false
+var direction:int = -1
+var speed:int = 80
+var was_on_wall:bool = false
 
-@export var affected_by_gravity = true
+@export var affected_by_gravity:bool = true
 
 func _ready() -> void:
 	$TuxDetector.connect("body_entered", _on_tux_detected)
@@ -36,6 +36,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_tux_detected(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not body.dead:
 		body.grow("egg")
 		queue_free()

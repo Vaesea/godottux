@@ -41,6 +41,7 @@ shape = SubResource("RectangleShape2D_aggo7")
 [node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]
 position = Vector2(5, 0)
 target_position = Vector2(0, 64)
+collision_mask = 257
 
 [node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=2009687058]
 stream = ExtResource("3_xvo7w")
@@ -48,5 +49,5 @@ stream = ExtResource("3_xvo7w")
 [node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1374949003]
 stream = ExtResource("4_vpx2a")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
+[node name="ScreenCheck" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
 rect = Rect2(-64, -64, 160, 160)

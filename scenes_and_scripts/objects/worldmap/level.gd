@@ -8,13 +8,13 @@ extends AnimatedSprite2D
 @export var level_scene:PackedScene
 
 ## Display name for the level. Can be different from the actual level.
-@export var level_name = "Level"
+@export var level_name:String = "Level"
 
 ## Make sure to set the section to 1 or more.
-@export var level_section = 1
+@export var level_section:int = 1
 
-var completed = false
-var tux_on_level = false
+var completed:bool = false
+var tux_on_level:bool = false
 
 func _ready() -> void:
 	add_to_group("Level")
@@ -31,9 +31,9 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 	
 	if completed:
-		$".".play("green")
+		play("green")
 	else:
-		$".".play("red")
+		play("red")
 
 func complete_level():
 	if not completed:

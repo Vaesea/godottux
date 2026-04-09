@@ -3,9 +3,9 @@ extends CharacterBody2D
 # code from adel time but very modified (deity adel)
 
 # Movement
-var speed = 160.0
-var acceleration = 1500
-var deceleration = 1600
+var speed:float = 160.0 # Why is this a float?
+var acceleration:int = 1500 # Huge number because it's handled differently I guess? I don't know, I wrote this code for Adel Time and forgot how it worked (not entirely forgot but still forgot)
+var deceleration:int = 1600 # Huge number because it's handled differently I guess? I don't know, I wrote this code for Adel Time and forgot how it worked (not entirely forgot but still forgot)
 
 var current_state:TuxManager.powerup_states
 

@@ -1,6 +1,6 @@
 extends Marker2D
 
-@export var spawnpoint_name = "main"
+@export var spawnpoint_name:String = "main"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

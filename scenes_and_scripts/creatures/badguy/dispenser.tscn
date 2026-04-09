@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://dv5s8pcoxppja"]
+
+[ext_resource type="Script" uid="uid://c02tdt7qnt7cd" path="res://scenes_and_scripts/creatures/badguy/dispenser.gd" id="1_gvwoo"]
+[ext_resource type="SpriteFrames" uid="uid://c3tahhdm03ny2" path="res://spriteframes/canon.tres" id="1_wp8we"]
+[ext_resource type="SpriteFrames" uid="uid://cdtq047dfxqsb" path="res://spriteframes/rocketlauncher.tres" id="2_xofa7"]
+[ext_resource type="Texture2D" uid="uid://bdti6mtsxquhe" path="res://assets/images/creatures/dispenser/dropper/dropper.png" id="3_gvwoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xofa7"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvwoo"]
+size = Vector2(44, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qxj7"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm3k2"]
+size = Vector2(1024, 2240)
+
+[node name="Dispenser" type="StaticBody2D" unique_id=1040082611]
+collision_mask = 257
+script = ExtResource("1_gvwoo")
+
+[node name="CanonImage" type="AnimatedSprite2D" parent="." unique_id=198611305]
+position = Vector2(-3, 0)
+sprite_frames = ExtResource("1_wp8we")
+centered = false
+
+[node name="RocketLauncherImage" type="AnimatedSprite2D" parent="." unique_id=1903482690]
+visible = false
+position = Vector2(-16, 11)
+sprite_frames = ExtResource("2_xofa7")
+centered = false
+
+[node name="DropperImage" type="Sprite2D" parent="." unique_id=2131253170]
+visible = false
+position = Vector2(32, 16)
+texture = ExtResource("3_gvwoo")
+
+[node name="CanonCollision" type="CollisionShape2D" parent="." unique_id=820764873]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_xofa7")
+
+[node name="RocketLauncherCollision" type="CollisionShape2D" parent="." unique_id=1256803186]
+visible = false
+position = Vector2(13, 48)
+shape = SubResource("RectangleShape2D_gvwoo")
+disabled = true
+
+[node name="DropperCollision" type="CollisionShape2D" parent="." unique_id=299000228]
+visible = false
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_8qxj7")
+disabled = true
+
+[node name="CanonMarker" type="Marker2D" parent="." unique_id=1682598980]
+gizmo_extents = 16.0
+
+[node name="RocketLauncherMarker" type="Marker2D" parent="." unique_id=731260464]
+position = Vector2(-9, 32)
+gizmo_extents = 16.0
+
+[node name="DropperMarker" type="Marker2D" parent="." unique_id=1147525481]
+position = Vector2(32, 32)
+gizmo_extents = 16.0
+
+[node name="LeftDetector" type="Area2D" parent="." unique_id=2030751900]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDetector" unique_id=351099747]
+visible = false
+position = Vector2(-496, 192)
+shape = SubResource("RectangleShape2D_jm3k2")
+
+[node name="RightDetector" type="Area2D" parent="." unique_id=764061856]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDetector" unique_id=1876840281]
+visible = false
+position = Vector2(544, 192)
+shape = SubResource("RectangleShape2D_jm3k2")
+
+[node name="CanonScreenCheck" type="VisibleOnScreenEnabler2D" parent="." unique_id=1151864901]
+position = Vector2(-64, -64)
+rect = Rect2(57, 59, 46, 69)
+
+[node name="RocketLauncherScreenCheck" type="VisibleOnScreenEnabler2D" parent="." unique_id=2004439707]
+visible = false
+position = Vector2(-64, -64)
+rect = Rect2(48, 91, 68, 37)
+
+[node name="DropperScreenCheck" type="VisibleOnScreenEnabler2D" parent="." unique_id=873658114]
+visible = false
+position = Vector2(-64, -64)
+rect = Rect2(57, 59, 78, 42)

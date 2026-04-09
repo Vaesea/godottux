@@ -2,66 +2,69 @@ extends Node2D
 
 class_name Level
 
-# it's a surprise tool that will help me later
 ## Name of the level.[br]Shows up in the level intro (doesn't exist yet) but not the worldmap.
-@export var level_name = "Unnamed"
+@export var level_name:String = "Unnamed"
 ## Your name goes here.[br][br]Shows up in the level intro.[br]Set this to blank if you don't want to be credited.
-@export var level_creator = "Level Creator"
+@export var level_creator:String = "Level Creator"
 ## The license for your level.[br][br]Doesn't show up anywhere.[br]You can use multiple licenes if you want.[br]I don't recommend changing this unless you know what you're doing.
-@export var license = "CC-BY-SA 4.0"
+@export var license:String = "CC-BY-SA 4.0"
 ## A note for your level.[br][br]Doesn't show up anywhere.[br]Useful for saying that your level is unfinished.
 @export var level_note:String
-## Width of the level in tiles.
-@export var level_width:int = 50
-## Height of the level in tiles.
-@export var level_height:int = 35
-@export var main_spawnpoint = "main"
-## Whether snow particles are here or not. Set to true if you have the snow particles in the Misc node, if you don't have that, game will crash if you set this to true.
-@export var snowing = false
-## How many seconds should the game wait before putting the player back in the worldmap / level select? [br]
-## Set this to how long your "finish level" song is, if you changed it.
-var wait_to_end_level = 7.71
+## The sector that the player goes to when loading the level.
+@export var main_sector:String = "main"
+## The spawnpoint that the player goes to when loading the level.
+@export var main_spawnpoint:String = "main"
 
-# you know what? these are actually quite nice to have.
+var sector_name_to_use:String
+
+# AnatolyStev: makes the switching sector!!!
+
+# tux
 @onready var tux = $Tux
 @onready var tux_camera = $Tux/Camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.width_of_level = level_width * 32
-	Global.height_of_level = level_height * 32
-	find_spawnpoint()
-	$Tux/Camera.limit_top = -Global.height_of_level
-	$Tux/Camera.limit_right = Global.width_of_level
+	find_sector()
+	activate_sector(sector_name_to_use)
 	TuxManager.current_state = Global.tux_state
-	tux.reload_player()
 	print(TuxManager.current_state)
-	$Goal.connect("level_finished", _on_level_finished)
-	if snowing:
-		$Misc/SnowParticles/Snow1.process_material.emission_box_extents.x = get_viewport().size.x / 2
 	print("Useful level debugging info, possibly:")
 	print("Width in pixels: " + str(Global.width_of_level) + ". If this is 0, and you didn't set Level Width to 0, there's most likely a bug you should report.")
 	print("Height in pixels: " + str(Global.height_of_level) + ". If this is 0, and you didn't set Level Height to 0, there's most likely a bug you should report.")
 	print("No more useful level debugging info.")
 
 func _process(_delta: float) -> void:
-	if snowing:
-		$Misc/SnowParticles.global_position = tux_camera.global_position - Vector2(0, 450)
 	if Global.debug and Input.is_key_pressed(KEY_0):
-		if scene_file_path not in Global.completed_levels:
-			Global.completed_levels.append(scene_file_path)
-		
-		if Global.current_worldmap == "":
-			get_tree().change_scene_to_file("res://scenes_and_scripts/menu/menu.tscn")
-		else:
-			get_tree().change_scene_to_file(Global.current_worldmap)
+		finish_level()
 
-func _on_level_finished() -> void:
-	Global.checkpoint_reached = false
-	$Misc/Music.stream = load("res://assets/music/leveldone.ogg")
-	print($Misc/Music.stream) # helpful debug thing for myself, should probably remove this before release.
-	$Misc/Music.play()
-	await get_tree().create_timer(wait_to_end_level).timeout
+# TODO: Replace worldmap spawnpoint finding with this
+func find_spawnpoint():
+	if not Global.checkpoint_reached or Global.coins <= 25:
+		for spawn in get_tree().get_nodes_in_group("LevelSpawnPoint"):
+			if spawn.spawnpoint_name == main_spawnpoint:
+				if TuxManager.current_state == TuxManager.powerup_states.Small:
+					tux.global_position = spawn.global_position
+				else:
+					tux.global_position = spawn.global_position - Vector2(0, 23)
+	else:
+		print("Spawning at checkpoint...")
+		if TuxManager.current_state == TuxManager.powerup_states.Small:
+			tux.global_position = Global.checkpoint_position
+		else:
+			tux.global_position = Global.checkpoint_position - Vector2(0, 23)
+
+func find_sector():
+	if Global.checkpoint_reached and Global.coins >= 25:
+		sector_name_to_use = Global.checkpoint_sector
+	else:
+		sector_name_to_use = main_sector
+	
+	for sector in get_tree().get_nodes_in_group("LevelSector"):
+		if sector.sector_name == sector_name_to_use:
+			find_spawnpoint()
+
+func finish_level():
 	if scene_file_path not in Global.completed_levels:
 		Global.completed_levels.append(scene_file_path)
 	
@@ -70,24 +73,32 @@ func _on_level_finished() -> void:
 	else:
 		get_tree().change_scene_to_file(Global.current_worldmap)
 
-# TODO: Replace worldmap spawnpoint finding with this
-func find_spawnpoint():
-	if not Global.checkpoint_reached:
-		for spawn in get_tree().get_nodes_in_group("LevelSpawnPoint"):
-			if spawn.spawnpoint_name == main_spawnpoint:
-				if TuxManager.current_state == TuxManager.powerup_states.Small:
-					$Tux.global_position = spawn.global_position
-				else:
-					$Tux.global_position = spawn.global_position - Vector2(0, 23)
-	else:
-		print("Spawning at checkpoint...")
-		if TuxManager.current_state == TuxManager.powerup_states.Small:
-			$Tux.global_position = Global.checkpoint_position
-		else:
-			$Tux.global_position = Global.checkpoint_position - Vector2(0, 23)
+func switch_sector(sector_name:String, spawnpoint_name:String):
+	activate_sector(sector_name)
+	for sector in get_tree().get_nodes_in_group("LevelSector"):
+		if sector.sector_name == sector_name:
+			find_spawnpoint_in_sector(sector, spawnpoint_name)
 
-func fade_tilemap(tilemap_to_fade:String):
-	var tilemap = get_node(tilemap_to_fade)
-	var fade_tween = create_tween()
-	fade_tween.tween_property(tilemap, "modulate:a", 0.0, 1.0)
-	fade_tween.tween_callback(tilemap.queue_free)
+func find_spawnpoint_in_sector(sector:Node2D, new_spawnpoint_name:String):
+	for spawn in get_tree().get_nodes_in_group("LevelSpawnPoint"):
+		if spawn.spawnpoint_name == new_spawnpoint_name:
+			tux.reparent(sector)
+			if TuxManager.current_state == TuxManager.powerup_states.Small:
+				tux.global_position = spawn.global_position
+				tux.in_cutscene = false
+			else:
+				tux.global_position = spawn.global_position - Vector2(0, 23)
+				tux.in_cutscene = false
+
+func activate_sector(sector_name:String):
+	for sector in get_tree().get_nodes_in_group("LevelSector"):
+		if sector.sector_name == sector_name:
+			sector.visible = true
+			sector.process_mode = Node.PROCESS_MODE_PAUSABLE
+			Global.width_of_level = sector.sector_width * 32
+			Global.height_of_level = sector.sector_height * 32
+			tux_camera.limit_top = -Global.height_of_level
+			tux_camera.limit_right = Global.width_of_level
+		else:
+			sector.visible = false
+			sector.process_mode = Node.PROCESS_MODE_DISABLED

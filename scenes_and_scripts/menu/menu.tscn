@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bukr7r3yr7dps" path="res://assets/images/engine/menu/background.png" id="2_ltxr7"]
 [ext_resource type="FontFile" uid="uid://0m51m0p7j1tb" path="res://assets/fonts/SuperTux-Medium.ttf" id="2_xokca"]
 [ext_resource type="Texture2D" uid="uid://tgfbmyupyrg8" path="res://assets/images/engine/menu/gradient.png" id="3_pbvww"]
+<<<<<<< Updated upstream
 [ext_resource type="AudioStream" uid="uid://bji73mm44kyeu" path="res://assets/music/theme.ogg" id="5_80asc"]
+=======
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://dlowotvig1aq" path="res://assets/images/engine/menu/logo.png" id="6_84fjn"]
 
 [node name="Menu" type="Node2D" unique_id=749843694]
@@ -50,10 +53,6 @@ theme_override_font_sizes/font_size = 32
 text = "Delete Save
 (Closes Game)"
 
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=814526631]
-stream = ExtResource("5_80asc")
-autoplay = true
-
 [node name="Label2" type="RichTextLabel" parent="." unique_id=1432545282]
 offset_top = 544.0
 offset_right = 800.0
@@ -70,7 +69,7 @@ offset_right = 800.0
 offset_bottom = 544.0
 theme_override_fonts/normal_font = ExtResource("2_xokca")
 bbcode_enabled = true
-text = "[wave]Godot is licensed under the MIT license, therefore, this is a note saying that as this game engine? thing is made using Godot.[/wave]"
+text = "[wave]Godot is licensed under the MIT license, therefore, this is a note saying that because this game engine? thing is made using Godot.[/wave]"
 autowrap_mode = 2
 horizontal_alignment = 1
 
