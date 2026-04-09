@@ -17,7 +17,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Cannon
 - Rocket Launcher
 - Dropper
-- Full Test Levels (World 2 = Welcome To The Forest recreation, castle keys test level, lantern test level)
+- Full Test Levels (World 2 = Welcome To The Forest recreation, castle keys test level)
 - Mr Rocket
 - Mr Tree
 - Snail
