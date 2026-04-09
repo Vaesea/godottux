@@ -10,14 +10,9 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 ## What hasn't been added yet but is planned
 - Star
 - Worldmap Tux sprite changer
-- Trampolines (Stationary and Portable)
-- Fix placing holdable objects in another holdable object
+- Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Level results
-- Cannon
-- Rocket Launcher
-- Dropper
 - Full Test Levels (World 2 = Welcome To The Forest recreation, castle keys test level)
-- Mr Rocket
 - Mr Tree
 - Snail
 - Igel
@@ -37,14 +32,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - Tumbleweed (Bonus Badguy!)
 - Forest Exit Tiles
-- Tux death animation stuff
 - Unstable Tiles (Ice, Bridge, Castle)
-- Tux backflipping
-- Sectors
-- Doors
-- Changing every variable to static typing instead of dynamic typing (improves performance) (currently working on this!)
-- Making music a global thing (currently working on this!)
-- Credits Menu (currently working on this!)
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
