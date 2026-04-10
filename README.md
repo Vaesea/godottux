@@ -8,7 +8,6 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## What hasn't been added yet but is planned
-- Star
 - Worldmap Tux sprite changer
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Level results
@@ -28,11 +27,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Flame
 - Plant
 - Kugelblitz (but it's just a large flame thing)
-- Mr Cherry (Bonus Badguy!)
 - Toad
-- Tumbleweed (Bonus Badguy!)
 - Forest Exit Tiles
-- Unstable Tiles (Ice, Bridge, Castle)
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
