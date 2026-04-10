@@ -40,6 +40,9 @@ var checkpoint_reached:bool = false
 var checkpoint_position:Vector2 = Vector2(0, 0)
 var checkpoint_sector:String
 
+var sector_song:String
+var tux_star_invincible:bool = false
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("activate_debug") and not debug:
 		debug = true

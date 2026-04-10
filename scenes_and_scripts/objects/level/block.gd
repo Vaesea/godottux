@@ -14,7 +14,7 @@ class_name Block
 ## Is the block an Info Block? Best to set this in a script.
 @export var info:bool = false
 ## If Tux is small and content is fire flower, egg will be given instead.
-@export_enum("Coin", "Fire Flower", "TuxDoll") var content = 0
+@export_enum("Coin", "Fire Flower", "TuxDoll", "Star") var content = 0
 
 @export_category("Brick Block Setup")
 ## Whether the brick is empty or not.
@@ -127,6 +127,15 @@ func spawn_item(direction:String):
 			tux_doll.spawn_from_block(-1)
 		elif direction == "right":
 			tux_doll.spawn_from_block(1)
+	elif content == 3:
+		var star = load("uid://ckrk3jw8ajyh3").instantiate()
+		get_parent().call_deferred("add_child", star)
+		$PowerupSound.play()
+		star.position = self.position - Vector2(0, 32)
+		if direction == "left":
+			star.spawn_from_block(-1)
+		elif direction == "right":
+			star.spawn_from_block(1)
 
 func _on_bump_finished(anim_name: StringName):
 	if anim_name == "up_and_down":

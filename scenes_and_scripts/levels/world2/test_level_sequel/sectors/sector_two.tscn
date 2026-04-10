@@ -23,6 +23,7 @@ script = ExtResource("1_15jv7")
 sector_name = "two"
 sector_width = 97
 sector_height = 12
+song = "uid://dj754soxp7rnp"
 
 [node name="Background2" type="Parallax2D" parent="." unique_id=138000010]
 editor_description = "Yes you have to change every sprite2d to properly change the background to what you want, and the repeat size but only the horizontal repeat size.. Why? Godot. And if you're making a level that repeats vertically a lot, you have to add even more Sprite2Ds! How fun. If anyone has a proper way to do all this, PLEASE tell me."

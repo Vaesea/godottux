@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ycx18oijbs8w" path="res://scenes_and_scripts/objects/level/trampoline.tscn" id="18_7jrnl"]
 [ext_resource type="PackedScene" uid="uid://dv5s8pcoxppja" path="res://scenes_and_scripts/creatures/badguy/dispenser.tscn" id="19_1nnhc"]
 [ext_resource type="PackedScene" uid="uid://ciwv8qnrtslri" path="res://scenes_and_scripts/objects/level/unstable_tile.tscn" id="20_goecn"]
+[ext_resource type="PackedScene" uid="uid://cstyfqelcwsdf" path="res://scenes_and_scripts/creatures/badguy/snow/iceblock.tscn" id="21_g1whm"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_v4qyt")
@@ -149,6 +150,15 @@ text = "Why is this here? Because it's funny."
 
 [node name="BonusBlock" parent="." unique_id=1016254501 instance=ExtResource("11_x1hpl")]
 position = Vector2(288, 288)
+content = 3
+
+[node name="BonusBlock4" parent="." unique_id=1476769138 instance=ExtResource("11_x1hpl")]
+position = Vector2(2208, 256)
+content = 3
+
+[node name="BonusBlock5" parent="." unique_id=809860905 instance=ExtResource("11_x1hpl")]
+position = Vector2(2112, 256)
+content = 3
 
 [node name="BonusBlock2" parent="." unique_id=609956226 instance=ExtResource("11_x1hpl")]
 position = Vector2(320, 288)
@@ -174,7 +184,7 @@ position = Vector2(864, 352)
 [node name="WalkingLeaf" parent="." unique_id=303646885 instance=ExtResource("15_ocu45")]
 position = Vector2(800, 32)
 
-[node name="BrickBlock" parent="." unique_id=1476769138 instance=ExtResource("16_2gskq")]
+[node name="BrickBlock" parent="." unique_id=855455406 instance=ExtResource("16_2gskq")]
 position = Vector2(160, 288)
 empty_brick = false
 
@@ -189,9 +199,6 @@ position = Vector2(736, -64)
 [node name="BrickBlock4" parent="." unique_id=425726858 instance=ExtResource("16_2gskq")]
 position = Vector2(768, -64)
 snow = true
-
-[node name="MrBomb2" parent="." unique_id=140971469 instance=ExtResource("17_crwfg")]
-position = Vector2(320, 256)
 
 [node name="Door" parent="." unique_id=292087599 instance=ExtResource("17_xqkgq")]
 position = Vector2(1152, 32)
@@ -241,5 +248,11 @@ type = 2
 [node name="UnstableTile9" parent="." unique_id=1642347812 instance=ExtResource("20_goecn")]
 position = Vector2(1984.1099, 96)
 type = 2
+
+[node name="MrBomb" parent="." unique_id=1252881607 instance=ExtResource("17_crwfg")]
+position = Vector2(416, 384)
+
+[node name="Iceblock" parent="." unique_id=139463551 instance=ExtResource("21_g1whm")]
+position = Vector2(352, 384)
 
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

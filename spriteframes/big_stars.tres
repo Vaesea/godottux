@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://hmddlu622qdt"]
+
+[ext_resource type="Texture2D" uid="uid://kkr3buc432pt" path="res://assets/images/creatures/tux/big_stars/extra-star-0.png" id="1_mdgyp"]
+[ext_resource type="Texture2D" uid="uid://dfi0qo5nkglyr" path="res://assets/images/creatures/tux/big_stars/extra-star-1.png" id="2_c0cjn"]
+[ext_resource type="Texture2D" uid="uid://df0senjkvca3p" path="res://assets/images/creatures/tux/big_stars/extra-star-2.png" id="3_qu7ca"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mdgyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c0cjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qu7ca")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

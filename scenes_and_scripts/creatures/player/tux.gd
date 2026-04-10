@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # code from adel time
 # im too lazy to add comments right now
+# still too lazy
 
 # TODO: Save Tux's max fire bullet amount or something idk
 # TODO: Stop camera from following Tux when Tux dies
@@ -81,11 +82,23 @@ var dead:bool = false
 var dead_jump:int = 700
 var restart_scene_timer:float = 3.0
 
+# Whether Tux is invincible from a star or not.
+var star_invincible:bool = false
+
+## The sound that plays when getting the star.
+@export_file("*.ogg", "*.wav") var get_star_sound = "res://assets/sounds/invincible_start.ogg"
+
+## The music that plays when getting the star.
+@export_file("*.ogg", "*.wav") var invincible_music = "res://assets/music/invincible.ogg"
+
 func _ready() -> void:
 	add_to_group("Player")
 	$Stomp.add_to_group("Stomp")
 	reload_player()
 	$Stomp.connect("area_entered", _on_stompable_object_detected)
+	$StarTimer.connect("timeout", _on_star_timer_done)
+	$SmallStarsImage.play("default")
+	$BigStarsImage.play("default")
 
 func _physics_process(delta: float) -> void:
 	if Global.debug:
@@ -154,6 +167,10 @@ func _physics_process(delta: float) -> void:
 func die():
 	if not dead:
 		dead = true
+		if Global.tux_star_invincible:
+			Music.stream = load(Global.sector_song)
+			Music.play()
+			Global.tux_star_invincible = false
 		TuxManager.current_state = TuxManager.powerup_states.Small
 		$FireImage.visible = false
 		$BigImage.visible = false
@@ -274,6 +291,16 @@ func move():
 		backflip = false
 
 func animate():
+	if Global.tux_star_invincible:
+		if TuxManager.current_state == TuxManager.powerup_states.Small:
+			$SmallStarsImage.visible = true
+			$BigStarsImage.visible = false
+		else:
+			$SmallStarsImage.visible = false
+			$BigStarsImage.visible = true
+	else:
+		$SmallStarsImage.visible = false
+		$BigStarsImage.visible = false
 	if backflip:
 		if not $BigImage.animation == "backflip":
 			print("Backflip animation started.")
@@ -329,7 +356,7 @@ func animate():
 		$FireImage.flip_h = false
 
 func damage():
-	if not invincible:
+	if not invincible or Global.tux_star_invincible:
 		invincible = true
 		print("3:")
 		if TuxManager.current_state == TuxManager.powerup_states.Fire:
@@ -348,6 +375,7 @@ func damage():
 	else:
 		print("Tux is invincible.")
 		print("If this is after touching the goal, Tux would usually be able to kill enemies.")
+		print("If he is star invincible, he just killed that enemy you touched.")
 
 func reload_player():
 	print("Reloading player...")
@@ -423,3 +451,19 @@ func _on_stompable_object_detected(area):
 		invincible = true
 		await get_tree().create_timer(0.1).timeout
 		invincible = false
+
+func get_star():
+	if not in_cutscene:
+		Global.tux_star_invincible = true
+		
+		$InvincibleSound.play()
+		Music.stream = load(invincible_music)
+		Music.play()
+		
+		$StarTimer.start()
+
+func _on_star_timer_done():
+	if not in_cutscene: # NOTE: May cause problems later. Not sure why I did this.
+		Global.tux_star_invincible = false
+		Music.stream = load(Global.sector_song)
+		Music.play()

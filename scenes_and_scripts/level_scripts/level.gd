@@ -99,6 +99,10 @@ func activate_sector(sector_name:String):
 			Global.height_of_level = sector.sector_height * 32
 			tux_camera.limit_top = -Global.height_of_level
 			tux_camera.limit_right = Global.width_of_level
+			if not Global.tux_star_invincible:
+				Music.stream = load(sector.song)
+				Music.play()
+			Global.sector_song = sector.song
 		else:
 			sector.visible = false
 			sector.process_mode = Node.PROCESS_MODE_DISABLED

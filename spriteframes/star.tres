@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cdu7l3xkwxiu2"]
+
+[ext_resource type="Texture2D" uid="uid://2u8y6rp7bmgl" path="res://assets/images/objects/powerups/star/star-0.png" id="1_ceq38"]
+[ext_resource type="Texture2D" uid="uid://cn555y0t5qwby" path="res://assets/images/objects/powerups/star/star-1.png" id="2_j5hms"]
+[ext_resource type="Texture2D" uid="uid://dspgbpac30pfr" path="res://assets/images/objects/powerups/star/star-2.png" id="3_wt5ch"]
+[ext_resource type="Texture2D" uid="uid://itq8ynvx26js" path="res://assets/images/objects/powerups/star/star-3.png" id="4_1taqn"]
+[ext_resource type="Texture2D" uid="uid://b1shd0c0oti5s" path="res://assets/images/objects/powerups/star/star-4.png" id="5_bibus"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ceq38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j5hms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wt5ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1taqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bibus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1taqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wt5ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j5hms")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

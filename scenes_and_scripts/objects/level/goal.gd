@@ -17,6 +17,7 @@ func _on_body_entered(body) -> void:
 		body.skid = false
 		body.invincible = true
 		body.duck = false
+		body.star_invincible = false
 		TuxManager.facing_direction = 1
 		beat_level()
 

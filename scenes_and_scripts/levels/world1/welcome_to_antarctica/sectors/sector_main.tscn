@@ -150,7 +150,7 @@ position = Vector2(512, 320)
 position = Vector2(576, 320)
 
 [node name="BonusBlock4" parent="." unique_id=2092375713 instance=ExtResource("12_3smdy")]
-position = Vector2(1088, 320)
+position = Vector2(1088, 319)
 content = 1
 
 [node name="BonusBlock5" parent="." unique_id=1055967746 instance=ExtResource("12_3smdy")]

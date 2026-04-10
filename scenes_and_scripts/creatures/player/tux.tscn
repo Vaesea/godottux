@@ -5,7 +5,9 @@
 [ext_resource type="SpriteFrames" uid="uid://bqpi38l5jxqcq" path="res://spriteframes/bigtux.tres" id="2_qde4p"]
 [ext_resource type="SpriteFrames" uid="uid://bkbmfa6snhsl5" path="res://spriteframes/firetux.tres" id="4_eeq5s"]
 [ext_resource type="AudioStream" uid="uid://b0bsolyhl2qqj" path="res://assets/sounds/jump.wav" id="4_tlqr2"]
+[ext_resource type="SpriteFrames" uid="uid://blvqacfm661jq" path="res://spriteframes/small_stars.tres" id="5_gobix"]
 [ext_resource type="AudioStream" uid="uid://dpe3etb2qlb0v" path="res://assets/sounds/bigjump.wav" id="5_swdw2"]
+[ext_resource type="SpriteFrames" uid="uid://hmddlu622qdt" path="res://spriteframes/big_stars.tres" id="6_nf25a"]
 [ext_resource type="AudioStream" uid="uid://bknerb1ukiyqs" path="res://assets/sounds/hurt.wav" id="6_swdw2"]
 [ext_resource type="AudioStream" uid="uid://xdfw0pwofap1" path="res://assets/sounds/grow.ogg" id="7_mi3vr"]
 [ext_resource type="AudioStream" uid="uid://di1px7ohlr65a" path="res://assets/sounds/fire-flower.wav" id="8_ixa3a"]
@@ -14,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://kcovs2qogcy7" path="res://assets/sounds/flip.wav" id="12_rnd3g"]
 [ext_resource type="AudioStream" uid="uid://5rr1ljmkobfs" path="res://assets/sounds/kill.wav" id="13_60cnt"]
 [ext_resource type="PackedScene" uid="uid://ca8epd355m4uy" path="res://scenes_and_scripts/hud/fade_out.tscn" id="14_8yu2r"]
+[ext_resource type="AudioStream" uid="uid://bv3a7131r6vac" path="res://assets/sounds/invincible_start.ogg" id="14_vhnga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lo0dj"]
 size = Vector2(26, 31)
@@ -46,7 +49,7 @@ offset = Vector2(0, -16)
 [node name="BigImage" type="AnimatedSprite2D" parent="." unique_id=2072830381]
 visible = false
 sprite_frames = ExtResource("2_qde4p")
-animation = &"backflip"
+animation = &"stand"
 centered = false
 offset = Vector2(-8, -45)
 
@@ -56,6 +59,17 @@ sprite_frames = ExtResource("4_eeq5s")
 animation = &"backflip"
 centered = false
 offset = Vector2(-8, -45)
+
+[node name="SmallStarsImage" type="AnimatedSprite2D" parent="." unique_id=1809801526]
+visible = false
+position = Vector2(24, 13)
+sprite_frames = ExtResource("5_gobix")
+
+[node name="BigStarsImage" type="AnimatedSprite2D" parent="." unique_id=291637247]
+visible = false
+sprite_frames = ExtResource("6_nf25a")
+centered = false
+offset = Vector2(0, -41)
 
 [node name="SmallCollision" type="CollisionShape2D" parent="." unique_id=563658190]
 position = Vector2(24, 16.5)
@@ -111,6 +125,9 @@ stream = ExtResource("12_rnd3g")
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=881467452]
 stream = ExtResource("13_60cnt")
 
+[node name="InvincibleSound" type="AudioStreamPlayer" parent="." unique_id=542611458]
+stream = ExtResource("14_vhnga")
+
 [node name="RockDetector" type="Area2D" parent="." unique_id=2127489158]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RockDetector" unique_id=29982064]
@@ -126,3 +143,7 @@ position = Vector2(24, 16)
 target_position = Vector2(0, -16)
 
 [node name="FadeOut" parent="." unique_id=1836586676 instance=ExtResource("14_8yu2r")]
+
+[node name="StarTimer" type="Timer" parent="." unique_id=629358307]
+wait_time = 14.01
+one_shot = true

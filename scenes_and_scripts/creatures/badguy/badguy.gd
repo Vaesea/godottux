@@ -358,7 +358,7 @@ func _physics_process(delta: float) -> void:
 	
 	was_on_wall = is_on_wall()
 	
-	# FIXME: badguy.gd:361 @ _physics_process(): Parameter "body->get_space()" is null. Might be something to do with Mr Rocket?
+	# FIXME: badguy.gd:362 @ _physics_process(): Parameter "body->get_space()" is null. Might be something to do with Mr Rocket?
 	move_and_slide()
 
 func flip_direction():
@@ -473,7 +473,10 @@ func interact(stomp, tux, fireball, iceblock):
 			return
 		
 		if tux_stomp and hurt_by_stomp:
-			stomp.get_parent().stomp_bounce()
+			if not Global.tux_star_invincible:
+				stomp.get_parent().stomp_bounce()
+			else:
+				death(true)
 			if bomb:
 				$SquishSound.play()
 				$Image.play("ticking")
@@ -481,7 +484,10 @@ func interact(stomp, tux, fireball, iceblock):
 				current_state = EnemyStates.Dead
 				return
 			if not walking_and_holdable:
-				death(false)
+				if not Global.tux_star_invincible:
+					death(false)
+				else:
+					death(true)
 			else:
 				if stomp.get_parent().get_real_velocity().y > 0 and wait_to_collide <= 0:
 					if current_iceblock_state == IceblockStates.Normal or current_iceblock_state == IceblockStates.MovingFlat:
@@ -504,30 +510,51 @@ func interact(stomp, tux, fireball, iceblock):
 			await get_tree().create_timer(0.01).timeout # HACK: stupid bouncing snowball. i hate it.
 			print(lmao)
 			if not lmao:
-				tux.damage()
+				if not Global.tux_star_invincible:
+					tux.damage()
+				else:
+					death(true)
 		elif wtf and not walking_and_holdable:
 			if hurt_by_stomp and not lmao:
-				tux.damage()
+				if not Global.tux_star_invincible:
+					tux.damage()
+				else:
+					death(true)
 		elif not hurt_by_stomp:
-			tux.damage()
+			if not Global.tux_star_invincible:
+				tux.damage()
+			else:
+				death(true)
 			
 		elif walking_and_holdable:
 			if wait_to_collide <= 0:
 				if current_iceblock_state == IceblockStates.MovingFlat or current_iceblock_state == IceblockStates.Normal:
-					tux.damage()
+					if not Global.tux_star_invincible:
+						tux.damage()
+					else:
+						death(true)
 				elif current_iceblock_state == IceblockStates.Flat:
 					if Input.is_action_pressed("player_action") and tux.held_object == null: # tux.held_object == null is needed here so the enemy can still be kicked by tux if tux is holding an object
-						tux.hold_object(self)
+						if not Global.tux_star_invincible:
+							tux.hold_object(self)
+						else:
+							death(true)
 					else: # TODO: code is copy and pasted from next else: thing. this needs to be fixed at some point, but it's ok to keep for now.
+						if not Global.tux_star_invincible:
+							$KickSound.play()
+							direction = TuxManager.facing_direction
+							current_iceblock_state = IceblockStates.MovingFlat
+							wait_to_collide = 0.25
+						else:
+							death(true)
+				else:
+					if not Global.tux_star_invincible:
 						$KickSound.play()
 						direction = TuxManager.facing_direction
 						current_iceblock_state = IceblockStates.MovingFlat
 						wait_to_collide = 0.25
-				else:
-					$KickSound.play()
-					direction = TuxManager.facing_direction
-					current_iceblock_state = IceblockStates.MovingFlat
-					wait_to_collide = 0.25
+					else:
+						death(true)
 	if stomp == null and tux == null and not fireball == null and iceblock == null:
 		fireball.queue_free()
 		burn()
@@ -624,16 +651,20 @@ func start_fall():
 		falling = true
 		print(falling)
 
+# HACK (possibly), Bouncing Snowballs are horrible.
 func _on_tux_stomp_area_detected(area):
 	if not current_state == EnemyStates.Dead:
 		print("You Made It BIG TIME!")
 		if area.is_in_group("Stomp"):
-			area.get_parent().position.y -= 1
-			lmao = true
-			$TuxDetector.monitoring = false
-			area.get_parent().stomp_bounce()
-			death(false)
-			lmao = false
+			if Global.tux_star_invincible:
+				area.get_parent().position.y -= 1
+				lmao = true
+				$TuxDetector.monitoring = false
+				area.get_parent().stomp_bounce()
+				death(false)
+				lmao = false
+			else:
+				death(true)
 
 func _on_tux_detected_left(body):
 	if body.is_in_group("Player") and current_state == EnemyStates.Alive:

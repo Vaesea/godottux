@@ -19,8 +19,6 @@ class_name Sector
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Music.stream = load(song)
-	Music.play()
 	add_to_group("LevelSector")
 	$Goal.connect("level_finished", _on_level_finished)
 
