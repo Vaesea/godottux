@@ -1,9 +1,9 @@
 extends CharacterBody2D
-
 class_name BadGuy
 
 # TODO: Make Iceblock enemy kill enemies that are off-screen.
 # TODO: Improve Spiky ground detection to be more like SuperTux.
+# TODO: Add Mr Tree stuff
 # TODO: Clean up. Entire code. Before release. It's literally almost 700 lines.
 
 # hi. anatolystev here.
@@ -316,26 +316,35 @@ func _physics_process(delta: float) -> void:
 		else:
 			$GroundDetector.position.x = ground_detector_position_x_when_right
 	
+	# If the enemy is a Sleeping Spiky, do the Shapecast stuff.
 	if sleeping and spiky:
+		# If direction is left, set shapecast's position and default shapecast target position.
 		if direction == -1:
 			$WakeUpShapecast.position.x = wake_up_shapecast_position_x_when_left
 			$WakeUpShapecast.target_position.x = -512.0
+		# If direction is right, set shapecast's position and default shapecast target position.
 		elif direction == 1:
 			$WakeUpShapecast.position.x = wake_up_shapecast_position_x_when_right
 			$WakeUpShapecast.target_position.x = 1024.0
 		
+		# Force the shapecast to update
 		$WakeUpShapecast.force_shapecast_update()
 		
+		# If the shapecast is colliding, make it's target position be the nearest thing, and if the nearest thing is the player, wake up.
 		if $WakeUpShapecast.is_colliding():
 			$WakeUpShapecast.target_position.x = $WakeUpShapecast.get_collision_point(0).x - $WakeUpShapecast.global_position.x
 			if $WakeUpShapecast.get_collider(0):
 				if $WakeUpShapecast.get_collider(0).is_in_group("Player"):
 					wake_up()
 	
+	# If the enemy is a stalactite and isn't falling, set the default FloorDetector shapecast target position,
+	# force the shapecast to update too.
 	if stalactite and not falling:
 		$FloorDetector.target_position.y = 512.0
+		
 		$FloorDetector.force_shapecast_update()
 		
+		# TODO: Maybe use this improved version of the Spiky shapecast code for the Spiky?
 		if $FloorDetector.is_colliding():
 			for the_collision in range($FloorDetector.get_collision_count()):
 				$FloorDetector.target_position.y = $FloorDetector.get_collision_point(the_collision).y - $FloorDetector.global_position.y
@@ -448,7 +457,6 @@ func death(fall:bool):
 
 func _on_tux_detector_area_entered(area) -> void:
 	if area.is_in_group("Stomp") and not spiky and not jumpy and not bouncing and not current_state == EnemyStates.Dead: # bouncing snowballs handle it themselves because of a bug!!!
-		print("if bouncing snowball and this happened and you hit the stomp area, bug happened!")
 		interact(area, null, null, null)
 	
 	if area.is_in_group("StupidThing") and not area.get_parent() == self:
@@ -467,7 +475,7 @@ func _on_tux_detector_body_entered(body) -> void:
 
 func interact(stomp, tux, fireball, iceblock):
 	if not stomp == null and tux == null and fireball == null and iceblock == null:
-		var tux_stomp = stomp.get_parent().get_real_velocity().y > 0
+		var tux_stomp = stomp.get_parent().get_real_velocity().y > 0 # why is this "get_real_velocity"?
 		
 		if current_state == EnemyStates.Dead:
 			return

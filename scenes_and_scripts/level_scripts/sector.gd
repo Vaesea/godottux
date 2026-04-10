@@ -6,8 +6,10 @@ class_name Sector
 @export var sector_width:int = 100
 ## Adds to the height of your sector. Name is a bit misleading...
 @export var sector_height:int = 0
-## Whether the level is snowing or not.
+## Whether the sector has snow particles or not. Make sure you have the snow particles node in this sector!
 @export var snowing:bool = false
+## Whether the sector has cloud particles or not. Make sure you have the cloud particles node in this sector!
+@export var cloudy:bool = false
 ## The music for your sector.
 @export_file("*.ogg", "*.wav") var song = "res://assets/music/forest.ogg"
 ## What song should be played when the level is done?
@@ -25,7 +27,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if snowing:
 		$SnowParticles.visible = true
-		$SnowParticles.global_position = $Tux/Camera.global_position - Vector2(0, 450)
+		$SnowParticles.global_position = get_parent().tux_camera.global_position - Vector2(0, 450)
+	if cloudy:
+		$CloudParticles.visible = true
+		$CloudParticles.global_position = get_parent().tux_camera.global_position - Vector2(0, 450)
 
 func _on_level_finished() -> void:
 	Global.checkpoint_reached = false

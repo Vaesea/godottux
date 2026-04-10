@@ -19,7 +19,7 @@ func _ready() -> void:
 	super()
 
 func _on_tux_detected_top(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and current_state == States.Normal:
 		$BounceSound.play()
 		$Image.play("bounce")
 		$StationaryImage.play("bounce")

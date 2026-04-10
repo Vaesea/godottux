@@ -22,4 +22,4 @@ level_note = "Also testing things."
 visible = false
 
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("9_fd80f")]
-position = Vector2(-96, -64)
+position = Vector2(-160, -64)

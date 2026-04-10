@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://banq8gsbv2o1c"]
+
+[ext_resource type="Script" uid="uid://cbrrijgcqjkl6" path="res://scenes_and_scripts/creatures/badguy/forest/mrtree.gd" id="1_bxjrv"]
+[ext_resource type="SpriteFrames" uid="uid://cquixxu84bjfs" path="res://spriteframes/mr_tree.tres" id="2_1f1tt"]
+[ext_resource type="SpriteFrames" uid="uid://dbs2gqs767m3e" path="res://spriteframes/stumpy.tres" id="3_e0b33"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_gfd5c"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_e0b33"]
+[ext_resource type="AudioStream" uid="uid://dbaed1pet7vym" path="res://assets/sounds/mr_tree.ogg" id="5_bxjrv"]
+[ext_resource type="AudioStream" uid="uid://y61u3rxfxopt" path="res://assets/sounds/mr_treehit.ogg" id="7_e0b33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gao4"]
+size = Vector2(40, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfd5c"]
+size = Vector2(40, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
+size = Vector2(40, 46)
+
+[node name="MrTree" type="CharacterBody2D" unique_id=1942256203]
+z_index = 40
+collision_layer = 4
+collision_mask = 257
+floor_constant_speed = true
+floor_max_angle = 1.3962634
+floor_snap_length = 12.0
+script = ExtResource("1_bxjrv")
+
+[node name="TreeImage" type="AnimatedSprite2D" parent="." unique_id=264556818]
+position = Vector2(0, -17)
+sprite_frames = ExtResource("2_1f1tt")
+animation = &"walk"
+centered = false
+offset = Vector2(0, -4)
+
+[node name="StumpyImage" type="AnimatedSprite2D" parent="." unique_id=59456519]
+visible = false
+position = Vector2(0, -17)
+sprite_frames = ExtResource("3_e0b33")
+animation = &"dizzy"
+centered = false
+offset = Vector2(0, -4)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
+position = Vector2(41, 41)
+shape = SubResource("RectangleShape2D_8gao4")
+
+[node name="TuxDetectorTop" type="Area2D" parent="." unique_id=99827960]
+collision_layer = 4
+collision_mask = 134
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetectorTop" unique_id=121300932]
+position = Vector2(41, 14.5)
+shape = SubResource("RectangleShape2D_gfd5c")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
+collision_layer = 4
+collision_mask = 134
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
+position = Vector2(41, 41)
+shape = SubResource("RectangleShape2D_aggo7")
+
+[node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]
+position = Vector2(21, 0)
+target_position = Vector2(0, 96)
+collision_mask = 257
+
+[node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=2009687058]
+stream = ExtResource("3_gfd5c")
+
+[node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1374949003]
+stream = ExtResource("4_e0b33")
+
+[node name="TreeSound" type="AudioStreamPlayer" parent="." unique_id=159479626]
+stream = ExtResource("5_bxjrv")
+volume_db = -5.0
+
+[node name="TreeHitSound" type="AudioStreamPlayer" parent="." unique_id=184420514]
+stream = ExtResource("7_e0b33")
+volume_db = -5.0
+
+[node name="DizzyTimer" type="Timer" parent="." unique_id=1401197879]
+one_shot = true
+
+[node name="ViciousIvySpawn1" type="Marker2D" parent="." unique_id=589776170]
+position = Vector2(-6, 20)
+
+[node name="ViciousIvySpawn2" type="Marker2D" parent="." unique_id=1932551347]
+position = Vector2(61, 20)
+
+[node name="ScreenCheck" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
+position = Vector2(21, 20)
+rect = Rect2(-64, -64, 160, 160)
+show_rect = false

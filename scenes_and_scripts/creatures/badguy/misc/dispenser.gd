@@ -184,7 +184,7 @@ func create_object():
 				elif type == 2:
 					object.global_position = $DropperMarker.global_position
 					complete_create(object, 0, 16, direction)
-			4: # mr rocket, even though i kind of dislike it now trying to add it.
+			4: # mr rocket
 				if type == 0:
 					object.global_position = $CanonMarker.global_position
 					complete_create(object, 1, 41, direction)

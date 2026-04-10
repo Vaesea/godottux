@@ -25,7 +25,7 @@ size = Vector2(26, 31)
 size = Vector2(26, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
-size = Vector2(26, 1)
+size = Vector2(26, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ob4o"]
 size = Vector2(26, 3)
@@ -85,7 +85,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stomp" unique_id=350845743]
-position = Vector2(24, 32.5)
+position = Vector2(24, 32)
 shape = SubResource("RectangleShape2D_uh3yy")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=902501659]

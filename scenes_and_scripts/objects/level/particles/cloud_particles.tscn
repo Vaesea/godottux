@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvyr4i0i3vqxf"]
+
+[ext_resource type="Texture2D" uid="uid://dh1eq3hq2owxo" path="res://assets/images/tiles/background/cloud.png" id="1_437xl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5ojj"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(864, 304, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 332, 1)
+velocity_pivot = Vector3(-100, 0, 0)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+
+[node name="CloudParticles" type="GPUParticles2D" unique_id=1169867419]
+z_index = -199
+amount = 48
+texture = ExtResource("1_437xl")
+lifetime = 25.450000000000003
+preprocess = 8.0
+visibility_rect = Rect2(0, 0, 800, 608)
+process_material = SubResource("ParticleProcessMaterial_n5ojj")

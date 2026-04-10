@@ -202,5 +202,3 @@ position = Vector2(1152, 32)
 
 [node name="Checkpoint" parent="." unique_id=1548006532 instance=ExtResource("17_15jv7")]
 position = Vector2(1344, 64)
-
-[connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

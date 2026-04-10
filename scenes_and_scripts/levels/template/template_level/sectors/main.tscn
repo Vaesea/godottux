@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cw34ydo2ppd6k"]
 
 [ext_resource type="Script" uid="uid://da3pmevifkus" path="res://scenes_and_scripts/level_scripts/sector.gd" id="1_xrwha"]
-[ext_resource type="PackedScene" uid="uid://bnuvb17wx4rtl" path="res://scenes_and_scripts/objects/level/snow_particles.tscn" id="2_ks5px"]
+[ext_resource type="PackedScene" uid="uid://bnuvb17wx4rtl" path="res://scenes_and_scripts/objects/level/particles/snow_particles.tscn" id="2_ks5px"]
 [ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="3_51tdu"]
 [ext_resource type="Texture2D" uid="uid://cl6c172x05mux" path="res://assets/images/background/BlueRock_Forest/blue-middle.jpg" id="4_x5803"]
 [ext_resource type="Texture2D" uid="uid://b3q2udg55gi4h" path="res://assets/images/background/BlueRock_Forest/blue-top.jpg" id="5_fh1f2"]
