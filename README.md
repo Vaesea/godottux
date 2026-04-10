@@ -30,6 +30,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - Forest Exit Tiles
 - End Sequence "Stop Tux" thing
+- Use onready variables instead of calling the nodes with $
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
