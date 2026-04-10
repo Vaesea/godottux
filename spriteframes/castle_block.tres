@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cdob4bu6adrny"]
+
+[ext_resource type="Texture2D" uid="uid://7bphxe133i5g" path="res://assets/images/objects/unstable_tile/castleblock-0.png" id="1_tkksf"]
+[ext_resource type="Texture2D" uid="uid://c3txoqwftjfr1" path="res://assets/images/objects/unstable_tile/castleblock-1.png" id="2_gjykj"]
+[ext_resource type="Texture2D" uid="uid://do23semvc5h8t" path="res://assets/images/objects/unstable_tile/castleblock-2.png" id="3_lw307"]
+[ext_resource type="Texture2D" uid="uid://bu84fks0rgho1" path="res://assets/images/objects/unstable_tile/castleblock-3.png" id="4_y42oh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tkksf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gjykj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lw307")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y42oh")
+}],
+"loop": false,
+"name": &"crumbling",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tkksf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

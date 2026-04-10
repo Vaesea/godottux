@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://blssg8lk6bip6" path="res://scenes_and_scripts/objects/level/door.tscn" id="17_xqkgq"]
 [ext_resource type="PackedScene" uid="uid://ycx18oijbs8w" path="res://scenes_and_scripts/objects/level/trampoline.tscn" id="18_7jrnl"]
 [ext_resource type="PackedScene" uid="uid://dv5s8pcoxppja" path="res://scenes_and_scripts/creatures/badguy/dispenser.tscn" id="19_1nnhc"]
+[ext_resource type="PackedScene" uid="uid://ciwv8qnrtslri" path="res://scenes_and_scripts/objects/level/unstable_tile.tscn" id="20_goecn"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_v4qyt")
@@ -206,5 +207,39 @@ portable = false
 [node name="Dispenser" parent="." unique_id=1040082611 instance=ExtResource("19_1nnhc")]
 position = Vector2(384, 96)
 object_to_spawn = 4
+
+[node name="UnstableTile" parent="." unique_id=1870885548 instance=ExtResource("20_goecn")]
+position = Vector2(1664, 96)
+type = 1
+
+[node name="UnstableTile2" parent="." unique_id=1052750762 instance=ExtResource("20_goecn")]
+position = Vector2(1696.0358, 96)
+type = 1
+
+[node name="UnstableTile3" parent="." unique_id=167438907 instance=ExtResource("20_goecn")]
+position = Vector2(1728.1099, 96)
+type = 1
+
+[node name="UnstableTile4" parent="." unique_id=2031071180 instance=ExtResource("20_goecn")]
+position = Vector2(1792, 96)
+
+[node name="UnstableTile5" parent="." unique_id=72578114 instance=ExtResource("20_goecn")]
+position = Vector2(1824.0358, 96)
+come_back = true
+
+[node name="UnstableTile6" parent="." unique_id=2000673270 instance=ExtResource("20_goecn")]
+position = Vector2(1856.1099, 96)
+
+[node name="UnstableTile7" parent="." unique_id=472401215 instance=ExtResource("20_goecn")]
+position = Vector2(1920, 96)
+type = 2
+
+[node name="UnstableTile8" parent="." unique_id=78418899 instance=ExtResource("20_goecn")]
+position = Vector2(1952.0358, 96)
+type = 2
+
+[node name="UnstableTile9" parent="." unique_id=1642347812 instance=ExtResource("20_goecn")]
+position = Vector2(1984.1099, 96)
+type = 2
 
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

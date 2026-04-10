@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ciwv8qnrtslri"]
+
+[ext_resource type="Script" uid="uid://xmq8c4dwjrlv" path="res://scenes_and_scripts/objects/level/unstable_tile.gd" id="1_uemt5"]
+[ext_resource type="SpriteFrames" uid="uid://djnws3a6y4s0x" path="res://spriteframes/unstable_ice.tres" id="1_v6f8b"]
+[ext_resource type="SpriteFrames" uid="uid://cdob4bu6adrny" path="res://spriteframes/castle_block.tres" id="2_8iyxs"]
+[ext_resource type="Texture2D" uid="uid://ccw7n2s6pni41" path="res://assets/images/objects/unstable_tile/normal.png" id="3_ci406"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci406"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uemt5"]
+size = Vector2(32, 0.5)
+
+[sub_resource type="Animation" id="Animation_uemt5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrickImage:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_oegxq"]
+resource_name = "shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrickImage:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10000001, 0.15, 0.20000002, 0.25000003, 0.3, 0.35000002, 0.40000004, 0.45000005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlgwt"]
+_data = {
+&"RESET": SubResource("Animation_uemt5"),
+&"shake": SubResource("Animation_oegxq")
+}
+
+[node name="UnstableTile" type="CharacterBody2D" unique_id=1870885548]
+script = ExtResource("1_uemt5")
+
+[node name="IceImage" type="AnimatedSprite2D" parent="." unique_id=1134457911]
+sprite_frames = ExtResource("1_v6f8b")
+frame_progress = 1.0
+centered = false
+
+[node name="BrickImage" type="Sprite2D" parent="." unique_id=1155065460]
+visible = false
+texture = ExtResource("3_ci406")
+centered = false
+
+[node name="CastleBlockImage" type="AnimatedSprite2D" parent="." unique_id=605820760]
+visible = false
+sprite_frames = ExtResource("2_8iyxs")
+frame_progress = 0.19327834
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1737188215]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_ci406")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=996754477]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=498870468]
+position = Vector2(16, -0.25)
+shape = SubResource("RectangleShape2D_uemt5")
+
+[node name="AnimationTween" type="AnimationPlayer" parent="." unique_id=832327404]
+libraries/ = SubResource("AnimationLibrary_hlgwt")

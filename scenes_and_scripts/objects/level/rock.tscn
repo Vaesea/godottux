@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8ulqjpijewvo"]
 
 [ext_resource type="Texture2D" uid="uid://dnr0udly0l7my" path="res://assets/images/objects/rock/rock.png" id="1_auia0"]
-[ext_resource type="Script" uid="uid://ccws3crqd7626" path="res://scenes_and_scripts/objects/holdable_object.gd" id="1_y677r"]
+[ext_resource type="Script" uid="uid://ccws3crqd7626" path="res://scenes_and_scripts/objects/level/holdable_object.gd" id="1_y677r"]
 [ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="3_y677r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajfev"]
