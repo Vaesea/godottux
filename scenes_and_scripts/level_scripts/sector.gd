@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 func _on_level_finished() -> void:
 	Global.checkpoint_reached = false
 	Music.stream = load(level_done_music)
-	print(Music.stream) # helpful debug thing for myself, should probably remove this before release.
+	print(Music.stream) # Helpful debug thing.
 	Music.play()
 	await get_tree().create_timer(wait_to_end_level).timeout
 	get_parent().finish_level()

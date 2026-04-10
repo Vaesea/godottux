@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dvwuw7fmx8jq4"]
+
+[ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_oxx4j"]
+[ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="2_dbly2"]
+[ext_resource type="PackedScene" uid="uid://bfeuiu4qo4nbg" path="res://scenes_and_scripts/levels/world2/key_level/sectors/main.tscn" id="3_acy7e"]
+[ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="4_r02ra"]
+[ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="5_dbly2"]
+
+[node name="Template" type="Node2D" unique_id=1170359899]
+script = ExtResource("1_oxx4j")
+
+[node name="Misc" type="Node2D" parent="." unique_id=1525953836]
+
+[node name="HUD" parent="Misc" unique_id=1308660143 instance=ExtResource("2_dbly2")]
+
+[node name="Main" parent="." unique_id=1907047823 instance=ExtResource("3_acy7e")]
+
+[node name="Tux" parent="." unique_id=205617556 instance=ExtResource("4_r02ra")]
+position = Vector2(-64, -32)
+
+[node name="Comment" parent="." unique_id=334767462 instance=ExtResource("5_dbly2")]
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 50.0
+offset_bottom = -41.0
+text = "tux says hello"
+horizontal_alignment = 1

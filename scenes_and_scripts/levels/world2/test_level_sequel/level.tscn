@@ -11,6 +11,7 @@ script = ExtResource("1_r1yn2")
 level_name = "Test Level"
 level_creator = "Vaesea"
 level_note = "Also testing things."
+show_keys = true
 
 [node name="Misc" type="Node2D" parent="." unique_id=1525953836]
 

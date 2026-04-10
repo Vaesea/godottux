@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://buir3e4t82o6d"]
+
+[ext_resource type="Texture2D" uid="uid://crllyarj6ak3e" path="res://assets/images/objects/keys/display/fire_display.png" id="1_8n6hv"]
+[ext_resource type="Texture2D" uid="uid://3o1rmixx6ia0" path="res://assets/images/objects/keys/outline/o_outline.png" id="2_udn8j"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8n6hv")
+}],
+"loop": false,
+"name": &"display",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_udn8j")
+}],
+"loop": false,
+"name": &"outline",
+"speed": 5.0
+}]

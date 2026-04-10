@@ -33,7 +33,7 @@ var completed_levels:Array = []
 
 var completed_worldmaps:Array = []
 
-var save_version:int = 2
+var save_version:int = 3
 var save_file = "user://save"
 
 var checkpoint_reached:bool = false
@@ -42,6 +42,14 @@ var checkpoint_sector:String
 
 var sector_song:String
 var tux_star_invincible:bool = false
+
+var air_key_collected:bool = false
+var earth_key_collected:bool = false
+var wood_key_collected:bool = false
+var fire_key_collected:bool = false
+var water_key_collected:bool = false
+var air_key_name:String = "air"
+var earth_key_name:String = "earth"
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("activate_debug") and not debug:
@@ -61,10 +69,17 @@ func save_data():
 	file.store_var(completed_worldmaps)
 	file.store_var(save_version)
 	file.store_var(debug)
+	file.store_var(air_key_collected)
+	file.store_var(earth_key_collected)
+	file.store_var(wood_key_collected)
+	file.store_var(fire_key_collected)
+	file.store_var(water_key_collected)
 
 func load_data():
 	if FileAccess.file_exists(save_file):
 		print("Save file exists! Loading data...")
+		var debug_save_versions = save_version == 2 or save_version == 3
+		var old_save_versions = save_version == 1 or save_version == 2
 		var file = FileAccess.open(save_file, FileAccess.READ)
 		current_worldmap = file.get_var()
 		coins = file.get_var()
@@ -74,8 +89,16 @@ func load_data():
 		completed_levels = file.get_var()
 		completed_worldmaps = file.get_var()
 		save_version = file.get_var()
-		if save_version == 2:
+		if debug_save_versions:
 			debug = file.get_var()
+			if old_save_versions:
+				print("You are using an old save file. You should delete it.")
+		if save_version == 3:
+			air_key_collected = file.get_var()
+			earth_key_collected = file.get_var()
+			wood_key_collected = file.get_var()
+			fire_key_collected = file.get_var()
+			water_key_collected = file.get_var()
 		print("current_worldmap: ", current_worldmap)
 		print("coins: ", coins)
 		print("tux_state: ", tux_state)
@@ -84,6 +107,11 @@ func load_data():
 		print("completed_worldmaps: ", completed_worldmaps)
 		print("save_version: ", save_version)
 		print("debug: ", str(debug))
+		print("air_key_collected: ", str(air_key_collected))
+		print("earth_key_collected: ", str(earth_key_collected))
+		print("wood_key_collected: ", str(wood_key_collected))
+		print("fire_key_collected: ", str(fire_key_collected))
+		print("water_key_collected: ", str(water_key_collected))
 	else:
 		print("Save file doesn't exist, saving data...")
 		print("current_worldmap: ", current_worldmap)
@@ -94,6 +122,11 @@ func load_data():
 		print("completed_worldmaps: ", completed_worldmaps)
 		print("save_version: ", save_version)
 		print("debug: ", str(debug))
+		print("air_key_collected: ", str(air_key_collected))
+		print("earth_key_collected: ", str(earth_key_collected))
+		print("wood_key_collected: ", str(wood_key_collected))
+		print("fire_key_collected: ", str(fire_key_collected))
+		print("water_key_collected: ", str(water_key_collected))
 		save_data()
 
 func delete_data():

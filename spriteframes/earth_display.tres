@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bjjbratiem5ry"]
+
+[ext_resource type="Texture2D" uid="uid://b1f02ugsjpk2x" path="res://assets/images/objects/keys/display/earth_display.png" id="1_d26ho"]
+[ext_resource type="Texture2D" uid="uid://3o1rmixx6ia0" path="res://assets/images/objects/keys/outline/o_outline.png" id="2_74x4l"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d26ho")
+}],
+"loop": false,
+"name": &"display",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_74x4l")
+}],
+"loop": false,
+"name": &"outline",
+"speed": 5.0
+}]

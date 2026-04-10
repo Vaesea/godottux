@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://uyqfh1xf0mio" path="res://scenes_and_scripts/hud/worldmap_hud.tscn" id="4_2sj5l"]
 [ext_resource type="TileSet" uid="uid://c8e70il54cmxc" path="res://assets/images/worldmap/tiles/worldmap.tres" id="5_3t6ij"]
 [ext_resource type="PackedScene" uid="uid://2ubl5y6jnhg7" path="res://scenes_and_scripts/objects/worldmap/worldmap_tux.tscn" id="6_5wxw0"]
+[ext_resource type="PackedScene" uid="uid://dvwuw7fmx8jq4" path="res://scenes_and_scripts/levels/world2/key_level/key_level.tscn" id="7_5sk32"]
 [ext_resource type="PackedScene" uid="uid://c7jg4p1ouyw4q" path="res://scenes_and_scripts/objects/worldmap/level.tscn" id="7_tsvv0"]
 [ext_resource type="PackedScene" uid="uid://b3hpsrshrx1l0" path="res://scenes_and_scripts/levels/world2/test_level_sequel/level.tscn" id="8_daeq0"]
 [ext_resource type="PackedScene" uid="uid://ct6hka51cnpm7" path="res://scenes_and_scripts/objects/worldmap/rock.tscn" id="9_pbevf"]
@@ -15,6 +16,7 @@
 script = ExtResource("1_daeq0")
 worldmap_name = "Forest World"
 worldmap_creator = "Vaesea"
+show_keys = true
 
 [node name="Misc" type="Node2D" parent="." unique_id=558563748]
 
@@ -38,14 +40,45 @@ z_index = 1
 tile_map_data = PackedByteArray("AAAaABMABQARAAYAAAAaABQABQARAAcAAAAaABUABQARAAgAAAAbABMABQASAAYAAAAbABQABQASAAcAAAAbABUABQASAAgAAAAcABMABQATAAYAAAAcABQABQATAAcAAAAcABUABQATAAgAAAAdABMABQAUAAYAAAAdABQABQAUAAcAAAAdABUABQAUAAgAAAAeABMABQAVAAYAAAAeABQABQAVAAcAAAAeABUABQAVAAgAAAAfABMABQAWAAYAAAAfABQABQAWAAcAAAAfABUABQAWAAgAAAAkAAoABQARAAYAAAAkAAsABQARAAcAAAAkAAwABQARAAgAAAAlAAoABQASAAYAAAAlAAsABQASAAcAAAAlAAwABQASAAgAAAAmAAoABQATAAYAAAAmAAsABQATAAcAAAAmAAwABQATAAgAAAAnAAoABQAUAAYAAAAnAAsABQAUAAcAAAAnAAwABQAUAAgAAAAoAAoABQAVAAYAAAAoAAsABQAVAAcAAAAoAAwABQAVAAgAAAApAAoABQAWAAYAAAApAAsABQAWAAcAAAApAAwABQAWAAgAAAAgABkABQAUAAQAAAAaAA0ABQAUAAQAAAApABMABQAVAAQAAAAfAAsABQAVAAQAAAAkABYABQAOAAYAAAAkABcABQAOAAcAAAAkABgABQAOAAgAAAAlABYABQAPAAYAAAAlABcABQAPAAcAAAAlABgABQAPAAgAAAAnABQABQAOAAYAAAAnABUABQAOAAcAAAAnABYABQAOAAgAAAAoABQABQAPAAYAAAAoABUABQAPAAcAAAAoABYABQAPAAgAAAAcABcABQAOAAQAAAAcABgABQAOAAUAAAAdABcABQAPAAQAAAAdABgABQAPAAUAAAAbABAABQAOAAQAAAAbABEABQAOAAUAAAAcABAABQAPAAQAAAAcABEABQAPAAUAAAAjAA4ABQASAAMAAAAjAA8ABQASAAQAAAAdAAoABQASAAMAAAAdAAsABQASAAQAAAAaAAkABQARAAMAAAAaAAoABQARAAQAAAAdABEABQARAAMAAAAdABIABQARAAQAAAAiABYABQARAAMAAAAiABcABQARAAQAAAApABgABQARAAMAAAApABkABQARAAQAAAA=")
 tile_set = ExtResource("5_3t6ij")
 
-[node name="Level" parent="." unique_id=1864217810 instance=ExtResource("7_tsvv0")]
+[node name="TL2" parent="." unique_id=1864217810 instance=ExtResource("7_tsvv0")]
 position = Vector2(992, 480)
 animation = &"green"
 level_scene = ExtResource("8_daeq0")
 level_name = "Test Level 2"
 
+[node name="KL" parent="." unique_id=864822788 instance=ExtResource("7_tsvv0")]
+position = Vector2(1280, 480)
+animation = &"green"
+level_scene = ExtResource("7_5sk32")
+level_name = "Key Level"
+level_section = 2
+
 [node name="Rock" parent="." unique_id=1245451961 instance=ExtResource("9_pbevf")]
 position = Vector2(1024, 480)
+
+[node name="Rock2" parent="." unique_id=1591733477 instance=ExtResource("9_pbevf")]
+position = Vector2(1312, 416)
+key_rock = true
+
+[node name="Rock3" parent="." unique_id=69045124 instance=ExtResource("9_pbevf")]
+position = Vector2(1312, 448)
+key_rock = true
+what_key_unlocks_rock = 1
+
+[node name="Rock4" parent="." unique_id=270960443 instance=ExtResource("9_pbevf")]
+position = Vector2(1312, 480)
+key_rock = true
+what_key_unlocks_rock = 2
+
+[node name="Rock5" parent="." unique_id=300022855 instance=ExtResource("9_pbevf")]
+position = Vector2(1312, 512)
+key_rock = true
+what_key_unlocks_rock = 3
+
+[node name="Rock6" parent="." unique_id=921885088 instance=ExtResource("9_pbevf")]
+position = Vector2(1312, 544)
+key_rock = true
+what_key_unlocks_rock = 4
 
 [node name="WorldmapTux" parent="." unique_id=239524071 instance=ExtResource("6_5wxw0")]
 

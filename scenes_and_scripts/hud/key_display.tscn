@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dn1knfn3rrel"]
+
+[ext_resource type="Script" uid="uid://cwdplycwusx1d" path="res://scenes_and_scripts/hud/key_display.gd" id="1_elvpv"]
+[ext_resource type="SpriteFrames" uid="uid://d2r2w6a5b4fh0" path="res://spriteframes/air_display.tres" id="2_12gsu"]
+[ext_resource type="SpriteFrames" uid="uid://bjjbratiem5ry" path="res://spriteframes/earth_display.tres" id="3_msm51"]
+[ext_resource type="SpriteFrames" uid="uid://c0kips4ftnwgf" path="res://spriteframes/wood_display.tres" id="4_jmnbr"]
+[ext_resource type="SpriteFrames" uid="uid://buir3e4t82o6d" path="res://spriteframes/fire_display.tres" id="5_d1xyk"]
+[ext_resource type="SpriteFrames" uid="uid://d20bkju7ohqqu" path="res://spriteframes/water_display.tres" id="6_hwfx5"]
+
+[node name="KeyDisplay" type="CanvasLayer" unique_id=521340962]
+layer = 500
+script = ExtResource("1_elvpv")
+
+[node name="AirDisplay" type="AnimatedSprite2D" parent="." unique_id=1431516927]
+position = Vector2(10, 10)
+sprite_frames = ExtResource("2_12gsu")
+animation = &"outline"
+centered = false
+
+[node name="EarthDisplay" type="AnimatedSprite2D" parent="." unique_id=75237273]
+position = Vector2(40, 10)
+sprite_frames = ExtResource("3_msm51")
+animation = &"outline"
+centered = false
+
+[node name="WoodDisplay" type="AnimatedSprite2D" parent="." unique_id=968490816]
+position = Vector2(70, 10)
+sprite_frames = ExtResource("4_jmnbr")
+animation = &"outline"
+centered = false
+
+[node name="FireDisplay" type="AnimatedSprite2D" parent="." unique_id=699884637]
+position = Vector2(100, 10)
+sprite_frames = ExtResource("5_d1xyk")
+animation = &"outline"
+centered = false
+
+[node name="WaterDisplay" type="AnimatedSprite2D" parent="." unique_id=1565831781]
+position = Vector2(130, 10)
+sprite_frames = ExtResource("6_hwfx5")
+animation = &"outline"
+centered = false

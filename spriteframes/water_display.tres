@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d20bkju7ohqqu"]
+
+[ext_resource type="Texture2D" uid="uid://dhkkwdjgshflw" path="res://assets/images/objects/keys/display/water_display.png" id="1_5ooe7"]
+[ext_resource type="Texture2D" uid="uid://cse0h88xwvqsc" path="res://assets/images/objects/keys/outline/k_outline.png" id="2_fi4qd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5ooe7")
+}],
+"loop": false,
+"name": &"display",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fi4qd")
+}],
+"loop": false,
+"name": &"outline",
+"speed": 5.0
+}]

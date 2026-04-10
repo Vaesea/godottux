@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cqdikag18lykj"]
+
+[ext_resource type="Texture2D" uid="uid://02rhyvh58hqc" path="res://assets/images/objects/keys/key/air.png" id="1_rto1t"]
+[ext_resource type="Script" uid="uid://q807fc34dor8" path="res://scenes_and_scripts/objects/level/nolok_key.gd" id="2_chb4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chb4k"]
+size = Vector2(78, 36)
+
+[node name="AirKey" type="Sprite2D" unique_id=261692497]
+texture = ExtResource("1_rto1t")
+centered = false
+offset = Vector2(0, 15)
+script = ExtResource("2_chb4k")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=447959868]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=684864745]
+position = Vector2(51, 38)
+shape = SubResource("RectangleShape2D_chb4k")

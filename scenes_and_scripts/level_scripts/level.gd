@@ -14,6 +14,8 @@ class_name Level
 @export var main_sector:String = "main"
 ## The spawnpoint that the player goes to when loading the level.
 @export var main_spawnpoint:String = "main"
+## Whether the keys should be displayed or not. Doesn't affect keys in level, only HUD.
+@export var show_keys:bool = false
 
 var sector_name_to_use:String
 
@@ -29,6 +31,10 @@ func _ready() -> void:
 	activate_sector(sector_name_to_use)
 	TuxManager.current_state = Global.tux_state
 	print(TuxManager.current_state)
+	if show_keys:
+		KeyDisplay.visible = true
+	else:
+		KeyDisplay.visible = false
 	print("Useful level debugging info, possibly:")
 	print("Width in pixels: " + str(Global.width_of_level) + ". If this is 0, and you didn't set Level Width to 0, there's most likely a bug you should report.")
 	print("Height in pixels: " + str(Global.height_of_level) + ". If this is 0, and you didn't set Level Height to 0, there's most likely a bug you should report.")

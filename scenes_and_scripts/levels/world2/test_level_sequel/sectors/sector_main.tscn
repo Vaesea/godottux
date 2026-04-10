@@ -20,14 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://dv5s8pcoxppja" path="res://scenes_and_scripts/creatures/badguy/misc/dispenser.tscn" id="19_1nnhc"]
 [ext_resource type="PackedScene" uid="uid://ciwv8qnrtslri" path="res://scenes_and_scripts/objects/level/unstable_tile.tscn" id="20_goecn"]
 [ext_resource type="PackedScene" uid="uid://banq8gsbv2o1c" path="res://scenes_and_scripts/creatures/badguy/forest/mrtree.tscn" id="21_g1whm"]
-[ext_resource type="PackedScene" uid="uid://cvyr4i0i3vqxf" path="res://scenes_and_scripts/objects/level/particles/cloud_particles.tscn" id="22_wib0y"]
 [ext_resource type="PackedScene" uid="uid://wluqctql7nqc" path="res://scenes_and_scripts/creatures/badguy/misc/flame.tscn" id="22_xuy4s"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_v4qyt")
 sector_width = 97
 sector_height = 12
-cloudy = true
 
 [node name="Background2" type="Parallax2D" parent="." unique_id=138000010]
 editor_description = "Yes you have to change every sprite2d to properly change the background to what you want, and the repeat size but only the horizontal repeat size.. Why? Godot. And if you're making a level that repeats vertically a lot, you have to add even more Sprite2Ds! How fun. If anyone has a proper way to do all this, PLEASE tell me."
@@ -137,9 +135,9 @@ position = Vector2(2464, -224)
 position = Vector2(32, 384)
 
 [node name="Comment" parent="." unique_id=334767462 instance=ExtResource("10_83jpe")]
-offset_left = -256.0
+offset_left = -448.0
 offset_top = -96.0
-offset_right = 169.0
+offset_right = -15.0
 offset_bottom = -73.0
 text = "Beware the penguin who speaks in hands..."
 
@@ -255,5 +253,3 @@ position = Vector2(960, 128)
 
 [node name="MrTree" parent="." unique_id=1676582413 instance=ExtResource("21_g1whm")]
 position = Vector2(384, 352)
-
-[node name="CloudParticles" parent="." unique_id=1169867419 instance=ExtResource("22_wib0y")]

@@ -21,6 +21,8 @@ class_name Worldmap
 @export var worldmap_height:int = 100
 ## The music that should be played when the worldmap has loaded.
 @export_file("*.ogg", "*.wav") var music = "res://assets/music/forestmap.ogg"
+## Whether the key display should be shown or not.
+@export var show_keys:bool = false
 
 var levels:Array = []
 var rocks:Array = []
@@ -38,6 +40,10 @@ func _ready() -> void:
 	Music.play()
 	tux.current_state = Global.tux_state
 	tux.reload_player()
+	if show_keys:
+		KeyDisplay.visible = true
+	else:
+		KeyDisplay.visible = false
 	levels = get_tree().get_nodes_in_group("Level") # less typing
 	rocks = get_tree().get_nodes_in_group("Rock") # less typing
 	if Global.use_spawn_point:
@@ -71,8 +77,20 @@ func check_rock_unlocks():
 		if rock.gone:
 			continue
 		
-		if section_completed(rock.rock_section):
-			rock.remove_rock()
+		if not rock.key_rock:
+			if section_completed(rock.rock_section):
+				rock.remove_rock()
+		else:
+			if rock.what_key_unlocks_rock == 0 and Global.air_key_collected:
+				rock.remove_rock()
+			if rock.what_key_unlocks_rock == 1 and Global.earth_key_collected:
+				rock.remove_rock()
+			if rock.what_key_unlocks_rock == 2 and Global.wood_key_collected:
+				rock.remove_rock()
+			if rock.what_key_unlocks_rock == 3 and Global.fire_key_collected:
+				rock.remove_rock()
+			if rock.what_key_unlocks_rock == 4 and Global.water_key_collected:
+				rock.remove_rock()
 
 # wtf do i name this
 func check_level_completeds():
