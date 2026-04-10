@@ -10,25 +10,26 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 ## What hasn't been added yet but is planned
 - Worldmap Tux sprite changer
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
+- Stop holdable objects from being placed in walls (I remember this being a bug)
 - Level results
 - Full Test Levels (World 2 = Welcome To The Forest recreation, castle keys test level)
 - Mr Tree
 - Snail
 - Igel
-- Fish (With Flame Fish option)
+- Fish
 - Mole
 - Zeekling
 - Skullyhop
 - Dart Trap
+- Dart
 - Spidermite
 - Ispy
 - Button
 - Will-O-Wisp
-- Flame
-- Plant
-- Kugelblitz (but it's just a large flame thing)
+- Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
 - Toad
 - Forest Exit Tiles
+- End Sequence "Stop Tux" thing
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
@@ -47,6 +48,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Lantern (while not that complicated to add, the light would look terrible in-game)
+- Kugelblitz
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
