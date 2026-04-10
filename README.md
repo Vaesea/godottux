@@ -12,8 +12,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
 - Level results
-- Full Test Levels (World 2 = Welcome To The Forest recreation, castle keys test level)
-- Mr Tree
+- Full Test Levels (World 2 = Welcome To The Forest recreation, nolok keys test level)
+- Nolok Keys
 - Snail
 - Igel
 - Fish
@@ -30,6 +30,8 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - Forest Exit Tiles
 - End Sequence "Stop Tux" thing
+- Use onready variables instead of calling the nodes with $
+- Add collisions to Forest Worldmap tiles
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
