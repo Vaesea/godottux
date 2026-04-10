@@ -4,7 +4,7 @@ class_name BadGuy
 
 # TODO: Make Iceblock enemy kill enemies that are off-screen.
 # TODO: Improve Spiky ground detection to be more like SuperTux.
-# TODO: Clean up. Entire code. Before release.
+# TODO: Clean up. Entire code. Before release. It's literally almost 700 lines.
 
 # hi. anatolystev here.
 # i might've, you know, made everything be like the haxeflixel version.

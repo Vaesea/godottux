@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi3s3l4fv1xp1"]
 
-[ext_resource type="Script" uid="uid://do5jl0mvbitvq" path="res://scenes_and_scripts/creatures/badguy/mr_bomb.gd" id="1_udwue"]
+[ext_resource type="Script" uid="uid://do5jl0mvbitvq" path="res://scenes_and_scripts/creatures/badguy/misc/mr_bomb.gd" id="1_udwue"]
 [ext_resource type="SpriteFrames" uid="uid://cgirrrn7y2qf0" path="res://spriteframes/mr_bomb.tres" id="2_j1fox"]
 [ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_gyw5m"]
 [ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_3l847"]

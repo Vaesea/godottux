@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bbl8hts60fryk"]
+
+[ext_resource type="Texture2D" uid="uid://cy57etv4wueqg" path="res://assets/images/creatures/flame/flame-0.png" id="1_ivcxb"]
+[ext_resource type="Texture2D" uid="uid://dgiikgoyo8wv6" path="res://assets/images/creatures/flame/flame-1.png" id="2_3atxj"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ivcxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3atxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

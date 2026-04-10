@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd6ah8ye2u4c3"]
 
-[ext_resource type="Script" uid="uid://bl5yf4xa3qlqw" path="res://scenes_and_scripts/creatures/badguy/mr_rocket.gd" id="1_y3j1t"]
+[ext_resource type="Script" uid="uid://bl5yf4xa3qlqw" path="res://scenes_and_scripts/creatures/badguy/misc/mr_rocket.gd" id="1_y3j1t"]
 [ext_resource type="SpriteFrames" uid="uid://bpy2v2m7nheg2" path="res://spriteframes/mr_rocket.tres" id="2_y3j1t"]
 [ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_naqsk"]
 [ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_3cgv3"]

@@ -9,18 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://cx4kd0pb565ry" path="res://scenes_and_scripts/objects/level/level_spawn_point.tscn" id="9_18rev"]
 [ext_resource type="PackedScene" uid="uid://buee3j73grcoj" path="res://scenes_and_scripts/objects/comment.tscn" id="10_83jpe"]
 [ext_resource type="PackedScene" uid="uid://cab0l31thlxhl" path="res://scenes_and_scripts/objects/level/bonus_block.tscn" id="11_x1hpl"]
-[ext_resource type="PackedScene" uid="uid://dxou4m4v33uay" path="res://scenes_and_scripts/creatures/badguy/jumpy.tscn" id="12_7d4xv"]
+[ext_resource type="PackedScene" uid="uid://dxou4m4v33uay" path="res://scenes_and_scripts/creatures/badguy/misc/jumpy.tscn" id="12_7d4xv"]
 [ext_resource type="PackedScene" uid="uid://c8ulqjpijewvo" path="res://scenes_and_scripts/objects/level/rock.tscn" id="13_ueyvn"]
 [ext_resource type="PackedScene" uid="uid://c7xxetrv6fxkk" path="res://scenes_and_scripts/creatures/badguy/forest/vicious_ivy.tscn" id="14_47y8a"]
 [ext_resource type="PackedScene" uid="uid://du1l1m047lstr" path="res://scenes_and_scripts/creatures/badguy/forest/walking_leaf.tscn" id="15_ocu45"]
 [ext_resource type="PackedScene" uid="uid://dedpv5aswgjv3" path="res://scenes_and_scripts/objects/level/brick_block.tscn" id="16_2gskq"]
 [ext_resource type="PackedScene" uid="uid://bgmottjdfiewy" path="res://scenes_and_scripts/objects/level/checkpoint.tscn" id="17_7jrnl"]
-[ext_resource type="PackedScene" uid="uid://bi3s3l4fv1xp1" path="res://scenes_and_scripts/creatures/badguy/mr_bomb.tscn" id="17_crwfg"]
+[ext_resource type="PackedScene" uid="uid://bi3s3l4fv1xp1" path="res://scenes_and_scripts/creatures/badguy/misc/mr_bomb.tscn" id="17_crwfg"]
 [ext_resource type="PackedScene" uid="uid://blssg8lk6bip6" path="res://scenes_and_scripts/objects/level/door.tscn" id="17_xqkgq"]
 [ext_resource type="PackedScene" uid="uid://ycx18oijbs8w" path="res://scenes_and_scripts/objects/level/trampoline.tscn" id="18_7jrnl"]
-[ext_resource type="PackedScene" uid="uid://dv5s8pcoxppja" path="res://scenes_and_scripts/creatures/badguy/dispenser.tscn" id="19_1nnhc"]
+[ext_resource type="PackedScene" uid="uid://dv5s8pcoxppja" path="res://scenes_and_scripts/creatures/badguy/misc/dispenser.tscn" id="19_1nnhc"]
 [ext_resource type="PackedScene" uid="uid://ciwv8qnrtslri" path="res://scenes_and_scripts/objects/level/unstable_tile.tscn" id="20_goecn"]
 [ext_resource type="PackedScene" uid="uid://cstyfqelcwsdf" path="res://scenes_and_scripts/creatures/badguy/snow/iceblock.tscn" id="21_g1whm"]
+[ext_resource type="PackedScene" uid="uid://wluqctql7nqc" path="res://scenes_and_scripts/creatures/badguy/misc/flame.tscn" id="22_xuy4s"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_v4qyt")
@@ -254,5 +255,8 @@ position = Vector2(416, 384)
 
 [node name="Iceblock" parent="." unique_id=139463551 instance=ExtResource("21_g1whm")]
 position = Vector2(352, 384)
+
+[node name="Flame" parent="." unique_id=1775267049 instance=ExtResource("22_xuy4s")]
+position = Vector2(960, 128)
 
 [connection signal="level_finished" from="Goal" to="." method="_on_goal_level_finished"]

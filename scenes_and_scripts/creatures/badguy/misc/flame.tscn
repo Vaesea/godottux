@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://wluqctql7nqc"]
+
+[ext_resource type="Script" uid="uid://dei8717amfd51" path="res://scenes_and_scripts/creatures/badguy/misc/flame.gd" id="1_lsrng"]
+[ext_resource type="SpriteFrames" uid="uid://bbl8hts60fryk" path="res://spriteframes/flame.tres" id="2_f22va"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lsrng"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_n514q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qow48"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_wgu7m"]
+resource_name = "rotate_fast"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_4502p"]
+resource_name = "rotate_faster"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_xg1oo"]
+resource_name = "rotate_slow"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2qx2q"]
+_data = {
+&"RESET": SubResource("Animation_n514q"),
+&"rotate": SubResource("Animation_qow48"),
+&"rotate_fast": SubResource("Animation_wgu7m"),
+&"rotate_faster": SubResource("Animation_4502p"),
+&"rotate_slow": SubResource("Animation_xg1oo")
+}
+
+[node name="Flame" type="Node2D" unique_id=1775267049]
+z_index = 39
+script = ExtResource("1_lsrng")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=1561958220]
+sprite_frames = ExtResource("2_f22va")
+frame_progress = 0.089761026
+centered = false
+offset = Vector2(100, 0)
+
+[node name="TuxDetector" type="Area2D" parent="Image" unique_id=1337952305]
+collision_layer = 4
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Image/TuxDetector" unique_id=1519184064]
+position = Vector2(116, 17)
+shape = SubResource("CircleShape2D_lsrng")
+
+[node name="Center" type="AnimatedSprite2D" parent="." unique_id=753201115]
+sprite_frames = ExtResource("2_f22va")
+frame_progress = 0.3125702
+centered = false
+
+[node name="RotationTween" type="AnimationPlayer" parent="." unique_id=1695581401]
+libraries/ = SubResource("AnimationLibrary_2qx2q")
