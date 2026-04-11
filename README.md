@@ -28,9 +28,9 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
 - Toad
 - Forest Exit Tiles
-- End Sequence "Stop Tux" thing
-- Use onready variables instead of calling the nodes with $
-- Add collisions to Forest Worldmap tiles
+- End Sequence "Stop Tux" thing that pauses everything
+- Add stars when Tux reaches the end of the level, not just when Tux gets the star powerup.
+- Use onready variables instead of calling the nodes with $ (will be done after release)
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
@@ -44,11 +44,10 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - In-game console (Use the Godot Output thing to debug your code instead)
 - The same scripting system (While there is scripting, it's done using variables in a block instead)
 - Magic Tiles (sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
-- Snowman (although previously listed, i realized it's not a 0.3.2 enemy. has a small chance of still being added, though)
+- Snowman (although previously listed in the planned list, i realized it's not a 0.3.2 enemy. has a small chance of still being added, though)
 - Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
-- Lantern (while not that complicated to add, the light would look terrible in-game)
 - Kugelblitz
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
