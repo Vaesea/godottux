@@ -30,6 +30,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - End Sequence "Stop Tux" thing that pauses everything
 - Add stars when Tux reaches the end of the level, not just when Tux gets the star powerup.
 - Use onready variables instead of calling the nodes with $ (will be done after release)
+- BadGuy.gd should be maintainable at some point. To do this, any enemy that breaks should be made it's own separate thing.
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
