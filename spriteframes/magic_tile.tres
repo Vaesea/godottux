@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dydba3vsyrbif"]
+
+[ext_resource type="Texture2D" uid="uid://dmgp66pnmhdow" path="res://assets/images/objects/magic_tile/magicblock.png" id="1_1c8u4"]
+[ext_resource type="Texture2D" uid="uid://bsp5stf28ihnb" path="res://assets/images/objects/magic_tile/magicblock-solid.png" id="2_47lfr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1c8u4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_47lfr")
+}],
+"loop": true,
+"name": &"solid",
+"speed": 5.0
+}]

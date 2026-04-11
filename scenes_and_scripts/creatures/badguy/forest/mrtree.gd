@@ -32,21 +32,37 @@ var current_state:TreeStates = TreeStates.Alive
 # How long does the corpse stay on screen?
 var death_timer:int = 2
 
+# If something in the code doesn't use the onready variable,
+# it's because that code runs in the editor.
+@onready var tree_image = $TreeImage
+@onready var stumpy_image = $StumpyImage
+@onready var tux_detector = $TuxDetector
+@onready var collision_shape = $Collision
+@onready var tux_detector_top = $TuxDetectorTop
+@onready var ground_detector = $GroundDetector
+@onready var squish_sound = $SquishSound
+@onready var fall_sound = $FallSound
+@onready var tree_sound = $TreeSound
+@onready var tree_hit_sound = $TreeHitSound
+@onready var dizzy_timer = $DizzyTimer
+@onready var vi_spawn_one = $ViciousIvySpawn1
+@onready var vi_spawn_two = $ViciousIvySpawn2
+
 func _ready() -> void:
 	reload()
-	$TuxDetector.connect("body_entered", _on_tux_detector_body_detected)
-	$TuxDetectorTop.connect("body_entered", _on_fireball_detected)
-	$TuxDetectorTop.connect("area_entered", _on_tux_stomp_detected)
-	$DizzyTimer.connect("timeout", _on_dizzy_timer_done)
+	tux_detector.connect("body_entered", _on_tux_detector_body_detected)
+	tux_detector_top.connect("body_entered", _on_fireball_detected)
+	tux_detector_top.connect("area_entered", _on_tux_stomp_detected)
+	dizzy_timer.connect("timeout", _on_dizzy_timer_done)
 
 func reload():
 	match(type):
 		0: # mr tree
-			$TreeImage.visible = true
-			$StumpyImage.visible = false
+			tree_image.visible = true
+			stumpy_image.visible = false
 		1: # stumpy
-			$TreeImage.visible = false
-			$StumpyImage.visible = true
+			tree_image.visible = false
+			stumpy_image.visible = true
 
 func _physics_process(delta: float) -> void:
 	if not Engine.is_editor_hint():
@@ -57,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		# If not dead and on floor, do these things.
 		if not current_state == TreeStates.Dead and is_on_floor():
 			# If GroundDetector is not colliding with the ground, flip direction.
-			if not $GroundDetector.is_colliding():
+			if not ground_detector.is_colliding():
 				flip_direction()
 	
 	move()
@@ -110,7 +126,7 @@ func flip_direction():
 func _on_tux_detector_body_detected(body):
 	if current_state == TreeStates.Alive:
 		if body.is_in_group("Player") and not dizzy:
-			var collision_shape_thing = $Collision.shape.get_size().y / 3
+			var collision_shape_thing = collision_shape.shape.get_size().y / 3
 			if not body.velocity.y > 0 and not body.global_position.y < global_position.y - collision_shape_thing:
 				if not Global.tux_star_invincible:
 					print("Mr Tree damage tux :(")
@@ -126,8 +142,8 @@ func _on_tux_detector_body_detected(body):
 						type = 1
 						reload()
 						turn_dizzy()
-						$TreeSound.play()
-						$TreeHitSound.play()
+						tree_sound.play()
+						tree_hit_sound.play()
 					elif type == 1 and not dizzy:
 						print("SuperTux kill the bad tree!")
 						death(false)
@@ -153,8 +169,8 @@ func _on_tux_stomp_detected(area):
 				type = 1
 				reload()
 				turn_dizzy()
-				$TreeSound.play()
-				$TreeHitSound.play()
+				tree_sound.play()
+				tree_hit_sound.play()
 			elif type == 1 and not dizzy:
 				print("SuperTux kill the bad tree!")
 				death(false)
@@ -164,21 +180,21 @@ func _on_tux_stomp_detected(area):
 func death(fall:bool):
 	print(name + " died.")
 	current_state = TreeStates.Dead
-	$TuxDetectorTop.set_deferred("monitoring", false)
-	$TuxDetector.set_deferred("monitoring", false)
+	tux_detector_top.set_deferred("monitoring", false)
+	tux_detector.set_deferred("monitoring", false)
 	
 	if fall:
 		velocity.x = 0
-		$Collision.set_deferred("disabled", true)
-		$TreeImage.flip_v = true
-		$StumpyImage.flip_v = true
-		$FallSound.play()
+		collision_shape.set_deferred("disabled", true)
+		tree_image.flip_v = true
+		stumpy_image.flip_v = true
+		fall_sound.play()
 	else:
 		set_collision_layer_value(4, true)
 		set_collision_layer_value(3, false)
 		set_collision_mask_value(3, false)
-		$StumpyImage.play("squished")
-		$SquishSound.play()
+		# stumpy_image.play("squished")
+		squish_sound.play()
 		await get_tree().create_timer(death_timer).timeout
 		queue_free()
 
@@ -187,7 +203,7 @@ func turn_dizzy():
 	var vicious_ivy_1 = load("uid://c7xxetrv6fxkk").instantiate()
 	var vicious_ivy_2 = load("uid://c7xxetrv6fxkk").instantiate()
 	spawn_vicious_ivy(vicious_ivy_1, vicious_ivy_2)
-	$DizzyTimer.start()
+	dizzy_timer.start()
 
 func _on_dizzy_timer_done():
 	dizzy = false
@@ -198,7 +214,7 @@ func spawn_vicious_ivy(vi1, vi2):
 	get_parent().call_deferred("add_child", vi2)
 	await vi1.ready
 	await vi2.ready
-	vi1.global_position = $ViciousIvySpawn1.global_position
-	vi2.global_position = $ViciousIvySpawn2.global_position
+	vi1.global_position = vi_spawn_one.global_position
+	vi2.global_position = vi_spawn_two.global_position
 	vi1.set_scripted_spawn_direction(false)
 	vi2.set_scripted_spawn_direction(true)

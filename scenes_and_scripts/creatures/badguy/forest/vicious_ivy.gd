@@ -1,6 +1,6 @@
 extends BadGuy
 
-# UNFINISHED
+# UNFINISHED (needs particles)
 
 func _ready() -> void:
 	basic_walking = true

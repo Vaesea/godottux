@@ -33,8 +33,10 @@ func _ready() -> void:
 	print(TuxManager.current_state)
 	if show_keys:
 		KeyDisplay.visible = true
+		print("Show keys is on.") # time to fix a bug
 	else:
 		KeyDisplay.visible = false
+		print("Show keys is off.")
 	print("Useful level debugging info, possibly:")
 	print("Width in pixels: " + str(Global.width_of_level) + ". If this is 0, and you didn't set Level Width to 0, there's most likely a bug you should report.")
 	print("Height in pixels: " + str(Global.height_of_level) + ". If this is 0, and you didn't set Level Height to 0, there's most likely a bug you should report.")

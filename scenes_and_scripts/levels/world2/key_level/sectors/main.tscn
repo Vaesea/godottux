@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://bfeuiu4qo4nbg"]
 
 [ext_resource type="Script" uid="uid://da3pmevifkus" path="res://scenes_and_scripts/level_scripts/sector.gd" id="1_k166m"]
-[ext_resource type="PackedScene" uid="uid://bnuvb17wx4rtl" path="res://scenes_and_scripts/objects/level/particles/snow_particles.tscn" id="2_88ghf"]
 [ext_resource type="Texture2D" uid="uid://bdxyi88xxjjdf" path="res://assets/images/background/BlueRock_Forest/blue-bottom.jpg" id="3_03pl4"]
 [ext_resource type="PackedScene" uid="uid://cqdikag18lykj" path="res://scenes_and_scripts/objects/level/nolok_key.tscn" id="7_461g2"]
 [ext_resource type="TileSet" uid="uid://d4gcl7sdnk2cs" path="res://assets/images/tiles/tileset.tres" id="7_g0nly"]
@@ -10,14 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://bruhmgct4j50u" path="res://scenes_and_scripts/objects/level/goal.tscn" id="9_nxfhy"]
 [ext_resource type="Texture2D" uid="uid://b1lne7s6y6yd4" path="res://assets/images/objects/keys/key/wood.png" id="9_xpmsr"]
 [ext_resource type="Texture2D" uid="uid://crg3yajy8d23" path="res://assets/images/objects/keys/key/fire.png" id="10_nfeuq"]
+[ext_resource type="PackedScene" uid="uid://c2wth2eskpcyj" path="res://scenes_and_scripts/objects/level/lantern.tscn" id="11_461g2"]
 [ext_resource type="Texture2D" uid="uid://d2l2k1q2xobvb" path="res://assets/images/objects/keys/key/water.png" id="11_baue0"]
+[ext_resource type="PackedScene" uid="uid://bba3emlvk8ye4" path="res://scenes_and_scripts/objects/level/magic_tile.tscn" id="12_mrjwj"]
 
 [node name="Main" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_k166m")
-
-[node name="SnowParticles" parent="." unique_id=1472897174 instance=ExtResource("2_88ghf")]
-visible = false
-position = Vector2(192, 128)
 
 [node name="BackgroundAllDirections" type="Parallax2D" parent="." unique_id=639308211]
 editor_description = "Only one Sprite2D to change."
@@ -73,3 +70,15 @@ key = 3
 position = Vector2(704, 224)
 texture = ExtResource("11_baue0")
 key = 4
+
+[node name="AmbientLight" type="CanvasModulate" parent="." unique_id=2127319527]
+color = Color(0.38170326, 0.38170323, 0.38170323, 1)
+
+[node name="Lantern" parent="." unique_id=1122327625 instance=ExtResource("11_461g2")]
+position = Vector2(416, 352)
+light_color = Color(1, 0, 1, 1)
+
+[node name="MagicTile" parent="." unique_id=2145940404 instance=ExtResource("12_mrjwj")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(32, 288)
+color = Color(1, 0, 1, 1)

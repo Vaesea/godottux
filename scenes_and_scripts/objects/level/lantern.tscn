@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c2wth2eskpcyj"]
+
+[ext_resource type="Script" uid="uid://dn2d6ms7ol1ql" path="res://scenes_and_scripts/objects/level/lantern.gd" id="1_kpusn"]
+[ext_resource type="SpriteFrames" uid="uid://d144aqslimvdx" path="res://spriteframes/lantern.tres" id="3_7es7u"]
+[ext_resource type="AudioStream" uid="uid://c7b62lhikqnve" path="res://assets/sounds/brick.wav" id="4_wk0t1"]
+[ext_resource type="Texture2D" uid="uid://dxlbq3cr500n3" path="res://assets/images/objects/lantern/lightmap_light.png" id="5_jomml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajfev"]
+size = Vector2(39, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gi7jw"]
+size = Vector2(2, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmvm"]
+size = Vector2(2, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lknj"]
+size = Vector2(39, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpusn"]
+radius = 155.26108
+
+[node name="Lantern" type="CharacterBody2D" unique_id=1122327625]
+collision_mask = 257
+platform_on_leave = 2
+script = ExtResource("1_kpusn")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=1385187200]
+position = Vector2(-16, -18)
+sprite_frames = ExtResource("3_7es7u")
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=759516219]
+position = Vector2(16.5, 13.5)
+shape = SubResource("RectangleShape2D_ajfev")
+
+[node name="LeftTuxDetector" type="Area2D" parent="." unique_id=965481776]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftTuxDetector" unique_id=641100565]
+position = Vector2(-4, 13.5)
+shape = SubResource("RectangleShape2D_gi7jw")
+
+[node name="RightTuxDetector" type="Area2D" parent="." unique_id=741273008]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTuxDetector" unique_id=290931737]
+position = Vector2(37, 13.5)
+shape = SubResource("RectangleShape2D_lbmvm")
+
+[node name="EnemyDetector" type="Area2D" parent="." unique_id=371677302]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector" unique_id=1382776101]
+position = Vector2(16.5, 32.5)
+shape = SubResource("RectangleShape2D_2lknj")
+
+[node name="BrickSound" type="AudioStreamPlayer2D" parent="." unique_id=1782965820]
+stream = ExtResource("4_wk0t1")
+volume_db = -5.0
+max_distance = 1024.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=721242998]
+position = Vector2(14, 11)
+blend_mode = 2
+texture = ExtResource("5_jomml")
+
+[node name="MagicBlockDetector" type="Area2D" parent="PointLight2D" unique_id=810417835]
+visible = false
+position = Vector2(-14, -11)
+collision_mask = 513
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/MagicBlockDetector" unique_id=243626501]
+position = Vector2(14, 11)
+shape = SubResource("CircleShape2D_kpusn")

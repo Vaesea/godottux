@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bba3emlvk8ye4"]
+
+[ext_resource type="SpriteFrames" uid="uid://dydba3vsyrbif" path="res://spriteframes/magic_tile.tres" id="1_3behq"]
+[ext_resource type="Script" uid="uid://dmbmef7hm0ieo" path="res://scenes_and_scripts/objects/level/magic_tile.gd" id="1_s4iom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3behq"]
+size = Vector2(32, 32)
+
+[node name="MagicTile" type="StaticBody2D" unique_id=2145940404]
+collision_layer = 512
+script = ExtResource("1_s4iom")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=825640828]
+sprite_frames = ExtResource("1_3behq")
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1230025457]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_3behq")

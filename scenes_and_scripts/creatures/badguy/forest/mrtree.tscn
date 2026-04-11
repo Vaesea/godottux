@@ -9,13 +9,13 @@
 [ext_resource type="AudioStream" uid="uid://y61u3rxfxopt" path="res://assets/sounds/mr_treehit.ogg" id="7_e0b33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gao4"]
-size = Vector2(40, 46)
+size = Vector2(40, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfd5c"]
-size = Vector2(40, 7)
+size = Vector2(40, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aggo7"]
-size = Vector2(40, 46)
+size = Vector2(40, 50)
 
 [node name="MrTree" type="CharacterBody2D" unique_id=1942256203]
 z_index = 40
@@ -27,22 +27,24 @@ floor_snap_length = 12.0
 script = ExtResource("1_bxjrv")
 
 [node name="TreeImage" type="AnimatedSprite2D" parent="." unique_id=264556818]
+visible = false
 position = Vector2(0, -17)
 sprite_frames = ExtResource("2_1f1tt")
 animation = &"walk"
+frame_progress = 0.5529703
 centered = false
 offset = Vector2(0, -4)
 
 [node name="StumpyImage" type="AnimatedSprite2D" parent="." unique_id=59456519]
-visible = false
 position = Vector2(0, -17)
 sprite_frames = ExtResource("3_e0b33")
-animation = &"dizzy"
+animation = &"walk"
+frame_progress = 0.5529703
 centered = false
 offset = Vector2(0, -4)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=144471033]
-position = Vector2(41, 41)
+position = Vector2(41, 39)
 shape = SubResource("RectangleShape2D_8gao4")
 
 [node name="TuxDetectorTop" type="Area2D" parent="." unique_id=99827960]
@@ -50,7 +52,7 @@ collision_layer = 4
 collision_mask = 134
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetectorTop" unique_id=121300932]
-position = Vector2(41, 14.5)
+position = Vector2(41, 11.5)
 shape = SubResource("RectangleShape2D_gfd5c")
 
 [node name="TuxDetector" type="Area2D" parent="." unique_id=1099022889]
@@ -58,7 +60,7 @@ collision_layer = 4
 collision_mask = 134
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
-position = Vector2(41, 41)
+position = Vector2(41, 39)
 shape = SubResource("RectangleShape2D_aggo7")
 
 [node name="GroundDetector" type="RayCast2D" parent="." unique_id=364326713]

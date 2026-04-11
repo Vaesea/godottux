@@ -1,5 +1,7 @@
 extends BadGuy
 
+# FIXME: Fix stalactite being hit with a fireball shaking and then instantly? falling.
+
 func _ready() -> void:
 	stalactite = true
 	hurt_by_stomp = false

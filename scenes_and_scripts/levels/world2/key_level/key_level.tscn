@@ -8,6 +8,10 @@
 
 [node name="Template" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_oxx4j")
+level_name = "Key Level"
+level_creator = "Vaesea"
+level_note = "Tests Nolok Keys"
+show_keys = true
 
 [node name="Misc" type="Node2D" parent="." unique_id=1525953836]
 

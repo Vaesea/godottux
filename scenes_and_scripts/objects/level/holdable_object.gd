@@ -35,43 +35,44 @@ func _ready() -> void:
 	$EnemyDetector.connect("body_entered", _on_enemy_detected)
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor() and current_state == States.Normal:
-		velocity += get_gravity() * delta
-	
-	if is_on_floor() and portable:
-		velocity = Vector2.ZERO # i forgot this existed... until now.
-	
-	if current_state == States.Held and not held_by == null and portable:
-		if TuxManager.facing_direction == -1:
-			global_position.x = held_by.global_position.x - 8
+	if not Engine.is_editor_hint():
+		if not is_on_floor() and current_state == States.Normal:
+			velocity += get_gravity() * delta
+		
+		if is_on_floor() and portable:
+			velocity = Vector2.ZERO # i forgot this existed... until now.
+		
+		if current_state == States.Held and not held_by == null and portable:
+			if TuxManager.facing_direction == -1:
+				global_position.x = held_by.global_position.x - 8
+			else:
+				global_position.x = held_by.global_position.x + 24
+				
+			global_position.y = held_by.global_position.y - 16
+		
+		if current_state == States.Normal and portable:
+			if tux_detected_left and Input.is_action_pressed("player_action") and TuxManager.facing_direction == 1 and get_tree().get_first_node_in_group("Player").held_object == null:
+				print("hello")
+				get_tree().get_first_node_in_group("Player").hold_object(self)
+			elif tux_detected_right and Input.is_action_pressed("player_action") and TuxManager.facing_direction == -1 and get_tree().get_first_node_in_group("Player").held_object == null:
+				print("hello")
+				get_tree().get_first_node_in_group("Player").hold_object(self)
+		
+		if current_state == States.Held or collision_disabled and portable:
+			$Collision.set_deferred("disabled", true)
 		else:
-			global_position.x = held_by.global_position.x + 24
-			
-		global_position.y = held_by.global_position.y - 16
-	
-	if current_state == States.Normal and portable:
-		if tux_detected_left and Input.is_action_pressed("player_action") and TuxManager.facing_direction == 1 and get_tree().get_first_node_in_group("Player").held_object == null:
-			print("hello")
-			get_tree().get_first_node_in_group("Player").hold_object(self)
-		elif tux_detected_right and Input.is_action_pressed("player_action") and TuxManager.facing_direction == -1 and get_tree().get_first_node_in_group("Player").held_object == null:
-			print("hello")
-			get_tree().get_first_node_in_group("Player").hold_object(self)
-	
-	if current_state == States.Held or collision_disabled and portable:
-		$Collision.set_deferred("disabled", true)
-	else:
-		$Collision.set_deferred("disabled", false)
-	
-	if not was_on_floor and is_on_floor() and current_state == States.Normal and not $BrickSound.playing and portable:
-		print(name + ": Playing sound...")
-		$BrickSound.play()
-	
-	if current_state == States.Held and portable:
-		velocity.y = 0
-	
-	was_on_floor = is_on_floor()
-	
-	move_and_slide()
+			$Collision.set_deferred("disabled", false)
+		
+		if not was_on_floor and is_on_floor() and current_state == States.Normal and not $BrickSound.playing and portable:
+			print(name + ": Playing sound...")
+			$BrickSound.play()
+		
+		if current_state == States.Held and portable:
+			velocity.y = 0
+		
+		was_on_floor = is_on_floor()
+		
+		move_and_slide()
 
 func throw(tux_direction:int):
 	if portable:
@@ -143,7 +144,7 @@ func _on_tux_exited_right(body):
 	if body.is_in_group("Player") and portable:
 		tux_detected_right = false
 
-# kind of a hack fix but what isn't in this game engine?
+# kind of a HACK fix but what isn't in this game base?
 func bounce():
 	collision_disabled = true
 	velocity.y = -throw_side_vertical_speed

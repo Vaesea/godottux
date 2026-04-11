@@ -3,8 +3,9 @@ class_name BadGuy
 
 # TODO: Make Iceblock enemy kill enemies that are off-screen.
 # TODO: Improve Spiky ground detection to be more like SuperTux.
-# TODO: Add Mr Tree stuff
+# TODO: Add Mr Tree stuff from Mr Tree
 # TODO: Clean up. Entire code. Before release. It's literally almost 700 lines.
+# Nevermind, it really is 700 lines now.
 
 # hi. anatolystev here.
 # i might've, you know, made everything be like the haxeflixel version.
@@ -664,8 +665,8 @@ func _on_tux_stomp_area_detected(area):
 	if not current_state == EnemyStates.Dead:
 		print("You Made It BIG TIME!")
 		if area.is_in_group("Stomp"):
-			if Global.tux_star_invincible:
-				area.get_parent().position.y -= 1
+			if not Global.tux_star_invincible:
+				area.get_parent().position.y -= 1 # TODO: Is this needed? Adding it seemed to do nothing. Also it seems pretty HACK-like. Also I swear this is human stupidity.
 				lmao = true
 				$TuxDetector.monitoring = false
 				area.get_parent().stomp_bounce()
