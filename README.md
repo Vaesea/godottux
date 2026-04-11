@@ -12,7 +12,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
 - Level results
-- Full World 2 Test Level (Welcome To The Forest recreation)
 - Snail
 - Igel
 - Fish
