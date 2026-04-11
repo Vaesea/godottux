@@ -23,7 +23,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Spidermite
 - Ispy
 - Button
-- Will-O-Wisp
 - Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
 - Toad
 - Forest Exit Tiles
