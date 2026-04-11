@@ -3,6 +3,9 @@ extends CharacterBody2D
 # code from adel time
 # im too lazy to add comments right now
 # still too lazy
+# yet again, still too lazy
+
+# Added Coyote Timer with help from this tutorial: https://www.youtube.com/watch?v=bJOpkFIEwCA
 
 # TODO: Save Tux's max fire bullet amount or something idk
 # TODO: Stop camera from following Tux when Tux dies
@@ -36,6 +39,10 @@ var auto_walk_speed:int = 0 # Don't change this. Scripting already does.
 # this needs to be done due to scripting
 @onready var camera = $Camera
 
+# i'm just gonna use onready variables everywhere i guess idk
+@onready var coyote_timer = $CoyoteTimer
+@onready var tile_timer = $TileTimer
+
 # Invincible variables
 var inv_seconds:int = 1
 var invincible:bool = false
@@ -66,7 +73,7 @@ var buttjump:bool = false
 
 # Backflip variables
 var backflip:bool = false
-var was_on_floor:bool = false # Used literally just for the backflip
+var was_on_floor:bool = false # Used literally just for the backflip... and now coyote time too???
 
 # Duck variable
 var duck:bool = false
@@ -129,7 +136,7 @@ func _physics_process(delta: float) -> void:
 	if position.x > camera.limit_right - $SmallCollision.shape.size.x:
 		position.x = camera.limit_right - $SmallCollision.shape.size.x
 	
-	if not is_on_floor():
+	if not is_on_floor() and tile_timer.is_stopped():
 		velocity += get_gravity() * delta
 	
 	if $RayCast2D.is_colliding():
@@ -163,6 +170,10 @@ func _physics_process(delta: float) -> void:
 		throw_object()
 	
 	move_and_slide()
+	
+	if was_on_floor and not is_on_floor() and not Input.is_action_pressed("player_jump"):
+		coyote_timer.start()
+		tile_timer.start()
 
 func die():
 	if not dead:
@@ -236,7 +247,8 @@ func move():
 	
 	# Tux Jumping stuff
 	var player_jump = Input.is_action_just_pressed("player_jump") or jump_buffer_timer > 0
-	if player_jump and is_on_floor():
+	var on_floor_or_coyote = is_on_floor() or not coyote_timer.is_stopped()
+	if player_jump and on_floor_or_coyote:
 		# Backflip
 		if Input.is_action_pressed("player_down") and not backflip and not TuxManager.current_state == TuxManager.powerup_states.Small and was_on_floor and abs(velocity.x) < 100: # what...
 			print("Backflipping!")

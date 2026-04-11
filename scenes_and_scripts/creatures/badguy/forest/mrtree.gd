@@ -114,10 +114,12 @@ func move():
 func animate():
 	if current_state == TreeStates.Alive:
 		if not dizzy:
-			$TreeImage.play("walk")
-			$StumpyImage.play("walk")
+			$TreeImage.play("walk") # Not using onready variable because it doesn't work for this I think?
+			$StumpyImage.play("walk") # Not using onready variable because it doesn't work for this I think?
 		else:
-			$StumpyImage.play("dizzy")
+			$StumpyImage.play("dizzy") # Not using onready variable because it doesn't work for this I think? Could probably use it here.
+	else:
+		$StumpyImage.play("squished") # Not using onready variable because it doesn't work for this I think? Could probably use it here.
 
 func flip_direction():
 	print(name + ": Flipping direction...")
@@ -193,7 +195,7 @@ func death(fall:bool):
 		set_collision_layer_value(4, true)
 		set_collision_layer_value(3, false)
 		set_collision_mask_value(3, false)
-		# stumpy_image.play("squished")
+		# stumpy_image.play("squished") Okay why the fuck was this commented out
 		squish_sound.play()
 		await get_tree().create_timer(death_timer).timeout
 		queue_free()
