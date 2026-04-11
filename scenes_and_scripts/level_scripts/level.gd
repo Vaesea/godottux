@@ -1,6 +1,7 @@
 extends Node2D
-
 class_name Level
+
+# TODO: Stop song from resetting when the sector is switched to the exact same sector.
 
 ## Name of the level.[br]Shows up in the level intro (doesn't exist yet) but not the worldmap.
 @export var level_name:String = "Unnamed"
@@ -83,6 +84,7 @@ func finish_level():
 
 func switch_sector(sector_name:String, spawnpoint_name:String):
 	activate_sector(sector_name)
+	
 	for sector in get_tree().get_nodes_in_group("LevelSector"):
 		if sector.sector_name == sector_name:
 			find_spawnpoint_in_sector(sector, spawnpoint_name)
@@ -90,7 +92,7 @@ func switch_sector(sector_name:String, spawnpoint_name:String):
 func find_spawnpoint_in_sector(sector:Node2D, new_spawnpoint_name:String):
 	for spawn in get_tree().get_nodes_in_group("LevelSpawnPoint"):
 		if spawn.spawnpoint_name == new_spawnpoint_name:
-			tux.reparent(sector)
+			tux.call_deferred("reparent", sector)
 			if TuxManager.current_state == TuxManager.powerup_states.Small:
 				tux.global_position = spawn.global_position
 				tux.in_cutscene = false

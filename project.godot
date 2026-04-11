@@ -18,7 +18,7 @@ config/auto_accept_quit=false
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://cwuykj7115j5v"
 
 [autoload]
 
@@ -27,6 +27,7 @@ TuxManager="*uid://dp8ainy487cxn"
 Signals="*uid://bqt4nikdqv8fp"
 Music="*uid://8t7quch3syty"
 KeyDisplay="*uid://dn1knfn3rrel"
+CertainSoundsHack="*uid://2csqsku8wkdf"
 
 [display]
 

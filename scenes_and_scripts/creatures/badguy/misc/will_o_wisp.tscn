@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ch1m37rnjcyf3"]
+
+[ext_resource type="SpriteFrames" uid="uid://d2rpdjdimkou0" path="res://spriteframes/willowisp.tres" id="1_2mnqp"]
+[ext_resource type="Script" uid="uid://b7igfkmt2salv" path="res://scenes_and_scripts/creatures/badguy/misc/will_o_wisp.gd" id="1_wrf2n"]
+[ext_resource type="AudioStream" uid="uid://bp73kucemoe8h" path="res://assets/sounds/warp.wav" id="3_kbyf7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcsrs"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrf2n"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f82f4"]
+size = Vector2(384, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s7o5"]
+size = Vector2(512, 512)
+
+[node name="WillOWisp" type="CharacterBody2D" unique_id=1425138024]
+collision_layer = 4
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_wrf2n")
+
+[node name="Image" type="AnimatedSprite2D" parent="." unique_id=811383466]
+sprite_frames = ExtResource("1_2mnqp")
+animation = &"vanish"
+centered = false
+
+[node name="PreventWarning" type="CollisionShape2D" parent="." unique_id=21907822]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_wcsrs")
+disabled = true
+
+[node name="TuxTeleporter" type="Area2D" parent="." unique_id=2122965935]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxTeleporter" unique_id=398400864]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_wrf2n")
+
+[node name="TrackRange" type="Area2D" parent="." unique_id=419860976]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackRange" unique_id=1066934694]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_f82f4")
+
+[node name="VanishRange" type="Area2D" parent="." unique_id=309824166]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VanishRange" unique_id=1638755972]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_0s7o5")
+
+[node name="WarpSound" type="AudioStreamPlayer" parent="." unique_id=1311603464]
+stream = ExtResource("3_kbyf7")

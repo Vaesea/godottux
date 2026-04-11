@@ -96,5 +96,5 @@ stream = ExtResource("4_dxf27")
 libraries/ = SubResource("AnimationLibrary_2a55n")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1516602989]
-rect = Rect2(-64, -64, 160, 160)
+rect = Rect2(-219, -219, 463, 463)
 show_rect = false

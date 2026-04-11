@@ -11,6 +11,7 @@ class_name BadGuy
 # because there were too much bugs before doing this.
 
 # HACK because everything is a HACK
+# Avoids a crash
 var stalactite = false
 
 # States for evey enemy.

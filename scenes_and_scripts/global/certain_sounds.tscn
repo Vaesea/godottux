@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://2csqsku8wkdf"]
+
+[node name="CertainSounds" type="AudioStreamPlayer" unique_id=1045314691]
+editor_description = "This is a HACK!"

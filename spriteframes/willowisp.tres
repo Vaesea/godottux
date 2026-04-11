@@ -1,0 +1,76 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d2rpdjdimkou0"]
+
+[ext_resource type="Texture2D" uid="uid://b82bp0e50jtkl" path="res://assets/images/creatures/will_o_wisp/idle-0.png" id="1_l843r"]
+[ext_resource type="Texture2D" uid="uid://48ohe5fdiogw" path="res://assets/images/creatures/will_o_wisp/idle-1.png" id="2_jatkr"]
+[ext_resource type="Texture2D" uid="uid://cj7h3xmnssvxr" path="res://assets/images/creatures/will_o_wisp/idle-2.png" id="3_nng6u"]
+[ext_resource type="Texture2D" uid="uid://o2y06tq358c6" path="res://assets/images/creatures/will_o_wisp/idle-3.png" id="4_tuy74"]
+[ext_resource type="Texture2D" uid="uid://mrfedrh4ps00" path="res://assets/images/creatures/will_o_wisp/vanishing-0.png" id="5_2jrgi"]
+[ext_resource type="Texture2D" uid="uid://br2uivs62u87w" path="res://assets/images/creatures/will_o_wisp/vanishing-1.png" id="6_vmfv6"]
+[ext_resource type="Texture2D" uid="uid://cdyul85pvch5t" path="res://assets/images/creatures/will_o_wisp/vanishing-2.png" id="7_og7lh"]
+[ext_resource type="Texture2D" uid="uid://b5b5kkd73g617" path="res://assets/images/creatures/will_o_wisp/vanishing-3.png" id="8_nf6vg"]
+[ext_resource type="Texture2D" uid="uid://bjovdk4f43d6o" path="res://assets/images/creatures/will_o_wisp/warping-0.png" id="9_wixsf"]
+[ext_resource type="Texture2D" uid="uid://b2t1qguf5w8uw" path="res://assets/images/creatures/will_o_wisp/warping-1.png" id="10_dedbi"]
+[ext_resource type="Texture2D" uid="uid://b85jbx6t0wsds" path="res://assets/images/creatures/will_o_wisp/warping-2.png" id="11_vs7r4"]
+[ext_resource type="Texture2D" uid="uid://7pavu3gi2cyr" path="res://assets/images/creatures/will_o_wisp/warping-3.png" id="12_dou3l"]
+[ext_resource type="Texture2D" uid="uid://c0smekny50c24" path="res://assets/images/creatures/will_o_wisp/warping-4.png" id="13_df35f"]
+[ext_resource type="Texture2D" uid="uid://dalyonbcu8wvh" path="res://assets/images/creatures/will_o_wisp/warping-5.png" id="14_x2dms"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l843r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jatkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nng6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tuy74")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2jrgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmfv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_og7lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nf6vg")
+}],
+"loop": false,
+"name": &"vanish",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wixsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dedbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vs7r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dou3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_df35f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x2dms")
+}],
+"loop": false,
+"name": &"warp",
+"speed": 10.0
+}]

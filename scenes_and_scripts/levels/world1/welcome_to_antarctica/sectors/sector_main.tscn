@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://xs7v2414cg6a" path="res://scenes_and_scripts/creatures/badguy/snow/smartblock.tscn" id="21_s1ywm"]
 [ext_resource type="PackedScene" uid="uid://c3pgyl5x1kxjt" path="res://scenes_and_scripts/objects/level/secret_area.tscn" id="21_vvewi"]
 [ext_resource type="PackedScene" uid="uid://bgmottjdfiewy" path="res://scenes_and_scripts/objects/level/checkpoint.tscn" id="22_1l83j"]
+[ext_resource type="PackedScene" uid="uid://ch1m37rnjcyf3" path="res://scenes_and_scripts/creatures/badguy/misc/will_o_wisp.tscn" id="22_04xkv"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_ystil")
@@ -386,3 +387,6 @@ position = Vector2(5360, 288)
 
 [node name="Smartblock" parent="." unique_id=1241644 instance=ExtResource("21_s1ywm")]
 position = Vector2(5856, 320)
+
+[node name="WillOWisp" parent="." unique_id=1425138024 instance=ExtResource("22_04xkv")]
+position = Vector2(672, 320)

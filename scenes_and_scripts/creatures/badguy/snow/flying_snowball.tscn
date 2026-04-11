@@ -11,14 +11,14 @@ size = Vector2(29, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bo24"]
 size = Vector2(29, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm1bc"]
+size = Vector2(29, 13)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nac5"]
 size = Vector2(1910, 1926)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8sjd"]
 size = Vector2(1911, 1926)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm1bc"]
-size = Vector2(29, 13)
 
 [node name="FlyingSnowball" type="CharacterBody2D" unique_id=1942256203]
 z_index = 40
@@ -47,6 +47,15 @@ collision_mask = 134
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=594381410]
 position = Vector2(15.5, 18)
 shape = SubResource("RectangleShape2D_8bo24")
+
+[node name="TuxDetector2" type="Area2D" parent="." unique_id=1378950122]
+collision_layer = 4
+collision_mask = 2
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector2" unique_id=2093755192]
+position = Vector2(15.5, 9.5)
+shape = SubResource("RectangleShape2D_nm1bc")
 
 [node name="LeftDetector" type="Area2D" parent="." unique_id=1505481737]
 visible = false
@@ -83,12 +92,3 @@ autostart = true
 position = Vector2(-1, -1)
 rect = Rect2(-353, -353, 757, 757)
 show_rect = false
-
-[node name="TuxDetector2" type="Area2D" parent="." unique_id=1378950122]
-collision_layer = 4
-collision_mask = 2
-priority = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector2" unique_id=2093755192]
-position = Vector2(15.5, 9.5)
-shape = SubResource("RectangleShape2D_nm1bc")

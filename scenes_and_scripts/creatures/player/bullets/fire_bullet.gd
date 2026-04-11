@@ -49,7 +49,6 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -previous_velocity_y
 		bounces += 1
 		print(bounces)
-		#velocity.y = -jump_height
 	
 	if velocity.y > 0:
 		previous_velocity_y = velocity.y
