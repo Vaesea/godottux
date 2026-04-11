@@ -47,6 +47,7 @@ centered = false
 offset = Vector2(0, -16)
 
 [node name="BigImage" type="AnimatedSprite2D" parent="." unique_id=2072830381]
+visible = false
 sprite_frames = ExtResource("2_qde4p")
 animation = &"stand"
 centered = false
@@ -152,5 +153,5 @@ wait_time = 0.18
 one_shot = true
 
 [node name="TileTimer" type="Timer" parent="." unique_id=1177720654]
-wait_time = 0.030000000000000002
+wait_time = 0.03
 one_shot = true

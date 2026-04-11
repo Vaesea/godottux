@@ -63,6 +63,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_enemy_detected(body):
-	if body.is_in_group("Enemy") and body.flammable:
+	if body.is_in_group("Enemy") and body.flammable and not body.stalactite:
 		body.death(true)
 		queue_free()

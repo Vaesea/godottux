@@ -4,12 +4,14 @@ class_name BadGuy
 # TODO: Make Iceblock enemy kill enemies that are off-screen.
 # TODO: Improve Spiky ground detection to be more like SuperTux.
 # TODO: Add Mr Tree stuff from Mr Tree
-# TODO: Clean up. Entire code. Before release. It's literally almost 700 lines.
-# Nevermind, it really is 700 lines now.
+# TODO: Clean up. Entire code. Before release. It's literally over 600 lines.
 
 # hi. anatolystev here.
 # i might've, you know, made everything be like the haxeflixel version.
 # because there were too much bugs before doing this.
+
+# HACK because everything is a HACK
+var stalactite = false
 
 # States for evey enemy.
 enum EnemyStates {Alive, Dead}
@@ -25,10 +27,6 @@ enum IceblockStates {Normal, Flat, MovingFlat, Held}
 var current_iceblock_state:IceblockStates = IceblockStates.Normal
 var wait_to_collide:float = 0
 var held_by:CharacterBody2D = null
-
-# Variables for stalactites
-var crash_sound_played:bool = false
-var cracking:bool = false
 
 # Falling
 var dieFall:bool = false
@@ -82,8 +80,6 @@ var kill_self_on_touching_enemy:bool = false
 ## [br]
 ## Side note, Bouncing Snowballs can go to hell. It was not fun adding them.
 @export var bouncing:bool = false
-## Is the enemy a stalactite? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
-@export var stalactite:bool = false
 ## Is the enemy a bomb? If you're making an enemy, it's best to change this in the enemy's script.
 @export var bomb:bool = false
 ## Can the enemy be hurt by stomping on it? If you're making an enemy, it's best to change this in the enemy's script.
@@ -110,11 +106,6 @@ var kill_self_on_touching_enemy:bool = false
 @export_category("Flying Enemy variables")
 ## How fast at flying is the flying enemy?
 @export var fly_speed:int = 100
-
-@export_category("Stalactite Variables")
-## How long should the stalactite shake for before falling?
-@export var shake_timer:int = 1
-var falling:bool = false
 
 @export_category("Bullet Variables")
 ## Does the bullet explode when hitting a wall? Also makes the enemy explode when hit by a fireball or an Iceblock because it's really only used for Mr Rockets.
@@ -161,7 +152,7 @@ func _ready() -> void:
 		$ExplosionSound.connect("finished", _on_explosion_sound_finished)
 	if flying: # If Flying, connect this.
 		$FlyingTimer.connect("timeout", _on_flying_timer_timeout)
-	if bouncing: # If Bouncing, connect these. I still hate Bouncing Snowballs, before you ask.
+	if bouncing or flying: # If Bouncing, connect these. I still hate Bouncing Snowballs, before you ask.
 		$TuxDetector2.connect("area_entered", _on_tux_stomp_area_detected)
 		$TuxDetector2.add_to_group("BouncingEnemyTuxDetector") # Now with a different name!
 	if flying or jumpy: # If Flying or Jumpy, connect these.
@@ -174,25 +165,24 @@ func _ready() -> void:
 	# Looks scary, let me explain it.
 	# If Spiky but not sleeping, don't do shapecast wall / player detection.
 	# If Spiky and sleeping, play sleeping animation. Shapecast stuff will be done.
-	# If not Spiky, not Jumpy, not flying or stalactite, play walk animation.
+	# If not Spiky, not Jumpy or not flying, play walk animation.
 	# If not flying, play fly animation.
-	# If stalactite, play default animation.
 	# If explosion, play default animation.
-	if spiky and not sleeping and not jumpy and not flying and not stalactite and not explosion and not bullet:
+	if spiky and not sleeping and not jumpy and not flying and not explosion and not bullet:
 		$WakeUpShapecast.enabled = false
 		$WakeUpShapecast.visible = false
 		$Image.play("walk")
-	elif spiky and sleeping and not jumpy and not flying and not stalactite and not explosion and not bullet:
+	elif spiky and sleeping and not jumpy and not flying and not explosion and not bullet:
 		$Image.play("sleep")
-	elif not spiky and not sleeping and not jumpy and not flying and not stalactite and not explosion and not bullet:
+	elif not spiky and not sleeping and not jumpy and not flying and not explosion and not bullet:
 		$Image.play("walk")
-	elif not spiky and not sleeping and not jumpy and flying and not stalactite and not explosion and not bullet:
+	elif not spiky and not sleeping and not jumpy and flying and not explosion and not bullet:
 		$Image.play("fly")
-	elif not spiky and not sleeping and not jumpy and not flying and stalactite and not explosion and not bullet:
+	elif not spiky and not sleeping and not jumpy and not flying and not explosion and not bullet:
 		$Image.play("default")
-	elif not spiky and not sleeping and not jumpy and not flying and not stalactite and explosion and not bullet:
+	elif not spiky and not sleeping and not jumpy and not flying and explosion and not bullet:
 		$Image.play("default")
-	elif not spiky and not sleeping and not jumpy and not flying and not stalactite and not explosion and bullet:
+	elif not spiky and not sleeping and not jumpy and not flying and not explosion and bullet:
 		$Image.play("flying")
 	
 	# If flying, go up.
@@ -201,10 +191,6 @@ func _ready() -> void:
 
 	# TODO: Is this needed?
 	current_state = EnemyStates.Alive
-	
-	# Debugging thing.
-	if stalactite:
-		print("Stalactite is here, it's name is: " + name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -223,28 +209,11 @@ func _physics_process(delta: float) -> void:
 	var dead_bullet = bullet and current_state == EnemyStates.Dead
 	
 	# Adds gravity. Add any enemy that needs gravity here.
-	if basic_walking or walking_and_holdable or spiky or jumpy or dead_flying or dead_bullet or bouncing or stalactite or bomb:
-		if stalactite and current_state == EnemyStates.Alive:
-			# If not on floor but falling, add gravity.
-			if not is_on_floor() and falling:
-				velocity += get_gravity() * delta
-			# If on floor and falling, do not add gravity and kill the stalactite.
-			elif is_on_floor() and falling:
-				velocity.y = 0
-				current_state = EnemyStates.Dead
-		# If not Stalactite and not alive, add gravity.
-		else:
-			if not is_on_floor():
-				velocity += get_gravity() * delta
+	if basic_walking or walking_and_holdable or spiky or jumpy or dead_flying or dead_bullet or bouncing or bomb:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 	
-	# If the enemy is not a stalactite, it does the move function.
-	if not stalactite:
-		move()
-	
-	# If the enemy is a stalactite, it's falling and it's on the floor, it dies.
-	if stalactite and falling:
-		if is_on_floor():
-			death(false)
+	move()
 	
 	# If the enemy explodes on hitting a wall, and actually hits the wall, it dies.
 	if explode_on_hit_wall and is_on_wall() and not was_on_wall and current_state == EnemyStates.Alive:
@@ -260,11 +229,13 @@ func _physics_process(delta: float) -> void:
 			kill_other_enemies = true
 			kill_self_on_touching_enemy = false
 			set_collision_mask_value(1, true)
+			set_collision_mask_value(9, true)
 		# If held, kill other enemies, kill self on touching enemy, and don't collide with walls.
 		elif current_iceblock_state == IceblockStates.Held:
 			kill_other_enemies = true
 			kill_self_on_touching_enemy = true
 			set_collision_mask_value(1, false)
+			set_collision_mask_value(9, false)
 		# If none of these, don't kill other enemies, don't kill self on touching enemy and collide with walls.
 		else:
 			kill_other_enemies = false
@@ -279,10 +250,6 @@ func _physics_process(delta: float) -> void:
 	# If not walking and holdable, check for any of these other things.
 	# If explosion, kill other enemies but don't kill self on touching enemy.
 	elif explosion:
-		kill_other_enemies = true
-		kill_self_on_touching_enemy = false
-	# If stalactite, same as explosion? TODO: Is this needed? Can this be moved into the "elif explosion" part?
-	elif stalactite:
 		kill_other_enemies = true
 		kill_self_on_touching_enemy = false
 	# If none of these, don't kill other enemies and don't kill self on touching enemy.
@@ -337,21 +304,6 @@ func _physics_process(delta: float) -> void:
 			if $WakeUpShapecast.get_collider(0):
 				if $WakeUpShapecast.get_collider(0).is_in_group("Player"):
 					wake_up()
-	
-	# If the enemy is a stalactite and isn't falling, set the default FloorDetector shapecast target position,
-	# force the shapecast to update too.
-	if stalactite and not falling:
-		$FloorDetector.target_position.y = 512.0
-		
-		$FloorDetector.force_shapecast_update()
-		
-		# TODO: Maybe use this improved version of the Spiky shapecast code for the Spiky?
-		if $FloorDetector.is_colliding():
-			for the_collision in range($FloorDetector.get_collision_count()):
-				$FloorDetector.target_position.y = $FloorDetector.get_collision_point(the_collision).y - $FloorDetector.global_position.y
-				if $FloorDetector.get_collider(the_collision) and $FloorDetector.get_collider(the_collision).is_in_group("Player"):
-					print(name + ": Player detected!")
-					start_fall()
 	
 	if walking_and_holdable:
 		if current_iceblock_state == IceblockStates.Held and not held_by == null:
@@ -423,13 +375,10 @@ func death(fall:bool):
 		velocity.y = 0
 	
 	if fall:
-		if stalactite: # Literally nothing else worked. You can probably see where I've tried other stuff for this.
-			$MeltSound.play()
-			start_fall()
-			return
 		if bomb or explode_on_hit_wall:
 			spawn_explosion()
 			return
+		
 		held_by = null
 		if walking_and_holdable:
 			current_iceblock_state = IceblockStates.Flat
@@ -445,22 +394,16 @@ func death(fall:bool):
 		if bomb:
 			spawn_explosion()
 			return
-		if not stalactite:
-			$SquishSound.play()
-			$Image.play("squished")
-		if stalactite:
-			if not crash_sound_played:
-				$CrashSound.play(0.17)
-			crash_sound_played = true
-			$Image.play("broken")
+		$SquishSound.play()
+		$Image.play("squished")
 		await get_tree().create_timer(death_timer).timeout
 		queue_free()
 
 func _on_tux_detector_area_entered(area) -> void:
-	if area.is_in_group("Stomp") and not spiky and not jumpy and not bouncing and not current_state == EnemyStates.Dead: # bouncing snowballs handle it themselves because of a bug!!!
+	if area.is_in_group("Stomp") and not spiky and not jumpy and not bouncing and not flying and not current_state == EnemyStates.Dead: # bouncing and flying snowballs handle it themselves because of a bug!!!
 		interact(area, null, null, null)
 	
-	if area.is_in_group("StupidThing") and not area.get_parent() == self:
+	if area.is_in_group("StupidThing") and not area.get_parent() == self and not area.get_parent().stalactite:
 		interact(null, null, null, area.get_parent())
 
 func _on_tux_detector_body_entered(body) -> void:
@@ -514,7 +457,8 @@ func interact(stomp, tux, fireball, iceblock):
 	if stomp == null and not tux == null and fireball == null and iceblock == null: # when will i finally clean up this god damn code
 		# I think I went insane writing this code when adding Bouncing Snowball... TODO: Add actual variable name.
 		var wtf = basic_walking or flying or bomb or bullet
-		if bouncing and not walking_and_holdable:
+		var thing = bouncing or flying # TODO: Add actual variable name.
+		if thing and not walking_and_holdable:
 			print(lmao)
 			await get_tree().create_timer(0.01).timeout # HACK: stupid bouncing snowball. i hate it.
 			print(lmao)
@@ -567,14 +511,15 @@ func interact(stomp, tux, fireball, iceblock):
 	if stomp == null and tux == null and not fireball == null and iceblock == null:
 		fireball.queue_free()
 		burn()
-	if stomp == null and tux == null and fireball == null and not iceblock == null:
+	if stomp == null and tux == null and fireball == null and not iceblock == null: # is "iceblock" misleading?
 		if walking_and_holdable:
 			if current_iceblock_state == IceblockStates.Held and kill_other_enemies and kill_self_on_touching_enemy and not iceblock == self: # the "checking name thing" is actually a HACK. this file is so cursed.
 				iceblock.death(true)
 				death(true)
 			elif current_iceblock_state == IceblockStates.MovingFlat:
-				iceblock.death(true)
-		elif stalactite or explosion:
+				if not iceblock.stalactite:
+					iceblock.death(true)
+		elif explosion:
 			if kill_other_enemies and not iceblock == self:
 				iceblock.death(true)
 
@@ -599,8 +544,7 @@ func throw(tux_direction:int):
 	wait_to_collide = 0.25
 
 func burn():
-	if flammable and not stalactite:
-		print("if stalactite, something went wrong.")
+	if flammable:
 		death(true)
 
 # For scripting block.
@@ -644,23 +588,7 @@ func _on_flying_timer_timeout():
 		else:
 			print(name + " is not flying.")
 
-func start_fall():
-	if flammable:
-		flammable = false
-	
-	if stalactite and not cracking:
-		cracking = true
-		$FloorDetector.enabled = false
-		$FloorDetector.visible = false
-		$AnimationTween.play("shake")
-		if not $CrackSound.playing:
-			$CrackSound.play()
-		await get_tree().create_timer(shake_timer).timeout
-		$AnimationTween.play("RESET")
-		falling = true
-		print(falling)
-
-# HACK (possibly), Bouncing Snowballs are horrible.
+# HACK (possibly), Bouncing Snowballs are horrible. Same with Flying Snowballs.
 func _on_tux_stomp_area_detected(area):
 	if not current_state == EnemyStates.Dead:
 		print("You Made It BIG TIME!")

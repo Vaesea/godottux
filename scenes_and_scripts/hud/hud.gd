@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# TODO: Could possibly be done with a signal? Test that before release.
 func _process(_delta: float) -> void:
 	$Number.text = str(Global.coins)
 	if Global.coins > 999:
