@@ -11,7 +11,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Worldmap Tux sprite changer
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
-- Snail
 - Igel
 - Fish
 - Mole
