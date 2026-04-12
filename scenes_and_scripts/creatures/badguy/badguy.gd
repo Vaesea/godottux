@@ -2,8 +2,9 @@ extends CharacterBody2D
 class_name BadGuy
 
 # TODO: Improve Spiky ground detection to be more like SuperTux.
+# TODO: Add turning around when detecting a fireball if the enemy is Igel
 # TODO: Add Mr Tree stuff from Mr Tree
-# TODO: Clean up. Entire code. Before release. Currently doing this by removing enemies such as Iceblock from this script.
+# TODO: Clean up. Entire code. Before release?
 
 # hi. anatolystev here.
 # i might've, you know, made everything be like the haxeflixel version.
@@ -145,10 +146,10 @@ func _ready() -> void:
 	# If not flying, play fly animation.
 	# If explosion, play default animation.
 	if spiky and not sleeping and not jumpy and not flying and not explosion and not bullet:
-		$WakeUpShapecast.enabled = false
-		$WakeUpShapecast.visible = false
 		$Image.play("walk")
 	elif spiky and sleeping and not jumpy and not flying and not explosion and not bullet:
+		$WakeUpShapecast.enabled = true
+		$WakeUpShapecast.visible = true
 		$Image.play("sleep")
 	elif not spiky and not sleeping and not jumpy and not flying and not explosion and not bullet:
 		$Image.play("walk")

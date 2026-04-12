@@ -99,9 +99,7 @@ func turn_empty(animation_name:String):
 		
 		$Image.play("empty")
 		
-	for body in $EnemyDetectorTop.get_overlapping_bodies():
-		if body.is_in_group("Enemy"):
-			body.death(true)
+	detect_enemies()
 
 func spawn_item(direction:String):
 	if content == 0:
@@ -174,3 +172,8 @@ func _on_tux_exited(body):
 		if displaying_message:
 			displaying_message = false
 			$MessageTween.play_backwards("display_message")
+
+func detect_enemies():
+	for body in $EnemyDetectorTop.get_overlapping_bodies():
+		if body.is_in_group("Enemy"):
+			body.death(true)

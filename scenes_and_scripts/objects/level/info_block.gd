@@ -17,12 +17,14 @@ func _on_tux_detector_body_entered(body):
 			$AnimationTween.play("up_and_down")
 			$MessageTween.play("display_message")
 			displaying_message = true
+			detect_enemies()
 		else:
 			print("Close message")
 			bump = true
 			$AnimationTween.play("up_and_down")
 			$MessageTween.play_backwards("display_message")
 			displaying_message = false
+			detect_enemies()
 
 func _on_enemy_detected_left(body):
 	if body.is_in_group("Enemy") and not displaying_message:

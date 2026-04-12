@@ -43,7 +43,9 @@ position = Vector2(19.5, 17.5)
 shape = SubResource("RectangleShape2D_aggo7")
 
 [node name="WakeUpShapecast" type="ShapeCast2D" parent="." unique_id=97157603]
+visible = false
 position = Vector2(4, 16)
+enabled = false
 shape = SubResource("RectangleShape2D_t1pvm")
 target_position = Vector2(-512, 0)
 max_results = 8

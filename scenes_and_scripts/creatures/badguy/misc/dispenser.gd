@@ -1,7 +1,7 @@
 @tool
 extends StaticBody2D
 
-# TODO: make this work for all enemies but like actually good
+# TODO: Add Vicious Ivy
 
 # AnatolyStev: fixes a crash with just one line!
 # ...also fixes other bugs with spawning enemies with more than 1 one line.

@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dy6hwrtv3krel"]
+
+[ext_resource type="Texture2D" uid="uid://hhhayxj0bilv" path="res://assets/images/creatures/spidermite/spidermite.png" id="1_wkgqm"]
+[ext_resource type="Texture2D" uid="uid://dsvdch3yp60no" path="res://assets/images/creatures/spidermite/spidermite0.png" id="2_0m34b"]
+[ext_resource type="Texture2D" uid="uid://df7key8kttjth" path="res://assets/images/creatures/spidermite/spidermite1.png" id="3_dej0s"]
+[ext_resource type="Texture2D" uid="uid://bs3sro3wnpxf6" path="res://assets/images/creatures/spidermite/spidermite-squish.png" id="4_nhs25"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wkgqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0m34b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dej0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0m34b")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nhs25")
+}],
+"loop": true,
+"name": &"squished",
+"speed": 5.0
+}]

@@ -23,9 +23,11 @@ func _on_tux_detector_body_entered(body):
 			if not TuxManager.current_state == TuxManager.powerup_states.Small:
 				$AnimationTween.play("up_to_gone")
 				bump = true
+				detect_enemies()
 			else:
 				$AnimationTween.play("up_and_down")
 				bump = true
+				detect_enemies()
 		else:
 			print("B")
 			$BrickSound.play()

@@ -17,11 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://l041x3y7g3v0" path="res://scenes_and_scripts/creatures/badguy/snow/bouncing_snowball.tscn" id="17_yhntp"]
 [ext_resource type="PackedScene" uid="uid://chddo2mchrhjp" path="res://scenes_and_scripts/objects/invisible_block.tscn" id="18_1ft5d"]
 [ext_resource type="PackedScene" uid="uid://dxou4m4v33uay" path="res://scenes_and_scripts/creatures/badguy/misc/jumpy.tscn" id="19_s5txe"]
-[ext_resource type="PackedScene" uid="uid://bi716mvtji11l" path="res://scenes_and_scripts/creatures/badguy/snow/flying_snowball.tscn" id="20_gd1tv"]
 [ext_resource type="PackedScene" uid="uid://c3pgyl5x1kxjt" path="res://scenes_and_scripts/objects/level/secret_area.tscn" id="21_vvewi"]
 [ext_resource type="PackedScene" uid="uid://bgmottjdfiewy" path="res://scenes_and_scripts/objects/level/checkpoint.tscn" id="22_1l83j"]
 [ext_resource type="PackedScene" uid="uid://ch1m37rnjcyf3" path="res://scenes_and_scripts/creatures/badguy/misc/will_o_wisp.tscn" id="22_04xkv"]
 [ext_resource type="PackedScene" uid="uid://bpl1hvb0jt3w5" path="res://scenes_and_scripts/creatures/badguy/snow/smartblock.tscn" id="22_d5m4j"]
+[ext_resource type="PackedScene" uid="uid://bb2orck3o3pj2" path="res://scenes_and_scripts/creatures/badguy/forest/igel.tscn" id="23_d5m4j"]
+[ext_resource type="PackedScene" uid="uid://p8mouibpmmbe" path="res://scenes_and_scripts/creatures/badguy/forest/spidermite.tscn" id="24_k6ukn"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_ystil")
@@ -374,9 +375,6 @@ position = Vector2(7552, 416)
 [node name="Snowball10" parent="." unique_id=77809707 instance=ExtResource("13_tb1ie")]
 position = Vector2(7648, 416)
 
-[node name="FlyingSnowball" parent="." unique_id=1946868791 instance=ExtResource("20_gd1tv")]
-position = Vector2(7136, 320)
-
 [node name="SecretArea" parent="." unique_id=1906757949 instance=ExtResource("21_vvewi")]
 position = Vector2(8576, 288)
 scale = Vector2(3, 5)
@@ -390,3 +388,9 @@ position = Vector2(736, 256)
 
 [node name="Smartblock" parent="." unique_id=1603785249 instance=ExtResource("22_d5m4j")]
 position = Vector2(5888, 320)
+
+[node name="Igel" parent="." unique_id=938258748 instance=ExtResource("23_d5m4j")]
+position = Vector2(544, 288)
+
+[node name="Spidermite" parent="." unique_id=197372935 instance=ExtResource("24_k6ukn")]
+position = Vector2(7136, 320)
