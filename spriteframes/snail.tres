@@ -1,0 +1,77 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cjnkdcvur1wqg"]
+
+[ext_resource type="Texture2D" uid="uid://cd5tjrvcj37cv" path="res://assets/images/creatures/snail/snowsnail_flip1.png" id="1_il0dm"]
+[ext_resource type="Texture2D" uid="uid://bjdfs7uxboya" path="res://assets/images/creatures/snail/snowsnail_flip2.png" id="2_om5yc"]
+[ext_resource type="Texture2D" uid="uid://bsa3agg6yhera" path="res://assets/images/creatures/snail/snowsnail_flip3.png" id="3_3n3ew"]
+[ext_resource type="Texture2D" uid="uid://hgfdkgn2mgqd" path="res://assets/images/creatures/snail/snowsnail_flip4.png" id="4_rrqqf"]
+[ext_resource type="Texture2D" uid="uid://ctlpf3gw6tddo" path="res://assets/images/creatures/snail/snowsnail_flip5.png" id="5_06bsy"]
+[ext_resource type="Texture2D" uid="uid://buc7nhhbaoo8h" path="res://assets/images/creatures/snail/snowsnail_flip6.png" id="6_0xo5w"]
+[ext_resource type="Texture2D" uid="uid://kylv2qone5l5" path="res://assets/images/creatures/snail/snowsnail_flip7.png" id="7_adu77"]
+[ext_resource type="Texture2D" uid="uid://ch8efvargco33" path="res://assets/images/creatures/snail/snowsnail_flip.png" id="8_jbin1"]
+[ext_resource type="Texture2D" uid="uid://bt67rh7ff57m3" path="res://assets/images/creatures/snail/snowsnail1.png" id="9_ka1be"]
+[ext_resource type="Texture2D" uid="uid://5dlf1ifgof3m" path="res://assets/images/creatures/snail/snowsnail2.png" id="10_tlm6g"]
+[ext_resource type="Texture2D" uid="uid://ybxgh1gvdtm4" path="res://assets/images/creatures/snail/snowsnail3.png" id="11_1v20b"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_il0dm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_om5yc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3n3ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rrqqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_06bsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0xo5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_adu77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbin1")
+}],
+"loop": true,
+"name": &"flat",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ka1be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tlm6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1v20b")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

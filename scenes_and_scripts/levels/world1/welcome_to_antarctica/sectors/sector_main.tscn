@@ -18,10 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://chddo2mchrhjp" path="res://scenes_and_scripts/objects/invisible_block.tscn" id="18_1ft5d"]
 [ext_resource type="PackedScene" uid="uid://dxou4m4v33uay" path="res://scenes_and_scripts/creatures/badguy/misc/jumpy.tscn" id="19_s5txe"]
 [ext_resource type="PackedScene" uid="uid://bi716mvtji11l" path="res://scenes_and_scripts/creatures/badguy/snow/flying_snowball.tscn" id="20_gd1tv"]
-[ext_resource type="PackedScene" uid="uid://xs7v2414cg6a" path="res://scenes_and_scripts/creatures/badguy/snow/smartblock.tscn" id="21_s1ywm"]
 [ext_resource type="PackedScene" uid="uid://c3pgyl5x1kxjt" path="res://scenes_and_scripts/objects/level/secret_area.tscn" id="21_vvewi"]
 [ext_resource type="PackedScene" uid="uid://bgmottjdfiewy" path="res://scenes_and_scripts/objects/level/checkpoint.tscn" id="22_1l83j"]
 [ext_resource type="PackedScene" uid="uid://ch1m37rnjcyf3" path="res://scenes_and_scripts/creatures/badguy/misc/will_o_wisp.tscn" id="22_04xkv"]
+[ext_resource type="PackedScene" uid="uid://bpl1hvb0jt3w5" path="res://scenes_and_scripts/creatures/badguy/snow/smartblock.tscn" id="22_d5m4j"]
 
 [node name="MainSector" type="Node2D" unique_id=1170359899]
 script = ExtResource("1_ystil")
@@ -385,8 +385,8 @@ tile_map_layer_name = "Secret"
 [node name="Checkpoint" parent="." unique_id=1548006532 instance=ExtResource("22_1l83j")]
 position = Vector2(5360, 288)
 
-[node name="Smartblock" parent="." unique_id=1241644 instance=ExtResource("21_s1ywm")]
-position = Vector2(5856, 320)
-
 [node name="WillOWisp" parent="." unique_id=1425138024 instance=ExtResource("22_04xkv")]
-position = Vector2(672, 320)
+position = Vector2(736, 256)
+
+[node name="Smartblock" parent="." unique_id=1603785249 instance=ExtResource("22_d5m4j")]
+position = Vector2(5888, 320)

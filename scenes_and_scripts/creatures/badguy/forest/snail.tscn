@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://bpl1hvb0jt3w5"]
+[gd_scene format=3 uid="uid://b71yddi5y7nhj"]
 
-[ext_resource type="Script" uid="uid://cpsfiqjsuwckx" path="res://scenes_and_scripts/creatures/badguy/snow/smartblock.gd" id="1_4arkn"]
-[ext_resource type="SpriteFrames" uid="uid://dyo8o03w5huws" path="res://spriteframes/smartblock.tres" id="2_4arkn"]
-[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_vqwn4"]
-[ext_resource type="AudioStream" uid="uid://bqgsgdgu12bid" path="res://assets/sounds/kick.wav" id="4_1mk0v"]
-[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="5_p845o"]
-[ext_resource type="AudioStream" uid="uid://cv4trqkrvq46k" path="res://assets/sounds/iceblock_bump.wav" id="6_luxnq"]
-[ext_resource type="AudioStream" uid="uid://crgokg00jk3fv" path="res://assets/sounds/stomp.wav" id="6_tv35d"]
+[ext_resource type="Script" uid="uid://nv1h5qeex2vx" path="res://scenes_and_scripts/creatures/badguy/forest/snail.gd" id="1_83ea7"]
+[ext_resource type="SpriteFrames" uid="uid://cjnkdcvur1wqg" path="res://spriteframes/snail.tres" id="2_rts6x"]
+[ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_cs3es"]
+[ext_resource type="AudioStream" uid="uid://bqgsgdgu12bid" path="res://assets/sounds/kick.wav" id="4_l0v7b"]
+[ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="5_mcls7"]
+[ext_resource type="AudioStream" uid="uid://cv4trqkrvq46k" path="res://assets/sounds/iceblock_bump.wav" id="6_l0heo"]
+[ext_resource type="AudioStream" uid="uid://crgokg00jk3fv" path="res://assets/sounds/stomp.wav" id="6_rts6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3h17"]
 size = Vector2(29, 26)
@@ -14,18 +14,19 @@ size = Vector2(29, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmmkl"]
 size = Vector2(29, 26)
 
-[node name="Smartblock" type="CharacterBody2D" unique_id=139463551]
+[node name="Snail" type="CharacterBody2D" unique_id=139463551]
 collision_layer = 4
 collision_mask = 257
 floor_constant_speed = true
 floor_max_angle = 1.3962634
 floor_snap_length = 12.0
-script = ExtResource("1_4arkn")
+script = ExtResource("1_83ea7")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=754531829]
-position = Vector2(0, -6)
-sprite_frames = ExtResource("2_4arkn")
+position = Vector2(0, -1)
+sprite_frames = ExtResource("2_rts6x")
 animation = &"walk"
+frame_progress = 0.6274414
 centered = false
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1855843094]
@@ -46,20 +47,20 @@ target_position = Vector2(0, 64)
 collision_mask = 257
 
 [node name="SquishSound" type="AudioStreamPlayer" parent="." unique_id=678953269]
-stream = ExtResource("3_vqwn4")
+stream = ExtResource("3_cs3es")
 
 [node name="KickSound" type="AudioStreamPlayer" parent="." unique_id=1458332164]
-stream = ExtResource("4_1mk0v")
+stream = ExtResource("4_l0v7b")
 volume_db = -10.0
 
 [node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1705672302]
-stream = ExtResource("5_p845o")
+stream = ExtResource("5_mcls7")
 
-[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=1905893297]
-stream = ExtResource("6_tv35d")
+[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=1518106105]
+stream = ExtResource("6_rts6x")
 
 [node name="BumpSound" type="AudioStreamPlayer2D" parent="." unique_id=724590894]
-stream = ExtResource("6_luxnq")
+stream = ExtResource("6_l0heo")
 max_distance = 800.0
 
 [node name="ScreenCheck" type="VisibleOnScreenNotifier2D" parent="." unique_id=292465858]

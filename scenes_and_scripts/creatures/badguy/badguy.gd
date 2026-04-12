@@ -1,10 +1,9 @@
 extends CharacterBody2D
 class_name BadGuy
 
-# TODO: Make Iceblock enemy kill enemies that are off-screen.
 # TODO: Improve Spiky ground detection to be more like SuperTux.
 # TODO: Add Mr Tree stuff from Mr Tree
-# TODO: Clean up. Entire code. Before release. It's literally over 600 lines.
+# TODO: Clean up. Entire code. Before release. Currently doing this by removing enemies such as Iceblock from this script.
 
 # hi. anatolystev here.
 # i might've, you know, made everything be like the haxeflixel version.
@@ -21,14 +20,6 @@ var current_state:EnemyStates = EnemyStates.Alive
 # TODO: Add actual name
 var lmao:bool = false
 
-# States for Iceblock Enemies
-enum IceblockStates {Normal, Flat, MovingFlat, Held}
-
-# Variables for Iceblock Enemies
-var current_iceblock_state:IceblockStates = IceblockStates.Normal
-var wait_to_collide:float = 0
-var held_by:CharacterBody2D = null
-
 # Falling
 var dieFall:bool = false
 
@@ -42,11 +33,8 @@ var was_on_wall:bool = false
 # How long does the corpse stay on screen?
 var death_timer:int = 2
 
-# For Iceblocks and explosions
+# For explosions
 var kill_other_enemies:bool = false
-
-# For Iceblocks
-var kill_self_on_touching_enemy:bool = false
 
 @export_category("Enemy")
 ## -1 = left, 1 = right, any other variable isn't tested.
@@ -63,10 +51,6 @@ var kill_self_on_touching_enemy:bool = false
 @export var basic_walking:bool = false
 ## Is the enemy smart If you're making an enemy, it's best to change this in the enemy's script.
 @export var smart:bool = false
-## Is the enemy just a basic walking enemy that can be held and thrown? (Koopa-like) If you're making an enemy, it's best to change this in the enemy's script.
-@export var walking_and_holdable:bool = false
-## Is the enemy Snail-like? "Walking and Holdable" need to be true for this to work. If you're making an enemy, it's best to change this in the enemy's script.
-@export var jump_when_hit_wall_or_thrown:bool = false
 ## Is the enemy a bullet? (Bullet Bill-like). Not added yet. If you're making an enemy, it's best to change this in the enemy's script.
 @export var bullet:bool = false
 ## Is the enemy Spiky-like? If you're making an enemy, it's best to change this in the enemy's script.
@@ -75,8 +59,8 @@ var kill_self_on_touching_enemy:bool = false
 @export var jumpy:bool = false
 ## Does the enemy fly? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
 @export var flying:bool = false
-## Is the enemy an explosion? Probably shouldn't have made this an export but whatever. If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
-@export var explosion:bool = false
+# Is the enemy an explosion?
+var explosion:bool = false
 ## Is the enemy a bouncing enemy? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.
 ## [br]
 ## Side note, Bouncing Snowballs can go to hell. It was not fun adding them.
@@ -97,12 +81,6 @@ var kill_self_on_touching_enemy:bool = false
 @export_category("Bouncing Enemy variables")
 ## Bounce height
 @export var bounce_height:int = 450
-
-@export_category("Iceblock variables")
-## How fast the Iceblock moves when in MovingFlat state
-@export var movingflat_speed:int = 500
-## for snail enemies or something i really dont know anymore i'm going insane
-@export var hit_wall_jump_height:int = 256
 
 @export_category("Flying Enemy variables")
 ## How fast at flying is the flying enemy?
@@ -159,9 +137,6 @@ func _ready() -> void:
 	if flying or jumpy: # If Flying or Jumpy, connect these.
 		$LeftDetector.connect("body_entered", _on_tux_detected_left)
 		$RightDetector.connect("body_entered", _on_tux_detected_right)
-	if walking_and_holdable: # If Walking And Holdable, connect these.
-		$ScreenCheck.connect("screen_entered", _on_iceblock_entered_screen)
-		$ScreenCheck.connect("screen_exited", _on_iceblock_exited_screen)
 
 	# Looks scary, let me explain it.
 	# If Spiky but not sleeping, don't do shapecast wall / player detection.
@@ -195,14 +170,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	# Iceblock wait_to_collide timer thing.
-	if wait_to_collide > 0:
-		wait_to_collide -= delta
-	
-	# If Walking And Holdable, and the current Iceblock state is normal, and not on screen, don't do physics_process.
-	if walking_and_holdable and current_iceblock_state == IceblockStates.Normal and not $ScreenCheck.is_on_screen():
-		set_physics_process(false)
-	
 	# If the enemy is flying and dead, it's considered "dead_flying"
 	var dead_flying = flying and current_state == EnemyStates.Dead
 	
@@ -210,7 +177,7 @@ func _physics_process(delta: float) -> void:
 	var dead_bullet = bullet and current_state == EnemyStates.Dead
 	
 	# Adds gravity. Add any enemy that needs gravity here.
-	if basic_walking or walking_and_holdable or spiky or jumpy or dead_flying or dead_bullet or bouncing or bomb:
+	if basic_walking or spiky or jumpy or dead_flying or dead_bullet or bouncing or bomb:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 	
@@ -222,41 +189,14 @@ func _physics_process(delta: float) -> void:
 			$Image.play("collision")
 			await get_tree().create_timer(wait_before_exploding_on_wall).timeout
 		death(true)
-	
-	# If the enemy is Walking And Holdable...
-	if walking_and_holdable:
-		# If Moving Flat, kill other enemies but don't kill self on touching enemy, also collide with walls.
-		if current_iceblock_state == IceblockStates.MovingFlat:
-			kill_other_enemies = true
-			kill_self_on_touching_enemy = false
-			set_collision_mask_value(1, true)
-			set_collision_mask_value(9, true)
-		# If held, kill other enemies, kill self on touching enemy, and don't collide with walls.
-		elif current_iceblock_state == IceblockStates.Held:
-			kill_other_enemies = true
-			kill_self_on_touching_enemy = true
-			set_collision_mask_value(1, false)
-			set_collision_mask_value(9, false)
-		# If none of these, don't kill other enemies, don't kill self on touching enemy and collide with walls.
-		else:
-			kill_other_enemies = false
-			kill_self_on_touching_enemy = false
-			set_collision_mask_value(1, true)
-		# If Flat, MovingFlat or Held, play flat animation.
-		if current_iceblock_state == IceblockStates.Flat or current_iceblock_state == IceblockStates.MovingFlat or current_iceblock_state == IceblockStates.Held:
-			$Image.play("flat")
-		# If Normal, play walk animation.
-		else:
-			$Image.play("walk")
+
 	# If not walking and holdable, check for any of these other things.
 	# If explosion, kill other enemies but don't kill self on touching enemy.
-	elif explosion:
+	if explosion:
 		kill_other_enemies = true
-		kill_self_on_touching_enemy = false
 	# If none of these, don't kill other enemies and don't kill self on touching enemy.
 	else:
 		kill_other_enemies = false
-		kill_self_on_touching_enemy = false
 	
 	# If touching wall and was not touching a wall last frame, flip direction.
 	if is_on_wall() and not was_on_wall and not explode_on_hit_wall:
@@ -275,7 +215,7 @@ func _physics_process(delta: float) -> void:
 	if smart and not current_state == EnemyStates.Dead and is_on_floor():
 		# If GroundDetector is not colliding with the ground and the current Iceblock state 
 		# for this enemy is Normal, flip direction.
-		if not $GroundDetector.is_colliding() and current_iceblock_state == IceblockStates.Normal:
+		if not $GroundDetector.is_colliding():
 			flip_direction()
 		
 		# If direction is -1 (left), set Ground Detector's x position to the variable here.
@@ -306,19 +246,6 @@ func _physics_process(delta: float) -> void:
 				if $WakeUpShapecast.get_collider(0).is_in_group("Player"):
 					wake_up()
 	
-	if walking_and_holdable:
-		if current_iceblock_state == IceblockStates.Held and not held_by == null:
-			direction = TuxManager.facing_direction
-			if TuxManager.facing_direction == -1:
-				global_position.x = held_by.global_position.x - 8
-			else:
-				global_position.x = held_by.global_position.x + 24
-				
-			global_position.y = held_by.global_position.y - 16
-		
-		if is_on_wall() and current_iceblock_state == IceblockStates.MovingFlat and not was_on_wall:
-			$BumpSound.play()
-	
 	was_on_wall = is_on_wall()
 	
 	# FIXME: badguy.gd:362 @ _physics_process(): Parameter "body->get_space()" is null. Might be something to do with Mr Rocket?
@@ -342,25 +269,11 @@ func move():
 		# Add any enemy that needs to move to the left / right to this variable except if it has special states that decide when it moves or not, like walking_and_holdable enemies.
 		var basic_moving_enemy = basic_walking or bouncing or bomb or bullet
 		# If the enemy is part of the variable above, do this. Don't know why "and not walking_and_holdable" is there, though. TODO: Find out whether that's needed.
-		if basic_moving_enemy and not walking_and_holdable:
+		if basic_moving_enemy:
 			velocity.x = direction * speed
 			if bouncing:
 				if is_on_floor():
 					velocity.y = -bounce_height
-		# If the enemy is walking and holdable, continue with this.
-		elif walking_and_holdable:
-			# If the current iceblock state is Normal, move like a basic moving enemy.
-			if current_iceblock_state == IceblockStates.Normal:
-				velocity.x = direction * speed
-			# Or if the current iceblock state is Flat or Held, don't move.
-			elif current_iceblock_state == IceblockStates.Flat or current_iceblock_state == IceblockStates.Held:
-				velocity.x = 0
-				# If the current iceblock state is Held, velocity.y should be set to 0.
-				if current_iceblock_state == IceblockStates.Held:
-					velocity.y = 0
-			# Or if the current iceblock state is MovingFlat, move like a basic moving enemy but at movingflat speed.
-			elif current_iceblock_state == IceblockStates.MovingFlat:
-				velocity.x = direction * movingflat_speed
 		# If the enemy is Jumpy and is on the floor, jump.
 		elif jumpy:
 			if is_on_floor(): # TODO: Can this be combined with the elif jumpy?
@@ -379,11 +292,6 @@ func death(fall:bool):
 		if bomb or explode_on_hit_wall:
 			spawn_explosion()
 			return
-		
-		held_by = null
-		if walking_and_holdable:
-			current_iceblock_state = IceblockStates.Flat
-			print("iceblock died.")
 		velocity.x = 0
 		$Collision.set_deferred("disabled", true)
 		$Image.flip_v = true
@@ -408,58 +316,41 @@ func _on_tux_detector_area_entered(area) -> void:
 		interact(null, null, null, area.get_parent())
 
 func _on_tux_detector_body_entered(body) -> void:
-	if body.is_in_group("Player") and current_iceblock_state == IceblockStates.Held:
-		return
-	
-	if body.is_in_group("Player") and not current_state == EnemyStates.Dead and not wait_to_collide > 0 and not lmao: # wow.
+	if body.is_in_group("Player") and not current_state == EnemyStates.Dead and not lmao:
 		interact(null, body, null, null)
 	elif body.is_in_group("FireBullet") and not current_state == EnemyStates.Dead:
 		interact(null, null, body, null)
 	elif body.is_in_group("Enemy") and not current_state == EnemyStates.Dead and kill_other_enemies and not body.get_parent() == self: # wow 2.
 		interact(null, null, null, body)
 
-func interact(stomp, tux, fireball, iceblock):
-	if not stomp == null and tux == null and fireball == null and iceblock == null:
+func interact(stomp, tux, fireball, other_enemy):
+	if not stomp == null and tux == null and fireball == null and other_enemy == null:
 		var tux_stomp = stomp.get_parent().get_real_velocity().y > 0 # why is this "get_real_velocity"?
 		
 		if current_state == EnemyStates.Dead:
 			return
 		
 		if tux_stomp and hurt_by_stomp:
-			if not Global.tux_star_invincible:
-				stomp.get_parent().stomp_bounce()
-			else:
-				death(true)
+			lmao = true
 			if bomb:
+				stomp.get_parent().stomp_bounce()
 				$SquishSound.play()
 				$Image.play("ticking")
 				$TuxDetector.set_deferred("monitoring", false)
 				current_state = EnemyStates.Dead
 				return
-			if not walking_and_holdable:
-				if not Global.tux_star_invincible:
-					death(false)
-				else:
-					death(true)
+			if not Global.tux_star_invincible:
+				stomp.get_parent().stomp_bounce()
+				death(false)
 			else:
-				if stomp.get_parent().get_real_velocity().y > 0 and wait_to_collide <= 0:
-					if current_iceblock_state == IceblockStates.Normal or current_iceblock_state == IceblockStates.MovingFlat:
-						current_iceblock_state = IceblockStates.Flat
-						wait_to_collide = 0.25
-						$SquishSound.play()
-					elif current_iceblock_state == IceblockStates.Flat:
-						current_iceblock_state = IceblockStates.MovingFlat
-						direction = TuxManager.facing_direction
-						wait_to_collide = 0.25
-						$KickSound.play()
-					print("Damaged enemy")
+				death(true)
 		elif tux_stomp and not hurt_by_stomp:
 			print("Cannot hurt enemies that have hurt_by_stomp set to false.")
-	if stomp == null and not tux == null and fireball == null and iceblock == null: # when will i finally clean up this god damn code
+	if stomp == null and not tux == null and fireball == null and other_enemy == null: # when will i finally clean up this god damn code
 		# I think I went insane writing this code when adding Bouncing Snowball... TODO: Add actual variable name.
-		var wtf = basic_walking or flying or bomb or bullet
-		var thing = bouncing or flying # TODO: Add actual variable name.
-		if thing and not walking_and_holdable:
+		var stompable_enemies = basic_walking or flying or bomb or bullet
+		var extra_stompable_enemies = bouncing or flying # TODO: Add actual variable name.
+		if extra_stompable_enemies:
 			print(lmao)
 			await get_tree().create_timer(0.01).timeout # HACK: stupid bouncing snowball. i hate it.
 			print(lmao)
@@ -468,7 +359,7 @@ func interact(stomp, tux, fireball, iceblock):
 					tux.damage()
 				else:
 					death(true)
-		elif wtf and not walking_and_holdable:
+		elif stompable_enemies:
 			if hurt_by_stomp and not lmao:
 				if not Global.tux_star_invincible:
 					tux.damage()
@@ -479,50 +370,13 @@ func interact(stomp, tux, fireball, iceblock):
 				tux.damage()
 			else:
 				death(true)
-			
-		elif walking_and_holdable:
-			if wait_to_collide <= 0:
-				if current_iceblock_state == IceblockStates.MovingFlat or current_iceblock_state == IceblockStates.Normal:
-					if not Global.tux_star_invincible:
-						tux.damage()
-					else:
-						death(true)
-				elif current_iceblock_state == IceblockStates.Flat:
-					if Input.is_action_pressed("player_action") and tux.held_object == null: # tux.held_object == null is needed here so the enemy can still be kicked by tux if tux is holding an object
-						if not Global.tux_star_invincible:
-							tux.hold_object(self)
-						else:
-							death(true)
-					else: # TODO: code is copy and pasted from next else: thing. this needs to be fixed at some point, but it's ok to keep for now.
-						if not Global.tux_star_invincible:
-							$KickSound.play()
-							direction = TuxManager.facing_direction
-							current_iceblock_state = IceblockStates.MovingFlat
-							wait_to_collide = 0.25
-						else:
-							death(true)
-				else:
-					if not Global.tux_star_invincible:
-						$KickSound.play()
-						direction = TuxManager.facing_direction
-						current_iceblock_state = IceblockStates.MovingFlat
-						wait_to_collide = 0.25
-					else:
-						death(true)
-	if stomp == null and tux == null and not fireball == null and iceblock == null:
+	if stomp == null and tux == null and not fireball == null and other_enemy == null:
 		fireball.queue_free()
 		burn()
-	if stomp == null and tux == null and fireball == null and not iceblock == null: # is "iceblock" misleading?
-		if walking_and_holdable:
-			if current_iceblock_state == IceblockStates.Held and kill_other_enemies and kill_self_on_touching_enemy and not iceblock == self: # the "checking name thing" is actually a HACK. this file is so cursed.
-				iceblock.death(true)
-				death(true)
-			elif current_iceblock_state == IceblockStates.MovingFlat:
-				if not iceblock.stalactite:
-					iceblock.death(true)
-		elif explosion:
-			if kill_other_enemies and not iceblock == self:
-				iceblock.death(true)
+	if stomp == null and tux == null and fireball == null and not other_enemy == null:
+		if explosion:
+			if kill_other_enemies and not other_enemy == self:
+				other_enemy.death(true)
 
 func wake_up():
 	if spiky and sleeping:
@@ -532,17 +386,6 @@ func wake_up():
 		$Image.play("waking_up")
 	else:
 		push_warning("Tried to wake up an enemy that isn't a Spiky.")
-
-func pick_up(tux: CharacterBody2D):
-	current_iceblock_state = IceblockStates.Held
-	held_by = tux
-
-func throw(tux_direction:int):
-	current_iceblock_state = IceblockStates.MovingFlat
-	$KickSound.play()
-	direction = tux_direction
-	held_by = null
-	wait_to_collide = 0.25
 
 func burn():
 	if flammable:
@@ -621,14 +464,3 @@ func spawn_explosion():
 		get_tree().current_scene.call_deferred("add_child", explosion2)
 		explosion2.position = self.position
 		queue_free()
-
-func _on_iceblock_entered_screen():
-	print(name + ": Entered screen")
-	set_physics_process(true)
-	print(name + str(process_mode))
-
-func _on_iceblock_exited_screen():
-	print(name + ": Exited screen")
-	if not current_iceblock_state == IceblockStates.MovingFlat:
-		set_physics_process(false)
-		print(name + str(process_mode))

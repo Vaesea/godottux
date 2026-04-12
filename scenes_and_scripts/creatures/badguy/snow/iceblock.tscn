@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bqgsgdgu12bid" path="res://assets/sounds/kick.wav" id="4_cbuso"]
 [ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="5_r5cw3"]
 [ext_resource type="AudioStream" uid="uid://cv4trqkrvq46k" path="res://assets/sounds/iceblock_bump.wav" id="5_rec2d"]
+[ext_resource type="AudioStream" uid="uid://crgokg00jk3fv" path="res://assets/sounds/stomp.wav" id="6_rwjxh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3h17"]
 size = Vector2(29, 26)
@@ -52,6 +53,9 @@ volume_db = -10.0
 
 [node name="FallSound" type="AudioStreamPlayer" parent="." unique_id=1705672302]
 stream = ExtResource("5_r5cw3")
+
+[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=1556821515]
+stream = ExtResource("6_rwjxh")
 
 [node name="BumpSound" type="AudioStreamPlayer2D" parent="." unique_id=724590894]
 stream = ExtResource("5_rec2d")
