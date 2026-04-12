@@ -11,14 +11,12 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Worldmap Tux sprite changer
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
-- Igel
 - Fish
 - Mole
 - Zeekling
 - Skullyhop
 - Dart Trap
 - Dart
-- Spidermite
 - Ispy
 - Button
 - Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
@@ -28,6 +26,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Add stars when Tux reaches the end of the level, not just when Tux gets the star powerup.
 - Use onready variables instead of calling the nodes with $ (will be done after release)
 - BadGuy.gd should be maintainable at some point. To do this, any enemy that breaks should be made it's own separate thing.
+- Improve certain enemies (like Igel)
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
