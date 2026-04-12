@@ -2,6 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://b8kqtky3ahbw5" path="res://spriteframes/worldmap_tux.tres" id="1_3qwph"]
 [ext_resource type="Script" uid="uid://cu4mo2w4pih2d" path="res://scenes_and_scripts/objects/worldmap/worldmap_tux.gd" id="1_f6yy3"]
+[ext_resource type="SpriteFrames" uid="uid://swjnpkhsh64q" path="res://spriteframes/worldmap_tux_boat.tres" id="3_w64rg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6yy3"]
 size = Vector2(12, 6)
@@ -17,6 +18,12 @@ sprite_frames = ExtResource("1_3qwph")
 animation = &"normal"
 centered = false
 offset = Vector2(-2, -3)
+
+[node name="BoatImage" type="AnimatedSprite2D" parent="." unique_id=1472835257]
+visible = false
+sprite_frames = ExtResource("3_w64rg")
+centered = false
+offset = Vector2(-4, -32)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1522701789]
 position = Vector2(17, 29)

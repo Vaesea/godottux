@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://crm27m7w2lsir"]
+
+[ext_resource type="Texture2D" uid="uid://sllnwatvqlf3" path="res://assets/images/engine/worldmap/spritechange.png" id="1_8f61g"]
+[ext_resource type="Script" uid="uid://dwsgnugbi54o7" path="res://scenes_and_scripts/objects/worldmap/sprite_change.gd" id="2_703at"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f61g"]
+size = Vector2(32, 32)
+
+[node name="SpriteChange" type="Sprite2D" unique_id=1464442455]
+texture = ExtResource("1_8f61g")
+centered = false
+script = ExtResource("2_703at")
+
+[node name="TuxDetector" type="Area2D" parent="." unique_id=732141144]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuxDetector" unique_id=1643135484]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_8f61g")

@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://swjnpkhsh64q"]
+
+[ext_resource type="Texture2D" uid="uid://ciwg7gacdm6j7" path="res://assets/images/worldmap/tux/boat/boat_0.png" id="1_jrmfi"]
+[ext_resource type="Texture2D" uid="uid://decvvgseemde" path="res://assets/images/worldmap/tux/boat/boat_1.png" id="2_76vd3"]
+[ext_resource type="Texture2D" uid="uid://ddgab0die3dbj" path="res://assets/images/worldmap/tux/boat/boat_0_fire.png" id="3_lv028"]
+[ext_resource type="Texture2D" uid="uid://kwk6d108nijc" path="res://assets/images/worldmap/tux/boat/boat_1_fire.png" id="4_grj5a"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jrmfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_76vd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lv028")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_grj5a")
+}],
+"loop": true,
+"name": &"default_fire",
+"speed": 5.0
+}]

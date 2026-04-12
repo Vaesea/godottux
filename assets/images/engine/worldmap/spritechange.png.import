@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cptwfoytlqnor"
-path="res://.godot/imported/score-backdrop.png-f82c568c3349567d0ab7bf565c371079.ctex"
+uid="uid://sllnwatvqlf3"
+path="res://.godot/imported/spritechange.png-173e343a886d60fa44351b3b7eaa545d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/engine/level/score-backdrop.png"
-dest_files=["res://.godot/imported/score-backdrop.png-f82c568c3349567d0ab7bf565c371079.ctex"]
+source_file="res://assets/images/engine/worldmap/spritechange.png"
+dest_files=["res://.godot/imported/spritechange.png-173e343a886d60fa44351b3b7eaa545d.ctex"]
 
 [params]
 

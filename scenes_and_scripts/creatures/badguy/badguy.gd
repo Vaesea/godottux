@@ -54,6 +54,7 @@ var kill_other_enemies:bool = false
 @export var smart:bool = false
 ## Is the enemy a bullet? (Bullet Bill-like). Not added yet. If you're making an enemy, it's best to change this in the enemy's script.
 @export var bullet:bool = false
+# TODO: Could the Spiky variable be replaced with basic_walking and hurt_by_stomp?
 ## Is the enemy Spiky-like? If you're making an enemy, it's best to change this in the enemy's script.
 @export var spiky:bool = false
 ## Is the enemy Jumpy-like? If you're making an enemy, it's best to change this in the enemy's script. If you set this to true, don't set smart to true.

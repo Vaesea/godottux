@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb2orck3o3pj2"]
 
-[ext_resource type="Script" uid="uid://bni40x7g4e6tn" path="res://scenes_and_scripts/creatures/badguy/snow/spiky.gd" id="1_ou10r"]
+[ext_resource type="Script" uid="uid://n0o31uek3fvs" path="res://scenes_and_scripts/creatures/badguy/forest/igel.gd" id="1_0l34v"]
 [ext_resource type="SpriteFrames" uid="uid://cq4422mcqll6v" path="res://spriteframes/igel.tres" id="2_0l34v"]
 [ext_resource type="AudioStream" uid="uid://cc38lbi4hua73" path="res://assets/sounds/squish.wav" id="3_klw2y"]
 [ext_resource type="AudioStream" uid="uid://jak8bjwet25i" path="res://assets/sounds/fall.wav" id="4_o6xyy"]
@@ -18,7 +18,7 @@ collision_mask = 257
 floor_constant_speed = true
 floor_max_angle = 1.3962634
 floor_snap_length = 12.0
-script = ExtResource("1_ou10r")
+script = ExtResource("1_0l34v")
 
 [node name="Image" type="AnimatedSprite2D" parent="." unique_id=264556818]
 position = Vector2(0, 4)

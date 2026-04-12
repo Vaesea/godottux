@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ct6hka51cnpm7" path="res://scenes_and_scripts/objects/worldmap/rock.tscn" id="9_pbevf"]
 [ext_resource type="PackedScene" uid="uid://cu1u7fnnpedw4" path="res://scenes_and_scripts/objects/worldmap/worldmap_spawn_point.tscn" id="10_875dc"]
 [ext_resource type="PackedScene" uid="uid://cbwdumx3i8nno" path="res://scenes_and_scripts/objects/worldmap/teleporter.tscn" id="11_daeq0"]
+[ext_resource type="PackedScene" uid="uid://crm27m7w2lsir" path="res://scenes_and_scripts/objects/worldmap/sprite_change.tscn" id="12_daeq0"]
 
 [node name="Worldmap" type="Node2D" unique_id=509094959]
 script = ExtResource("1_daeq0")
@@ -90,3 +91,10 @@ position = Vector2(0, 416)
 worldmap_scene = "res://scenes_and_scripts/levels/world1/worldmap.tscn"
 message = "Go back to Icy Island?"
 spawn_target = "back"
+
+[node name="SpriteChange" parent="." unique_id=1464442455 instance=ExtResource("12_daeq0")]
+position = Vector2(768, 416)
+change_to_boat = false
+
+[node name="SpriteChange2" parent="." unique_id=2035739312 instance=ExtResource("12_daeq0")]
+position = Vector2(736, 416)
