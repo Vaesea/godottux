@@ -25,9 +25,28 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - End Sequence "Stop Tux" thing that pauses everything
 - Add stars when Tux reaches the end of the level, not just when Tux gets the star powerup.
-- Use onready variables instead of calling the nodes with $ (will be done after release)
 - BadGuy.gd should be maintainable at some point. To do this, any enemy that breaks should be made it's own separate thing.
 - Improve certain enemies (like Igel)
+- Just polish basically everything
+
+## After-Release TODOS
+- Use onready variables instead of calling the nodes with $
+- Snowman
+- Ice Flame
+- Ghost FLame
+- Coin Rain
+- Coin Explode
+- 0.3.3+ Mr Bomb
+- Short Fuse
+- Captain Snowball
+- Snowjumpy
+- Kamikaze Snowball
+- Leafshot
+- Crystallo
+- Ice Crusher
+- Woodjumpy (i think that's the 0.7 name for it, i mean the forest jumpy from versions like 0.4 or 0.5)
+- Owl
+- Livefire
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
