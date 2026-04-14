@@ -10,8 +10,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 ## Pre-Beta TODOs
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
-- Dart Trap
-- Dart
 - Forest Exit Tiles
 
 ## After-Beta / Pre-Release TODOs
