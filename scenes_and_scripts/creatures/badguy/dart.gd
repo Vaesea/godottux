@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# TODO: Add interacting with other darts
+# TODO: Add interacting with other darts and Tux when Tux is invincible because of a star (currently just uses pass)
 
 var direction:int = -1
 var speed:int = 200
@@ -21,7 +21,10 @@ func _physics_process(_delta: float) -> void:
 
 func _on_something_detected(body):
 	if body.is_in_group("Player"):
-		body.damage()
+		if not Global.tux_star_invincible:
+			body.damage()
+		else:
+			pass
 	if body.is_in_group("FireBullet"):
 		body.queue_free()
 	if body.is_in_group("Enemy"):

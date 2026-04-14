@@ -74,6 +74,8 @@ func find_sector():
 			find_spawnpoint()
 
 func finish_level():
+	Engine.time_scale = 1.0
+	Global.tux_star_invincible = false
 	if scene_file_path not in Global.completed_levels:
 		Global.completed_levels.append(scene_file_path)
 	

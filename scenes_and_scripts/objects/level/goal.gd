@@ -2,7 +2,7 @@ extends Area2D
 
 signal level_finished
 
-var tux_walk_speed:int = 160
+var tux_walk_speed:int = 230
 
 func _ready() -> void:
 	connect("body_entered", _on_body_entered)
@@ -17,8 +17,9 @@ func _on_body_entered(body) -> void:
 		body.skid = false
 		body.invincible = true
 		body.duck = false
-		Global.tux_star_invincible = false
+		Global.tux_star_invincible = true
 		TuxManager.facing_direction = 1
+		Engine.time_scale = 0.5
 		beat_level()
 
 # here for scripting blocks

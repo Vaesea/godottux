@@ -17,7 +17,7 @@ class_name Sector
 ## How many seconds should the game wait before putting the player back in the worldmap / level select?
 ## Set this to how long your "finish level" song is, if you changed it.
 ## Godot should really add a way to check the length of a sound... if it doesn't already.
-@export var wait_to_end_level:float = 7.71
+@export var wait_to_end_level:float = 3.855
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

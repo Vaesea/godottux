@@ -86,11 +86,11 @@ var jump_buffer_timer:float = 0.0
 var dead:bool = false
 
 # Dead variables
-var dead_jump:int = 700
+@export var dead_jump:int = 700
 var restart_scene_timer:float = 3.0
 
-# Whether Tux is invincible from a star or not.
-var star_invincible:bool = false
+# Whether Tux shows stars while not star_invincible or not
+var show_stars:bool = false
 
 ## The sound that plays when getting the star.
 @export_file("*.ogg", "*.wav") var get_star_sound = "res://assets/sounds/invincible_start.ogg"
@@ -475,7 +475,7 @@ func get_star():
 		$StarTimer.start()
 
 func _on_star_timer_done():
-	if not in_cutscene: # NOTE: May cause problems later. Not sure why I did this.
+	if not in_cutscene: # NOTE: May cause problems later, but it's here because of the goal. TODO 2193824: Add a way to disable star_invincible in scripting blocks
 		Global.tux_star_invincible = false
 		Music.stream = load(Global.sector_song)
 		Music.play()
