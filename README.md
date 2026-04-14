@@ -1,4 +1,4 @@
-This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs.
+This is not even nearly finished yet. If you want something that's finished, I'd recommend waiting or even contributing to this yourself. There are most likely a lot of bugs (I know of a lot of bugs right now actually).
 
 If the code is a bit messy... oops. I still hope that people can make actual decent SuperTux fangames from this.
 
@@ -8,9 +8,10 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## Pre-Beta TODOs
-- Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
-- Forest Exit Tiles
+
+## Pre-Beta 2 TODOs
+- Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 
 ## After-Beta / Pre-Release TODOs
 - Fish
