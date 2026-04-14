@@ -7,20 +7,22 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
-## What hasn't been added yet but is planned
+## Pre-Beta TODOs
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Stop holdable objects from being placed in walls (I remember this being a bug)
+- Dart Trap
+- Dart
+- Forest Exit Tiles
+
+## After-Beta / Pre-Release TODOs
 - Fish
 - Mole
 - Zeekling
 - Skullyhop
-- Dart Trap
-- Dart
 - Ispy
 - Button
 - Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
 - Toad
-- Forest Exit Tiles
 - End Sequence "Stop Tux" thing that pauses everything
 - Add stars when Tux reaches the end of the level, not just when Tux gets the star powerup.
 - Use onready variables instead of calling the nodes with $ (will be done after release)
