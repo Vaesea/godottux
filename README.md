@@ -32,7 +32,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Use onready variables instead of calling the nodes with $
 - Snowman
 - Ice Flame
-- Ghost FLame
+- Ghost Flame
 - Coin Rain
 - Coin Explode
 - 0.3.3+ Mr Bomb
@@ -58,8 +58,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Completely accurate HUD (I tried to make it as accurate as I could)
 - In-game console (Use the Godot Output thing to debug your code instead)
 - The same scripting system (While there is scripting, it's done using variables in a block instead)
-- Magic Tiles (sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
-- Snowman (although previously listed in the planned list, i realized it's not a 0.3.2 enemy. has a small chance of still being added, though)
 - Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
