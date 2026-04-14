@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cyn6jc2i7e6ax"]
+
+[ext_resource type="Script" uid="uid://dv3dmg2n8dyyg" path="res://scenes_and_scripts/creatures/badguy/dart.gd" id="1_7oetq"]
+[ext_resource type="Texture2D" uid="uid://52j4panuyy7n" path="res://assets/images/creatures/dart/flying.png" id="1_faq4i"]
+[ext_resource type="AudioStream" uid="uid://dla10sovlared" path="res://assets/sounds/flame.wav" id="3_juobj"]
+[ext_resource type="AudioStream" uid="uid://cjqovubswerab" path="res://assets/sounds/darthit.wav" id="4_6p0vk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oetq"]
+size = Vector2(12, 2)
+
+[node name="Dart" type="CharacterBody2D" unique_id=405736268]
+collision_layer = 4
+collision_mask = 257
+script = ExtResource("1_7oetq")
+
+[node name="Image" type="Sprite2D" parent="." unique_id=462261019]
+position = Vector2(-10, -14)
+texture = ExtResource("1_faq4i")
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=13620887]
+position = Vector2(6, 1)
+shape = SubResource("RectangleShape2D_7oetq")
+
+[node name="Detector" type="Area2D" parent="." unique_id=613513766]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=1954497610]
+position = Vector2(6, 1)
+shape = SubResource("RectangleShape2D_7oetq")
+
+[node name="FlameSound" type="AudioStreamPlayer" parent="." unique_id=861198007]
+stream = ExtResource("3_juobj")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=916188522]
+stream = ExtResource("4_6p0vk")

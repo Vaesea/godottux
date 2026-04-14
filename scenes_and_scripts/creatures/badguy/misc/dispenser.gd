@@ -154,7 +154,7 @@ func create_object():
 				if type == 2:
 					object.global_position = $DropperMarker.global_position
 					complete_create(object, 0, 16, direction)
-			1: # as much as i hate it, bouncing snowball
+			1: # bouncing snowball
 				if type == 0:
 					object.global_position = $CanonMarker.global_position
 					complete_create(object, 5, 25, direction)
@@ -197,7 +197,7 @@ func create_object():
 	else:
 		push_warning("I'm not sure how you set object_to_spawn to null, but just don't do that. If you didn't, and this warning displayed, there's a bug.")
 
-# TODO: is dir needed?
+# TODO: is dir needed? is set_scripted_spawn_direction needed? couldn't that just be replaced with setting the direction without a function? (object.direction = -1 or something like that)
 func complete_create(spawned_object:Node2D, left_offset:float, right_offset:float, dir:int):
 	if dir == 1:
 		spawned_object.global_position.x -= spawned_object.collision.shape.get_rect().size.x - right_offset

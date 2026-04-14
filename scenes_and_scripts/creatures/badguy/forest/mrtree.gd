@@ -5,6 +5,8 @@ extends CharacterBody2D
 # TODO: Make every badguy use a thing like TuxDetectorTop (could be done after release?)
 # (although if it isn't broke, don't fix it. actually, why didn't i follow that logic for this mr tree?)
 
+# TODO: Make it so the Mr Tree can interact with other enemies. I don't think it can.
+
 # AnatolyStev: fixes the stomping the mr the tree.
 
 enum TreeStates {Alive, Dead}

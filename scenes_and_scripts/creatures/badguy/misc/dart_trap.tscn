@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ci6eoh81456e1"]
+
+[ext_resource type="Script" uid="uid://bxvw6tovwcvki" path="res://scenes_and_scripts/creatures/badguy/misc/dart_trap.gd" id="2_dvlrq"]
+[ext_resource type="SpriteFrames" uid="uid://bvaut4lpd23ue" path="res://spriteframes/dart_trap.tres" id="2_i53ea"]
+[ext_resource type="AudioStream" uid="uid://cp05sxo0sg0sh" path="res://assets/sounds/dartfire.wav" id="3_dvlrq"]
+
+[node name="DartTrap" type="AnimatedSprite2D" unique_id=264556818]
+sprite_frames = ExtResource("2_i53ea")
+centered = false
+offset = Vector2(21, -3)
+script = ExtResource("2_dvlrq")
+
+[node name="ScreenCheck" type="VisibleOnScreenEnabler2D" parent="." unique_id=984714468]
+rect = Rect2(-64, -64, 160, 160)
+show_rect = false
+enable_node_path = NodePath("")
+
+[node name="DartSpawn" type="Marker2D" parent="." unique_id=636335283]
+position = Vector2(21, 24)
+
+[node name="DartSound" type="AudioStreamPlayer" parent="." unique_id=1980120707]
+stream = ExtResource("3_dvlrq")

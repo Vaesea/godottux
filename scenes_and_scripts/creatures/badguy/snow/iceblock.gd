@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_wall() and not was_on_wall:
 		flip_direction()
-		if jump_when_hit_wall_or_thrown:
+		if jump_when_hit_wall_or_thrown and current_iceblock_state == IceblockStates.MovingFlat:
 			velocity.y = -abs(previous_velocity_x)
 	
 	if smart and not current_state == States.Dead and is_on_floor():
