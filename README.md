@@ -8,13 +8,10 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## Beta 1 TODOs
-- Stop holdable objects from being placed in walls (I remember this being a bug)
-- Stop the player from having any collision when dead
-
-## Beta 2 TODOs
-- Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
+- Stop holdable objects from being placed in walls (This is a bug.)
 
 ## Release TODOs
+- Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Fish
 - Mole
 - Zeekling
