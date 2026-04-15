@@ -12,13 +12,17 @@ config_version=5
 
 config/name="GodotTux"
 config/description="placeholder"
-config/version="v0.0.0"
+config/version="v0.1.0"
 run/main_scene="uid://c7sjkwbdpjy4w"
 config/auto_accept_quit=false
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://cwuykj7115j5v"
+
+[audio]
+
+buses/default_bus_layout="uid://cnc5qq5oie7m5"
 
 [autoload]
 
