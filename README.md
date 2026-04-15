@@ -18,7 +18,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Toad
 - End Sequence "Stop Tux" thing that pauses everything
 - BadGuy.gd should be maintainable at some point. To do this, any enemy that breaks should be made it's own separate thing.
-- Improve certain enemies (like Igel)
+- Improve certain enemies (like Igel, Snail and more)
 - Just polish basically everything
 
 ## After-Release TODOS
