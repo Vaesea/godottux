@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dicx3783pamal" path="res://scenes_and_scripts/level_scripts/level.gd" id="1_r1yn2"]
 [ext_resource type="PackedScene" uid="uid://pwow2i70bgpl" path="res://scenes_and_scripts/levels/world2/test_level_sequel/sectors/sector_main.tscn" id="3_7htdc"]
 [ext_resource type="PackedScene" uid="uid://cxytyy08gl3y6" path="res://scenes_and_scripts/levels/world2/test_level_sequel/sectors/sector_two.tscn" id="4_j0dy6"]
-[ext_resource type="PackedScene" uid="uid://bb2orck3o3pj2" path="res://scenes_and_scripts/creatures/badguy/forest/igel.tscn" id="6_10aua"]
 [ext_resource type="PackedScene" uid="uid://bqpupse32lss5" path="res://scenes_and_scripts/hud/hud.tscn" id="7_ys2c0"]
 [ext_resource type="PackedScene" uid="uid://cri0a86g4ps1y" path="res://scenes_and_scripts/creatures/player/tux.tscn" id="9_fd80f"]
 
@@ -25,6 +24,3 @@ visible = false
 
 [node name="Tux" parent="." unique_id=205617556 instance=ExtResource("9_fd80f")]
 position = Vector2(-160, -64)
-
-[node name="Igel" parent="." unique_id=1942256203 instance=ExtResource("6_10aua")]
-position = Vector2(2720, 352)

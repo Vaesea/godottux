@@ -188,6 +188,8 @@ func die():
 		$SmallImage.visible = true
 		set_collision_mask_value(1, false)
 		set_collision_mask_value(9, false)
+		set_collision_layer_value(32, true)
+		set_collision_layer_value(2, false)
 		$Stomp.set_deferred("monitorable", false)
 		$Stomp.set_deferred("monitoring", false)
 		$SmallImage.play("dead")

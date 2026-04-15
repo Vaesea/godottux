@@ -4,6 +4,8 @@ class_name HoldableObject
 # TODO: Make it so Tux doesn't go down when hit on the head with a rock.
 # TODO: Fix placing on another holdable object.
 
+# Wall stuff fixed by AnatolyStev
+
 enum States {Normal, Held}
 var current_state:States = States.Normal
 
@@ -61,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		if current_state == States.Held or collision_disabled and portable:
 			$Collision.set_deferred("disabled", true)
 		else:
-			$Collision.set_deferred("disabled", false)
+			$Collision.set_deferred("disabled", false) # TODO: Is this needed anymore?
 		
 		if not was_on_floor and is_on_floor() and current_state == States.Normal and not $BrickSound.playing and portable:
 			print(name + ": Playing sound...")
@@ -76,6 +78,7 @@ func _physics_process(delta: float) -> void:
 
 func throw(tux_direction:int):
 	if portable:
+		$Collision.disabled = true
 		throw_side = false
 		place_rock = false
 		throw_up = false
@@ -108,10 +111,6 @@ func throw(tux_direction:int):
 		elif place_rock:
 			print("Placing rock...")
 			velocity.x = 0
-			if tux_direction == -1:
-				global_position.x -= 14
-			if tux_direction == 1:
-				global_position.x += 14
 			place_rock = false
 		elif throw_up:
 			print("Throwing up rock...")

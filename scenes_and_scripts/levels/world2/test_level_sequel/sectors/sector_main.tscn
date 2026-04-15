@@ -144,9 +144,9 @@ offset_bottom = -73.0
 text = "Beware the penguin who speaks in hands..."
 
 [node name="Comment2" parent="." unique_id=686242245 instance=ExtResource("10_83jpe")]
-offset_left = 960.0
+offset_left = 992.0
 offset_top = -1184.0
-offset_right = 1393.0
+offset_right = 1425.0
 offset_bottom = -1161.0
 text = "Why is this here? Because it's funny."
 
