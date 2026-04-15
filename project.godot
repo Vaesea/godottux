@@ -89,6 +89,7 @@ activate_debug={
 2d_physics/layer_8="Bullet"
 2d_physics/layer_9="Block"
 2d_physics/layer_10="Non-Solid Magic Tile"
+2d_physics/layer_32="Player2"
 
 [physics]
 
