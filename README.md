@@ -21,7 +21,6 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
 - Toad
 - End Sequence "Stop Tux" thing that pauses everything
-- Add stars when Tux reaches the end of the level, not just when Tux gets the star powerup.
 - BadGuy.gd should be maintainable at some point. To do this, any enemy that breaks should be made it's own separate thing.
 - Improve certain enemies (like Igel)
 - Just polish basically everything
@@ -50,16 +49,16 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Accurate Main Menu
 - Accurate Options Menu
 - Multiple Profiles (if someone were to add this in, along with a way to change which profile you're using, that'd be cool!)
-- SuperTux-style Worldmaps
-- Completely accurate Tux movement (if someone were to add this in, that'd be cool!)
+- SuperTux-style Worldmaps (may be added in the future?)
+- Completely accurate Tux movement and physics (if someone were to add this in, that'd be cool!)
 - Add-on Support
 - Completely accurate HUD (I tried to make it as accurate as I could)
-- In-game console (Use the Godot Output thing to debug your code instead)
+- In-game console (Godot output is where things are printed instead)
 - The same scripting system (While there is scripting, it's done using variables in a block instead)
 - Level Flipping (this sounds too difficult for me to make. if someone were to add this in, that'd be cool!)
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
-- Kugelblitz
+- Kugelblitz (I don't even need to say why)
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
