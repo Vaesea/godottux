@@ -7,11 +7,7 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
-## Beta 1 TODOs
-- Stop holdable objects from being placed in walls (This is a bug.)
-
 ## Release TODOs
-- Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
 - Fish
 - Mole
 - Zeekling
@@ -59,6 +55,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Angry Stone (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Totem (Too complicated to add. If someone were to add this in, that'd be cool!)
 - Kugelblitz (I don't even need to say why)
+- Completely accurate rocks (they push you back slightly to fix a worse bug)
 
 There also isn't a level editor, not even as a separate program. I might try to make one at some point, but for now, just use the template level and worldmap as a base for your level or worldmap. You also get to learn Godot while doing this.
 
