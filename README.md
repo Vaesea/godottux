@@ -9,6 +9,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 
 ## Beta 1 TODOs
 - Stop holdable objects from being placed in walls (I remember this being a bug)
+- Stop the player from having any collision when dead
 
 ## Beta 2 TODOs
 - Fix placing holdable objects in another holdable object (doesn't seem like it can be done right now?)
