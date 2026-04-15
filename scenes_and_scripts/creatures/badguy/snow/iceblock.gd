@@ -45,6 +45,7 @@ var previous_velocity_x = 0
 @onready var image = $Image
 @onready var collision = $Collision
 @onready var tux_detector = $TuxDetector
+@onready var tux_detector_collision = $TuxDetector/CollisionShape2D
 @onready var ground_detector = $GroundDetector
 @onready var squish_sound = $SquishSound
 @onready var kick_sound = $KickSound
