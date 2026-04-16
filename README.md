@@ -7,8 +7,13 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
-## Release TODOs
+## Beta 2 TODOs
+- Fix most TODOs in the code
+- Improve certain enemies (like Igel, Snail* and more) *Snail doesn't seem like it can be improved to be like SuperTux Snail. It probably can, it just wouldn't be very easy. If you make a more SuperTux-like Snail, it'd be cool if you made a pull request.
+- End Sequence "Stop Tux" thing that pauses everything
 - Fish
+
+## Release 1 (V1.0.0) TODOs
 - Mole
 - Zeekling
 - Skullyhop
@@ -16,29 +21,31 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Button
 - Plant (Default version would wake up even when Small Tux is detected, but you'd be able to change options in it to make it like the actual Plant enemy)
 - Toad
-- End Sequence "Stop Tux" thing that pauses everything
-- BadGuy.gd should be maintainable at some point. To do this, any enemy that breaks should be made it's own separate thing.
-- Improve certain enemies (like Igel, Snail and more)
 - Just polish basically everything
 
-## After-Release TODOS
+## Release 1.5 (V1.5.0) TODOs
 - Use onready variables instead of calling the nodes with $
-- Snowman
+- Owl
+- Snowjumpy
+- Woodjumpy (i think that's the 0.7 name for it, i mean the forest jumpy from versions like 0.4 or 0.5)
+- Livefire
+- Ice Flower
+- Air Flower?
 - Ice Flame
 - Ghost Flame
+- Heavy Coins / Falling Coins
+- 0.3.3+ Mr Bomb
+
+## Release 2 (V2.0.0) TODOS
+- Snowman
 - Coin Rain
 - Coin Explode
-- 0.3.3+ Mr Bomb
 - Short Fuse
 - Captain Snowball
-- Snowjumpy
 - Kamikaze Snowball
 - Leafshot
 - Crystallo
 - Ice Crusher
-- Woodjumpy (i think that's the 0.7 name for it, i mean the forest jumpy from versions like 0.4 or 0.5)
-- Owl
-- Livefire
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
