@@ -8,12 +8,13 @@ A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperT
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
 ## Beta 2 TODOs
-- Fix most TODOs in the code
-- Improve certain enemies (like Igel, Snail* and more) *Snail doesn't seem like it can be improved to be like SuperTux Snail. It probably can, it just wouldn't be very easy. If you make a more SuperTux-like Snail, it'd be cool if you made a pull request.
+- Fix TODOs in the code if it affects gameplay or level making
+- Improve certain enemies (like Igel, Mr Tree and more)
 - End Sequence "Stop Tux" thing that pauses everything
 - Fish
 
 ## Release 1 (V1.0.0) TODOs
+- Fix more TODOs
 - Mole
 - Zeekling
 - Skullyhop
