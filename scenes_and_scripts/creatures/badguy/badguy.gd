@@ -1,9 +1,7 @@
 extends CharacterBody2D
 class_name BadGuy
 
-# TODO: Improve Spiky ground detection to be more like SuperTux.
-# TODO: Add turning around when detecting a fireball if the enemy is Igel
-# TODO: Add Mr Tree stuff from Mr Tree
+# TODO: If people want it, add turning around if enemy is Igel and detects a fireball
 # TODO: Clean up. Entire code. Before release?
 
 # hi. anatolystev here.
@@ -270,7 +268,6 @@ func move():
 	if not current_state == EnemyStates.Dead:
 		# Add any enemy that needs to move to the left / right to this variable except if it has special states that decide when it moves or not, like walking_and_holdable enemies.
 		var basic_moving_enemy = basic_walking or bouncing or bomb or bullet
-		# If the enemy is part of the variable above, do this. Don't know why "and not walking_and_holdable" is there, though. TODO: Find out whether that's needed.
 		if basic_moving_enemy:
 			velocity.x = direction * speed
 			if bouncing:
@@ -278,7 +275,7 @@ func move():
 					velocity.y = -bounce_height
 		# If the enemy is Jumpy and is on the floor, jump.
 		elif jumpy:
-			if is_on_floor(): # TODO: Can this be combined with the elif jumpy?
+			if is_on_floor(): # TODO: Can this be combined with the elif jumpy? (Obviously it most likely can)
 				velocity.y = -jump_height
 				$Image.play("jump")
 

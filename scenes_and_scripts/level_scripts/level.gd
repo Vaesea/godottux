@@ -1,8 +1,6 @@
 extends Node2D
 class_name Level
 
-# TODO: Stop song from resetting when the sector is switched to the exact same sector.
-
 ## Name of the level.[br]Shows up in the level intro (doesn't exist yet) but not the worldmap.
 @export var level_name:String = "Unnamed"
 ## Your name goes here.[br][br]Shows up in the level intro.[br]Set this to blank if you don't want to be credited.
@@ -112,8 +110,9 @@ func activate_sector(sector_name:String):
 			tux_camera.limit_top = -Global.height_of_level
 			tux_camera.limit_right = Global.width_of_level
 			if not Global.tux_star_invincible:
-				Music.stream = load(sector.song)
-				Music.play()
+				if not Global.sector_song == sector.song:
+					Music.stream = load(sector.song)
+					Music.play()
 			Global.sector_song = sector.song
 		else:
 			sector.visible = false

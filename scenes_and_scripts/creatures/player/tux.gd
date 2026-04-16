@@ -13,9 +13,6 @@ extends CharacterBody2D
 # AnatolyStev here. Added skidding
 # AnatolyStev here. Made it so rocks don't softlock Tux.
 # AnatolyStev here. Added backflipping and some extra cool stuff.
-# TODO: Make it so Tux doesn't go down when hit on the head with a rock. As you can see, I tried.
-
-# vaesea note: i have no idea what the above todo is about
 
 # Movement
 ## Tux's speed. You should probably change acceleration and deceleration if you change this.

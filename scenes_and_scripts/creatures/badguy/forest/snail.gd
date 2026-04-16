@@ -1,12 +1,12 @@
 extends HoldableEnemy
 
-# TODO: Make the collision position change when Snail's image is flipped
-
 func _ready() -> void:
 	smart = true
 	jump_when_hit_wall_or_thrown = true
 	ground_detector_position_x_when_left = 3.0
 	ground_detector_position_x_when_right = 32.0
+	image_offset_x_when_left = 16.0
+	image_offset_x_when_right = 24.0
 	super()
 
 func _physics_process(delta: float) -> void:

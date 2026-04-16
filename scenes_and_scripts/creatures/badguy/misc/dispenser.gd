@@ -100,7 +100,7 @@ func reload():
 			object_path = "uid://cstyfqelcwsdf"
 		4: # mr rocket (adding this will be fun! except no it won't)
 			object_path = "uid://cd6ah8ye2u4c3"
-		5:
+		5: # vicious ivy
 			object_path = "uid://c7xxetrv6fxkk"
 	
 	match(direction):
@@ -143,6 +143,11 @@ func create_object():
 		await object.ready
 		
 		# somewhat wet, somewhat dry. it's like a mix!
+		# complete_create is these comments below:
+		# parameter 1 should always be object, 
+		# first number / parameter 2 is left offset, make it the distance between 0 and your enemy's collision (if dispenser / type 2, make it 0 always)
+		# second number / parameter 3 is right offset, make it your enemy's collision x size (if dispenser / type 2, make it 16 always)
+		# parameter 4 should always be direction
 		match(object_to_spawn):
 			0: # snowball
 				if type == 0:
@@ -191,6 +196,16 @@ func create_object():
 				elif type == 1:
 					object.global_position = $RocketLauncherMarker.global_position
 					complete_create(object, 1, 41, direction)
+				elif type == 2:
+					object.global_position = $DropperMarker.global_position
+					complete_create(object, 0, 16, direction)
+			5: # vicious ivy
+				if type == 0:
+					object.global_position = $CanonMarker.global_position
+					complete_create(object, 6, 25, direction)
+				elif type == 1:
+					object.global_position = $RocketLauncherMarker.global_position
+					complete_create(object, 6, 25, direction)
 				elif type == 2:
 					object.global_position = $DropperMarker.global_position
 					complete_create(object, 0, 16, direction)

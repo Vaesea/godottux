@@ -1,10 +1,6 @@
 extends CharacterBody2D
 class_name HoldableEnemy
 
-# TODO: Add slowing down
-# TODO: Add slowing down (Snail version)
-# TODO: Add a way to change the x offset of the image when held by using a variable. (Snail needs this)
-
 # HACK: Check badguy.gd
 var stalactite = false
 
@@ -25,6 +21,8 @@ var kill_self_on_touching_enemy:bool = false
 
 var previous_velocity_x = 0
 
+var bounce_timer:float = 0.0
+
 @export_category("Iceblock And Snail")
 @export var speed:int = 80
 @export var direction:int = -1
@@ -35,12 +33,19 @@ var previous_velocity_x = 0
 @export_category("Snail")
 @export var jump_when_hit_wall_or_thrown:bool = false
 @export var throw_height:int = 500
+@export var friction:int = 300
 
 @export_category("Ground Detector X Position")
 ## X of Ground Detector when direction is left
 @export var ground_detector_position_x_when_left:float = 5.0
 ## X of Ground Detector when direction is right
 @export var ground_detector_position_x_when_right:float = 34.0
+
+@export_category("Image Offset X Position (when held)")
+## X of image offset when direction is left when held
+@export var image_offset_x_when_left:float = 8.0
+## X of image offset when direction is right when held
+@export var image_offset_x_when_right:float = 24.0
 
 @onready var image = $Image
 @onready var collision = $Collision
@@ -66,6 +71,9 @@ func _physics_process(delta: float) -> void:
 	if wait_to_collide > 0:
 		wait_to_collide -= delta
 	
+	if bounce_timer > 0:
+		bounce_timer -= delta
+	
 	if not is_on_floor() and not current_iceblock_state == IceblockStates.Held:
 		velocity += get_gravity() * delta
 	
@@ -90,7 +98,10 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_wall() and not was_on_wall:
 		flip_direction()
+		bounce_timer = 0.25
+		
 		if jump_when_hit_wall_or_thrown and current_iceblock_state == IceblockStates.MovingFlat:
+			velocity.x = direction * abs(previous_velocity_x)
 			velocity.y = -abs(previous_velocity_x)
 	
 	if smart and not current_state == States.Dead and is_on_floor():
@@ -109,10 +120,10 @@ func _physics_process(delta: float) -> void:
 	if current_iceblock_state == IceblockStates.Held and not held_by == null:
 		if TuxManager.facing_direction == -1:
 			direction = -1
-			global_position.x = held_by.global_position.x - 8
+			global_position.x = held_by.global_position.x - image_offset_x_when_left
 		else:
 			direction = 1
-			global_position.x = held_by.global_position.x + 24
+			global_position.x = held_by.global_position.x + image_offset_x_when_right
 		
 		global_position.y = held_by.global_position.y - 16
 	
@@ -155,7 +166,14 @@ func move():
 			if current_iceblock_state == IceblockStates.Held:
 				velocity.y = 0
 		elif current_iceblock_state == IceblockStates.MovingFlat:
-			velocity.x = direction * movingflat_speed
+			if not jump_when_hit_wall_or_thrown: # stupid iceblocks. why can't they act like snails...?
+				velocity.x = direction * movingflat_speed
+			if is_on_floor():
+				if jump_when_hit_wall_or_thrown:
+					velocity.x = move_toward(velocity.x, 0, friction * get_physics_process_delta_time())
+					if abs(velocity.x) < 1 and bounce_timer <= 0:
+						velocity.x = 0
+						current_iceblock_state = IceblockStates.Normal
 
 func death(fall:bool):
 	print(name + " died.")
@@ -220,6 +238,7 @@ func interact(stomp, tux, fireball, iceblock):
 				elif current_iceblock_state == IceblockStates.Flat:
 					current_iceblock_state = IceblockStates.MovingFlat
 					direction = TuxManager.facing_direction
+					velocity.x = direction * movingflat_speed
 					wait_to_collide = 0.25
 					kick_sound.play()
 	if stomp == null and not tux == null and fireball == null and iceblock == null:
@@ -240,6 +259,7 @@ func interact(stomp, tux, fireball, iceblock):
 						kick_sound.play()
 						direction = TuxManager.facing_direction
 						current_iceblock_state = IceblockStates.MovingFlat
+						velocity.x = direction * movingflat_speed
 						wait_to_collide = 0.25
 					else:
 						death(true)
@@ -248,6 +268,7 @@ func interact(stomp, tux, fireball, iceblock):
 					kick_sound.play()
 					direction = TuxManager.facing_direction
 					current_iceblock_state = IceblockStates.MovingFlat
+					velocity.x = direction * movingflat_speed
 					wait_to_collide = 0.25
 				else:
 					death(true)
@@ -270,6 +291,7 @@ func throw(tux_direction:int):
 	current_iceblock_state = IceblockStates.MovingFlat
 	kick_sound.play()
 	direction = tux_direction
+	velocity.x = direction * movingflat_speed
 	held_by = null
 	wait_to_collide = 0.25
 	if jump_when_hit_wall_or_thrown:
