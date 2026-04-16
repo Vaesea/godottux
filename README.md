@@ -35,6 +35,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Ghost Flame
 - Heavy Coins / Falling Coins
 - 0.3.3+ Mr Bomb
+- Make it easy for people to go past the limitations of 0.3.2 (powerups in bricks)
 
 ## Release 2 (V2.0.0) TODOS
 - Snowman
