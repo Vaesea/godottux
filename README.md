@@ -36,18 +36,21 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 - Ghost Flame
 - Heavy Coins / Falling Coins
 - 0.3.3+ Mr Bomb
-- Make it easy for people to go past the limitations of 0.3.2 (powerups in bricks)
+- Make it easy for people to go past the limitations of 0.3.2 (powerups in bricks)#
+- Captain Snowball
 
 ## Release 2 (V2.0.0) TODOS
 - Snowman
 - Coin Rain
 - Coin Explode
 - Short Fuse
-- Captain Snowball
 - Kamikaze Snowball
 - Leafshot
 - Crystallo
 - Ice Crusher
+- BSOD (Enemy, not causing a BSOD on Windows)
+- Laptop
+- Bag
 
 ## What this doesn't recreate / use
 - Levels (Except Welcome To Antarctica)
