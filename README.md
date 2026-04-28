@@ -9,6 +9,7 @@ The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-
 
 ## Beta 2 TODOs
 - Polish things enough to make it more like 0.3.3+ versions of SuperTux
+- Polish the code
 - Fix TODOs in the code if it affects gameplay or level making
 - Improve certain enemies (like Igel, Mr Tree and more)
 - End Sequence "Stop Tux" thing that pauses everything
