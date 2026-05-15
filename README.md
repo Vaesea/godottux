@@ -3,7 +3,7 @@ This is not even nearly finished yet. If you want something that's finished, I'd
 If the code is a bit messy... oops. I still hope that people can make actual decent SuperTux fangames from this.
 
 # GodotTux
-A SuperTux 0.3.2 remake in Godot, but in a way that makes it easy to make SuperTux fangames! (If you know how to code, and if you can understand the worst code you've ever seen in your life)
+A SuperTux 0.5.1 remake in Godot, but in a way that makes it easy to make SuperTux fangames! (If you know how to code, and if you can understand the worst code you've ever seen in your life)
 
 The worldmaps are like PepperTux-Haxe's worldmaps, which means they're more RPG-like, but since this is Godot, you should easily be able to make worldmaps similar to SuperTux.
 
